@@ -1,0 +1,255 @@
+= Mapnik - The Missing Manual
+Hartmut Holzgraefe
+:doctype: book
+:encoding: utf-8
+:lang: en
+:toc: left
+:numbered:
+
+
+
+[preface]
+== Preface
+
+This is a braindump of my experience with Mapnik
+
+
+== Introduction
+
+Mapnik is a Free Toolkit for developing mapping applications. It is written in modern C++ and has Python bindings that support fast-paced agile development. It can comfortably be used for both desktop map design and web development.
+
+== Installation
+
+How to install Mapnik ...
+
+=== (((Linux)))Linux
+
+=== Windows
+
+=== MacOS
+
+== API
+
+=== Map
+
+=== DataSource
+
+A <Datasource> can appear in two places: as a named data surce template under <Map> or as an actual data source in a <Layer>. A data soure template can provide default values for actual layer data sources, e.g. when using a PostGis database as data source a data source template can provide all the connection parameters, so that actual layer data sources only have to provide actual SQL queries.
+
+Example:[source,]
+----
+<Map>
+  <!-- Datasource template ->
+  <Datasource name="gis">
+    <Parameter name="type">postgis</Parameter>
+    <Parameter name="host">gis-db</Parameter>
+    <Parameter name="port">5432</Parameter>
+    <Parameter name="dbname">gis</Parameter>
+    <Parameter name="user">maposmatic</Parameter>
+    <Parameter name="password">secret</Parameter>
+  </Datasource>
+ 
+  <!-- actual Datasource using the template above for default values ..>
+  <Layer name="layer-1">
+    <Datasource base="gis">
+      <Parameter name="table">
+`       SELECT ...
+      </Parameter>
+    </Datasource>
+  </Layer>
+</Map>
+----
+
+=== FontSet
+
+A <Fontset> contains a list of or more <Font> entries that are searched in the listed order when rendering characters. This way a style sheet can specify multiple alternative fonts for different platforms, or different language specific fonts.
+
+Listed fonts that do not exist on the system runnng Mapnik are simply ignored after generating a warning. Also when a certain character is not found in the first font the other fonts are searched in order until one supporting the character is found.
+
+So when e.g. a map is to show both latin and asian characters, the first font can be one providing latin characters, with the additional fonts in the font sets providing characters from different asian languages.
+
+A <FontSet> can be referenced by <TextSymbolizer> or <ShieldSymbolizer> using the "fontset_name" attribute.
+
+Example: 
+[source,]
+----
+  <FontSet name="my-fonts">
+    <Font face-name="Noto Sans Regular"/>
+    <Font face-name="Noto Sans CJK JP Regular"/>
+  </FontSet>
+----
+
+=== Layers
+
+A layer renders data from a data source using one or more styles.
+
+=== Styles
+
+Styles contain a set of rendering rules to render data elements provided by a data source.
+
+=== Rules
+
+A style rule filters data elements provided by a data source, and renders the matching elmements using one or more symbolizers. Rules can also be limited to specific scale factor ranges only, e.g. to implement different zoom level styles.
+
+=== Filters 
+
+Filters specify on what data elements a rule should operate, by evaluating expressions. The expression language supports simple comparisons, logic, math, and regular expression matching.
+
+There are also two special filters that do not evaluate expresions but depend on whether other previous filters in the style found a match:
+
+<ElseFilter> matches if no other filter in a style matched so far, so it can be used as a fallback default.
+
+<AlsoFilter> only matches if at least one previous filter in a style matched.
+
+=== Filter expressions
+
+The filter expression language supports the following constants, operators, and functions. It also allows for referencing data element attributes by putting the attribute name in square brackets `[attribute]` and to change evaluation order by putting expression parts in regular round brackets `(...)`.
+
+TODO: operator precedence
+TODO: regular expression match and replace
+
+==== Constants
+
+`true`:: logical true
+`false`:: logical false
+`pi`:: 3.14159...
+`deg_to_rad`:: 0.01745... (pi/180)
+`rad_to_deg`:: 57.295... (180/pi)
+
+==== Operators
+
+`+`::
+`-`::
+`*`::
+`/`::
+`%`::
+`and`, `&&`::
+`or`, `||`::
+`not`, `!`::
+`=`, `eq`, `is`::
+`!=`, `<>`, `neq`::
+`<`, `lt`::
+`\<=`, `le`::
+`>`, `gt`::
+`>=`, `ge`::
+  ...
+
+==== Functions
+
+`sin(x)`:: Sinus
+`cos(x)`:: Cosinus
+`tan(x)`:: Tangens
+`atan(x)`:: Arc Tangens
+`exp(x)`:: `e^x^`
+`log(x)`:: natural logarithm of `x`
+`pow(x,y=`:: `x^y^`
+`abs(x)`:: positive absolute value of `x`
+`min(x,y)`:: minimum value
+`max(x,y)`:: maximum value
+`length(str)`:: string length
+
+
+
+=== Symbolizers
+
+==== BuildingSymbolizer
+
+This symbolizer renders polygons in a simple pseudo-3D fashion.
+
+.Table Attributes
+|===
+| Attribute      | Value      | Default
+
+| `fill`         | CSS colour | gray
+
+| `fill-opacity` |foat        | 1.0
+
+| `height`       | float      | 0
+|===
+
+TODO: example image
+
+==== GroupSymbolizer
+
+==== LineSymbolizer
+
+==== LinePatternSymbolizer
+
+==== MarkersSymbolizer
+
+==== PolygonSymbolizer
+
+==== PolygonPatternSymbolizer
+
+==== PointSymbolizer
+
+The point symbolizer draws a given image at a point position. When given a line or polygon as input the shape will be put at the middle of the line or center of the polygon. 
+
+If no image file is specified a small square is used as the default point image.
+
+.Attributes
+[width="100%",options="header"]
+|====================
+| attribute          | type          | default
+| `file`             | file path     | none 
+| `allow-overlap`    | bool          | false 
+| `opacity`          | float         | 1.0 
+| `ignore-placement` | bool          | false
+| `transform`        | SVG transform | identity
+| `comp-op`          | Compositing   | none
+|====================
+
+==== RasterSymbolizer
+
+==== ShieldSymbolizer
+
+==== TextSymbolizer
+
+== Tips and Tricks
+
+=== SVG and PDF document versions
+
+When using default settings, CairoGraphics will create SVG version 1.1 output. This SVG version does not support all available composite operator choices (comp-op) though, and so for some comp-op values used in style sheets Cairo will fall back to bitmap rendering and you will end up with a SVG document that only contains one single image tag, and the actual rendered map being one large embedded bitmap image.
+
+To prevent this you need to explicitly set the SVG version to produce to version 1.2:
+
+----
+surface.restrict_to_version(cairo.SVGVersion.VERSION_1_2);
+----
+
+Same for PDF, here you need to enforce the use of PDF version 1.5:
+
+----
+surface.restrict_to_version(cairo.PDFVersion.VERSION_1_5);
+----
+
+TODO: Cairo version dependency
+
+=== Make SVG output a bit more editor friendly
+
+SVG created by the CairoGraphics render backend is not really made for being post-processed by a vector graphics program like e.g. InkScape. The generated SVG is completely unstructured and does not really contain any grouping or layers.
+
+To make things even worse any text output is done by emitting single character glyphes. So when trying to post process SVG results by moving some label texts around, you need to take care of selecting every character individually.
+
+The https://github.com/Zverik/mapnik-group-text[Mapnik Group Text] tool by Ilya Zverev. It finds letters and their casing in the generated SVG, tries to find words they form, and then groups the letters per word so that you can easily move words as a whole instead of individual letters.
+
+== Glossary
+
+[glossary]
+
+AGG::
+    The http://antigrain.com[Anti-Grain Graphics library] used by default for bitmap (PNG, JPEG, ...) output.
+    
+Cairo:: 
+CairoGraphics::
+    The http://cairographics.org[Cairo Graphics library] used for vector format output (SVG, PDF, PS) output by default, and also for bitmap output when esplicitly requested.
+
+Opacity::
+    Defines how opaque or transparent a feature should be. Values range from 0.0 for total transparency to 1.0 for total opacity.
+    
+Symbolizer::
+	A symbolizer describes how features appear on rendered maps.
+
+== Index
+
+[index]
