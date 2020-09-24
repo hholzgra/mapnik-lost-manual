@@ -7,16 +7,77 @@ Hartmut Holzgraefe
 :numbered:
 
 
-
 [preface]
 == Preface
 
-This is a braindump of my experience with Mapnik
+This is a brain dump of my experience with Mapnik, the map rendering library that powers, among other things
+
+There are different information sources that document certain aspects of Mapnik, but none are really complete, up to date, and easily understandable at the same time ...
 
 
 == Introduction
 
 Mapnik is a Free Toolkit for developing mapping applications. It is written in modern C++ and has Python bindings that support fast-paced agile development. It can comfortably be used for both desktop map design and web development.
+
+=== Concept
+
+Mapnik is a library, not a complete application program. So it always to be linked to at least a minimum of application code that controls the library operations. 
+
+In the most simple case the application program just creates a Mapnik Map object of a certain size, loads a XML style sheet, and renderes this style into an output file, e.g. when using the Python Mapnik bindings:
+
+.A minimal Mapnik source and style
+====
+Python API code:
+[source,]
+----
+#! /usr/bin/env /usr/bin/python3
+
+import mapnik
+
+map = mapnik.Map(600,300) # create a 600x300 pixel map
+
+mapnik.load_map(map, 'points.xml') # loat style file
+
+map.zoom_all() # make sure all data is visible
+map.zoom(-1.1) # zoom out a bit more to avoid clipping
+
+mapnik.render_to_file(map, 'point.png', 'png') # render
+----
+
+Style file including inline data:
+[source,]
+----
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='lightgreen'>
+
+  <Style name="style">
+    <Rule>
+      <PointSymbolizer/>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt
+"POINT(10 10)"
+"POINT(20 20)"
+"POINT(30 30)"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+----
+
+Result:
+
+image::images/introduction.png[]
+====
+
+TODO: do the same with pure python and no separate style file
 
 == Installation
 
@@ -24,9 +85,35 @@ How to install Mapnik ...
 
 === (((Linux)))Linux
 
+
+
+
 === Windows
 
+TODO
+
 === MacOS
+
+TODO
+
+== Existing documentation
+
+GitHub Wiki::
+The https://github.com/mapnik/mapnik/wiki[Mapnik Wiki on GitHub] is a weird mix of end user and developer documentation that unfortunately is neither complete nor up to date.
+
+Sphinx Docs::
+The https://github.com/mapnik/sphinx-docs[Sphinx Docs] project was an attempt to create a Mapnik manual using the https://www.sphinx-doc.org/[Sphinx Documentation Generator], but this project unfortunately never really got anywhere and has seen no update for the last ten years now.
+
+Doxygen::
+The mapnik source code contains structured comments from which API reference documentation can be generated using https://www.doxygen.nl/[Doxygen]. http://tux-style.de/osm/mapnik/doxygen/html/index.html[Generated output] can be found online, but is not necessarily fully up to date.
+
+API reference::
+There is also http://mapnik.org/mapnik-reference/[versioned API reference] documentation maintained outside of the main Mapnik source, in the separate https://github.com/mapnik/mapnik-reference/[Mapnik Reference] project.
+
+TODO: there's even more
+
+=== 
+
 
 == API
 
@@ -198,6 +285,15 @@ If no image file is specified a small square is used as the default point image.
 | `transform`        | SVG transform | identity
 | `comp-op`          | Compositing   | none
 |====================
+
+===== Examples
+
+.PointSymbolizer file
+====
+
+====
+
+
 
 ==== RasterSymbolizer
 
