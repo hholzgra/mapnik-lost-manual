@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <PointSymbolizer file="bug.svg" transform="scale([scale])"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="40">[scale]+"x"</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+scale,wkt
+0.5,"POINT( 0 0)"
+  1,"POINT( 1 0)"
+  2,"POINT( 2 0)"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+

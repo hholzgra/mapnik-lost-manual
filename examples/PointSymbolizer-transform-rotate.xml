@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <PointSymbolizer file="bug.svg" transform="rotate([rotate])"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[rotate]+"°"</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+rotate,wkt
+  0,"POINT( 0 0)"
+ 45,"POINT( 1 0)"
+ 90,"POINT( 2 0)"
+180,"POINT( 3 0)"
+270,"POINT( 4 0)"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+

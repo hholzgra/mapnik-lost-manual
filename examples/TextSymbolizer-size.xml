@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <TextSymbolizer face-name="DejaVu Sans Book" size="[size]">"size "+[size]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,size
+"POINT(0 0)",8
+"POINT(1 0)",10
+"POINT(2 0)",12
+"POINT(3 0)",16
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
