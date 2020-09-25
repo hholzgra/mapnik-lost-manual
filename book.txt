@@ -4,6 +4,7 @@ Hartmut Holzgraefe
 :encoding: utf-8
 :lang: en
 :toc: left
+:toclevels: 5
 :numbered:
 
 
@@ -260,6 +261,61 @@ TODO: example image
 
 ==== LineSymbolizer
 
+.LineSymbolizer stroke
+====
+[source,xml]
+-----
+include::examples/LineSymbolizer-stroke.xml[]
+-----
+image::examples/LineSymbolizer-stroke.svg[align="center"]
+====
+
+.LineSymbolizer stroke width
+====
+[source,xml]
+-----
+include::examples/LineSymbolizer-stroke-width.xml[]
+-----
+image::examples/LineSymbolizer-stroke-width.svg[align="center"]
+====
+
+.LineSymbolizer stroke opacity
+====
+[source,xml]
+-----
+include::examples/LineSymbolizer-stroke-opacity.xml[]
+-----
+image::examples/LineSymbolizer-stroke-opacity.svg[align="center"]
+====
+
+.LineSymbolizer stroke linejoin
+====
+[source,xml]
+-----
+include::examples/LineSymbolizer-stroke-linejoin.xml[]
+-----
+image::examples/LineSymbolizer-stroke-linejoin.svg[align="center"]
+====
+
+.LineSymbolizer stroke linecap
+====
+[source,xml]
+-----
+include::examples/LineSymbolizer-stroke-linecap.xml[]
+-----
+image::examples/LineSymbolizer-stroke-linecap.svg[align="center"]
+====
+
+.LineSymbolizer smooth
+====
+[source,xml]
+-----
+include::examples/LineSymbolizer-smooth.xml[]
+-----
+====
+
+
+
 ==== LinePatternSymbolizer
 
 ==== MarkersSymbolizer
@@ -286,14 +342,48 @@ If no image file is specified a small square is used as the default point image.
 | `comp-op`          | Compositing   | none
 |====================
 
-===== Examples
+
 
 .PointSymbolizer file
 ====
-
+[source,xml]
+-----
+include::examples/PointSymbolizer-file.xml[]
+-----
+image::examples/PointSymbolizer-file.svg[align="center"]
 ====
 
+.PointSymbolizer opacity
+====
+[source,xml]
+-----
+include::examples/PointSymbolizer-opacity.xml[]
+-----
+image::examples/PointSymbolizer-opacity.svg[align="center"]
+====
 
+.PointSymbolizer scaling 
+====
+[source,xml]
+-----
+include::examples/PointSymbolizer-transform-scale.xml[]
+-----
+image::examples/PointSymbolizer-transform-scale.svg[align="center"]
+====
+
+.PointSymbolizer rotation
+====
+[source,xml]
+-----
+include::examples/PointSymbolizer-transform-rotate.xml[]
+-----
+image::examples/PointSymbolizer-transform-rotate.svg[align="center"]
+====
+
+.PointSymbolizer compositing
+====
+TODO
+====
 
 ==== RasterSymbolizer
 
@@ -301,11 +391,44 @@ If no image file is specified a small square is used as the default point image.
 
 ==== TextSymbolizer
 
+.TextSymbolizer size
+====
+[source,xml]
+-----
+include::examples/TextSymbolizer-size.xml[]
+-----
+image::examples/TextSymbolizer-size.svg[align="center"]
+====
+
+.TextSymbolizer text color fill
+====
+[source,xml]
+-----
+include::examples/TextSymbolizer-fill.xml[]
+-----
+image::examples/TextSymbolizer-fill.svg[align="center"]
+====
+
+.TextSymbolizer character spacing
+====
+[source,xml]
+-----
+include::examples/TextSymbolizer-character-spacing.xml[]
+-----
+image::examples/TextSymbolizer-character-spacing.svg[align="center"]
+
+====
+
+
+== Compositing
+
+
+
 == Tips and Tricks
 
 === SVG and PDF document versions
 
-When using default settings, CairoGraphics will create SVG version 1.1 output. This SVG version does not support all available composite operator choices (comp-op) though, and so for some comp-op values used in style sheets Cairo will fall back to bitmap rendering and you will end up with a SVG document that only contains one single image tag, and the actual rendered map being one large embedded bitmap image.
+When using default settings, CairoGraphics will create SVG version 1.1 output. This SVG version does not support all available composite operator choices (indexterm2:[comp-op]) though, and so for some comp-op values used in style sheets Cairo will fall back to bitmap rendering and you will end up with a SVG document that only contains one single image tag, and the actual rendered map being one large embedded bitmap image.
 
 To prevent this you need to explicitly set the SVG version to produce to version 1.2:
 
@@ -340,12 +463,22 @@ Cairo::
 CairoGraphics::
     The http://cairographics.org[Cairo Graphics library] used for vector format output (SVG, PDF, PS) output by default, and also for bitmap output when esplicitly requested.
 
+Compositing::
+    Compositing provides different ways to combine data to be drawn with already existing from drawing previous layers.
+
+Harfbuzz::
+    https://harfbuzz.github.io/[Harfbuzz] is a Text rendering / shaping library used by Mapnik starting with V3.0
+
 Opacity::
     Defines how opaque or transparent a feature should be. Values range from 0.0 for total transparency to 1.0 for total opacity.
     
 Symbolizer::
 	A symbolizer describes how features appear on rendered maps.
+	
+SVG Transformations::
+    SVG transformations allow to translate, scale, rotate or skew a shape, either by combining one or more individual operations, or by giving them as a transformation matrix right away.
 
-== Index
 
 [index]
+== Index
+
