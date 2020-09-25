@@ -12,4 +12,4 @@ e = map.envelope()
 d = 2
 map.zoom_to_box(mapnik.Box2d(e.minx-d, e.miny-d, e.maxx+d, e.maxy+d))
 
-mapnik.render_to_file(map, 'render.png', 'png')
+mapnik.render_to_file(map, 'render.svg', 'svg')
