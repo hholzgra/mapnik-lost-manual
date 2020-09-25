@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='white'>
+
+  <Style name="style">
+    <Rule>
+      <LineSymbolizer stroke-linejoin="[join]" stroke-width="20"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="30">[join]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,join
+"LINESTRING(30 30,50 50,70 30)",bevel
+"LINESTRING(30 20,50 40,70 20)",round
+"LINESTRING(30 10,50 30,70 10)",miter
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+

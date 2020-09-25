@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='white'>
+
+  <Style name="style">
+    <Rule>
+      <LineSymbolizer stroke-linecap="[cap]" stroke-width="20"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[cap]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,cap
+"LINESTRING(0 6,20 6)",but
+"LINESTRING(0 3,20 3)",round
+"LINESTRING(0 0,20 0)",square
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
