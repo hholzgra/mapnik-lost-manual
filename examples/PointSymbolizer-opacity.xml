@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <PointSymbolizer file="dot.svg" opacity="[opacity]"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[opacity]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+opacity,wkt
+0.0,"POINT(  0 0)"
+0.1,"POINT( 1 0)"
+0.2,"POINT( 2 0)"
+0.3,"POINT( 3 0)"
+0.4,"POINT( 4 0)"
+0.5,"POINT( 5 0)"
+0.6,"POINT( 6 0)"
+0.7,"POINT( 7 0)"
+0.8,"POINT( 8 0)"
+0.9,"POINT( 9 0)"
+1.0,"POINT(10 0)"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
