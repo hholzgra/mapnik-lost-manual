@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <PolygonSymbolizer/>
+      <PointSymbolizer allow-overlap="true" placement="[placement]" file="bug.svg"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="50">[placement]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,placement
+"POLYGON(( 1 1, 6 1, 6 5, 5 5, 5 2, 2 2, 2 5, 1 5, 1 1))",interior
+"POLYGON((11 1,16 1,16 5,15 5,15 2,12 2,12 5,11 5,11 1))",centroid
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
