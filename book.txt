@@ -261,6 +261,19 @@ TODO: example image
 
 ==== LineSymbolizer
 
+The LineSymbolizer specifies how to render linear geometries like lines and polygon outlines. Most of the LineSymbolizer attributes define stroke attributes of the line to draw, like color, width, how line joins and ends should look, and even dash patterns.
+
+There are also some attributes that change the lines geometry itself, like smooth and simplify.
+
+
+.LineSymbolizer
+[width="100%",options="header"]
+|====================
+| Attribute | Value | Default | Description 
+|  |  |  |  
+|  |  |  |  
+|====================
+
 .LineSymbolizer stroke
 ====
 [source,xml]
@@ -312,9 +325,19 @@ image::examples/LineSymbolizer-stroke-linecap.svg[align="center"]
 -----
 include::examples/LineSymbolizer-smooth.xml[]
 -----
+image::examples/LineSymbolizer-smooth.svg[align="center"]
 ====
 
+.LineSymbolizer dash array
+====
+[source,xml]
+-----
+include::examples/LineSymbolizer-stroke-dasharray.xml[]
+-----
+image::examples/LineSymbolizer-stroke-dasharray.svg[align="center"]
+====
 
+TODO: gamma, gamma-method, dash-offset, miter-limit, clip, simplify, simplify-algorithm, offset, rasterize, geometry-transform, comp-op
 
 ==== LinePatternSymbolizer
 
@@ -360,6 +383,15 @@ image::examples/PointSymbolizer-file.svg[align="center"]
 include::examples/PointSymbolizer-opacity.xml[]
 -----
 image::examples/PointSymbolizer-opacity.svg[align="center"]
+====
+
+.PointSymbolizer placement
+====
+[source,xml]
+-----
+include::examples/PointSymbolizer-placement.xml[]
+-----
+image::examples/PointSymbolizer-placement.svg[align="center"]
 ====
 
 .PointSymbolizer scaling 
