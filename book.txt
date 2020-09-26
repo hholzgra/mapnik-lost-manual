@@ -263,15 +263,31 @@ TODO: example image
 
 The LineSymbolizer specifies how to render linear geometries like lines and polygon outlines. Most of the LineSymbolizer attributes define stroke attributes of the line to draw, like color, width, how line joins and ends should look, and even dash patterns.
 
-There are also some attributes that change the lines geometry itself, like smooth and simplify.
+There are also some attributes that change the lines geometry itself, like offset, smooth and simplify.
 
 
 .LineSymbolizer
 [width="100%",options="header"]
 |====================
-| Attribute | Value | Default | Description 
-|  |  |  |  
-|  |  |  |  
+| Attribute           | Value | Default | Description 
+| clip                | boolean | false |  
+| comp-op             | SVG compositing |  |
+| geometry-transform  | SVG transform |  | 
+| offset              | float | 0 |  
+| rasterize           | full, fast | full |  
+| smooth              | 0.0 - 1.0 | 1 |  
+| simplify            | float | 0 |  
+| simplify-algorithm  | radial-distance, zhao-saalfeld, visvalingam-whyatt, douglas-peucker | radial-distance |  
+| stroke              | color | black |  
+| stroke-dasharray    | number list | none |  
+| stroke-dashoffset   | number list | none | experimental only  
+| stroke-gamma        | 0.0 - 1.0 | 1 |  
+| stroke-gamma-method | power, linear, none, threshold, multiply | power |  
+| stroke-linejoin     | bevel, miter, miter-revert, round | miter |  
+| stroke-linecap      | butt, round, square | butt |  
+| stroke-miterlimit   | float     | 4 |  
+| stroke-opacity      | 0.0 - 1.0 | 1 |  
+| stroke-width        | float     | 1 |  
 |====================
 
 .LineSymbolizer stroke
@@ -343,6 +359,10 @@ TODO: gamma, gamma-method, dash-offset, miter-limit, clip, simplify, simplify-al
 
 ==== MarkersSymbolizer
 
+The MarkerSymbolizer is similar to the PointSymbolizer, but has two advantages when used on a line or polygon: it can be drawn multiple times along a line automatically, and it's orientation is rotated according to the current direction of the line instead of always being upright.
+
+TODO: attribute table, examples
+
 ==== PolygonSymbolizer
 
 ==== PolygonPatternSymbolizer
@@ -353,13 +373,15 @@ The point symbolizer draws a given image at a point position. When given a line 
 
 If no image file is specified a small square is used as the default point image.
 
+For putting symbols along a line or the edge of a polygon the MarkerSymbolizer is usually a better choice.
+
 .Attributes
 [width="100%",options="header"]
 |====================
 | attribute          | type          | default
-| `file`             | file path     | none 
+| <<example-pointsymbolizer-file,`file`>>             | file path     | none 
 | `allow-overlap`    | bool          | false 
-| `opacity`          | float         | 1.0 
+| <<example-pointsymbolizer-file,`opacity`>>          | float         | 1.0 
 | `ignore-placement` | bool          | false
 | `transform`        | SVG transform | identity
 | `comp-op`          | Compositing   | none
@@ -368,6 +390,7 @@ If no image file is specified a small square is used as the default point image.
 
 
 .PointSymbolizer file
+[#example-pointsymbolizer-file]
 ====
 [source,xml]
 -----
@@ -377,6 +400,7 @@ image::examples/PointSymbolizer-file.svg[align="center"]
 ====
 
 .PointSymbolizer opacity
+[#example-pointsymbolizer-opacity]
 ====
 [source,xml]
 -----
@@ -454,7 +478,7 @@ image::examples/TextSymbolizer-character-spacing.svg[align="center"]
 
 == Compositing
 
-
+TODO: extend OSM default style with a big single red dot marker, similar to CartoCSS example page
 
 == Tips and Tricks
 
@@ -483,6 +507,18 @@ SVG created by the CairoGraphics render backend is not really made for being pos
 To make things even worse any text output is done by emitting single character glyphes. So when trying to post process SVG results by moving some label texts around, you need to take care of selecting every character individually.
 
 The https://github.com/Zverik/mapnik-group-text[Mapnik Group Text] tool by Ilya Zverev. It finds letters and their casing in the generated SVG, tries to find words they form, and then groups the letters per word so that you can easily move words as a whole instead of individual letters.
+
+=== Simplify SVG
+
+Mapnik only supports a subset of SVG when it comes to marker images so far.
+
+When creating images with InkScape, make sure to save your images as "Plain SVG", not "InkScape SVG". Even with that some unsupported constructs may end upSVG files though.
+
+The same is also true for SVG images from other sources.
+
+When it comes to simple unknown attributes Mapnik will throw a warning, but the result will usually still come out OK. In other cases you may end up with weird looking results though. And even when everything looks fine in the end, the emitted warnings can still be annoying, and may hide other, more importantn warnings.
+
+TODO: simple script to resolve the most common cases.
 
 == Glossary
 
