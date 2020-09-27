@@ -6,7 +6,7 @@ Hartmut Holzgraefe
 :toc: left
 :toclevels: 5
 :numbered:
-
+:source-highlighter: coderay
 
 [preface]
 == Preface
@@ -29,7 +29,7 @@ In the most simple case the application program just creates a Mapnik Map object
 .A minimal Mapnik source and style
 ====
 Python API code:
-[source,]
+[source,python]
 ----
 #! /usr/bin/env /usr/bin/python3
 
@@ -46,7 +46,7 @@ mapnik.render_to_file(map, 'point.png', 'png') # render
 ----
 
 Style file including inline data:
-[source,]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <Map background-color='lightgreen'>
