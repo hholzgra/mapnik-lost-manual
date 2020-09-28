@@ -329,30 +329,42 @@ There are also some attributes that change the lines geometry itself, like offse
 
 
 .LineSymbolizer
-[options="header,unbreakable"]
+[options="header,unbreakable",cols="m,d,d,d"]
 |====================
-| Attribute           | Value | Default | Description 
-| clip                | boolean | false |  
-| comp-op             | SVG compositing |  |
-| geometry-transform  | SVG transform |  | 
-| offset              | float | 0 |  
-| rasterize           | full, fast | full |  
-| smooth              | 0.0 - 1.0 | 1 |  
-| simplify            | float | 0 |  
-| simplify-algorithm  | radial-distance, zhao-saalfeld, visvalingam-whyatt, douglas-peucker | radial-distance |  
-| stroke              | color | black |  
-| stroke-dasharray    | number list | none |  
-| stroke-dashoffset   | number list | none | experimental only  
-| stroke-gamma        | 0.0 - 1.0 | 1 |  
-| stroke-gamma-method | power, linear, none, threshold, multiply | power |  
-| stroke-linejoin     | bevel, miter, miter-revert, round | miter |  
-| stroke-linecap      | butt, round, square | butt |  
-| stroke-miterlimit   | float     | 4 |  
-| stroke-opacity      | 0.0 - 1.0 | 1 |  
-| stroke-width        | float     | 1 |  
+| Attribute               | Value | Default | Description 
+| ((clip))                | boolean | false |  
+| ((comp-op))             | SVG compositing |  |
+| ((geometry-transform))  | SVG transform |  | 
+| ((offset))              | float | 0 |  
+| ((rasterize))           | full, fast | full |  
+| <<example-linesymbolizer-smooth,((smooth))>>              | 0.0 - 1.0 | 1 |  
+| ((simplify))            | float | 0 |  
+| ((simplify-algorithm))  | radial-distance, zhao-saalfeld, visvalingam-whyatt, douglas-peucker | radial-distance |  
+| <<example-linesymbolizer-stroke,((stroke))>>              | color | black |  
+| <<example-linesymbolizer-stroke-dasharray,((stroke-dasharray))>>    | number list | none |  
+| ((stroke-dashoffset))   | number list | none | experimental only  
+| ((stroke-gamma))        | 0.0 - 1.0 | 1 |  
+| ((stroke-gamma-method)) | power, linear, none, threshold, multiply | power |  
+| <<example-linesymbolizer-stroke-linejoin,((stroke-linejoin))>>     | bevel, miter, miter-revert, round | miter |  
+| <<example-linesymbolizer-stroke-linecap,((stroke-linecap))>>      | butt, round, square | butt |  
+| ((stroke-miterlimit))   | float     | 4 |  
+| <<example-linesymbolizer-stroke-opacity,((stroke-opacity))>>      | 0.0 - 1.0 | 1 |  
+| <<example-linesymbolizer-stroke-width,((stroke-width))>>        | float     | 1 |  
 |====================
 
+
+.LineSymbolizer smooth
+[#example-linesymbolizer-smooth]
+====
+[source,xml]
+-----
+include::examples/LineSymbolizer-smooth.xml[]
+-----
+image::examples/LineSymbolizer-smooth.svg[align="center"]
+====
+
 .LineSymbolizer stroke
+[#example-linesymbolizer-stroke]
 ====
 [source,xml]
 -----
@@ -361,25 +373,18 @@ include::examples/LineSymbolizer-stroke.xml[]
 image::examples/LineSymbolizer-stroke.svg[align="center"]
 ====
 
-.LineSymbolizer stroke width
+.LineSymbolizer dash array
+[#example-linesymbolizer-stroke-dasharray]
 ====
 [source,xml]
 -----
-include::examples/LineSymbolizer-stroke-width.xml[]
+include::examples/LineSymbolizer-stroke-dasharray.xml[]
 -----
-image::examples/LineSymbolizer-stroke-width.svg[align="center"]
-====
-
-.LineSymbolizer stroke opacity
-====
-[source,xml]
------
-include::examples/LineSymbolizer-stroke-opacity.xml[]
------
-image::examples/LineSymbolizer-stroke-opacity.svg[align="center"]
+image::examples/LineSymbolizer-stroke-dasharray.svg[align="center"]
 ====
 
 .LineSymbolizer stroke linejoin
+[#example-linesymbolizer-stroke-linejoin]
 ====
 [source,xml]
 -----
@@ -389,6 +394,7 @@ image::examples/LineSymbolizer-stroke-linejoin.svg[align="center"]
 ====
 
 .LineSymbolizer stroke linecap
+[#example-linesymbolizer-stroke-linecap]
 ====
 [source,xml]
 -----
@@ -397,23 +403,30 @@ include::examples/LineSymbolizer-stroke-linecap.xml[]
 image::examples/LineSymbolizer-stroke-linecap.svg[align="center"]
 ====
 
-.LineSymbolizer smooth
+.LineSymbolizer stroke opacity
+[#example-linesymbolizer-stroke-opacity]
 ====
 [source,xml]
 -----
-include::examples/LineSymbolizer-smooth.xml[]
+include::examples/LineSymbolizer-stroke-opacity.xml[]
 -----
-image::examples/LineSymbolizer-smooth.svg[align="center"]
+image::examples/LineSymbolizer-stroke-opacity.svg[align="center"]
 ====
 
-.LineSymbolizer dash array
+.LineSymbolizer stroke width
+[#example-linesymbolizer-stroke-width]
 ====
 [source,xml]
 -----
-include::examples/LineSymbolizer-stroke-dasharray.xml[]
+include::examples/LineSymbolizer-stroke-width.xml[]
 -----
-image::examples/LineSymbolizer-stroke-dasharray.svg[align="center"]
+image::examples/LineSymbolizer-stroke-width.svg[align="center"]
 ====
+
+See also:
+
+* https://github.com/mapnik/mapnik/wiki/LineSymbolizer[LineSymbolier in Mapnik Wiki]
+* http://mapnik.org/mapnik-reference/#3.0.22/line[LineSymbolizer in Mapnik Reference]
 
 TODO: gamma, gamma-method, dash-offset, miter-limit, clip, simplify, simplify-algorithm, offset, rasterize, geometry-transform, comp-op
 
