@@ -124,7 +124,7 @@ TODO: there's even more
 === 
 
 
-== API
+== Mapnik XML
 
 === Map
 
@@ -132,7 +132,7 @@ TODO: there's even more
 
 A <Datasource> can appear in two places: as a named data surce template under <Map> or as an actual data source in a <Layer>. A data soure template can provide default values for actual layer data sources, e.g. when using a PostGis database as data source a data source template can provide all the connection parameters, so that actual layer data sources only have to provide actual SQL queries.
 
-Example:[source,]
+Example:[source,xml]
 ----
 <Map>
   <!-- Datasource template ->
@@ -167,7 +167,7 @@ So when e.g. a map is to show both latin and asian characters, the first font ca
 A <FontSet> can be referenced by <TextSymbolizer> or <ShieldSymbolizer> using the "fontset_name" attribute.
 
 Example: 
-[source,]
+[source,xml]
 ----
   <FontSet name="my-fonts">
     <Font face-name="Noto Sans Regular"/>
@@ -247,6 +247,11 @@ TODO: regular expression match and replace
 
 
 === Symbolizers
+
+[NOTE]
+====
+Right now all the symbolizer examples show a complete XML style file. I'm considering to shorten these to just the actual symbolizer tag and the inline CSV data lines as the rest of these examples is actually redundant, to save some space, with hyperlinks to the actual full example files ...
+====
 
 ==== BuildingSymbolizer
 
