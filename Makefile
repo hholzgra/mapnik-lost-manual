@@ -1,4 +1,4 @@
-all: book.pdf book.html examples
+all: book.pdf book.html book.epub examples
 
 .PHONY:all examples clean install
 
@@ -9,6 +9,10 @@ book.pdf: book.txt examples
 book.html: book.txt examples
 	@echo "Creating HTML"
 	@asciidoctor book.txt
+
+book.epub: book.txt examples images/cover.svg
+	@echo "Creating epub"
+	@asciidoctor-epub3 book.txt
 
 examples:
 	@make -C examples
