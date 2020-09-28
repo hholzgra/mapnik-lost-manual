@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   viewBox="0 0 1050 1600"
+   id="svg77"
+   sodipodi:docname="cover.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1792"
+     inkscape:window-height="1024"
+     id="namedview79"
+     showgrid="false"
+     inkscape:zoom="0.4937793"
+     inkscape:cx="150.33869"
+     inkscape:cy="800"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg77" />
+  <defs
+     id="defs35">
+    <filter
+       id="filter3874"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         stdDeviation="0.01 5"
+         in="SourceGraphic"
+         id="feGaussianBlur2" />
+    </filter>
+    <filter
+       id="filter4056"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         in="SourceGraphic"
+         stdDeviation="3"
+         result="result6"
+         id="feGaussianBlur5" />
+      <feColorMatrix
+         in="SourceGraphic"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 "
+         result="result7"
+         id="feColorMatrix7" />
+      <feComposite
+         operator="in"
+         result="fbSourceGraphic"
+         in2="result7"
+         in="result6"
+         id="feComposite9" />
+      <feColorMatrix
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         id="feColorMatrix11" />
+      <feGaussianBlur
+         in="fbSourceGraphic"
+         stdDeviation="3"
+         result="result6"
+         id="feGaussianBlur13" />
+      <feColorMatrix
+         in="fbSourceGraphic"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 "
+         result="result7"
+         id="feColorMatrix15" />
+      <feComposite
+         operator="in"
+         in2="result7"
+         in="result6"
+         id="feComposite17" />
+    </filter>
+    <filter
+       id="filter4098"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         in="SourceGraphic"
+         stdDeviation="3"
+         result="result6"
+         id="feGaussianBlur20" />
+      <feColorMatrix
+         in="SourceGraphic"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 "
+         result="result7"
+         id="feColorMatrix22" />
+      <feComposite
+         operator="in"
+         result="fbSourceGraphic"
+         in2="result7"
+         in="result6"
+         id="feComposite24" />
+      <feColorMatrix
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         id="feColorMatrix26" />
+      <feGaussianBlur
+         in="fbSourceGraphic"
+         stdDeviation="3"
+         result="result6"
+         id="feGaussianBlur28" />
+      <feColorMatrix
+         in="fbSourceGraphic"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 "
+         result="result7"
+         id="feColorMatrix30" />
+      <feComposite
+         operator="in"
+         in2="result7"
+         in="result6"
+         id="feComposite32" />
+    </filter>
+  </defs>
+  <metadata
+     id="metadata37">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <rect
+     style="enable-background:accumulate;fill-rule:nonzero;color:#000000;fill:#ffcc00"
+     height="1600"
+     width="1050"
+     y="0"
+     x="0"
+     id="rect39" />
+  <rect
+     style="enable-background:accumulate;fill-rule:nonzero;color:#000000;filter:url(#filter3874);fill:#264e2e;"
+     height="169.5"
+     width="1050"
+     y="1435"
+     x="0"
+     id="rect49" />
+  <rect
+     style="enable-background:accumulate;fill-rule:nonzero;color:#000000;fill:#57ad68;"
+     height="6"
+     width="1050"
+     y="1453"
+     x="0"
+     id="rect51" />
+  <g
+     transform="translate(0,547.6378)"
+     id="g75">
+    <path
+       style="stroke-linejoin:miter;stroke:#122616;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-width:32;fill:none;"
+       d="m11.87,3098,1021,0"
+       id="path73" />
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:192px;line-height:125%;font-family:serif;-inkscape-font-specification:'serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="110.95312"
+     y="392.983"
+     id="text91"><tspan
+       sodipodi:role="line"
+       id="tspan89"
+       x="110.95312"
+       y="392.983">Mapnik</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:64px;line-height:125%;font-family:serif;-inkscape-font-specification:'serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="109.45312"
+     y="537.08557"
+     id="text91-3"><tspan
+       sodipodi:role="line"
+       id="tspan113"
+       x="109.45312"
+       y="537.08557">- The Missing Manual -</tspan></text>
+</svg>
