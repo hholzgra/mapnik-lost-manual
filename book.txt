@@ -126,13 +126,21 @@ TODO: there's even more
 
 == Mapnik XML
 
+[NOTE]
+====
+For now I'll only cover how to create styles using Mapnik XML style files. Documentation of other style file formats, like CartoCSS, or how to create styles purely programatically using C++ or Python code, will have to wait until the XML format documentation is complete, or for someone else to volunteer doing this.
+====
+
+
+
 === Map
 
 === DataSource
 
-A <Datasource> can appear in two places: as a named data surce template under <Map> or as an actual data source in a <Layer>. A data soure template can provide default values for actual layer data sources, e.g. when using a PostGis database as data source a data source template can provide all the connection parameters, so that actual layer data sources only have to provide actual SQL queries.
+A `<Datasource>` can appear in two places: as a named data surce template under `<Map>` or as an actual data source in a `<Layer>`. A data soure template can provide default values for actual layer data sources, e.g. when using a PostGis database as data source a data source template can provide all the connection parameters, so that actual layer data sources only have to provide actual SQL queries.
 
-Example:[source,xml]
+Example:
+[source,xml]
 ----
 <Map>
   <!-- Datasource template ->
@@ -158,15 +166,14 @@ Example:[source,xml]
 
 === FontSet
 
-A <Fontset> contains a list of or more <Font> entries that are searched in the listed order when rendering characters. This way a style sheet can specify multiple alternative fonts for different platforms, or different language specific fonts.
+A ((`<Fontset>`)) contains a list of or more `<Font>` entries that are searched in the listed order when rendering characters. This way a style sheet can specify multiple alternative fonts for different platforms, or different language specific fonts.
 
 Listed fonts that do not exist on the system runnng Mapnik are simply ignored after generating a warning. Also when a certain character is not found in the first font the other fonts are searched in order until one supporting the character is found.
 
-So when e.g. a map is to show both latin and asian characters, the first font can be one providing latin characters, with the additional fonts in the font sets providing characters from different asian languages.
+So when e.g. a map is to show both `<TextSymbolizer>` or `<ShieldSymbolizer>` using the ((`fontset_name`)) attribute.
 
-A <FontSet> can be referenced by <TextSymbolizer> or <ShieldSymbolizer> using the "fontset_name" attribute.
-
-Example: 
+.Fontset definition
+====
 [source,xml]
 ----
   <FontSet name="my-fonts">
@@ -174,6 +181,9 @@ Example:
     <Font face-name="Noto Sans CJK JP Regular"/>
   </FontSet>
 ----
+
+====
+
 
 === Layers
 
