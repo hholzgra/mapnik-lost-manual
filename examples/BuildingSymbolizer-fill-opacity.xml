@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <BuildingSymbolizer height="1" fill="red" fill-opacity="[opacity]"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="50">[opacity]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,opacity
+"POLYGON(( 1 1, 4 2, 3 4, 0 3, 1 1))",0.2
+"POLYGON((11 1,14 2,13 4,10 3,11 1))",0.5
+"POLYGON((21 1,24 2,23 4,20 3,21 1))",0.8
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
