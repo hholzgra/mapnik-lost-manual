@@ -24,7 +24,7 @@ image::images/xkcd-standards.png[]
 
 There are different information sources that document certain aspects of Mapnik, but none are really complete, up to date, and easily understandable at the same time ...
 
-Eother existing documentation efforts for Mapnik are:
+Other existing documentation efforts for Mapnik are:
 
 GitHub Wiki::
 The https://github.com/mapnik/mapnik/wiki[Mapnik Wiki on GitHub] is a weird mix of end user and developer documentation that unfortunately is neither complete nor up to date.
