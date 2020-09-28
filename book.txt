@@ -1,6 +1,10 @@
 = Mapnik - The Missing Manual
 Hartmut Holzgraefe
 :doctype: book
+:doctitle: Mapnik - The Missing Manual
+:keywords: Maps,Mapnik,OpenStreetMap
+:author: Hartmut Holzgraefe
+:front-cover-image: images/cover.svg
 :encoding: utf-8
 :lang: en
 :toc: left
