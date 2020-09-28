@@ -200,6 +200,39 @@ So when e.g. a map is to show both `<TextSymbolizer>` or `<ShieldSymbolizer>` us
 
 A layer renders data from a data source using one or more styles.
 
+
+.Layer attributes
+[options="header",cols="m,d,d,d"]
+|====================
+| Attribute                 | Value | Default | Description
+| buffer-size               | float | 0 |  
+| cache-features            |  |  |
+| clear-lable-cache         |  |  |  
+| group-by                  |  |  |  
+| minimum-scale-denominator |  |  |  
+| maximum-extent            |  |  |  
+| maximum-scale-denominator |  |  |  
+| name                      | string |  |
+| queryable                 |  |  |  
+| srs                       | proj4 srs string | `+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs` | Spatial reference system
+| status                    | boolean | true |  
+|====================
+
+.Layer 
+====
+[source,xml]
+----
+<Layer name="layer_1">
+  <StyleName>style_1</StyleName>
+  <StyleName>style_2</StyleName>
+
+  <DataSource>
+    [...]
+  </DataSource>
+</Layer>
+----
+====
+
 === Styles
 
 Styles contain a set of rendering rules to render data elements provided by a data source.
@@ -269,9 +302,11 @@ TODO: regular expression match and replace
 
 === Symbolizers
 
+Symbolizers do the actual rendering of map features. There are several different kinds of symbolizers that operate on point, line and polygon data objects to create visual representations on these. Below you will find detailed descriptions of the available symbolizers in alphabetical order.
+
 [NOTE]
 ====
-Right now all the symbolizer examples show a complete XML style file. I'm considering to shorten these to just the actual symbolizer tag and the inline CSV data lines as the rest of these examples is actually redundant, to save some space, with hyperlinks to the actual full example files ...
+Right now all the symbolizer examples below show a complete XML style file. I'm considering to shorten these to just the actual symbolizer tag and the inline CSV data lines as the rest of these examples is actually redundant, to save some space, with hyperlinks to the actual full example files ...
 ====
 
 ==== BuildingSymbolizer
