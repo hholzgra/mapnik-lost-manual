@@ -177,7 +177,7 @@ Example:
 
 === FontSet
 
-A ((`<Fontset>`)) contains a list of or more `<Font>` entries that are searched in the listed order when rendering characters. This way a style sheet can specify multiple alternative fonts for different platforms, or different language specific fonts.
+A ((`<FontSet>`)) contains a list of or more `<Font>` entries that are searched in the listed order when rendering characters. This way a style sheet can specify multiple alternative fonts for different platforms, or different language specific fonts.
 
 Listed fonts that do not exist on the system runnng Mapnik are simply ignored after generating a warning. Also when a certain character is not found in the first font the other fonts are searched in order until one supporting the character is found.
 
@@ -206,16 +206,16 @@ A layer renders data from a data source using one or more styles.
 |====================
 | Attribute                 | Value | Default | Description
 | buffer-size               | float | 0 |  
-| cache-features            |  |  |
-| clear-lable-cache         |  |  |  
-| group-by                  |  |  |  
-| minimum-scale-denominator |  |  |  
-| maximum-extent            |  |  |  
-| maximum-scale-denominator |  |  |  
-| name                      | string |  |
-| queryable                 |  |  |  
+| cache-features            | bool  | false | On layers with multiple styles: read features from data source only once and cache them in memory. Improves perforance, but at the cost of using more memory, so off by default. 
+| clear-lable-cache         | bool  | false | Clear the placement cache from previous layers, so that texts, points and markers may overlap with those from previous layers. 
+| group-by                  | string | none | On layers with multiple styles these styles are processed one by one in the given order by default. When giving a group-by property, feature elements will be sorted by this property, and styles will be processed in order for each distinct group value. E.g with `group-by=z` and `z` having values from `-1` to `1`, first all features with `z=-1` will be processed using all styles, then all with `z=0`, and finally all with `z=-1`.
+| minimum-scale-denominator | float | 0 | Minimum map scale above which this layer should be rendered.
+| maximum-extent            | 4x float |  | Maximum exent for which features should be processed. 
+| maximum-scale-denominator | float | max. float | Maximum map scale up to which this layer should be rendered.
+| name                      | string | none | Name by which the layer can be refeenced, e.g. for error messaes.
+| queryable                 | bool | false | unused? 
 | srs                       | proj4 srs string | `+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs` | Spatial reference system
-| status                    | boolean | true |  
+| status                    | boolean | true | Whether this layer should actually be processed or not. Caution: when set to `false` in XML the complete `<Layer>` will simply be skipped on reading the style file, and no layer object will be created for it. So you won't be able to enable such a layer with `Layer.set_status(true)` using API code later. 
 |====================
 
 .Layer 
