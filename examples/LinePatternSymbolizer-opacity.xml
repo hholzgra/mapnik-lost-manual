@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='white'>
+
+  <Style name="style">
+    <Rule>
+	    <LinePatternSymbolizer file='steps.svg' opacity='[opacity]'/>
+	    <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[opacity]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,opacity
+"LINESTRING(10 10,50 20,90 10)",0.2
+"LINESTRING(10 20,50 30,90 20)",0.5
+"LINESTRING(10 30,50 40,90 30)",0.8
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
