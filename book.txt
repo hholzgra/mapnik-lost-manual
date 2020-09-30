@@ -645,6 +645,26 @@ image::examples/PolygonSymbolizer-smooth.svg[align="center"]
 
 ==== PolygonPatternSymbolizer
 
+.PolygonSymbolizer Attributes
+[options="header,unbreakable",cols="m,d,d,d"]
+|===
+| Attribute      | Value      | Default | Description
+| file |  |   |  
+| base |  |   |  
+| alignment |  |   |  
+| gamma |  |   |  
+| gamma-method |  |   |  
+| opacity |  |   |  
+| clip |  |   |  
+| simplify |  |   |  
+| simplify-algorithm |  |   |  
+| smooth |  |   |  
+| transform |  |   |  
+|  |  |   |  
+|  |  |   |  
+|  |  |   |  
+|===
+
 ==== PointSymbolizer
 
 The point symbolizer draws a given image at a point position. When given a line or polygon as input the shape will be put at the middle of the line or center of the polygon. 
