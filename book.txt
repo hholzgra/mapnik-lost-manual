@@ -569,6 +569,52 @@ TODO: attribute table, examples
 
 ==== PolygonSymbolizer
 
+.PolygonSymbolizer Attributes
+[options="header,unbreakable",cols="m,d,d,d"]
+|===
+| Attribute      | Value      | Default | Description
+| <<example-polygonsymbolizer-fill,((fill))>> | color | grey |  
+| <<example-polygonsymbolizer-fill-opacity,((fill-opacity))>> | float | 1.0 |  
+| transform | SVG transformation | none |  
+| comp-op | SVG composition | none |  
+| gamma | float | 1.0 |  
+| gamma-method |  power, linear, none, threshold, multiply | power |  
+| clip | boolean | false |  
+| simplify | float | 0.0 | 
+| simplify-algorithm | radial-distance, zhao-saalfeld, visvalingam-whyatt, douglas-peucker | radial-distance | 
+| <<example-polygonsymbolizer-smooth,((smooth))>> | float | 0.0 | 
+|===
+
+.PolygonSymbolizer fill
+[#example-polygonsymbolizer-fill]
+====
+[source,xml]
+-----
+include::examples/PolygonSymbolizer-fill.xml[]
+-----
+image::examples/PolygonSymbolizer-fill.svg[align="center"]
+====
+
+.PolygonSymbolizer fill opacity
+[#example-polygonsymbolizer-fill-opacity]
+====
+[source,xml]
+-----
+include::examples/PolygonSymbolizer-fill-opacity.xml[]
+-----
+image::examples/PolygonSymbolizer-fill-opacity.svg[align="center"]
+====
+
+.PolygonSymbolizer smooth
+[#example-polygonsymbolizer-smooth]
+====
+[source,xml]
+-----
+include::examples/PolygonSymbolizer-smooth.xml[]
+-----
+image::examples/PolygonSymbolizer-smooth.svg[align="center"]
+====
+
 ==== PolygonPatternSymbolizer
 
 ==== PointSymbolizer
