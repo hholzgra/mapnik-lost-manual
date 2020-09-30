@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <PolygonSymbolizer fill="[fill]"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="50">[fill]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,fill
+"POLYGON(( 2 1, 1 3, 3 4, 5 3, 4 1, 2 1))",red
+"POLYGON((12 1,11 3,13 4,15 3,14 1,12 1))",green
+"POLYGON((22 1,21 3,23 4,25 3,24 1,22 1))",blue
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+

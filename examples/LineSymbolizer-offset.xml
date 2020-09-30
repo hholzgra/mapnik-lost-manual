@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='white'>
+
+  <Style name="style">
+    <Rule>
+      <LineSymbolizer offset="[offset]"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="[offset]+10">[offset]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,offset
+"LINESTRING(10 10,50 20,90 10)",20
+"LINESTRING(10 10,50 20,90 10)",0
+"LINESTRING(10 10,50 20,90 10)",-20
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
