@@ -442,7 +442,7 @@ There are also some attributes that change the lines geometry itself, like offse
 | ((clip))                | boolean | false |  
 | ((comp-op))             | SVG compositing |  |
 | ((geometry-transform))  | SVG transform |  | 
-| ((offset))              | float | 0 |  
+| <<example-linesymbolizer-offset,((offset))>>              | float | 0 |  
 | ((rasterize))           | full, fast | full |  
 | <<example-linesymbolizer-smooth,((smooth))>>              | 0.0 - 1.0 | 1 |  
 | ((simplify))            | float | 0 |  
@@ -493,6 +493,7 @@ image::examples/LineSymbolizer-stroke-dasharray.svg[align="center"]
 .LineSymbolizer stroke linejoin
 [#example-linesymbolizer-stroke-linejoin]
 ====
+TODO: prevent image clipping on top edge
 [source,xml]
 -----
 include::examples/LineSymbolizer-stroke-linejoin.xml[]
@@ -530,12 +531,23 @@ include::examples/LineSymbolizer-stroke-width.xml[]
 image::examples/LineSymbolizer-stroke-width.svg[align="center"]
 ====
 
+.LineSymbolizer offset
+[#example-linesymbolizer-offset]
+====
+Note that unlike in other LineSymbolizer examples this is three times the same geometry, but with different `offset`.
+[source,xml]
+-----
+include::examples/LineSymbolizer-offset.xml[]
+-----
+image::examples/LineSymbolizer-offset.svg[align="center"]
+====
+
 See also:
 
 * https://github.com/mapnik/mapnik/wiki/LineSymbolizer[LineSymbolier in Mapnik Wiki]
 * http://mapnik.org/mapnik-reference/#3.0.22/line[LineSymbolizer in Mapnik Reference]
 
-TODO: gamma, gamma-method, dash-offset, miter-limit, clip, simplify, simplify-algorithm, offset, rasterize, geometry-transform, comp-op
+TODO: gamma, gamma-method, dash-offset, miter-limit, clip, simplify, simplify-algorithm, rasterize, geometry-transform, comp-op
 
 ==== LinePatternSymbolizer
 
