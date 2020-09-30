@@ -552,11 +552,12 @@ If no image file is specified a small square is used as the default point image.
 
 For putting symbols along a line or the edge of a polygon the MarkerSymbolizer is usually a better choice.
 
-.Attributes
+.PointSymbolizer Attributes
 [width="100%",options="header,unbreakable"]
 |====================
 | attribute          | type          | default
 | <<example-pointsymbolizer-file,`file`>>             | file path     | none 
+| `base`             | directory path | none
 | `allow-overlap`    | bool          | false 
 | <<example-pointsymbolizer-file,`opacity`>>          | float         | 1.0 
 | `ignore-placement` | bool          | false
