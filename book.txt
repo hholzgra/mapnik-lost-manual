@@ -253,11 +253,32 @@ A layer renders data from a data source using one or more styles.
 
 === Styles
 
-Styles contain a set of rendering rules to render data elements provided by a data source.
+Styles contain a set of rendering rules to render data elements provided by a data source. Each style can contain one or more rules for rendering specific features.
+
+.Style attributes
+[options="header",cols="m,d,d,d"]
+|====================
+| Attribute                 | Value | Default | Description
+| comp-op | SVG compositing |  |  
+| filter-mode | "all", "first" | "all" |  
+| opacity | float | 1 |  
+| image-filters-inflate | boolean | false |  
+| image-filters | string |  |  
+| direct-image-filters | string |  |  
+|====================
+
 
 === Rules
 
 A style rule filters data elements provided by a data source, and renders the matching elmements using one or more symbolizers. Rules can also be limited to specific scale factor ranges only, e.g. to implement different zoom level styles.
+
+.Rule attributes
+[options="header",cols="m,d,d,d"]
+|====================
+| Attribute                 | Value | Default | Description
+| name | string | none |  
+|====================
+
 
 === Filters 
 
@@ -268,6 +289,8 @@ There are also two special filters that do not evaluate expresions but depend on
 <ElseFilter> matches if no other filter in a style matched so far, so it can be used as a fallback default.
 
 <AlsoFilter> only matches if at least one previous filter in a style matched.
+
+The `<Filter>` tag has no tag attributes.
 
 === Filter expressions
 
