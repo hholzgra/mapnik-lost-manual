@@ -1,0 +1,14 @@
+== TODO
+* add anchors to examples
+* link parameter table entries to examples
+* rethink chapter structure
+** go bottom up, explaining symbolizers first, then filters, rules, styles, layers, map?
+** move "Existing docs" to Appendix?
+* "pure" API examples
+* style collection
+* embedding results into larger Cairo projects
+
+== QUESTIONS
+
+* XML schema -> there's none, manual source digging required?
+* any practical use of <Include>?
