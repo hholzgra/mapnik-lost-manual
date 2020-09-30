@@ -512,6 +512,28 @@ TODO: gamma, gamma-method, dash-offset, miter-limit, clip, simplify, simplify-al
 
 ==== LinePatternSymbolizer
 
+A LinePatternSymbolizer draws a given pattern image along a line, repeating the pattern as often as needed, and transforming it accordingly to follow the turns of the line.
+
+[WARNING]
+====
+Even when giving the pattern as a SVG file, internally it will be converted to PNG before applying transformations to it to make it fit the line. So when creating SVG or PDF output, the result can still become a bit blurry when zooming in on LinePatternSymbolizer output.
+====
+
+.LinePatternSymbolizer Attributes
+[options="header,unbreakable",cols="m,d,d,d"]
+|===
+| Attribute      | Value      | Default | Description
+| <<example-linepatternymbolizer-file,((file))>>         | file path |
+| ((base))    | directory path | | 
+| opacity |  |  |  
+| offset  |  |  |  
+| transform |  |  |  
+|  |  |  |  
+|  |  |  |  
+|  |  |  |  
+|  |  |  |  
+|===
+
 ==== MarkersSymbolizer
 
 The MarkerSymbolizer is similar to the PointSymbolizer, but has two advantages when used on a line or polygon: it can be drawn multiple times along a line automatically, and it's orientation is rotated according to the current direction of the line instead of always being upright.
