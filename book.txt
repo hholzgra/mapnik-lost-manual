@@ -146,6 +146,22 @@ For now I'll only cover how to create styles using Mapnik XML style files. Docum
 
 === Map
 
+.Map Attributes
+[options="header,unbreakable",cols="m,d,d,d"]
+|===
+| base | directory path | none | 
+| background-color | color | transparent | 
+| background-image | file path | none | 
+| background-image-comp-op | SVG composition | none | 
+| background-image-opacity | float | 1.0 | 
+| srs | proj4 projection | +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs | 
+| buffer-size | float | 0.0 | 
+| maximum-extent | 4xfloat |  | 
+| font-directory | directory path | none | 
+| minimum-version | version string | none | 
+| path-from-xml | boolean | true | 
+|===
+
 === DataSource
 
 A `<Datasource>` can appear in two places: as a named data surce template under `<Map>` or as an actual data source in a `<Layer>`. A data soure template can provide default values for actual layer data sources, e.g. when using a PostGis database as data source a data source template can provide all the connection parameters, so that actual layer data sources only have to provide actual SQL queries.
