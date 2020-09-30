@@ -354,7 +354,7 @@ Right now all the symbolizer examples below show a complete XML style file. I'm 
 
 The ((`<BuildingSymbolizer>`)) renders polygons in a very simple pseudo-3D fashion. The givin fill color us used for the "roof", while its individual red, green and blue values are multiplied by 0.8 to create a more darkened tone for the "walls"
 
-.Table Attributes
+.BuildingSymbolizer Attributes
 [options="header,unbreakable"]
 |===
 | Attribute      | Value      | Default
