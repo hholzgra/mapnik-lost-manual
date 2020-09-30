@@ -175,6 +175,17 @@ Example:
 </Map>
 ----
 
+=== Font
+
+.Font attributes
+[options="header",cols="m,d,d,d"]
+|====================
+| Attribute                 | Value | Default | Description
+| face-name | string | none |  
+|====================
+
+
+
 === FontSet
 
 A ((`<FontSet>`)) contains a list of or more `<Font>` entries that are searched in the listed order when rendering characters. This way a style sheet can specify multiple alternative fonts for different platforms, or different language specific fonts.
@@ -183,7 +194,14 @@ Listed fonts that do not exist on the system runnng Mapnik are simply ignored af
 
 So when e.g. a map is to show both `<TextSymbolizer>` or `<ShieldSymbolizer>` using the ((`fontset_name`)) attribute.
 
-.Fontset definition
+.FontSet attributes
+[options="header",cols="m,d,d,d"]
+|====================
+| Attribute                 | Value | Default | Description
+| name | string | "<missing name>" |  
+|====================
+
+.FontSet definition
 ====
 [source,xml]
 ----
