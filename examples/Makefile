@@ -2,9 +2,13 @@
 	@echo $@
 	@./render.sh $<
 
+%.png : %.xml
+	@echo $@
+	@./render.sh $<
+
 .PHONY: all,clean,show-latest
 
-all: $(addsuffix .svg, $(basename $(wildcard *.xml)))
+all: $(addsuffix .svg, $(basename $(wildcard *.xml))) $(addsuffix .png, $(basename $(wildcard *.xml)))
 
 clean:
 	@rm -f $(addsuffix .svg, $(basename $(wildcard *.xml)))
