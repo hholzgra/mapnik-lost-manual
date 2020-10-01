@@ -270,21 +270,188 @@ TODO::
 
 ===== Gdal
 
+.Gdal data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| band | | |
+| base | | |
+| extent | | |
+| file | | |
+| max_image_area | | |
+| nodata | | |
+| nodata_tolerance | | |
+| shared | | |
+|====================
+
 ===== GeoJson
+
+.GeoJson data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description base
+| cache_features | | |
+| encoding | | |
+| file | | |
+| inline | | |
+| num_features_to_query | | |
+|====================
+
 
 ===== OGR
 
+.OGR data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| base | | |
+| driver | | |
+| encoding | | |
+| extent | | |
+| file | | |
+| inline | | |
+| layer | | |
+| layer_by_index | | |
+| layer_by_sql | | |
+| string | | |
+|====================
+
+
 ===== PgRaster
+
+.PgRaster data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| autodetect_key_field | | |
+| band | | |
+| clip_rasters | | |
+| connect_timeout | | |
+| cursor_size | | |
+| dbname | | |
+| estimate_extent | | |
+| extent | | |
+| extent_from_subquery | | |
+| host | | |
+| initial_size | | |
+| intersect_max_scale | | |
+| intersect_min_scale | | |
+| key_field | | |
+| password | | |
+| persist_connection | | |
+| port | | |
+| prescale_rasters | | |
+| raster_field | | |
+| raster_table | | |
+| row_limit | | |
+| srid | | |
+| table | | |
+| type | | |
+| use_overviews | | |
+| user | | |
+|====================
+
 
 ===== PostGIS
 
+.PostGIS data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| autodetect_key_field | | |
+| connect_timeout | | |
+| cursor_size | | |
+| dbname | | |
+| estimate_extent | | |
+| extent | | |
+| extent_from_subquery | | |
+| geometry_field  | | |
+| geometry_table  | | |
+| host | | |
+| initial_size | | |
+| intersect_max_scale | | |
+| intersect_min_scale | | |
+| key_field | | |
+| key_field_as_attribute | | |
+| password | | |
+| persist_connection | | |
+| port | | |
+| row_limit | | |
+| simplify_dp_preserve | | |
+| simplify_geometries | | |
+| srid | | |
+| table | | |
+| twkb_encoding | | |
+| user | | |
+|====================
+
 ===== Raster
+
+.PostGIS data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| base | | |
+| extent | | |
+| file | | |
+| format | | |
+| hix | | |
+| hiy | | |
+| lox | | |
+| loy | | |
+| multi | | |
+| tile_size | | |
+| tile_stride | | |
+| x_width | | |
+| y_width | | |
+|====================
 
 ===== Shape
 
+.Shape data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| file      |  |  |
+| base      |  |  |
+| row_limit |  |  |
+| encoding  |  |  |
+|====================
+
 ===== SQLite
 
+.SQLite data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| attachdb | | |
+| auto_index | | |
+| base | | |
+| encoding | | |
+| extent | | |
+| fields | | |
+| file | | |
+| geometry_field | | |
+| geometry_table | | |
+| index_table | | |
+| initdb | | |
+| key_field | | |
+| metadata | | |
+| row_limit | | |
+| row_offset | | |
+| table | | |
+| table_by_index | | |
+| use_spatial_index | | |
+| wkb_format | | |
+|====================
+
 ===== TopoJson
+
+.SQLite data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| base | | |
+| encoding | | |
+| file | | |
+| inline | | |
+|====================
 
 ==== Non-core
 
