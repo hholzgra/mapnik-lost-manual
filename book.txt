@@ -344,7 +344,6 @@ TODO::
 | row_limit | | |
 | srid | | |
 | table | | |
-| type | | |
 | use_overviews | | |
 | user | | |
 |====================
@@ -455,21 +454,96 @@ TODO::
 
 ==== Non-core
 
-The following plugins used to be part of the mapnik source, but have been moved to an extra repository as they are either no longer maintained, or still experimental. These are usually not part of a standard Mapnik installation.
-
-(TODO: repository link)
+The following plugins used to be part of the mapnik source, but have been moved to an https://github.com/mapnik/non-core-plugins[extra repository] as they are either no longer maintained, or still experimental. These are usually not part of a standard Mapnik installation.
 
 ===== Geos
 
+.Geos data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| encoding | | |
+| extent | | |
+| field_data | | |
+| field_name | | |
+| gid | | |
+| wkt | | |
+|====================
+
 ===== Kismet
+
+.Kismet data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| encoding | | |
+| extent | | |
+| host | | |
+| port | | |
+| srs | | |
+| encoding | | |
+|====================
 
 ===== OCCI
 
+.OCCI data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| encoding | | |
+| estimate_extent | | |
+| extent | | |
+| fields | | |
+| geometry_field | | |
+| host | | |
+| initial_size | | |
+| max_size | | |
+| password | | |
+| row_limit | | |
+| row_prefetch | | |
+| srid | | |
+| table | | |
+| use_connection_pool | | |
+| user | | |
+| use_spatial_index | | |
+| use_wkb | | |
+|====================
+
+
 ===== OSM
+
+.OSM data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| bbox | | |
+| encoding | | |
+| file | | |
+| parser | | |
+| url | | |
+|====================
+
 
 ===== Python
 
+.Python data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| encoding | | |
+| factory | | |
+|====================
+
 ===== Rasterlite
+
+.Rasterlite data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| base | | |
+| file | | |
+| table | | |
+|====================
 
 ==== Other data sources
 
@@ -480,6 +554,8 @@ The following data source plugins are not really part of the Mapnik project, eve
 ===== GeoWave
 
 ===== Mongo
+
+
 
 === FileSource
 
