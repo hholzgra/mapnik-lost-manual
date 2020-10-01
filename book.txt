@@ -313,7 +313,7 @@ So when e.g. a map is to show both `<TextSymbolizer>` or `<ShieldSymbolizer>` us
 ====
 
 
-=== Layers
+=== Layer
 
 A layer renders data from a data source using one or more styles.
 
@@ -350,7 +350,7 @@ A layer renders data from a data source using one or more styles.
 ----
 ====
 
-=== Styles
+=== Style
 
 Styles contain a set of rendering rules to render data elements provided by a data source. Each style can contain one or more rules for rendering specific features.
 
@@ -367,7 +367,7 @@ Styles contain a set of rendering rules to render data elements provided by a da
 |====================
 
 
-=== Rules
+=== Rule
 
 A style rule filters data elements provided by a data source, and renders the matching elmements using one or more symbolizers. Rules can also be limited to specific scale factor ranges only, e.g. to implement different zoom level styles.
 
@@ -379,7 +379,7 @@ A style rule filters data elements provided by a data source, and renders the ma
 |====================
 
 
-=== Filters 
+=== Filter
 
 Filters specify on what data elements a rule should operate, by evaluating expressions. The expression language supports simple comparisons, logic, math, and regular expression matching.
 
