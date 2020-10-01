@@ -191,6 +191,62 @@ Example:
 </Map>
 ----
 
+Mapnik supports several different kinds of data sources, and actually has a plugin interface for these, so that plugins for more data sources can be added "on the fly" without having to rebuild Mapnik itself.
+
+The set of plugins that come with Mapnik itself are caled core plugins. Some former core plugins that are no longer maintained, or never left experimental status, have been moved to a separate non-core plugins repository, and there is also a small number of plugins by outside contributores, which we will refer to as exra data sources below.
+
+==== Core data sources
+
+The core plugins are part of the mapnik source code itself, and usually avaliable in all builds of the mapnik library. (TODO: add link to mappnik github).
+
+===== CSV
+
+===== Gdal
+
+===== GeoJson
+
+===== OGR
+
+===== PgRaster
+
+===== PostGIS
+
+===== Raster
+
+===== Shape
+
+===== SQLite
+
+===== TopoJson
+
+==== Non-core
+
+The following plugins used to be part of the mapnik source, but have been moved to an extra repository as they are either no longer maintained, or still experimental. These are usually not part of a standard Mapnik installation.
+
+(TODO: repository link)
+
+===== Geos
+
+===== Kismet
+
+===== OCCI
+
+===== OSM
+
+===== Python
+
+===== Rasterlite
+
+==== Other data sources
+
+The following data source plugins are not really part of the Mapnik project, even though some of them have their github repostitory under the mapnik project.
+
+===== Hello World
+
+===== GeoWave
+
+===== Mongo
+
 === FileSource
 
 A `<FileSource>` can be used as a child of `<Map>` to declare named directory paths that can be referred to by the `base=...` attribute in symbolizers that are able to load image files, like e.g. `<PointSymbolizer>`, `<LinePatternSymbolizer>` etc.
