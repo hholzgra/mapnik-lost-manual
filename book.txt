@@ -224,6 +224,7 @@ lat,lon,text
   ]]></Parameter>
 </DataSource>
 ----
+==== 
 
 By default the CSV plugin tries to identify the field delimiter by looking at the first line of the file, checking for `,`, ´;`, `|` and the `TAB` character. Whatever of these characters seen the most often is considered the separator character, unless you specifcy a different one with the `separator` Parameter, e.g: `<Parameter name="separator">;</Parameter>`.
 
@@ -263,9 +264,9 @@ When parsing the header line fails, or no geometry column(s) can be detected in 
 | base | string | none | name of a <FileSource> to search the input file in
 |====================
 
-TODO: `.index` file support? See also `mapnik-index` utility
-
-====
+TODO:: 
+* `.index` file support? See also `mapnik-index` utility
+* NULL handling?
 
 ===== Gdal
 
