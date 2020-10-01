@@ -201,6 +201,72 @@ The core plugins are part of the mapnik source code itself, and usually avaliabl
 
 ===== CSV
 
+The CSV plugin reads simple column separated data from a file when specified using the `file` parameter, or directly from the XML style file when using the `inline` paramter. In the later case all lines following the `inline` parameter tag will be read as CSV input until the closing paramter tag is reached. In case that the inline data contains `<`, `>` or `&` characters, you should enclose it in a `<![CDATA[...]]>` section to prevent the content from being interpreted as XML.
+
+When giving a `file` path, this is taken as relative to the directory the style file is in, unless a `base` parameter is given. In that case a relative `file` path will be interpreted as relative to the directory path given in the `<FileSource>` of that base name.
+
+.CSV data source examples
+====
+[source,xml]
+----
+<!-- read from file path/to/file.csv -->
+<DataSource>
+  <Parameter name="type">csv</Parameter>
+  <Parameter name="file">path/to/file.csv</Parameter>
+</DataSource>
+
+<!-- read inline data -->
+<DataSource>
+  <Parameter name="type">csv</Parameter>
+  <Parameter name="inline"><![CDATA[
+lat,lon,text
+52.0,8.5,"Bielefeld"
+  ]]></Parameter>
+</DataSource>
+----
+
+By default the CSV plugin tries to identify the field delimiter by looking at the first line of the file, checking for `,`, ´;`, `|` and the `TAB` character. Whatever of these characters seen the most often is considered the separator character, unless you specifcy a different one with the `separator` Parameter, e.g: `<Parameter name="separator">;</Parameter>`.
+
+In cases where the data does not contain a header line, one can be given as content of the `headers` parameter.
+
+The default quoting and escape characters are `"` and `\`, but can be changed with the `quote` and `escape` parameters.
+
+Line endings are auto detected, too, so files with DOS/Windows (`\r\n`), Linux/Unix (`\n`) or MacOS (`\r`) style line endings are read correctly out of the box.
+
+The CSV plugin assumes that the data it reads is UTF-8 encoded, a different encoding can be specified using the `encoding` parameter.
+
+Column data can be referred to by the columns header name, using `[column_name]` placeholders in expressions. The following column names have a special meaning and are used to retrieve actual geometry data for a line:
+
+`lat` or `latitude`:: Point latitude
+`lon`, `lng`, `long`, or `longitude`:: Point longitude
+`wkt`:: Geometry data in Well Known Text format
+`geojson`:: Geometry data in GeoJSON format
+
+So each input file either needs a `lat`/`lon` column pair, or either a `wkt` or `geojson` column to be used as a Mapnik data source.
+
+When parsing the header line fails, or no geometry column(s) can be detected in it, the plugin will print a warning by default, and not return any data. When the `strict` parameter is set to `true`, style processing will be terminated completely by throwing a Mapnik exception.
+
+.CSV data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| encoding | string | utf-8 | Text encoding used in the CSV data
+| row_limit | int | none | Read only this many data rows, ignore the rest.
+| headers | string | none | Header names if the file contains none on the first line
+| strict | boolean | false | Terminate Mapnik on hitting errors?
+| quote | char | `"` | Quote character used for string columns in the data
+| escpae | char | `\` | TODO: does this even really exist?
+| separator | char | auto detected | Field separator, typically `,`, `;`, `|` or `TAB`
+| extent | 4xfloat | none | ignore data that is completely outside this extent bounding box
+| inline | text | none | CSV data to be read directly from the style file
+| file | file path | none | path of CSV file to read 
+| base | string | none | name of a <FileSource> to search the input file in
+|====================
+
+TODO: `.index` file support? See also `mapnik-index` utility
+
+====
+
 ===== Gdal
 
 ===== GeoJson
