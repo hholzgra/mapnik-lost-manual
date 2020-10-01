@@ -391,14 +391,14 @@ There are also two special filters that do not evaluate expresions but depend on
 
 The `<Filter>` tag has no tag attributes.
 
-=== Filter expressions
+==== Filter expressions
 
 The filter expression language supports the following constants, operators, and functions. It also allows for referencing data element attributes by putting the attribute name in square brackets `[attribute]` and to change evaluation order by putting expression parts in regular round brackets `(...)`.
 
 TODO: operator precedence
 TODO: regular expression match and replace
 
-==== Constants
+===== Constants
 
 `true`:: logical true
 `false`:: logical false
@@ -406,7 +406,7 @@ TODO: regular expression match and replace
 `deg_to_rad`:: 0.01745... (pi/180)
 `rad_to_deg`:: 57.295... (180/pi)
 
-==== Operators
+===== Operators
 
 `+`::
 `-`::
@@ -424,7 +424,7 @@ TODO: regular expression match and replace
 `>=`, `ge`::
   ...
 
-==== Functions
+===== Functions
 
 `sin(x)`:: Sinus
 `cos(x)`:: Cosinus
