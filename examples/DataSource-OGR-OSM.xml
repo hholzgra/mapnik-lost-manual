@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='white'>
+
+  <Style name="style">
+    <Rule>
+      <LineSymbolizer stroke-width="5"/>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">ogr</Parameter>
+      <Parameter name="file">ways.foo</Parameter>
+      <Parameter name="driver">osm</Parameter>
+      <Parameter name="layer">lines</Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+

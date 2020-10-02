@@ -300,21 +300,51 @@ TODO::
 
 ===== OGR
 
+The OGR input plugin supports several
+
 .OGR data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
-| base | | |
-| driver | | |
-| encoding | | |
+| base | directory path | none | name of a <FileSource> to search the input file in
+| driver | string| auto detect | actual vector format driver to use 
+| encoding | string | utf-8 |
 | extent | | |
-| file | | |
-| inline | | |
-| layer | | |
-| layer_by_index | | |
+| file | file path | none | path of input file to read
+| inline | string | none | inline vector file data to read directly from style file
+| layer | string | none | name of the input layer to actually process
+| layer_by_index | int | none | number of the input layer to actually process
 | layer_by_sql | | |
-| string | | |
+| string | string | none | alias for `inline`
 |====================
 
+====== OGR OSM 
+
+The OGR plugin can read uncompressed https://wiki.openstreetmap.org/wiki/OSM_XML[OSM XML] data andt the more compact, but not human readable, https://wiki.openstreetmap.org/wiki/PBF_Format[PBF format]. File formats are auto detected when using the `.osm` or `.pbf` file extensions. When using files with other extensions, like e.g. `.xml` for OSM XML, the `driver` parameter needs to be set to `osm` explicitly.
+
+The OSM backend provides data in the following five layers:
+
+`points`:: Nodes that have significant tags attached.
+`lines`:: Ways that are recognized as non-area.
+`multilinestrings`:: Relations that define a multilinestring (`type=multilinestring` or `type=route`).
+`multipolygons`:: Ways that are recognized as areas and relations that form a polygon or multipolygon (e.g. `type=multipolygon` or `type=boundary`)
+`other_relations`:: Relations that are not in `multilinestrings` or `multipolygons`
+
+.OGR OSM data source example
+====
+[source,xml]
+----
+<Datasource>
+  <Parameter name="type">ogr</Parameter>
+  <Parameter name="driver">osm</Parameter>
+  <Parameter name="file">ways.osm</Parameter>
+  <Parameter name="layer">lines</Parameter>
+</Datasource>
+----
+====
+
+While rendering OSM data directly can work out OK for small amounts of data the usually preferred way to present OSM data is to import it into PostGIS using either the <<osm2pgsql>> or <<imposm>> import tool first, and then to use the <<PostGIS Datasource>>. This  requires some extra effort up front, but performs better on larger data sets, and allows for more sophisticated preprocessing of the OSM input data than the few fixed rules statically built into the OGR OSM backend.
+
+For more details see the https://gdal.org/drivers/vector/osm.html[original GDAL documentation for the OGR OSM backend]
 
 ===== PgRaster
 
@@ -512,15 +542,17 @@ The following plugins used to be part of the mapnik source, but have been moved 
 
 ===== OSM
 
+The OSM plugin is no longer maintained as the OGR plugin can read OSM data now, too, and unlike the OSM plugin not only supports the OSM XML format, but also the more compact PBF format. So the old OSM plugin is no longer considered a core plugin now.
+
 .OSM data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description 
-| bbox | | |
-| encoding | | |
-| file | | |
-| parser | | |
-| url | | |
+| bbox | 4xfloat | none | no longer supported, see also `url`
+| encoding | string | utf-8 | Encoding of text fields in the data file
+| file | file path | OSM XML data file to read |
+| parser | string| libxml | So far libxml is the only possible choice here
+| url | string | none | Fetching OSM data from an API url was discontinued in Mapnik v2.3
 |====================
 
 
@@ -1213,11 +1245,23 @@ CairoGraphics::
 Compositing::
     Compositing provides different ways to combine data to be drawn with already existing from drawing previous layers.
 
+GDAL::
+    https://gdal.org/[GDAL] is a library for processing various raster and vector geospatial data formats released by the https://www.osgeo.org/[Open Source Geospatial Foundation] (OSGeo). The vector format support also runs under the name OGR for historical reasons.
+
 Harfbuzz::
     https://harfbuzz.github.io/[Harfbuzz] is a Text rendering / shaping library used by Mapnik starting with V3.0
 
 Opacity::
     Defines how opaque or transparent a feature should be. Values range from 0.0 for total transparency to 1.0 for total opacity.
+
+OGR:: 
+    The vector format related part of GDAL.
+    
+OSGeo::
+    The https://www.osgeo.org/[Open Source Geospatial Foundation]
+    
+PBF::
+    Protocol Buffer Format - a file format for OSM data based on the https://developers.google.com/protocol-buffers[Google ProtoBuf library]. PBF is a binary format not suitable for human readning, but very compact, with file sizes typically only almost half of bzip2 compressed OSM XML. 
     
 Symbolizer::
 	A symbolizer describes how features appear on rendered maps.
