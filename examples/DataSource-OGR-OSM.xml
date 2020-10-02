@@ -11,8 +11,8 @@
     <StyleName>style</StyleName>
     <Datasource>
       <Parameter name="type">ogr</Parameter>
-      <Parameter name="file">ways.foo</Parameter>
       <Parameter name="driver">osm</Parameter>
+      <Parameter name="file">ways.osm</Parameter>
       <Parameter name="layer">lines</Parameter>
     </Datasource>
   </Layer>

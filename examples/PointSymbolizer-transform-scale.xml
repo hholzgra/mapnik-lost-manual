@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map background-color="white">
+  <FileSource name="symbols">./symbols</FileSource>
 
   <Style name="style">
     <Rule>
-      <PointSymbolizer file="bug.svg" transform="scale([scale])"/>
+      <PointSymbolizer base="symbols" file="bug.svg" transform="scale([scale])"/>
       <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="40">[scale]+"x"</TextSymbolizer>
     </Rule>
   </Style>

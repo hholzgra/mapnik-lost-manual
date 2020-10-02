@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map background-color="white">
+  <FileSource name="red">./symbols/red</FileSource>
 
   <Style name="style">
     <Rule>
-      <PointSymbolizer allow-overlap="true" file="bug.svg" base="red-symbols"/>
+      <PointSymbolizer allow-overlap="true" file="bug.svg" base="red"/>
       <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[base]</TextSymbolizer>
     </Rule>
   </Style>
@@ -14,9 +15,9 @@
       <Parameter name="type">csv</Parameter>
       <Parameter name="inline">
 wkt,base
-"POINT(0 0)","red-symbols"
-"POINT(1 0)","blue-symbols"
-"POINT(2 0)","green-symbols"
+"POINT(0 0)","red"
+"POINT(1 0)","blue"
+"POINT(2 0)","green"
       </Parameter>
     </Datasource>
   </Layer>

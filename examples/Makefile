@@ -1,17 +1,27 @@
+all: all-png all-svg
+
+all-svg: $(addsuffix .svg, $(basename $(wildcard *.xml)))
+
+all-png: $(addsuffix .png, $(basename $(wildcard *.xml)))
+
 %.svg : %.xml
 	@echo $@
+	@rm -f $@
 	@./render.sh $<
 
 %.png : %.xml
 	@echo $@
+	@rm -f $@
 	@./render.sh $<
 
-.PHONY: all,clean,show-latest
+DataSource-OGR-OSM.svg: ways.osm
 
-all: $(addsuffix .svg, $(basename $(wildcard *.xml))) $(addsuffix .png, $(basename $(wildcard *.xml)))
+DataSource-OGR-OSM.png: ways.osm
+
+.PHONY: all,clean,show-latest,all-png,all-svg
 
 clean:
-	@rm -f $(addsuffix .svg, $(basename $(wildcard *.xml)))
+	@rm -f *.png *.svg
 	@rm -f *~ \#* .\#*
 
 show-latest: all

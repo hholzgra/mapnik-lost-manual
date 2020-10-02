@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map background-color='white'>
+  <FileSource name="symbols">./symbols</FileSource>
 
   <Style name="style">
     <Rule>
-	    <LinePatternSymbolizer file='[file]'/>
-	    <PointSymbolizer file='[file]' transform='translate(0,5)'/>
+	    <LinePatternSymbolizer base="symbols" file="[file]"/>
+	    <PointSymbolizer base="symbols" file="[file]" transform="translate(0,5)"/>
 	    <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[file]</TextSymbolizer>
     </Rule>
   </Style>

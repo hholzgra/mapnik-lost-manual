@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map background-color='white'>
-  <FileSource name="red">./red-symbols</FileSource>
-  <FileSource name="green">./green-symbols</FileSource>
-  <FileSource name="blue">./blue-symbols</FileSource>
+  <FileSource name="symbols">./symbols</FileSource>
+  <FileSource name="red">./symbols/red</FileSource>
+  <FileSource name="green">./symbols/green</FileSource>
+  <FileSource name="blue">./symbols/blue</FileSource>
 
   <Style name="style">
     <Rule>
-      <LinePatternSymbolizer file='steps.svg' base='red'/>
-      <PointSymbolizer file='steps.svg' transform='translate(0,5)'/>
+      <LinePatternSymbolizer base="red" file='steps.svg'/>
+      <PointSymbolizer base="symbols" file='steps.svg' transform='translate(0,5)'/>
       <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[base]</TextSymbolizer>
     </Rule>
   </Style>

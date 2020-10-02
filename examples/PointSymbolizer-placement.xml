@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map background-color="white">
+  <FileSource name="symbols">./symbols</FileSource>
 
   <Style name="style">
     <Rule>
       <PolygonSymbolizer/>
-      <PointSymbolizer allow-overlap="true" placement="[placement]" file="bug.svg"/>
+      <PointSymbolizer allow-overlap="true" placement="[placement]" base="symbols" file="bug.svg"/>
       <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="50">[placement]</TextSymbolizer>
     </Rule>
   </Style>

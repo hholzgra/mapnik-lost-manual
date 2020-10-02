@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map background-color='white'>
+  <FileSource name="symbols">./symbols</FileSource>
 
   <Style name="style">
     <Rule>
-	    <LinePatternSymbolizer file='steps.svg' opacity='[opacity]'/>
+	    <LinePatternSymbolizer base="symbols" file="steps.svg" opacity="[opacity]"/>
 	    <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[opacity]</TextSymbolizer>
     </Rule>
   </Style>
