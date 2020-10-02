@@ -3,4 +3,5 @@
 *.html
 *.pdf
 *.epub
-examples/*Symbolizer*.svg
+examples/*.svg
+examples/*.png
