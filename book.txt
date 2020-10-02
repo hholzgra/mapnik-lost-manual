@@ -300,7 +300,9 @@ TODO::
 
 ===== OGR
 
-The OGR input plugin supports several
+The OGR input plugin supports a large number of different vector formats via the GDAL/OGR library. For a complete list of supported formats see the https://gdal.org/drivers/vector/index.html[Vector Drivers] list in the GDAL documentation.
+
+The OGR plugin is typically used for GPX -- for which no special input plugin exists -- and OSM data -- for which it replaced the older OSM plugin that has now been moved to the `non-core-plugins` repository and is usally not included in Mapnik binary builds anymore. So we're going into details for these two data formats below only.
 
 .OGR data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
@@ -316,6 +318,54 @@ The OGR input plugin supports several
 | layer_by_sql | | |
 | string | string | none | alias for `inline`
 |====================
+
+====== OGR GPX
+
+The GPX backend reads GPX XML files and provides the contained data via the following five layers:
+
+routes:: 
+    Returns routes from the GPX files `<rte>` tags as lines. Each route is given an extra `route_id` attribute.
+
+tracks::
+    Returns tracks from the GPX files `<trk>`/`<trkseg>` tags as multilines. Each track is given an extra `track_id` attribute.
+
+route_points::
+    Returns `<rtept>` route points from all routes, with an extra `route_fid` filed referring to the `route_id` of the route that a point belongs to.  
+
+track_points::
+    Returns `<trkpt`> track points from all tracks, with extra `track_fid` and `track_seg_id` attributes added.
+
+waypoints::
+    Returns a compbination of all route and track points.
+
+Any extra tags that a route, track or point may have, like `<name>` or `<ele>` (for eleveation), can be accessed in filter expressions and symbolizers by name, e.g. as `[name]` or `[ele]`.
+
+.OGR GPX data source example
+====
+Show a marker for all GPX points with a non-empty `<name>` tag.
+[source,xml]
+----
+<Style name="named_point">
+  <Rule>
+    <Filter>not ([name] = null or [name] = '')</Filter>
+    <PointSymbolizer file="marker.svg"/>
+    <TextSymbolizer face-name="DejaVu Sans Book" size="10" placement="point">[name]</TextSymbolizer>
+  </Rule>
+</Style>
+
+<Layer>
+  <StyleName>named_point</StyleName>
+  <Datasource>
+    <Parameter name="type">ogr</Parameter>
+    <Parameter name="driver">gpx</Parameter>
+    <Parameter name="file">file.gpx</Parameter>
+    <Parameter name="layer">waypoints</Parameter>
+  </Datasource>
+</Layer>
+----
+====
+
+For more details see the https://gdal.org/drivers/vector/gpx.html[original GDAL documentation for the GPX backend]
 
 ====== OGR OSM 
 
@@ -344,7 +394,7 @@ The OSM backend provides data in the following five layers:
 
 While rendering OSM data directly can work out OK for small amounts of data the usually preferred way to present OSM data is to import it into PostGIS using either the <<osm2pgsql>> or <<imposm>> import tool first, and then to use the <<PostGIS Datasource>>. This  requires some extra effort up front, but performs better on larger data sets, and allows for more sophisticated preprocessing of the OSM input data than the few fixed rules statically built into the OGR OSM backend.
 
-For more details see the https://gdal.org/drivers/vector/osm.html[original GDAL documentation for the OGR OSM backend]
+For more details see the https://gdal.org/drivers/vector/osm.html[original GDAL documentation for the OSM backend]
 
 ===== PgRaster
 
@@ -1247,6 +1297,12 @@ Compositing::
 
 GDAL::
     https://gdal.org/[GDAL] is a library for processing various raster and vector geospatial data formats released by the https://www.osgeo.org/[Open Source Geospatial Foundation] (OSGeo). The vector format support also runs under the name OGR for historical reasons.
+
+GPS::
+    Global Positioning System
+
+GPX::
+    GPS exchange format - an XML format to represent GPS data.
 
 Harfbuzz::
     https://harfbuzz.github.io/[Harfbuzz] is a Text rendering / shaping library used by Mapnik starting with V3.0
