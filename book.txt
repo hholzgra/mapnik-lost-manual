@@ -583,19 +583,28 @@ The following plugins used to be part of the mapnik source, but have been moved 
 | wkt | | |
 |====================
 
+See also:
+
+* https://github.com/mapnik/mapnik/wiki/GEOS
+
 ===== Kismet
+
+An experimental plugin that reads WLAN location informatin from a Kismet instance.
 
 .Kismet data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description 
-| encoding | | |
+| encoding | string | utf-8 | Text encoding
 | extent | | |
-| host | | |
-| port | | |
-| srs | | |
-| encoding | | |
+| host | string | none | Kinsmet server name or IP address
+| port | int | 2501 | Port that the Kismet process is listening on
+| srs | string | |
 |====================
+
+See also:
+
+https://github.com/mapnik/mapnik/wiki/Kismet
 
 ===== OCCI
 
