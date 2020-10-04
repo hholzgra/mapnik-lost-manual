@@ -284,18 +284,32 @@ TODO::
 | shared | | |
 |====================
 
-===== GeoJson
+===== GeoJSON
+
+While the GeoJSON format is also supported by the OGR input plugin, a direct native GeoJSON plugin was added for performance reasons for this more and more common format.
+
+Processig performance can be improved by creating an additional `.index` index file using the <<mapnik-index>> tool.
 
 .GeoJson data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description base
-| cache_features | | |
-| encoding | | |
-| file | | |
-| inline | | |
-| num_features_to_query | | |
+| base | string | none | name of a <FileSource> to find the input file in
+| cache_features | boolean | true |
+| encoding | string | utf-8 | Encoding used for textual informatin
+| file | file path | none | Path of a GeoJSON file to read for input.
+| inline | string | none | Inline GeoJSON data as part of the stylefile itself
+| num_features_to_query | int | 5 | How many features of a feature set to read up front to determine what property names exist in the data
 |====================
+
+.GeoJSON data source example
+====
+[source,xml]
+----
+include::examples/DataSource-GeoJSON.xml[]
+----
+image::examples/DataSource-GeoJSON.svg[align="center"]
+====
 
 
 ===== OGR
