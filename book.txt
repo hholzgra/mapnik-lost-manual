@@ -650,13 +650,19 @@ The OSM plugin is no longer maintained as the OGR plugin can read OSM data now, 
 
 ===== Python
 
+The experimental python plugin allows for writing data sources using custom Python code. 
+
 .Python data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description 
-| encoding | | |
-| factory | | |
+| encoding | string | utf8 | Text encoding used 
+| factory | string | none | A Python callable that impmlements a data source
 |====================
+
+See also:
+
+* https://github.com/mapnik/mapnik/wiki/Python-Plugin
 
 ===== Rasterlite
 
