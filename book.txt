@@ -149,7 +149,7 @@ For now I'll only cover how to create styles using Mapnik XML style files. Docum
 .Map Attributes
 [options="header,unbreakable",cols="m,d,d,d"]
 |===
-| base | directory path | none | 
+| base | string | none | name of a <FileSource> to find the input file in
 | background-color | color | transparent | 
 | background-image | file path | none | 
 | background-image-comp-op | SVG composition | none | 
@@ -205,6 +205,8 @@ The CSV plugin reads simple column separated data from a file when specified usi
 
 When giving a `file` path, this is taken as relative to the directory the style file is in, unless a `base` parameter is given. In that case a relative `file` path will be interpreted as relative to the directory path given in the `<FileSource>` of that base name.
 
+Processig performance can be improved by creating an additional `.index` index file using the <<mapnik-index>> tool.
+
 .CSV data source examples
 ====
 [source,xml]
@@ -247,6 +249,8 @@ So each input file either needs a `lat`/`lon` column pair, or either a `wkt` or 
 
 When parsing the header line fails, or no geometry column(s) can be detected in it, the plugin will print a warning by default, and not return any data. When the `strict` parameter is set to `true`, style processing will be terminated completely by throwing a Mapnik exception.
 
+
+
 .CSV data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
@@ -257,11 +261,11 @@ When parsing the header line fails, or no geometry column(s) can be detected in 
 | strict | boolean | false | Terminate Mapnik on hitting errors?
 | quote | char | `"` | Quote character used for string columns in the data
 | escpae | char | `\` | TODO: does this even really exist?
-| separator | char | auto detected | Field separator, typically `,`, `;`, `|` or `TAB`
+| separator | char | auto detected | Field separator, typically `,`, `;`, `\|` or `TAB`
 | extent | 4xfloat | none | ignore data that is completely outside this extent bounding box
 | inline | text | none | CSV data to be read directly from the style file
 | file | file path | none | path of CSV file to read 
-| base | string | none | name of a <FileSource> to search the input file in
+| base | string | none | name of a <FileSource> to find the input file in
 |====================
 
 TODO:: 
@@ -275,7 +279,7 @@ TODO::
 |====================
 | Parameter | Type | Default | Description 
 | band | | |
-| base | | |
+| base | string | none | name of a <FileSource> to find the input file in
 | extent | | |
 | file | | |
 | max_image_area | | |
@@ -321,7 +325,8 @@ The OGR plugin is typically used for GPX -- for which no special input plugin ex
 .OGR data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
-| base | directory path | none | name of a <FileSource> to search the input file in
+| Parameter | Type | Default | Description 
+| base | string | none | name of a <FileSource> to find the input file in
 | driver | string| auto detect | actual vector format driver to use 
 | encoding | string | utf-8 |
 | extent | | |
@@ -406,7 +411,7 @@ The OSM backend provides data in the following five layers:
 ----
 ====
 
-While rendering OSM data directly can work out OK for small amounts of data the usually preferred way to present OSM data is to import it into PostGIS using either the <<osm2pgsql>> or <<imposm>> import tool first, and then to use the <<PostGIS Datasource>>. This  requires some extra effort up front, but performs better on larger data sets, and allows for more sophisticated preprocessing of the OSM input data than the few fixed rules statically built into the OGR OSM backend.
+While rendering OSM data directly can work out OK for small amounts of data the usually preferred way to present OSM data is to import it into PostGIS using either the ((<<osm2pgsql>>)) or ((<<imposm>>)) import tool first, and then to use the ((PostGIS Datasource)). This  requires some extra effort up front, but performs better on larger data sets, and allows for more sophisticated preprocessing of the OSM input data than the few fixed rules statically built into the OGR OSM backend.
 
 For more details see the https://gdal.org/drivers/vector/osm.html[original GDAL documentation for the OSM backend]
 
@@ -415,6 +420,7 @@ For more details see the https://gdal.org/drivers/vector/osm.html[original GDAL 
 .PgRaster data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
+| Parameter | Type | Default | Description 
 | autodetect_key_field | | |
 | band | | |
 | clip_rasters | | |
@@ -448,39 +454,40 @@ For more details see the https://gdal.org/drivers/vector/osm.html[original GDAL 
 .PostGIS data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
+| Parameter | Type | Default | Description 
+4+| Connection parameters
+| host | string | | PostgreSQL server host name or address
+| port | string | | PostgreSQL server port
+| user | string | | Database user
+| password | string | | Database user password
+| dbname | string | | Name of database to use
+| connect_timeout | int | 4 | Connect timeout in seconds
+| persist_connection | boolean | true | Reuse connection for subsequent queries
+4+| Other parameters
 | autodetect_key_field | | |
-| connect_timeout | | |
 | cursor_size | | |
-| dbname | | |
 | estimate_extent | | |
 | extent | | |
 | extent_from_subquery | | |
 | geometry_field  | | |
 | geometry_table  | | |
-| host | | |
 | initial_size | | |
-| intersect_max_scale | | |
-| intersect_min_scale | | |
 | key_field | | |
-| key_field_as_attribute | | |
-| password | | |
-| persist_connection | | |
-| port | | |
 | row_limit | | |
 | simplify_dp_preserve | | |
 | simplify_geometries | | |
-| srid | | |
+| srid | int | 0 | 
 | table | | |
 | twkb_encoding | | |
-| user | | |
 |====================
 
 ===== Raster
 
-.PostGIS data source parameters
+.Raster data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
-| base | | |
+| Parameter | Type | Default | Description 
+| base | string | none | name of a <FileSource> to find the input file in
 | extent | | |
 | file | | |
 | format | | |
@@ -534,7 +541,7 @@ image::examples/DataSource-Shape.svg[align="center"]
 | Parameter | Type | Default | Description 
 | attachdb | | |
 | auto_index | | |
-| base | | |
+| base | string | none | name of a <FileSource> to find the input file in
 | encoding | | |
 | extent | | |
 | fields | | |
@@ -559,7 +566,7 @@ image::examples/DataSource-Shape.svg[align="center"]
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description 
-| base | | |
+| base | string | none | name of a <FileSource> to find the input file in
 | encoding | | |
 | file | | |
 | inline | | |
@@ -575,7 +582,7 @@ The following plugins used to be part of the mapnik source, but have been moved 
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description 
-| encoding | | |
+| encoding | string | utf-8 | 
 | extent | | |
 | field_data | | |
 | field_name | | |
@@ -670,7 +677,7 @@ See also:
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description 
-| base | | |
+| base | string | none | name of a <FileSource> to find the input file in
 | file | | |
 | table | | |
 |====================
@@ -684,6 +691,8 @@ The following data source plugins are not really part of the Mapnik project, eve
 The https://github.com/mapnik/hello-world-input-plugin[Hello World plugin] is an example of the minimal code needed to implement an input plugin. It only ever returns a single point geometry located in the middle of the current map extent, with a single attribite named `key` and a constant value of `hello world!`.
 
 ===== GeoWave
+
+
 
 ===== Mongo
 
@@ -1077,7 +1086,7 @@ Even when giving the pattern as a SVG file, internally it will be converted to P
 |===
 | Attribute      | Value      | Default | Description
 | <<example-linepatternsymbolizer-file,((file))>>         | file path |
-| ((base))    | directory path | | 
+| ((base))    | string | none| name of a <FileSource> to find the input file in
 | opacity |  |  |  
 | offset  |  |  |  
 | transform |  |  |  
@@ -1229,16 +1238,16 @@ If no image file is specified a small square is used as the default point image.
 For putting symbols along a line or the edge of a polygon the MarkerSymbolizer is usually a better choice.
 
 .PointSymbolizer Attributes
-[width="100%",options="header,unbreakable"]
+[width="100%",options="header,unbreakable",cols="m,d,d,d"]
 |====================
-| attribute          | type          | default
-| <<example-pointsymbolizer-file,`file`>>             | file path     | none 
-| `base`             | directory path | none
-| `allow-overlap`    | bool          | false 
-| <<example-pointsymbolizer-file,`opacity`>>          | float         | 1.0 
-| `ignore-placement` | bool          | false
-| `transform`        | SVG transform | identity
-| `comp-op`          | Compositing   | none
+| Attribute          | Type          | Default | Description
+| <<example-pointsymbolizer-file,file>>             | file path     | none |
+| base             | string | none | name of a <FileSource> to find the input file in
+| allow-overlap    | bool          | false 
+| <<example-pointsymbolizer-file,opacity>>          | float         | 1.0 |
+| ignore-placement | bool          | false |
+| transform        | SVG transform | identity |
+| comp-op          | Compositing   | none |
 |====================
 
 
@@ -1412,6 +1421,29 @@ image::examples/TextSymbolizer-character-spacing.svg[align="center"]
 
 ====
 
+
+
+== Tools
+
+=== Mapnik tools
+
+==== mapnik-index
+
+TODO
+
+==== shapeindex
+
+TODO
+
+=== OpenStreetMap tools
+
+==== imposm
+
+TODO
+
+==== osm2pgsql
+
+TODO
 
 == Compositing
 
