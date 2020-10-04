@@ -1299,6 +1299,89 @@ TODO
 
 ==== ShieldSymbolizer
 
+/*
+name
+file
+face-name
+unlock-image
+size
+fill
+placement
+avoid-edges
+allow-overlap
+margin
+repeat-distance
+min-distance
+spacing
+min-padding
+label-position-tolerance
+wrap-width
+wrap-before
+wrap-character
+halo-fill
+halo-radius
+halo-rasterizer
+halo-transform
+halo-comp-op
+halo-opacity
+character-spacing
+line-spacing
+text-dx
+text-dy
+dx
+dy
+opacity
+horizontal-alignment
+vertical-alignment
+placement-type
+text-transform
+justify-alignment
+transform
+clip
+simplify
+simplify-algorithm
+smooth
+comp-op
+grid-cell-width
+grid-cell-height
+offset
+*/
+
+.ShieldSymolizer
+====
+[source,xml]
+-----
+include::examples/ShieldSymbolizer.xml[]
+-----
+image::examples/ShieldSymbolizer.svg[align="center"]
+====
+
+.ShieldSymolizer spacing
+====
+`spacing` controls the distance between shields on a single line feature. When no spacing is given only a single shield will be attemted to be placed.
+
+See also `repeat-distance`, which controls how far shields with the same text should be set apart in general, even when placed on different geometries.
+[source,xml]
+-----
+include::examples/ShieldSymbolizer-spacing.xml[]
+-----
+image::examples/ShieldSymbolizer-spacing.svg[align="center"]
+====
+
+.ShieldSymolizer placement
+====
+`spacing` controls the distance between shields on a single line feature. When no spacing is given only a single shield will be attemted to be placed.
+
+See also `repeat-distance`, which controls how far shields with the same text should be set apart in general, even when placed on different geometries.
+[source,xml]
+-----
+include::examples/ShieldSymbolizer-placement.xml[]
+-----
+image::examples/ShieldSymbolizer-placement.svg[align="center"]
+====
+
+
+
 ==== TextSymbolizer
 
 .TextSymbolizer size
