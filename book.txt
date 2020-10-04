@@ -681,6 +681,8 @@ The following data source plugins are not really part of the Mapnik project, eve
 
 ===== Hello World
 
+The https://github.com/mapnik/hello-world-input-plugin[Hello World plugin] is an example of the minimal code needed to implement an input plugin. It only ever returns a single point geometry located in the middle of the current map extent, with a single attribite named `key` and a constant value of `hello world!`.
+
 ===== GeoWave
 
 ===== Mongo
