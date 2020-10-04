@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='white'>
+
+  <Style name="style">
+    <Rule>
+      <PointSymbolizer file="symbols/[file]"/>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">geojson</Parameter>
+      <Parameter name="inline"><![CDATA[
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "file": "dot.svg"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [1, 1]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "file": "bug.svg" 
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2, 1]
+            }
+        }
+    ]
+}
+      ]]></Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+  <FileSource name="symbols">./symbols</FileSource>
+
+  <Style name="style">
+    <Rule>
+      <LineSymbolizer stroke="blue" stroke-width="5"/>
+      <ShieldSymbolizer base="symbols" file="motorway_2x1.svg" face-name="DejaVu Sans Book" placement="[placement]" spacing="30">A1</ShieldSymbolizer>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="50">[placement]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,placement
+"POLYGON(( 1 1, 6 1, 6 5, 5 5, 5 2, 2 2, 2 5, 1 5, 1 1))",interior
+"POLYGON((11 1,16 1,16 5,                    11 5,11 1))",line
+"POLYGON((21 1,26 1,26 5,                    21 5,21 1))",alternating-grid
+"POLYGON(( 1 11, 6 11, 6 15, 5 15, 5 12, 2 12, 2 15, 1 15, 1 11))",point
+"POLYGON((11 11,16 11,16 15,                        11 15,11 11))",vertex
+"POLYGON((21 11,26 11,26 15,                        21 15,21 11))",grid
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
