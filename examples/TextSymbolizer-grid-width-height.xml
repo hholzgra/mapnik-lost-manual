@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <LineSymbolizer stroke="lightblue" stroke-width="5"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" placement="[placement]" grid-cell-width="[width]" grid-cell-height="[height]" spacing="30">A1</TextSymbolizer>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="50">[width]+","+[height]+","+[placement]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,width,height,placement
+"POLYGON(( 1 1, 6 1, 6 5, 1 5, 1 1))",30,20,alternating-grid
+"POLYGON((11 1,16 1,16 5,11 5,11 1))",40,20,alternating-grid
+"POLYGON((21 1,26 1,26 5,21 5,21 1))",40,30,alternating-grid
+"POLYGON(( 1 11, 6 11, 6 15, 1 15, 1 11))",30,20,grid
+"POLYGON((11 11,16 11,16 15,11 15,11 11))",40,20,grid
+"POLYGON((21 11,26 11,26 15,21 15,21 11))",40,30,grid
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
