@@ -58,7 +58,25 @@ Mapnik is a Free Toolkit for developing mapping applications. It is written in m
 
 Mapnik is a library, not a complete application program. So it always to be linked to at least a minimum of application code that controls the library operations. 
 
-In the most simple case the application program just creates a Mapnik Map object of a certain size, loads a XML style sheet, and renderes this style into an output file, e.g. when using the Python Mapnik bindings:
+The data flow of mapnik basically is that it reads geospatial data sources and applies presentation styles on the input that decide how to visually present specific geometry objects:
+
+image::images/mapnik-flow-diagram.svg[Mapnik data flow]
+
+In a little more detailed view, starting bottom up from the output side, we have the following basic library objects:
+
+* Symbolizers do the actual output, by taking a geomety and its extra properties and creating actual graphic output from that
+* Filters decide what to actually pass to specific symbolizers instances for output
+* Rules contain one or more filters
+* Styles contain one or more rules
+* Data sources provide actual geometry objects to process
+* Layers combine a data source with one or more styles
+* A map contains one or more layers
+
+TODO: class diagram
+
+All these objects can be created and configured directly in code, but the usual approach is to so by specifying them in a XML style file which is then loaded as a whole into a Mapnik map object at run time.
+
+In the most simple case the application program just creates a Mapnik Map object of a certain size, loads a XML style file, and renderes this style into an output file, e.g. when using the Python Mapnik bindings:
 
 .A minimal Mapnik source and style
 ====
