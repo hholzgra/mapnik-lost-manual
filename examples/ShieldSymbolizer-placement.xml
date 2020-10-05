@@ -5,7 +5,7 @@
   <Style name="style">
     <Rule>
       <LineSymbolizer stroke="blue" stroke-width="5"/>
-      <ShieldSymbolizer base="symbols" file="motorway_2x1.svg" face-name="DejaVu Sans Book" placement="[placement]" spacing="30">A1</ShieldSymbolizer>
+      <ShieldSymbolizer base="symbols" file="motorway_2x1.svg" face-name="DejaVu Sans Book" placement="[placement]" grid-cell-width="30" grid-cell-height="20" spacing="30">A1</ShieldSymbolizer>
       <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="50">[placement]</TextSymbolizer>
     </Rule>
   </Style>

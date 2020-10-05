@@ -5,7 +5,7 @@
   <Style name="style">
     <Rule>
       <LineSymbolizer stroke="blue" stroke-width="5"/>
-      <ShieldSymbolizer repeat-distance="[spacing]" base="symbols" file="motorway_2x1.svg" face-name="DejaVu Sans Book" placement="line">[spacing]</ShieldSymbolizer>
+      <ShieldSymbolizer repeat-distance="[repeat-distance]" base="symbols" file="motorway_2x1.svg" face-name="DejaVu Sans Book" placement="line">[repeat-distance]</ShieldSymbolizer>
     </Rule>
   </Style>
 
@@ -14,7 +14,7 @@
     <Datasource>
       <Parameter name="type">csv</Parameter>
       <Parameter name="inline">
-wkt,spacing
+wkt,repeat-distance
 "LINESTRING(10 10,50 20,90 10)",10
 "LINESTRING(10 20,50 30,90 20)",20
 "LINESTRING(10 30,50 40,90 30)",30
