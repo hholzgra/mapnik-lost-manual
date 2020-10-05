@@ -1427,6 +1427,15 @@ include::examples/ShieldSymbolizer-placement.xml[]
 image::examples/ShieldSymbolizer-placement.svg[align="center"]
 ====
 
+.ShieldSymbolizer grid width/height
+====
+[source,xml]
+-----
+include::examples/ShieldSymbolizer-grid-width-height.xml[]
+-----
+image::examples/ShieldSymbolizer-grid-width-height.svg[align="center"]
+====
+
 
 
 ==== TextSymbolizer
@@ -1456,7 +1465,33 @@ image::examples/TextSymbolizer-fill.svg[align="center"]
 include::examples/TextSymbolizer-character-spacing.xml[]
 -----
 image::examples/TextSymbolizer-character-spacing.svg[align="center"]
+====
 
+.TextSymbolizer spacing
+====
+[source,xml]
+-----
+include::examples/TextSymbolizer-spacing.xml[]
+-----
+image::examples/TextSymbolizer-spacing.svg[align="center"]
+====
+
+.TextSymbolizer placement
+====
+[source,xml]
+-----
+include::examples/TextSymbolizer-placement.xml[]
+-----
+image::examples/TextSymbolizer-placement.svg[align="center"]
+====
+
+.TextSymbolizer grid width/height
+====
+[source,xml]
+-----
+include::examples/TextSymbolizer-grid-width-height.xml[]
+-----
+image::examples/TextSymbolizer-grid-width-height.svg[align="center"]
 ====
 
 
