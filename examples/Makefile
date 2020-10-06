@@ -1,6 +1,6 @@
 all: all-png all-svg
 
-all-svg: $(addsuffix .svg, $(basename $(wildcard *.xml)))
+all-svg: $(addsuffix .svg, $(basename $(wildcard *.xml)))  cairo-and-mapnik.svg
 
 all-png: $(addsuffix .png, $(basename $(wildcard *.xml)))
 
@@ -17,6 +17,10 @@ all-png: $(addsuffix .png, $(basename $(wildcard *.xml)))
 DataSource-OGR-OSM.svg: ways.osm
 
 DataSource-OGR-OSM.png: ways.osm
+
+cairo-and-mapnik.svg: cairo-and-mapnik.py
+	@echo cairo-and-mapnik
+	@./cairo-and-mapnik.py
 
 .PHONY: all,clean,show-latest,all-png,all-svg
 
