@@ -1518,6 +1518,15 @@ include::examples/TextSymbolizer-grid-width-height.xml[]
 image::examples/TextSymbolizer-grid-width-height.svg[align="center"]
 ====
 
+.TextSymbolizer minimum path length
+====
+[source,xml]
+-----
+include::examples/TextSymbolizer-minimum-path-length.xml[]
+-----
+image::examples/TextSymbolizer-minimum-path-length.svg[align="center"]
+====
+
 
 
 == Tools
