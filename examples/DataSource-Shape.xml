@@ -11,7 +11,7 @@
     <StyleName>countries</StyleName>
     <Datasource>
       <Parameter name="type">shape</Parameter>
-      <Parameter name="file">world-countries.shp</Parameter>
+      <Parameter name="file">data/world-countries.shp</Parameter>
     </Datasource>
   </Layer>
 

@@ -12,7 +12,7 @@
     <Datasource>
       <Parameter name="type">ogr</Parameter>
       <Parameter name="driver">osm</Parameter>
-      <Parameter name="file">ways.osm</Parameter>
+      <Parameter name="file">data/ways.osm</Parameter>
       <Parameter name="layer">lines</Parameter>
     </Datasource>
   </Layer>

@@ -14,9 +14,9 @@ all-png: $(addsuffix .png, $(basename $(wildcard *.xml)))
 	@rm -f $@
 	@./render.sh $<
 
-DataSource-OGR-OSM.svg: ways.osm
+DataSource-OGR-OSM.svg: data/ways.osm
 
-DataSource-OGR-OSM.png: ways.osm
+DataSource-OGR-OSM.png: data/ways.osm
 
 cairo-and-mapnik.svg: cairo-and-mapnik.py
 	@echo cairo-and-mapnik
