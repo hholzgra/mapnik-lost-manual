@@ -46,6 +46,14 @@ There's a http://gis.19327.n8.nabble.com/attachment/5340415/0/MapnikXMLDescripti
 This list most likely isn't complete ...
 ====
 
+=== Why still bother with Mapnik at all?
+
+Even though its development has slowed down quite a bit in recent years, and client side vector tile rendering receives much more love these days, and even Mapnik XML style files are somewhat out of fashion in favor of writing styles using CartoCSS and then converting that to Mapnik XML automatically, there are still many open source Mapnik styles in use out there, especially the Openstreetmap Carto style used for the default Openstreetmap map tiles.
+
+Also for rendering printable formats, which I'm especially interested in, the Mapnik/CairoGraphics tool chain still seems to be a better choice than the OpenGL based vector tile approaches.
+
+The https://print.get-map-org/[MapOSMatic] instance that I'm running makes intensive use of Mapnik not only being able to render PNG tiles, but also bigger documents in both bitmap and vector formats. Especially the capability of rendering into a Cairo Graphis surface comes in handy for this.
+
 === Why AsciiDoc(tor)?
 
 For someone like me, who comes from a DocBook background (I wrote and translated for the PHP manual, and implemented parts of its translation infrastructure, a long time ago, and also worked with a DocBook generated manual a lot in my MySQL days), AsciiDoc feels more "natural" than MarkDown (which is more single document focussed and not really targeting whole books), or Sphinx to me.
