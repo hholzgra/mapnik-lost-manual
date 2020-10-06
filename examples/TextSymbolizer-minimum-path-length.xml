@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='white'>
+  <Style name="style">
+    <Rule>
+      <LineSymbolizer stroke="lightblue" stroke-width="5"/>
+      <TextSymbolizer minimum-path-length="200" face-name="DejaVu Sans Book" placement="line">A1</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt
+"LINESTRING(10 10,20 10)"
+"LINESTRING(10 20,30 20)"
+"LINESTRING(10 30,40 30)"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
