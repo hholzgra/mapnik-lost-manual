@@ -1644,6 +1644,9 @@ GPX::
 Harfbuzz::
     https://harfbuzz.github.io/[Harfbuzz] is a Text rendering / shaping library used by Mapnik starting with V3.0
 
+MapOSMatic::
+    A web frontend and render backend to generate printable map posters and booklets using Mapnik, Python and Cairo Graphics
+
 Opacity::
     Defines how opaque or transparent a feature should be. Values range from 0.0 for total transparency to 1.0 for total opacity.
 
