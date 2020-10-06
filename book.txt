@@ -1618,6 +1618,64 @@ include::examples/cairo-and-mapnik.py[]
 image::examples/cairo-and-mapnik.svg[align="center"]
 ====
 
+== Resources
+
+=== Mapnik styles 
+
+This is an (incomplete) list of styles for Mapnik that are available under an open source license. The list includes 'pure' Mapnik XML styles, and styles that can easily be converted to Mapnik XML, like those using CartoCSS.
+
+Most Styles fall into two basic categories when it comes to their main data source, they either use derivations of the `osm2pgsql` schema used by the OpenStreetMap CartoCSS style, or customized `imposm` import schemas.
+
+Most styles also use shapefiles for some of their layers, openly available shapefiles are list in the <<Shapefiles>> section.
+
+Some styles are base map stles that aim at providing a full featured map, while others are only meant to be used to generated overlays that add some specific type of information on top of the output of another base style as an overlay.
+
+.Mapnik Styles
+[width="100%",options="header"]
+|====================
+| Name | Type | Maintained | Language | Data source | License | Description  
+| https://github.com/gravitystorm/openstreetmap-carto[OpenStreetMap Carto] | base | yes | CartoCSS | `osm2pgsql`, shapefiles | CC0 |  The current default OpenStreetMap style
+| Mapnik OSM | base | no | MapnikXML | `osm2pgsql`, shapefiles | ? | Older OpenStreetMap style that was eventually replaced by OpenStreetMap Carto
+| Alternative Colors | | | | | |
+| OpenArdenne | | | | | |
+| Belgian | | | | | |
+| Blossom | | | | | |
+| CyclOSM | | | | | |
+| French | | | | | |
+| German | | | | | |
+| HikeBike | | | | | |
+| Humanitarian | | | | | |
+| MapQuest | | | | | |
+| OpenRiverBoat | | | | | |
+| OsmBright | | | | | |
+| Pandonia | | | | | |
+| Pencil | | | | | |
+| PisteMap | | | | | |
+| RouteXL | | | | | | |
+| Swiss | | | | | |
+| Toner | | | | | |
+| Veloroad | | | | | |
+| | | | | | |
+| | | | | | |
+| | | | | | |
+| | | | | | |
+| | | | | | |
+| | | | | | |
+| | | | | | |
+|====================
+
+=== Shapefiles
+
+Open/free shapefiles are available from multiple sources, including OpenStreetMap, Natural Earth, and others.
+
+==== OpenStreetMap
+
+TODO
+
+==== Natural Earth
+
+TODO
+
 == Glossary
 
 [glossary]
@@ -1644,6 +1702,9 @@ GPX::
 Harfbuzz::
     https://harfbuzz.github.io/[Harfbuzz] is a Text rendering / shaping library used by Mapnik starting with V3.0
 
+Imposm::
+    https://imposm.org/[Imposm] is a toll to import OpenStreetMap data into a PostGIS database. (See also: Osm2pgsql)
+
 MapOSMatic::
     A web frontend and render backend to generate printable map posters and booklets using Mapnik, Python and Cairo Graphics
 
@@ -1655,6 +1716,9 @@ OGR::
     
 OSGeo::
     The https://www.osgeo.org/[Open Source Geospatial Foundation]
+    
+Osm2pgsql::
+    https://osm2pgsql.org/[Osm2pgsql] is a tool to import OpenStreetMap data into a PostGIS database. It is part of the tool chain used to generated the map tiles provided on https://openstreetmap.org[`openstreetmap.org`. (see also: Imposm)
     
 PBF::
     Protocol Buffer Format - a file format for OSM data based on the https://developers.google.com/protocol-buffers[Google ProtoBuf library]. PBF is a binary format not suitable for human readning, but very compact, with file sizes typically only almost half of bzip2 compressed OSM XML. 
