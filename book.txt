@@ -1634,33 +1634,28 @@ Some styles are base map stles that aim at providing a full featured map, while 
 [width="100%",options="header"]
 |====================
 | Name | Type | Maintained | Language | Data source | License | Description  
-| https://github.com/gravitystorm/openstreetmap-carto[OpenStreetMap Carto] | base | yes | CartoCSS | `osm2pgsql`, shapefiles | CC0 |  The current default OpenStreetMap style
+| https://github.com/gravitystorm/openstreetmap-carto[OpenStreetMap Carto] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | CC0 |  The current default OpenStreetMap style
 | Mapnik OSM | base | no | MapnikXML | `osm2pgsql`, shapefiles | ? | Older OpenStreetMap style that was eventually replaced by OpenStreetMap Carto
-| Alternative Colors | | | | | |
-| OpenArdenne | | | | | |
-| Belgian | | | | | |
-| Blossom | | | | | |
-| CyclOSM | | | | | |
-| French | | | | | |
-| German | | | | | |
-| HikeBike | | | | | |
-| Humanitarian | | | | | |
-| MapQuest | | | | | |
-| OpenRiverBoat | | | | | |
-| OsmBright | | | | | |
-| Pandonia | | | | | |
-| Pencil | | | | | |
-| PisteMap | | | | | |
-| RouteXL | | | | | | |
-| Swiss | | | | | |
-| Toner | | | | | |
-| Veloroad | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
-| | | | | | |
+| https://github.com/imagico/osm-carto-alternative-colors[Alternative Colors] | base | yes | CartoCSS | `osm2pgsql`, shapefiles | CC0 | Based on OSM Carto, but with an alternative color scheme
+| https://github.com/nobohan/OpenArdenneMap[OpenArdenne] | base | yes | Carto CSS | yes | `osm2pgsql` or `imposm`, shapefiles | CC-BY-SA | A topographic style focused on the Ardenne area in Belgium
+| https://github.com/jbelien/openstreetmap-carto-be[Belgian] | base |yes | CartoCSS | `osm2pgsql`, shapefiles | CC0 | Belgian variant of OSM Carto, also comes with all-dutch and all-french variants
+| https://github.com/stekhn/blossom[Blossom] | base | no | Carto CSS | `osm2pgsql` or `imposm`, shapefiles| BSD? | A low contrast style based on OSM Bright and Pandonia
+| https://github.com/cyclosm/cyclosm-cartocss-style[CyclOSM ] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | BSD | A map style focused on cyclists
+| French | base | | | | |
+| https://github.com/giggls/openstreetmap-carto-de[German] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | CC0 | Based on OSM Carto, but using colors and symbols more common to German maps
+| HikeBike | base | no | Carto CSS | `osm2pgsql`, shapefiles | CC0 |  A map style focused on cyclists
+| https://github.com/hotosm/HDM-CartoCSS[Humanitarian] | base | yes |Carto CSS | | | The Humanitarian OpenStreetMap style
+| https://github.com/MapQuest/MapQuest-Mapnik-Style[MapQuest] | base | no | Mapnik XML | `osm2pgsql`, shapefiles | MIT | Old MapQuest styles from around 2010
+https://github.com/yohanboniface/OpenRiverboatMap[OpenRiverBoat] | base | no | Carto CSS | `osm2pgsql`, shapefiles | WTFPL | A map for navigating waterways
+| https://github.com/mapbox/osm-bright[OsmBright] | base | no? | Carto CSS | `osm2pgsql` or `imposm`, shapefiles | BSD | A rather low contrast style, meant to be used as base for own styles
+| https://github.com/hholzgra/Pandonia[Pandonia] | base | no | Carto CSS | `osm2pgsql`, shapefiles | BSD? | A low contrast style based on OSM Bright, originally created by Flickr
+| https://github.com/openmaptiles/mapbox-studio-pencil.tm2[Pencil] | base | no | Carto CSS | Mapbox Studio | BSD | Artistic style looking like https://blog.mapbox.com/designing-the-pencil-map-style-f8c57dae0e88[hand drawn with a pencil] (a https://github.com/hholzgra/mapbox-studio-pencil.tm2/commits/dev-osm2pgsql[fork using `osm2pgsql` db as data source exists)
+| https://gitlab.com/mvglasow/pistemap[PisteMap] | base | no? | Mapnik XML | `osm2pgsql`, shapefiles | ? | A style optimized for winter sports
+| https://github.com/routexl/osm-routexl[RouteXL] | base | yes? | Carto CSS | `osm2pgsql` or `imposm`, shapefiles | BSD | Another low contrast style based on OSM Bright
+| https://github.com/xyztobixyz/OSM-Swiss-Style[Swiss] | base | no | Carto CSS |  `osm2pgsql`, shapefiles | CC-BY-SA | A style specific to Switzerland, based on OSM Bright
+| https://github.com/geofabrik/toner.git[Toner] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | ISC | A high contrast pure black&white style, originaly created by Stamen and now maintained by Geofabrik
+| https://github.com/Zverik/veloroad[Veloroad] | base | yes? | Carto CSS | `osm2pgsql`, shapefiles | WTFPL | A style focussing on bike infrastructure in Russia
+| https://github.com/mapbox/mapbox-studio-space-station.tm2[Space Station] | no | Carto CSS | Mapbox Studio | BSD | Artistic style meant to look like https://blog.mapbox.com/space-station-earth-183dc420b211[space station surface] (a https://github.com/hholzgra/mapbox-studio-space-station.tm2/tree/dev-osm2pgsql[fork using `osm2pgsql` db as data source exists)
 | | | | | | |
 |====================
 
