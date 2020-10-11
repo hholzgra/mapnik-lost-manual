@@ -482,30 +482,79 @@ For more details see the https://gdal.org/drivers/vector/osm.html[original GDAL 
 |====================
 | Parameter | Type | Default | Description 
 4+| Connection parameters
-| host | string | | PostgreSQL server host name or address
-| port | string | | PostgreSQL server port
-| user | string | | Database user
-| password | string | | Database user password
-| dbname | string | | Name of database to use
+| host | string | none | PostgreSQL server host name or address
+| port | string | none | PostgreSQL server port
+| user | string | none | Database user
+| password | string | none | Database user password
+| dbname | string | none | Name of database to use 
 | connect_timeout | int | 4 | Connect timeout in seconds
 | persist_connection | boolean | true | Reuse connection for subsequent queries
 4+| Other parameters
-| autodetect_key_field | | |
-| cursor_size | | |
-| estimate_extent | | |
-| extent | | |
-| extent_from_subquery | | |
-| geometry_field  | | |
-| geometry_table  | | |
-| initial_size | | |
-| key_field | | |
-| row_limit | | |
-| simplify_dp_preserve | | |
-| simplify_geometries | | |
-| srid | int | 0 | 
-| table | | |
-| twkb_encoding | | |
+| autodetect_key_field | boolean | false | Whether to auto detect primary key if none is given in `key_field`
+| cursor_size | int | 0 | Fetch this many features at a time, or all when zero.
+| estimate_extent | boolean | false | Try to estimate the extent from the data retrieved 
+| extent | floatx4 | none | Extent bounding box
+| extent_from_subquery | boolean | false | 
+| geometry_field  | string | none | The result field that the geometry to process is in. Auto detected when not given.
+| geometry_table  | string | none | Name of table geometry is retrieved from. Auto detected when not given, but this may fail for complex queries.
+| initial_size | int | 1 | initial connection pool size
+| intersect_min_field | int | 0 |
+| intersect_max_field | int | 0 |
+| key_field | string | none | Primary key field of table geometry is retrieved from. Auto detected when not given and `autodetect_key_field` is true.
+| key_field_as_attribute | boolean | true |
+| max_size | int | 10 | Max. connection pool size
+| max_async_connections | int | 1 | Run that many queries in parallel, must be <= `max_size`
+| row_limit | int | 0 | Only return this many features if > 0
+| simplify_dp_preserve | boolean | false |
+| simplify_dp_ratio | float | 1/20 | 
+| simplify_geometries | boolean | false |
+| simplify_prefiter | float | 0.0 |
+| simplify_snap_ratio | float | 1/40 | 
+| srid | int | 0 | SRID of returned features, auto detected when zero
+| table | string | none | Name of a table, or SQL query text
+| twkb_rounding_adjustment | float | 0.0 |
+| twkb_encoding | boolean | false |
 |====================
+
+Aside from the basic PostgreSQL connection parameters (`host`, `port`, `user`, `password`, `dbname`), you can also add additional https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS[connection parameter keywords] in the `host` or `dnname` parameter (probably the others, too, but this I didn't test yet) for more fine grained connection control.
+
+You can e.g. set a datasource specific application name with this:
+[source,xml]
+----
+<Parameter name='host'>localhost application_name=my_sytle</Parameter>
+----
+
+Or set a specific schema search path:
+[source,xml]
+----
+<Parameter name='host'>localhost options='-c search_path=foo,public'</Parameter>
+----
+
+Probably most important though, this allows for using SSL/TLS. In it's most basic form you'd just enforce SSL/TLS encryption being used:
+[source,xml]
+----
+<Parameter name='host'>localhost sslmode=require</Parameter>
+----
+
+The PostGIS datasource supports two different methods to return data to Mapnik: in regular well known binary (WKB) or -- with PostGIS v2.2 or later -- tiny well known binary (https://github.com/TWKB/Specification/blob/master/twkb.md[TWKB]) format. This is controlled by the `twkb_encoding` option. 
+
+When using TWKB the `twkb_rounding_adjustment` parameter then controls the resolution the TWKB aims for. A value of 0.5 would lead to a coarseness of about one pixel, the default of 0.0 would be in the range of 0.05 to 0.2 pixels usually. This is done by using the `twkb_rounding_adjustment` parameter to calculate the `tolerance` paramter for https://postgis.net/docs/ST_Simplify.html[`ST_Simplify()`] and https://postgis.net/docs/ST_RemoveRepeatedPoints.html[`ST_RemoveRepeatedPoints()`], and the `decimaldigits_xy` parater for https://postgis.net/docs/ST_AsTWKB.html[`ST_AsTWKB()`]
+
+When using WKB (the default), simplification can be controlled via `simplify_geometries`, `simplify_snap_ratio`, `simplify_dp_preserve`, `simplify_dp_ratio`, `simplify_prefilter`, `simplify_clip_resolution` parameters. (TODO: describe in more detail)
+
+`simplify_clip_resolution` is use for both formats, and controls at what map scale geometries start getting clipped to the rendering window when non-zero.
+
+
+
+
+The following special tokens can be used in SQL queries, and will be replaced b the actual mapnik values for the current render request:
+
+`!bbox!`:: the map bounding box
+`!scale_denominator!`:: the current scale denominator
+`!pixel_width!`,`!pixel_height!`:: width and height of pixels (TODO: depens on STR, is ° with latlon and meters with google mercator?)
+
+
+
 
 ===== Raster
 
@@ -1637,7 +1686,7 @@ Some styles are base map stles that aim at providing a full featured map, while 
 | https://github.com/gravitystorm/openstreetmap-carto[OpenStreetMap Carto] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | CC0 |  The current default OpenStreetMap style
 | Mapnik OSM | base | no | MapnikXML | `osm2pgsql`, shapefiles | ? | Older OpenStreetMap style that was eventually replaced by OpenStreetMap Carto
 | https://github.com/imagico/osm-carto-alternative-colors[Alternative Colors] | base | yes | CartoCSS | `osm2pgsql`, shapefiles | CC0 | Based on OSM Carto, but with an alternative color scheme
-| https://github.com/nobohan/OpenArdenneMap[OpenArdenne] | base | yes | Carto CSS | yes | `osm2pgsql` or `imposm`, shapefiles | CC-BY-SA | A topographic style focused on the Ardenne area in Belgium
+| https://github.com/nobohan/OpenArdenneMap[OpenArdenne] | base | yes | Carto CSS | `osm2pgsql` or `imposm`, shapefiles | CC-BY-SA | A topographic style focused on the Ardenne area in Belgium
 | https://github.com/jbelien/openstreetmap-carto-be[Belgian] | base |yes | CartoCSS | `osm2pgsql`, shapefiles | CC0 | Belgian variant of OSM Carto, also comes with all-dutch and all-french variants
 | https://github.com/stekhn/blossom[Blossom] | base | no | Carto CSS | `osm2pgsql` or `imposm`, shapefiles| BSD? | A low contrast style based on OSM Bright and Pandonia
 | https://github.com/cyclosm/cyclosm-cartocss-style[CyclOSM ] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | BSD | A map style focused on cyclists
@@ -1646,7 +1695,7 @@ Some styles are base map stles that aim at providing a full featured map, while 
 | HikeBike | base | no | Carto CSS | `osm2pgsql`, shapefiles | CC0 |  A map style focused on cyclists
 | https://github.com/hotosm/HDM-CartoCSS[Humanitarian] | base | yes |Carto CSS | | | The Humanitarian OpenStreetMap style
 | https://github.com/MapQuest/MapQuest-Mapnik-Style[MapQuest] | base | no | Mapnik XML | `osm2pgsql`, shapefiles | MIT | Old MapQuest styles from around 2010
-https://github.com/yohanboniface/OpenRiverboatMap[OpenRiverBoat] | base | no | Carto CSS | `osm2pgsql`, shapefiles | WTFPL | A map for navigating waterways
+| https://github.com/yohanboniface/OpenRiverboatMap[OpenRiverBoat] | base | no | Carto CSS | `osm2pgsql`, shapefiles | WTFPL | A map for navigating waterways
 | https://github.com/mapbox/osm-bright[OsmBright] | base | no? | Carto CSS | `osm2pgsql` or `imposm`, shapefiles | BSD | A rather low contrast style, meant to be used as base for own styles
 | https://github.com/hholzgra/Pandonia[Pandonia] | base | no | Carto CSS | `osm2pgsql`, shapefiles | BSD? | A low contrast style based on OSM Bright, originally created by Flickr
 | https://github.com/openmaptiles/mapbox-studio-pencil.tm2[Pencil] | base | no | Carto CSS | Mapbox Studio | BSD | Artistic style looking like https://blog.mapbox.com/designing-the-pencil-map-style-f8c57dae0e88[hand drawn with a pencil] (a https://github.com/hholzgra/mapbox-studio-pencil.tm2/commits/dev-osm2pgsql[fork using `osm2pgsql` db as data source exists)
