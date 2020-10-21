@@ -23,6 +23,18 @@
 | placement             | string        | point    | One of `point`, `line`, `vertex`, `interior`, `grid`, `alternating-grid`
 | placement-type        | string        | dummy    | Algorithm to use to avoid text overlaps, one of `dummy`, `simple`, `list`
 | placements            | string        | none     | If "placement-type" is set to "simple", use this "POSITIONS,[SIZES]" string. An example is text-placements: "E,NE,SE,W,NW,SW" (TODO: better explanation)
+| wrap-width            | integer       | none     | Try to wrap text if it gets longer than this many pixels
+| wrap-before           | boolean       | false    | Wrap before or after reaching wrap-width
+| repeat-wrap-character | boolean       | false    | Keep wrap character and repeat it on new line
+| wrap-character        | string        | none     | Break text at this character only instead of using general unicode line break algorithm
+| label-position-tolerance | float | spacing/2 | Allow displacement by this many pixel with placement=line
+| max-char-angle-delta | float | 22.5 | Max.  angle change between adjacent characters in degrees, to avoid placing text around sharp corners
+| avoid-edges | boolean | false | Avoid placing text near image edges
+| margin | float | none | Minimum distance from other text, shields or markers
+| repeat-distance | float | none | Minimum distance from other labels with same text content across geometrys
+| min-padding | float | none | Minimum placement distance from image edges 
+| min-path-length | float | none | Minimum length of lines or polygon boundings to place text on
+| allow-overlap | bool | false | Allow text to overlap with other text or markers
 |====================
 
 .TextSymbolizer size
