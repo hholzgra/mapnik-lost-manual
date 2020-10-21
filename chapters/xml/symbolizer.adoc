@@ -542,6 +542,29 @@ image::examples/ShieldSymbolizer-grid-width-height.svg[align="center"]
 
 ==== TextSymbolizer
 
+.TextSymbolizer specific Attributes
+[width="100%",options="header,unbreakable",cols="m,d,d,d"]
+|====================
+| Attribute             | Type          | Default  | Description
+| face-name             | string        | none     | Face name to use
+| fontset-name          | string        | none     | FontSet name
+| size                  | float         | 10.0     | Font size in pixels
+| fill                  | color         | black    | Text fill color
+| character-spacing     | float         | 0.0      | Additional space between characters in pixels
+| line-spacing          | float         | 0.0      | Extra vertical space for multi line output in pixels
+| opacity               | float         | 1.0      | Text opacity
+| font-feature-settings | string        | none     | Comma separated list of https://drafts.csswg.org/css-fonts-3/#propdef-font-feature-settings[OpenType typographic features]
+| halo-fill             | color         | white    | Text halo color
+| halo-opacity          | float         | 1.0      | Text halo opacity
+| halo-radius           | float         | 0.0      | Text halo radius in pixels
+| halo-rasterizer       | full, fast    | full     | Text halo rasterizing algorithm when using Agg renderer
+| halo-comp-op          | string        | src-over | Compositing operator to use for the halo
+| spacing               | integer       | 0        | Spacing between text labels on lines if > 0 (in pixels?)
+| placement             | string        | point    | One of `point`, `line`, `vertex`, `interior`, `grid`, `alternating-grid`
+| placement-type        | string        | dummy    | Algorithm to use to avoid text overlaps, one of `dummy`, `simple`, `list`
+| placements            | string        | none     | If "placement-type" is set to "simple", use this "POSITIONS,[SIZES]" string. An example is text-placements: "E,NE,SE,W,NW,SW" (TODO: better explanation)
+|====================
+
 .TextSymbolizer size
 ====
 [source,xml]
