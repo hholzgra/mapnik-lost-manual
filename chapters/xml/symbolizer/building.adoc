@@ -1,0 +1,50 @@
+:sourcedir: ../../..
+
+==== BuildingSymbolizer
+
+The ((`<BuildingSymbolizer>`)) renders polygons in a very simple pseudo-3D fashion. The givin fill color us used for the "roof", while its individual red, green and blue values are multiplied by 0.8 to create a more darkened tone for the "walls"
+
+.BuildingSymbolizer Attributes
+[options="header,unbreakable"]
+|===
+| Attribute      | Value      | Default
+| <<example-buildingsymbolizer-fill,((`fill`))>>         | CSS color  | gray
+| <<example-buildingsymbolizer-fill-opacity,((`fill-opacity`))>> | foat       | 1.0
+| <<example-buildingsymbolizer-height,((`height`))>>       | float      | 0
+|===
+
+See also:
+
+* https://github.com/mapnik/mapnik/wiki/BuildingSymbolizer[BuildingSymbolier in Mapnik Wiki]
+* http://mapnik.org/mapnik-reference/#3.0.22/building[BuildingSymbolizer in Mapnik Reference]
+
+
+.BuildingSymbolizer fill
+[#example-buildingsymbolizer-fill]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/BuildingSymbolizer-fill.xml[]
+-----
+image::examples/BuildingSymbolizer-fill.svg[align="center"]
+====
+
+.BuildingSymbolizer fill opacity
+[#example-buildingsymbolizer-fill-opacity]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/BuildingSymbolizer-fill-opacity.xml[]
+-----
+image::examples/BuildingSymbolizer-fill-opacity.svg[align="center"]
+====
+
+.BuildingSymbolizer height
+====
+[#example-buildingsymbolizer-height]
+[source,xml]
+-----
+include::{sourcedir}/examples/BuildingSymbolizer-height.xml[]
+-----
+image::examples/BuildingSymbolizer-height.svg[align="center"]
+====

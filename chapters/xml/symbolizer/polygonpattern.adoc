@@ -1,0 +1,67 @@
+:sourcedir: ../../..
+
+==== PolygonPatternSymbolizer
+
+.PolygonPatternSymbolizer Attributes
+[options="header,unbreakable",cols="m,d,d,d"]
+|===
+| Attribute      | Value      | Default | Description
+| file | file path | none | 
+| base | string | none | name of a <FileSource> to find the input file in  
+| alignment | `gobal`/`local`| `global` | Align image to polygon (`local`) or to map borders (`global`)  
+| gamma | float | 1.0 |  
+| gamma-method |  |   |  
+| opacity | float | 1.0 | Filling opacity. May be somewhat transparent even at 1.0 if the fill pattern itself is not fully opaque.
+| clip |  |   |  
+| simplify |  |   |  
+| simplify-algorithm |  |   |  
+| smooth | float | 0.0 |  
+| transform | SVG Transform | none | Transformation is applied to the fill pattern 
+| geometry-transform | SVG Transform | none | Transformation is applied to the polygon geometry itself
+| comp-op | SVG compositingg | none |  
+|===
+
+.PolygonPatternSymbolizer file
+[#example-polygonpatternsymbolizer-file]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PolygonPatternSymbolizer-file.xml[]
+-----
+image::examples/PolygonPatternSymbolizer-file.png[align="center"]
+====
+
+.PolygonPatternSymbolizer alignment
+[#example-polygonpatternsymbolizer-alignment]
+====
+`global` alignment makes the fill pattern align across touching polygon borders, `local` alignment makes each filled polygon of the same shape look exactly the same.
+[source,xml]
+-----
+include::{sourcedir}/examples/PolygonPatternSymbolizer-alignment.xml[]
+-----
+image::examples/PolygonPatternSymbolizer-alignment.png[align="center"]
+====
+
+.PolygonPatternSymbolizer transform
+[#example-polygonpatternsymbolizer-transform]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PolygonPatternSymbolizer-transform.xml[]
+-----
+image::examples/PolygonPatternSymbolizer-transform.png[align="center"]
+====
+
+.PolygonPatternSymbolizer geometry transform
+[#example-polygonpatternsymbolizer-geometry-transform]
+====
+Unlike wiht PointSymbolizer `rotate()` does not seem to rotate around the geometry center, but around the map origin at `(0 0)` instead?
+[source,xml]
+-----
+include::{sourcedir}/examples/PolygonPatternSymbolizer-geometry-transform.xml[]
+-----
+image::examples/PolygonPatternSymbolizer-geometry-transform.png[align="center"]
+====
+
+TODO: gamma, gamma-method, clip, simplify, simplify-method, comp-op
+

@@ -1,0 +1,126 @@
+:sourcedir: ../../..
+
+==== ShieldSymbolizer
+
+A shield symbolizer is basically a combination of a point and a text symbolizer, making sure that both image and text are always shown at the same position, and that collision rules apply to both together instead of individually. The name stems from the original use case to show highway shields.
+
+ShieldSymbolizer inherits almost all attributes from the <<TextSymbolizer>>, with a small number of additions and modifications.
+
+.ShieldSymbolizer specific Attributes
+[width="100%",options="header,unbreakable",cols="m,d,d,d"]
+|====================
+| Attribute        | Type          | Default | Description
+| file             | file path     | none | Shield image to use
+| base             | string | none | name of a <FileSource> to find the input file in
+| opacity          | float         | 1.0 | Opacity to use for the shield image
+| text-opacity     | float         | 1.0 | Opacity to use for the shield text
+| unlock-image     | boolean       | false | `dx`,`dy` move image and text when `true`, text only when `false`
+| dx               | float         | 0.0 | Move text, and image if `unlock-image=false`, horizontallly
+| dy               | float         | 0.0 | Move text, and image if `unlock-image=false`, vertically
+| shield-dx        | float         | 0.0 | Move image horizontally only
+| shield-dy        | float         | 0.0 | Move image vertically only
+| transform        | SVG transformation | none | Transform image
+|====================
+
+/*
+name
+file
+face-name
+unlock-image
+size
+fill
+placement
+avoid-edges
+allow-overlap
+margin
+repeat-distance
+min-distance
+spacing
+min-padding
+label-position-tolerance
+wrap-width
+wrap-before
+wrap-character
+halo-fill
+halo-radius
+halo-rasterizer
+halo-transform
+halo-comp-op
+halo-opacity
+character-spacing
+line-spacing
+text-dx
+text-dy
+dx
+dy
+opacity
+horizontal-alignment
+vertical-alignment
+placement-type
+text-transform
+justify-alignment
+transform
+clip
+simplify
+simplify-algorithm
+smooth
+comp-op
+grid-cell-width
+grid-cell-height
+offset
+*/
+
+.ShieldSymolizer
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/ShieldSymbolizer.xml[]
+-----
+image::examples/ShieldSymbolizer.svg[align="center"]
+====
+
+.ShieldSymolizer spacing
+====
+`spacing` controls the distance between shields on a single line feature. When no spacing is given only a single shield will be attemted to be placed.
+
+See also `repeat-distance`, which controls how far shields with the same text should be set apart in general, even when placed on different geometries.
+[source,xml]
+-----
+include::{sourcedir}/examples/ShieldSymbolizer-spacing.xml[]
+-----
+image::examples/ShieldSymbolizer-spacing.svg[align="center"]
+====
+
+.ShieldSymolizer placement
+====
+`placement` Controls where the shield is actually placed:
+
+`point`:: Places the shield just once at the center of the geometry. In case of a polygon that may actually be outside of the polygon surface, depending on its shape
+
+`interior`:: Similar to `point`, but makes sure that the shield is placed inside a polygon even if its center point is actually on its outside
+
+`line`:: When `spacing` is larger than zero the shield is repeatedly drawn along a line or a polygons outline with `spacing` pixels between shields
+
+`vertex`:: Tries to place the shield on each vertex point of a line or a polygons outline
+
+`grid`:: When `grid-cell-width` and `grid-cell-height` are greater than zero the shield is repeatedly drawn into a polygons surface, using grid cells of the given width and height. Note that the shield is not clipped at the border of the polygon, so some shield parts may be drawn slightly outside of the polygon surface.
+
+`alternating-grid`:: Similar to `grid`, but each second row is horizontally displaced by half of `grid-cell-width`
+
+[source,xml]
+-----
+include::{sourcedir}/examples/ShieldSymbolizer-placement.xml[]
+-----
+image::examples/ShieldSymbolizer-placement.svg[align="center"]
+====
+
+.ShieldSymbolizer grid width/height
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/ShieldSymbolizer-grid-width-height.xml[]
+-----
+image::examples/ShieldSymbolizer-grid-width-height.svg[align="center"]
+====
+
+

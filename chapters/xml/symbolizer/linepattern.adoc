@@ -1,0 +1,39 @@
+:sourcedir: ../../..
+
+==== LinePatternSymbolizer
+
+A LinePatternSymbolizer draws a given pattern image along a line, repeating the pattern as often as needed, and transforming it accordingly to follow the turns of the line.
+
+[WARNING]
+====
+Even when giving the pattern as a SVG file, internally it will be converted to PNG before applying transformations to it to make it fit the line. So when creating SVG or PDF output, the result can still become a bit blurry when zooming in on LinePatternSymbolizer output.
+====
+
+.LinePatternSymbolizer Attributes
+[options="header,unbreakable",cols="m,d,d,d"]
+|===
+| Attribute      | Value      | Default | Description
+| <<example-linepatternsymbolizer-file,((file))>>         | file path |
+| ((base))    | string | none| name of a <FileSource> to find the input file in
+| opacity |  |  |  
+| offset  |  |  |  
+| transform |  |  |  
+|  |  |  |  
+|  |  |  |  
+|  |  |  |  
+|  |  |  |  
+|===
+
+.LinePatternSymbolizer file
+[#example-linepatternsymbolizer-file]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LinePatternSymbolizer-file.xml[]
+-----
+image::examples/LinePatternSymbolizer-file.png[align="center"]
+// need to use PNG here as ascidoctor-pdf, or actually the 
+// prawn-svg renderer used by it, does not support SVG
+// <pattern> tags
+// see also https://github.com/mogest/prawn-svg/issues/119
+====

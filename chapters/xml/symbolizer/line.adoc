@@ -1,0 +1,124 @@
+:sourcedir: ../../..
+
+==== LineSymbolizer
+
+The LineSymbolizer specifies how to render linear geometries like lines and polygon outlines. Most of the LineSymbolizer attributes define stroke attributes of the line to draw, like color, width, how line joins and ends should look, and even dash patterns.
+
+There are also some attributes that change the lines geometry itself, like offset, smooth and simplify.
+
+
+.LineSymbolizer
+[options="header,unbreakable",cols="m,d,d,d"]
+|====================
+| Attribute               | Value | Default | Description 
+| ((clip))                | boolean | false |  
+| ((comp-op))             | SVG compositing |  |
+| ((geometry-transform))  | SVG transform |  | 
+| <<example-linesymbolizer-offset,((offset))>>              | float | 0 |  
+| ((rasterize))           | full, fast | full |  
+| <<example-linesymbolizer-smooth,((smooth))>>              | 0.0 - 1.0 | 1 |  
+| ((simplify))            | float | 0 |  
+| ((simplify-algorithm))  | radial-distance, zhao-saalfeld, visvalingam-whyatt, douglas-peucker | radial-distance |  
+| <<example-linesymbolizer-stroke,((stroke))>>              | color | black |  
+| <<example-linesymbolizer-stroke-dasharray,((stroke-dasharray))>>    | number list | none |  
+| ((stroke-dashoffset))   | number list | none | experimental only  
+| ((stroke-gamma))        | 0.0 - 1.0 | 1 |  
+| ((stroke-gamma-method)) | power, linear, none, threshold, multiply | power |  
+| <<example-linesymbolizer-stroke-linejoin,((stroke-linejoin))>>     | bevel, miter, miter-revert, round | miter |  
+| <<example-linesymbolizer-stroke-linecap,((stroke-linecap))>>      | butt, round, square | butt |  
+| ((stroke-miterlimit))   | float     | 4 |  
+| <<example-linesymbolizer-stroke-opacity,((stroke-opacity))>>      | 0.0 - 1.0 | 1 |  
+| <<example-linesymbolizer-stroke-width,((stroke-width))>>        | float     | 1 |  
+|====================
+
+
+.LineSymbolizer smooth
+[#example-linesymbolizer-smooth]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-smooth.xml[]
+-----
+image::examples/LineSymbolizer-smooth.svg[align="center"]
+====
+
+.LineSymbolizer stroke
+[#example-linesymbolizer-stroke]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke.xml[]
+-----
+image::examples/LineSymbolizer-stroke.svg[align="center"]
+====
+
+.LineSymbolizer dash array
+[#example-linesymbolizer-stroke-dasharray]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke-dasharray.xml[]
+-----
+image::examples/LineSymbolizer-stroke-dasharray.svg[align="center"]
+====
+
+.LineSymbolizer stroke linejoin
+[#example-linesymbolizer-stroke-linejoin]
+====
+TODO: prevent image clipping on top edge
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke-linejoin.xml[]
+-----
+image::examples/LineSymbolizer-stroke-linejoin.svg[align="center"]
+====
+
+.LineSymbolizer stroke linecap
+[#example-linesymbolizer-stroke-linecap]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke-linecap.xml[]
+-----
+image::examples/LineSymbolizer-stroke-linecap.svg[align="center"]
+====
+
+.LineSymbolizer stroke opacity
+[#example-linesymbolizer-stroke-opacity]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke-opacity.xml[]
+-----
+image::examples/LineSymbolizer-stroke-opacity.svg[align="center"]
+====
+
+.LineSymbolizer stroke width
+[#example-linesymbolizer-stroke-width]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke-width.xml[]
+-----
+image::examples/LineSymbolizer-stroke-width.svg[align="center"]
+====
+
+.LineSymbolizer offset
+[#example-linesymbolizer-offset]
+====
+Note that unlike in other LineSymbolizer examples this is three times the same geometry, but with different `offset`.
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-offset.xml[]
+-----
+image::examples/LineSymbolizer-offset.svg[align="center"]
+====
+
+See also:
+
+* https://github.com/mapnik/mapnik/wiki/LineSymbolizer[LineSymbolier in Mapnik Wiki]
+* http://mapnik.org/mapnik-reference/#3.0.22/line[LineSymbolizer in Mapnik Reference]
+
+TODO: gamma, gamma-method, dash-offset, miter-limit, clip, simplify, simplify-algorithm, rasterize, geometry-transform, comp-op
+
+
