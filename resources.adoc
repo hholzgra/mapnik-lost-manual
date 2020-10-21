@@ -1,0 +1,64 @@
+== Resources
+
+=== Mapnik styles 
+
+This is an (incomplete) list of styles for Mapnik that are available under an open source license. The list includes 'pure' Mapnik XML styles, and styles that can easily be converted to Mapnik XML, like those using CartoCSS.
+
+Most Styles fall into two basic categories when it comes to their main data source, they either use derivations of the `osm2pgsql` schema used by the OpenStreetMap CartoCSS style, or customized `imposm` import schemas.
+
+Most styles also use shapefiles for some of their layers, openly available shapefiles are list in the <<Shapefiles>> section.
+
+Some styles are base map stles that aim at providing a full featured map, while others are only meant to be used to generated overlays that add some specific type of information on top of the output of another base style as an overlay.
+
+.Mapnik Styles
+[width="100%",options="header"]
+|====================
+| Name | Type | Maintained | Language | Data source | License | Description  
+| https://github.com/gravitystorm/openstreetmap-carto[OpenStreetMap Carto] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | CC0 |  The current default OpenStreetMap style
+| Mapnik OSM | base | no | MapnikXML | `osm2pgsql`, shapefiles | ? | Older OpenStreetMap style that was eventually replaced by OpenStreetMap Carto
+| https://github.com/imagico/osm-carto-alternative-colors[Alternative Colors] | base | yes | CartoCSS | `osm2pgsql`, shapefiles | CC0 | Based on OSM Carto, but with an alternative color scheme
+| https://github.com/nobohan/OpenArdenneMap[OpenArdenne] | base | yes | Carto CSS | `osm2pgsql` or `imposm`, shapefiles | CC-BY-SA | A topographic style focused on the Ardenne area in Belgium
+| https://github.com/jbelien/openstreetmap-carto-be[Belgian] | base |yes | CartoCSS | `osm2pgsql`, shapefiles | CC0 | Belgian variant of OSM Carto, also comes with all-dutch and all-french variants
+| https://github.com/stekhn/blossom[Blossom] | base | no | Carto CSS | `osm2pgsql` or `imposm`, shapefiles| BSD? | A low contrast style based on OSM Bright and Pandonia
+| https://github.com/cyclosm/cyclosm-cartocss-style[CyclOSM ] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | BSD | A map style focused on cyclists
+| French | base | | | | |
+| https://github.com/giggls/openstreetmap-carto-de[German] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | CC0 | Based on OSM Carto, but using colors and symbols more common to German maps
+| HikeBike | base | no | Carto CSS | `osm2pgsql`, shapefiles | CC0 |  A map style focused on cyclists
+| https://github.com/hotosm/HDM-CartoCSS[Humanitarian] | base | yes |Carto CSS | | | The Humanitarian OpenStreetMap style
+| https://github.com/MapQuest/MapQuest-Mapnik-Style[MapQuest] | base | no | Mapnik XML | `osm2pgsql`, shapefiles | MIT | Old MapQuest styles from around 2010
+| https://github.com/yohanboniface/OpenRiverboatMap[OpenRiverBoat] | base | no | Carto CSS | `osm2pgsql`, shapefiles | WTFPL | A map for navigating waterways
+| https://github.com/mapbox/osm-bright[OsmBright] | base | no? | Carto CSS | `osm2pgsql` or `imposm`, shapefiles | BSD | A rather low contrast style, meant to be used as base for own styles
+| https://github.com/hholzgra/Pandonia[Pandonia] | base | no | Carto CSS | `osm2pgsql`, shapefiles | BSD? | A low contrast style based on OSM Bright, originally created by Flickr
+| https://github.com/openmaptiles/mapbox-studio-pencil.tm2[Pencil] | base | no | Carto CSS | Mapbox Studio | BSD | Artistic style looking like https://blog.mapbox.com/designing-the-pencil-map-style-f8c57dae0e88[hand drawn with a pencil] (a https://github.com/hholzgra/mapbox-studio-pencil.tm2/commits/dev-osm2pgsql[fork using `osm2pgsql` db as data source exists)
+| https://gitlab.com/mvglasow/pistemap[PisteMap] | base | no? | Mapnik XML | `osm2pgsql`, shapefiles | ? | A style optimized for winter sports
+| https://github.com/routexl/osm-routexl[RouteXL] | base | yes? | Carto CSS | `osm2pgsql` or `imposm`, shapefiles | BSD | Another low contrast style based on OSM Bright
+| https://github.com/xyztobixyz/OSM-Swiss-Style[Swiss] | base | no | Carto CSS |  `osm2pgsql`, shapefiles | CC-BY-SA | A style specific to Switzerland, based on OSM Bright
+| https://github.com/geofabrik/toner.git[Toner] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | ISC | A high contrast pure black&white style, originaly created by Stamen and now maintained by Geofabrik
+| https://github.com/Zverik/veloroad[Veloroad] | base | yes? | Carto CSS | `osm2pgsql`, shapefiles | WTFPL | A style focussing on bike infrastructure in Russia
+| https://github.com/mapbox/mapbox-studio-space-station.tm2[Space Station] | no | Carto CSS | Mapbox Studio | BSD | Artistic style meant to look like https://blog.mapbox.com/space-station-earth-183dc420b211[space station surface] (a https://github.com/hholzgra/mapbox-studio-space-station.tm2/tree/dev-osm2pgsql[fork using `osm2pgsql` db as data source exists)
+| | | | | | |
+|====================
+
+=== Shapefiles
+
+Open/free shapefiles are available from multiple sources, including OpenStreetMap, Natural Earth, and others.
+
+==== OpenStreetMap Data
+
+https://osmdata.openstreetmap.de/[OpenStreetMap Data] provides some shapefiles generated from OpenStreetMap data on a regular basis. Compared to raw OSM data these contain data that has been checked for consistency. So when e.g. using the land polygon or water polygon shapefile you won't end up with all of Europe suddenly flodded due to a small coast segment temporarily missing.
+
+==== OpenStreetMap Historical
+
+OpenStreetMap still provides some https://planet.openstreetmap.org/historical-shapefiles/[historical shapefiles] that are used by some older Mapnik styles. These files are no longer regenerated from current data, and should not be used when creating new styles. There are only kept arount for historic backwards compatibility reasons.
+
+==== Natural Earth
+
+https://www.naturalearthdata.com[Natural Earth] provides a lot of free vector and raster map data sets at 1:10m, 1:50m, and 1:110m scales. Data is divided in two general categories: physical and cultural, with lots of interesting and useful feature files below these categories.
+
+All data provided by Natrual Earth is in the public domain (CC0).
+
+==== Geofabrik
+
+http://download.geofabrik.de/[Geofabrik Downloads] do not only provide daily OSM data extracts for continents, countries, and regions, but also shapefiles with selected feature layers for most of these. When running small scale local applications, these can be an alternative to importing OSM data into a database server.
+
+

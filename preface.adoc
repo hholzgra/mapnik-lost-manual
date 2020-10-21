@@ -1,0 +1,47 @@
+[preface]
+== Preface
+
+This is a brain dump of my experience with Mapnik, the map rendering library that powers OpenStreeMap and MapOSMatic, among other things
+
+=== Why yet another ducomentation project?
+
+.Image (c) Randall Munroe https://imgs.xkcd.com/comics/standards.png
+image::images/xkcd-standards.png[]
+
+There are different information sources that document certain aspects of Mapnik, but none are really complete, up to date, and easily understandable at the same time ...
+
+Other existing documentation efforts for Mapnik are:
+
+GitHub Wiki::
+The https://github.com/mapnik/mapnik/wiki[Mapnik Wiki on GitHub] is a weird mix of end user and developer documentation that unfortunately is neither complete nor up to date.
+
+It is also considered dead according to https://github.com/mapnik/mapnik/issues/3543[GitHub issue #3543: "Cancel, abolish, destroy the Wiki"]
+
+Sphinx Docs::
+The https://github.com/mapnik/sphinx-docs[Sphinx Docs] project was an attempt to create a Mapnik manual using the https://www.sphinx-doc.org/[Sphinx Documentation Generator], but this project unfortunately never really got anywhere and has seen no update for the last ten years now.
+
+Doxygen::
+The mapnik source code contains structured comments from which API reference documentation can be generated using https://www.doxygen.nl/[Doxygen]. http://tux-style.de/osm/mapnik/doxygen/html/index.html[Generated output] can be found online, but is not necessarily fully up to date.
+
+API reference::
+There is also http://mapnik.org/mapnik-reference/[versioned API reference] documentation maintained outside of the main Mapnik source, in the separate https://github.com/mapnik/mapnik-reference/[Mapnik Reference] project.
+
+XML reference::
+There's a http://gis.19327.n8.nabble.com/attachment/5340415/0/MapnikXMLDescription.pdf[XML reference PDF] created by David Eastcott, but it was written for Mapnik v0.7, while we're at v3.0.23 at the time of this writing, so it's really outdated by now.
+
+[NOTE]
+====
+This list most likely isn't complete ...
+====
+
+=== Why still bother with Mapnik at all?
+
+Even though its development has slowed down quite a bit in recent years, and client side vector tile rendering receives much more love these days, and even Mapnik XML style files are somewhat out of fashion in favor of writing styles using CartoCSS and then converting that to Mapnik XML automatically, there are still many open source Mapnik styles in use out there, especially the Openstreetmap Carto style used for the default Openstreetmap map tiles.
+
+Also for rendering printable formats, which I'm especially interested in, the Mapnik/CairoGraphics tool chain still seems to be a better choice than the OpenGL based vector tile approaches.
+
+The https://print.get-map-org/[MapOSMatic] instance that I'm running makes intensive use of Mapnik not only being able to render PNG tiles, but also bigger documents in both bitmap and vector formats. Especially the capability of rendering into a Cairo Graphis surface comes in handy for this.
+
+=== Why AsciiDoc(tor)?
+
+For someone like me, who comes from a DocBook background (I wrote and translated for the PHP manual, and implemented parts of its translation infrastructure, a long time ago, and also worked with a DocBook generated manual a lot in my MySQL days), AsciiDoc feels more "natural" than MarkDown (which is more single document focussed and not really targeting whole books), or Sphinx to me.

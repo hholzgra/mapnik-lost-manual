@@ -1,0 +1,82 @@
+== Introduction
+
+Mapnik is a Free Toolkit for developing mapping applications. It is written in modern C++ and has Python bindings that support fast-paced agile development. It can comfortably be used for both desktop map design and web development.
+
+=== Concept
+
+Mapnik is a library, not a complete application program. So it always to be linked to at least a minimum of application code that controls the library operations. 
+
+The data flow of mapnik basically is that it reads geospatial data sources and applies presentation styles on the input that decide how to visually present specific geometry objects:
+
+image::images/mapnik-flow-diagram.svg[Mapnik data flow]
+
+In a little more detailed view, starting bottom up from the output side, we have the following basic library objects:
+
+* Symbolizers do the actual output, by taking a geomety and its extra properties and creating actual graphic output from that
+* Filters decide what to actually pass to specific symbolizers instances for output
+* Rules contain one or more filters
+* Styles contain one or more rules
+* Data sources provide actual geometry objects to process
+* Layers combine a data source with one or more styles
+* A map contains one or more layers
+
+TODO: class diagram
+
+All these objects can be created and configured directly in code, but the usual approach is to so by specifying them in a XML style file which is then loaded as a whole into a Mapnik map object at run time.
+
+In the most simple case the application program just creates a Mapnik Map object of a certain size, loads a XML style file, and renderes this style into an output file, e.g. when using the Python Mapnik bindings:
+
+.A minimal Mapnik source and style
+====
+Python API code:
+[source,python]
+----
+#! /usr/bin/env /usr/bin/python3
+
+import mapnik
+
+map = mapnik.Map(600,300) # create a 600x300 pixel map
+
+mapnik.load_map(map, 'points.xml') # loat style file
+
+map.zoom_all() # make sure all data is visible
+map.zoom(-1.1) # zoom out a bit more to avoid clipping
+
+mapnik.render_to_file(map, 'point.png', 'png') # render
+----
+
+Style file including inline data:
+[source,xml]
+----
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='lightgreen'>
+
+  <Style name="style">
+    <Rule>
+      <PointSymbolizer/>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt
+"POINT(10 10)"
+"POINT(20 20)"
+"POINT(30 30)"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+----
+
+Result:
+
+image::images/introduction.png[]
+====
+
+TODO: do the same with pure python and no separate style file
+

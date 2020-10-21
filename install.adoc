@@ -1,0 +1,19 @@
+== Installation
+
+How to install Mapnik ...
+
+=== (((Linux)))Linux
+
+
+
+
+=== Windows
+
+TODO
+
+=== MacOS
+
+TODO
+
+
+=== 

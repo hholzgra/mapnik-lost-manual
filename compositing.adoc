@@ -1,0 +1,3 @@
+== Compositing
+
+TODO: extend OSM default style with a big single red dot marker, similar to CartoCSS example page
