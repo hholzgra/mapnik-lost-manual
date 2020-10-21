@@ -29,6 +29,8 @@ Other existing documentation efforts for Mapnik are:
 GitHub Wiki::
 The https://github.com/mapnik/mapnik/wiki[Mapnik Wiki on GitHub] is a weird mix of end user and developer documentation that unfortunately is neither complete nor up to date.
 
+It is also considered dead according to https://github.com/mapnik/mapnik/issues/3543[GitHub issue #3543: "Cancel, abolish, destroy the Wiki"]
+
 Sphinx Docs::
 The https://github.com/mapnik/sphinx-docs[Sphinx Docs] project was an attempt to create a Mapnik manual using the https://www.sphinx-doc.org/[Sphinx Documentation Generator], but this project unfortunately never really got anywhere and has seen no update for the last ten years now.
 
