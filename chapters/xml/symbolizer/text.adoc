@@ -52,6 +52,15 @@ include::{sourcedir}/examples/TextSymbolizer-character-spacing.xml[]
 image::examples/TextSymbolizer-character-spacing.svg[align="center"]
 ====
 
+.TextSymbolizer line spacing
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-line-spacing.xml[]
+-----
+image::examples/TextSymbolizer-line-spacing.svg[align="center"]
+====
+
 .TextSymbolizer spacing
 ====
 [source,xml]
