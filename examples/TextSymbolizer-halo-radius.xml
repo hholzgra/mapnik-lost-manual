@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <TextSymbolizer face-name="DejaVu Sans Bold" size="24" fill="black" halo-fill="red" halo-radius="[radius]">[radius]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,radius
+"POINT(0 0)",1
+"POINT(1 0)",2
+"POINT(2 0)",3
+"POINT(3 0)",4
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+

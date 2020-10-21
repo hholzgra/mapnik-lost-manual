@@ -101,3 +101,31 @@ include::{sourcedir}/examples/TextSymbolizer-minimum-path-length.xml[]
 image::examples/TextSymbolizer-minimum-path-length.svg[align="center"]
 ====
 
+
+.TextSymbolizer text halo fill
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-halo-fill.xml[]
+-----
+image::examples/TextSymbolizer-halo-fill.svg[align="center"]
+====
+
+.TextSymbolizer text halo radius
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-halo-radius.xml[]
+-----
+image::examples/TextSymbolizer-halo-radius.svg[align="center"]
+====
+
+.TextSymbolizer text halo opacity
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-halo-opacity.xml[]
+-----
+image::examples/TextSymbolizer-halo-opacity.svg[align="center"]
+====
+
