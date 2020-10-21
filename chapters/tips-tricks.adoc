@@ -1,3 +1,5 @@
+:sourcedir: ..
+
 == Tips and Tricks
 
 === SVG and PDF document versions
@@ -48,7 +50,7 @@ One example that makes use of this is MapOSMatic, which adds things like a map t
 ====
 [source,python]
 -----
-include::examples/cairo-and-mapnik.py[]
+include::{sourcedir}/examples/cairo-and-mapnik.py[]
 -----
 image::examples/cairo-and-mapnik.svg[align="center"]
 ====

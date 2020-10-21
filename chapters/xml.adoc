@@ -1,3 +1,5 @@
+:sourcedir: ..
+
 == Mapnik XML
 
 [NOTE]
@@ -173,7 +175,7 @@ Processig performance can be improved by creating an additional `.index` index f
 ====
 [source,xml]
 ----
-include::examples/DataSource-GeoJSON.xml[]
+include::{sourcedir}/examples/DataSource-GeoJSON.xml[]
 ----
 image::examples/DataSource-GeoJSON.svg[align="center"]
 ====
@@ -440,7 +442,7 @@ Shapefile processing performance can be increased by creating an index file usin
 ====
 [source,xml]
 ----
-include::examples/DataSource-Shape.xml[]
+include::{sourcedir}/examples/DataSource-Shape.xml[]
 ----
 image::examples/DataSource-Shape.svg[align="center"]
 ====
@@ -836,7 +838,7 @@ See also:
 ====
 [source,xml]
 -----
-include::examples/BuildingSymbolizer-fill.xml[]
+include::{sourcedir}/examples/BuildingSymbolizer-fill.xml[]
 -----
 image::examples/BuildingSymbolizer-fill.svg[align="center"]
 ====
@@ -846,7 +848,7 @@ image::examples/BuildingSymbolizer-fill.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/BuildingSymbolizer-fill-opacity.xml[]
+include::{sourcedir}/examples/BuildingSymbolizer-fill-opacity.xml[]
 -----
 image::examples/BuildingSymbolizer-fill-opacity.svg[align="center"]
 ====
@@ -856,7 +858,7 @@ image::examples/BuildingSymbolizer-fill-opacity.svg[align="center"]
 [#example-buildingsymbolizer-height]
 [source,xml]
 -----
-include::examples/BuildingSymbolizer-height.xml[]
+include::{sourcedir}/examples/BuildingSymbolizer-height.xml[]
 -----
 image::examples/BuildingSymbolizer-height.svg[align="center"]
 ====
@@ -900,7 +902,7 @@ There are also some attributes that change the lines geometry itself, like offse
 ====
 [source,xml]
 -----
-include::examples/LineSymbolizer-smooth.xml[]
+include::{sourcedir}/examples/LineSymbolizer-smooth.xml[]
 -----
 image::examples/LineSymbolizer-smooth.svg[align="center"]
 ====
@@ -910,7 +912,7 @@ image::examples/LineSymbolizer-smooth.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/LineSymbolizer-stroke.xml[]
+include::{sourcedir}/examples/LineSymbolizer-stroke.xml[]
 -----
 image::examples/LineSymbolizer-stroke.svg[align="center"]
 ====
@@ -920,7 +922,7 @@ image::examples/LineSymbolizer-stroke.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/LineSymbolizer-stroke-dasharray.xml[]
+include::{sourcedir}/examples/LineSymbolizer-stroke-dasharray.xml[]
 -----
 image::examples/LineSymbolizer-stroke-dasharray.svg[align="center"]
 ====
@@ -931,7 +933,7 @@ image::examples/LineSymbolizer-stroke-dasharray.svg[align="center"]
 TODO: prevent image clipping on top edge
 [source,xml]
 -----
-include::examples/LineSymbolizer-stroke-linejoin.xml[]
+include::{sourcedir}/examples/LineSymbolizer-stroke-linejoin.xml[]
 -----
 image::examples/LineSymbolizer-stroke-linejoin.svg[align="center"]
 ====
@@ -941,7 +943,7 @@ image::examples/LineSymbolizer-stroke-linejoin.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/LineSymbolizer-stroke-linecap.xml[]
+include::{sourcedir}/examples/LineSymbolizer-stroke-linecap.xml[]
 -----
 image::examples/LineSymbolizer-stroke-linecap.svg[align="center"]
 ====
@@ -951,7 +953,7 @@ image::examples/LineSymbolizer-stroke-linecap.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/LineSymbolizer-stroke-opacity.xml[]
+include::{sourcedir}/examples/LineSymbolizer-stroke-opacity.xml[]
 -----
 image::examples/LineSymbolizer-stroke-opacity.svg[align="center"]
 ====
@@ -961,7 +963,7 @@ image::examples/LineSymbolizer-stroke-opacity.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/LineSymbolizer-stroke-width.xml[]
+include::{sourcedir}/examples/LineSymbolizer-stroke-width.xml[]
 -----
 image::examples/LineSymbolizer-stroke-width.svg[align="center"]
 ====
@@ -972,7 +974,7 @@ image::examples/LineSymbolizer-stroke-width.svg[align="center"]
 Note that unlike in other LineSymbolizer examples this is three times the same geometry, but with different `offset`.
 [source,xml]
 -----
-include::examples/LineSymbolizer-offset.xml[]
+include::{sourcedir}/examples/LineSymbolizer-offset.xml[]
 -----
 image::examples/LineSymbolizer-offset.svg[align="center"]
 ====
@@ -1013,7 +1015,7 @@ Even when giving the pattern as a SVG file, internally it will be converted to P
 ====
 [source,xml]
 -----
-include::examples/LinePatternSymbolizer-file.xml[]
+include::{sourcedir}/examples/LinePatternSymbolizer-file.xml[]
 -----
 image::examples/LinePatternSymbolizer-file.png[align="center"]
 // need to use PNG here as ascidoctor-pdf, or actually the 
@@ -1051,7 +1053,7 @@ TODO: attribute table, examples
 ====
 [source,xml]
 -----
-include::examples/PolygonSymbolizer-fill.xml[]
+include::{sourcedir}/examples/PolygonSymbolizer-fill.xml[]
 -----
 image::examples/PolygonSymbolizer-fill.svg[align="center"]
 ====
@@ -1061,7 +1063,7 @@ image::examples/PolygonSymbolizer-fill.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/PolygonSymbolizer-fill-opacity.xml[]
+include::{sourcedir}/examples/PolygonSymbolizer-fill-opacity.xml[]
 -----
 image::examples/PolygonSymbolizer-fill-opacity.svg[align="center"]
 ====
@@ -1071,7 +1073,7 @@ image::examples/PolygonSymbolizer-fill-opacity.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/PolygonSymbolizer-smooth.xml[]
+include::{sourcedir}/examples/PolygonSymbolizer-smooth.xml[]
 -----
 image::examples/PolygonSymbolizer-smooth.svg[align="center"]
 ====
@@ -1102,7 +1104,7 @@ image::examples/PolygonSymbolizer-smooth.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/PolygonPatternSymbolizer-file.xml[]
+include::{sourcedir}/examples/PolygonPatternSymbolizer-file.xml[]
 -----
 image::examples/PolygonPatternSymbolizer-file.png[align="center"]
 ====
@@ -1113,7 +1115,7 @@ image::examples/PolygonPatternSymbolizer-file.png[align="center"]
 `global` alignment makes the fill pattern align across touching polygon borders, `local` alignment makes each filled polygon of the same shape look exactly the same.
 [source,xml]
 -----
-include::examples/PolygonPatternSymbolizer-alignment.xml[]
+include::{sourcedir}/examples/PolygonPatternSymbolizer-alignment.xml[]
 -----
 image::examples/PolygonPatternSymbolizer-alignment.png[align="center"]
 ====
@@ -1123,7 +1125,7 @@ image::examples/PolygonPatternSymbolizer-alignment.png[align="center"]
 ====
 [source,xml]
 -----
-include::examples/PolygonPatternSymbolizer-transform.xml[]
+include::{sourcedir}/examples/PolygonPatternSymbolizer-transform.xml[]
 -----
 image::examples/PolygonPatternSymbolizer-transform.png[align="center"]
 ====
@@ -1134,7 +1136,7 @@ image::examples/PolygonPatternSymbolizer-transform.png[align="center"]
 Unlike wiht PointSymbolizer `rotate()` does not seem to rotate around the geometry center, but around the map origin at `(0 0)` instead?
 [source,xml]
 -----
-include::examples/PolygonPatternSymbolizer-geometry-transform.xml[]
+include::{sourcedir}/examples/PolygonPatternSymbolizer-geometry-transform.xml[]
 -----
 image::examples/PolygonPatternSymbolizer-geometry-transform.png[align="center"]
 ====
@@ -1169,7 +1171,7 @@ For putting symbols along a line or the edge of a polygon the MarkerSymbolizer i
 ====
 [source,xml]
 -----
-include::examples/PointSymbolizer-file.xml[]
+include::{sourcedir}/examples/PointSymbolizer-file.xml[]
 -----
 image::examples/PointSymbolizer-file.svg[align="center"]
 ====
@@ -1179,7 +1181,7 @@ image::examples/PointSymbolizer-file.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/PointSymbolizer-opacity.xml[]
+include::{sourcedir}/examples/PointSymbolizer-opacity.xml[]
 -----
 image::examples/PointSymbolizer-opacity.svg[align="center"]
 ====
@@ -1188,7 +1190,7 @@ image::examples/PointSymbolizer-opacity.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/PointSymbolizer-placement.xml[]
+include::{sourcedir}/examples/PointSymbolizer-placement.xml[]
 -----
 image::examples/PointSymbolizer-placement.svg[align="center"]
 ====
@@ -1197,7 +1199,7 @@ image::examples/PointSymbolizer-placement.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/PointSymbolizer-transform-scale.xml[]
+include::{sourcedir}/examples/PointSymbolizer-transform-scale.xml[]
 -----
 image::examples/PointSymbolizer-transform-scale.svg[align="center"]
 ====
@@ -1206,7 +1208,7 @@ image::examples/PointSymbolizer-transform-scale.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/PointSymbolizer-transform-rotate.xml[]
+include::{sourcedir}/examples/PointSymbolizer-transform-rotate.xml[]
 -----
 image::examples/PointSymbolizer-transform-rotate.svg[align="center"]
 ====
@@ -1292,7 +1294,7 @@ offset
 ====
 [source,xml]
 -----
-include::examples/ShieldSymbolizer.xml[]
+include::{sourcedir}/examples/ShieldSymbolizer.xml[]
 -----
 image::examples/ShieldSymbolizer.svg[align="center"]
 ====
@@ -1304,7 +1306,7 @@ image::examples/ShieldSymbolizer.svg[align="center"]
 See also `repeat-distance`, which controls how far shields with the same text should be set apart in general, even when placed on different geometries.
 [source,xml]
 -----
-include::examples/ShieldSymbolizer-spacing.xml[]
+include::{sourcedir}/examples/ShieldSymbolizer-spacing.xml[]
 -----
 image::examples/ShieldSymbolizer-spacing.svg[align="center"]
 ====
@@ -1327,7 +1329,7 @@ image::examples/ShieldSymbolizer-spacing.svg[align="center"]
 
 [source,xml]
 -----
-include::examples/ShieldSymbolizer-placement.xml[]
+include::{sourcedir}/examples/ShieldSymbolizer-placement.xml[]
 -----
 image::examples/ShieldSymbolizer-placement.svg[align="center"]
 ====
@@ -1336,7 +1338,7 @@ image::examples/ShieldSymbolizer-placement.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/ShieldSymbolizer-grid-width-height.xml[]
+include::{sourcedir}/examples/ShieldSymbolizer-grid-width-height.xml[]
 -----
 image::examples/ShieldSymbolizer-grid-width-height.svg[align="center"]
 ====
@@ -1349,7 +1351,7 @@ image::examples/ShieldSymbolizer-grid-width-height.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/TextSymbolizer-size.xml[]
+include::{sourcedir}/examples/TextSymbolizer-size.xml[]
 -----
 image::examples/TextSymbolizer-size.svg[align="center"]
 ====
@@ -1358,7 +1360,7 @@ image::examples/TextSymbolizer-size.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/TextSymbolizer-fill.xml[]
+include::{sourcedir}/examples/TextSymbolizer-fill.xml[]
 -----
 image::examples/TextSymbolizer-fill.svg[align="center"]
 ====
@@ -1367,7 +1369,7 @@ image::examples/TextSymbolizer-fill.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/TextSymbolizer-character-spacing.xml[]
+include::{sourcedir}/examples/TextSymbolizer-character-spacing.xml[]
 -----
 image::examples/TextSymbolizer-character-spacing.svg[align="center"]
 ====
@@ -1376,7 +1378,7 @@ image::examples/TextSymbolizer-character-spacing.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/TextSymbolizer-spacing.xml[]
+include::{sourcedir}/examples/TextSymbolizer-spacing.xml[]
 -----
 image::examples/TextSymbolizer-spacing.svg[align="center"]
 ====
@@ -1398,7 +1400,7 @@ image::examples/TextSymbolizer-spacing.svg[align="center"]
 `alternating-grid`:: Similar to `grid`, but each second row is horizontally displaced by half of `grid-cell-width`
 [source,xml]
 -----
-include::examples/TextSymbolizer-placement.xml[]
+include::{sourcedir}/examples/TextSymbolizer-placement.xml[]
 -----
 image::examples/TextSymbolizer-placement.svg[align="center"]
 ====
@@ -1407,7 +1409,7 @@ image::examples/TextSymbolizer-placement.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/TextSymbolizer-grid-width-height.xml[]
+include::{sourcedir}/examples/TextSymbolizer-grid-width-height.xml[]
 -----
 image::examples/TextSymbolizer-grid-width-height.svg[align="center"]
 ====
@@ -1416,7 +1418,7 @@ image::examples/TextSymbolizer-grid-width-height.svg[align="center"]
 ====
 [source,xml]
 -----
-include::examples/TextSymbolizer-minimum-path-length.xml[]
+include::{sourcedir}/examples/TextSymbolizer-minimum-path-length.xml[]
 -----
 image::examples/TextSymbolizer-minimum-path-length.svg[align="center"]
 ====

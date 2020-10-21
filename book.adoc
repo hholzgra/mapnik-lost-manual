@@ -12,23 +12,24 @@ Hartmut Holzgraefe
 :numbered:
 :source-highlighter: coderay
 
-include::preface.adoc[]
 
-include::intro.adoc[]
+include::chapters/preface.adoc[]
 
-include::install.adoc[]
+include::chapters/intro.adoc[]
 
-include::xml.adoc[]
+include::chapters/install.adoc[]
 
-include::tools.adoc[]
+include::chapters/xml.adoc[]
 
-include::compositing.adoc[]
+include::chapters/tools.adoc[]
 
-include::tips-tricks.adoc[]
+include::chapters/compositing.adoc[]
 
-include::resources.adoc[]
+include::chapters/tips-tricks.adoc[]
 
-include::glossary.adoc[]
+include::chapters/resources.adoc[]
+
+include::chapters/glossary.adoc[]
 
 [index]
 == Index
