@@ -1,0 +1,620 @@
+:sourcedir: ../..
+
+=== Symbolizers
+
+Symbolizers do the actual rendering of map features. There are several different kinds of symbolizers that operate on point, line and polygon data objects to create visual representations on these. Below you will find detailed descriptions of the available symbolizers in alphabetical order.
+
+[NOTE]
+====
+Right now all the symbolizer examples below show a complete XML style file. I'm considering to shorten these to just the actual symbolizer tag and the inline CSV data lines as the rest of these examples is actually redundant, to save some space, with hyperlinks to the actual full example files ...
+====
+
+==== BuildingSymbolizer
+
+The ((`<BuildingSymbolizer>`)) renders polygons in a very simple pseudo-3D fashion. The givin fill color us used for the "roof", while its individual red, green and blue values are multiplied by 0.8 to create a more darkened tone for the "walls"
+
+.BuildingSymbolizer Attributes
+[options="header,unbreakable"]
+|===
+| Attribute      | Value      | Default
+| <<example-buildingsymbolizer-fill,((`fill`))>>         | CSS color  | gray
+| <<example-buildingsymbolizer-fill-opacity,((`fill-opacity`))>> | foat       | 1.0
+| <<example-buildingsymbolizer-height,((`height`))>>       | float      | 0
+|===
+
+See also:
+
+* https://github.com/mapnik/mapnik/wiki/BuildingSymbolizer[BuildingSymbolier in Mapnik Wiki]
+* http://mapnik.org/mapnik-reference/#3.0.22/building[BuildingSymbolizer in Mapnik Reference]
+
+
+.BuildingSymbolizer fill
+[#example-buildingsymbolizer-fill]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/BuildingSymbolizer-fill.xml[]
+-----
+image::examples/BuildingSymbolizer-fill.svg[align="center"]
+====
+
+.BuildingSymbolizer fill opacity
+[#example-buildingsymbolizer-fill-opacity]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/BuildingSymbolizer-fill-opacity.xml[]
+-----
+image::examples/BuildingSymbolizer-fill-opacity.svg[align="center"]
+====
+
+.BuildingSymbolizer height
+====
+[#example-buildingsymbolizer-height]
+[source,xml]
+-----
+include::{sourcedir}/examples/BuildingSymbolizer-height.xml[]
+-----
+image::examples/BuildingSymbolizer-height.svg[align="center"]
+====
+
+==== GroupSymbolizer
+
+==== LineSymbolizer
+
+The LineSymbolizer specifies how to render linear geometries like lines and polygon outlines. Most of the LineSymbolizer attributes define stroke attributes of the line to draw, like color, width, how line joins and ends should look, and even dash patterns.
+
+There are also some attributes that change the lines geometry itself, like offset, smooth and simplify.
+
+
+.LineSymbolizer
+[options="header,unbreakable",cols="m,d,d,d"]
+|====================
+| Attribute               | Value | Default | Description 
+| ((clip))                | boolean | false |  
+| ((comp-op))             | SVG compositing |  |
+| ((geometry-transform))  | SVG transform |  | 
+| <<example-linesymbolizer-offset,((offset))>>              | float | 0 |  
+| ((rasterize))           | full, fast | full |  
+| <<example-linesymbolizer-smooth,((smooth))>>              | 0.0 - 1.0 | 1 |  
+| ((simplify))            | float | 0 |  
+| ((simplify-algorithm))  | radial-distance, zhao-saalfeld, visvalingam-whyatt, douglas-peucker | radial-distance |  
+| <<example-linesymbolizer-stroke,((stroke))>>              | color | black |  
+| <<example-linesymbolizer-stroke-dasharray,((stroke-dasharray))>>    | number list | none |  
+| ((stroke-dashoffset))   | number list | none | experimental only  
+| ((stroke-gamma))        | 0.0 - 1.0 | 1 |  
+| ((stroke-gamma-method)) | power, linear, none, threshold, multiply | power |  
+| <<example-linesymbolizer-stroke-linejoin,((stroke-linejoin))>>     | bevel, miter, miter-revert, round | miter |  
+| <<example-linesymbolizer-stroke-linecap,((stroke-linecap))>>      | butt, round, square | butt |  
+| ((stroke-miterlimit))   | float     | 4 |  
+| <<example-linesymbolizer-stroke-opacity,((stroke-opacity))>>      | 0.0 - 1.0 | 1 |  
+| <<example-linesymbolizer-stroke-width,((stroke-width))>>        | float     | 1 |  
+|====================
+
+
+.LineSymbolizer smooth
+[#example-linesymbolizer-smooth]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-smooth.xml[]
+-----
+image::examples/LineSymbolizer-smooth.svg[align="center"]
+====
+
+.LineSymbolizer stroke
+[#example-linesymbolizer-stroke]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke.xml[]
+-----
+image::examples/LineSymbolizer-stroke.svg[align="center"]
+====
+
+.LineSymbolizer dash array
+[#example-linesymbolizer-stroke-dasharray]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke-dasharray.xml[]
+-----
+image::examples/LineSymbolizer-stroke-dasharray.svg[align="center"]
+====
+
+.LineSymbolizer stroke linejoin
+[#example-linesymbolizer-stroke-linejoin]
+====
+TODO: prevent image clipping on top edge
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke-linejoin.xml[]
+-----
+image::examples/LineSymbolizer-stroke-linejoin.svg[align="center"]
+====
+
+.LineSymbolizer stroke linecap
+[#example-linesymbolizer-stroke-linecap]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke-linecap.xml[]
+-----
+image::examples/LineSymbolizer-stroke-linecap.svg[align="center"]
+====
+
+.LineSymbolizer stroke opacity
+[#example-linesymbolizer-stroke-opacity]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke-opacity.xml[]
+-----
+image::examples/LineSymbolizer-stroke-opacity.svg[align="center"]
+====
+
+.LineSymbolizer stroke width
+[#example-linesymbolizer-stroke-width]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-stroke-width.xml[]
+-----
+image::examples/LineSymbolizer-stroke-width.svg[align="center"]
+====
+
+.LineSymbolizer offset
+[#example-linesymbolizer-offset]
+====
+Note that unlike in other LineSymbolizer examples this is three times the same geometry, but with different `offset`.
+[source,xml]
+-----
+include::{sourcedir}/examples/LineSymbolizer-offset.xml[]
+-----
+image::examples/LineSymbolizer-offset.svg[align="center"]
+====
+
+See also:
+
+* https://github.com/mapnik/mapnik/wiki/LineSymbolizer[LineSymbolier in Mapnik Wiki]
+* http://mapnik.org/mapnik-reference/#3.0.22/line[LineSymbolizer in Mapnik Reference]
+
+TODO: gamma, gamma-method, dash-offset, miter-limit, clip, simplify, simplify-algorithm, rasterize, geometry-transform, comp-op
+
+==== LinePatternSymbolizer
+
+A LinePatternSymbolizer draws a given pattern image along a line, repeating the pattern as often as needed, and transforming it accordingly to follow the turns of the line.
+
+[WARNING]
+====
+Even when giving the pattern as a SVG file, internally it will be converted to PNG before applying transformations to it to make it fit the line. So when creating SVG or PDF output, the result can still become a bit blurry when zooming in on LinePatternSymbolizer output.
+====
+
+.LinePatternSymbolizer Attributes
+[options="header,unbreakable",cols="m,d,d,d"]
+|===
+| Attribute      | Value      | Default | Description
+| <<example-linepatternsymbolizer-file,((file))>>         | file path |
+| ((base))    | string | none| name of a <FileSource> to find the input file in
+| opacity |  |  |  
+| offset  |  |  |  
+| transform |  |  |  
+|  |  |  |  
+|  |  |  |  
+|  |  |  |  
+|  |  |  |  
+|===
+
+.LinePatternSymbolizer file
+[#example-linepatternsymbolizer-file]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/LinePatternSymbolizer-file.xml[]
+-----
+image::examples/LinePatternSymbolizer-file.png[align="center"]
+// need to use PNG here as ascidoctor-pdf, or actually the 
+// prawn-svg renderer used by it, does not support SVG
+// <pattern> tags
+// see also https://github.com/mogest/prawn-svg/issues/119
+====
+
+==== MarkerSymbolizer
+
+The MarkerSymbolizer is similar to the PointSymbolizer, but has two advantages when used on a line or polygon: it can be drawn multiple times along a line automatically, and it's orientation is rotated according to the current direction of the line instead of always being upright.
+
+TODO: attribute table, examples
+
+==== PolygonSymbolizer
+
+.PolygonSymbolizer Attributes
+[options="header,unbreakable",cols="m,d,d,d"]
+|===
+| Attribute      | Value      | Default | Description
+| <<example-polygonsymbolizer-fill,((fill))>> | color | grey |  
+| <<example-polygonsymbolizer-fill-opacity,((fill-opacity))>> | float | 1.0 |  
+| transform | SVG transformation | none |  
+| comp-op | SVG composition | none |  
+| gamma | float | 1.0 |  
+| gamma-method |  power, linear, none, threshold, multiply | power |  
+| clip | boolean | false |  
+| simplify | float | 0.0 | 
+| simplify-algorithm | radial-distance, zhao-saalfeld, visvalingam-whyatt, douglas-peucker | radial-distance | 
+| <<example-polygonsymbolizer-smooth,((smooth))>> | float | 0.0 | 
+|===
+
+.PolygonSymbolizer fill
+[#example-polygonsymbolizer-fill]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PolygonSymbolizer-fill.xml[]
+-----
+image::examples/PolygonSymbolizer-fill.svg[align="center"]
+====
+
+.PolygonSymbolizer fill opacity
+[#example-polygonsymbolizer-fill-opacity]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PolygonSymbolizer-fill-opacity.xml[]
+-----
+image::examples/PolygonSymbolizer-fill-opacity.svg[align="center"]
+====
+
+.PolygonSymbolizer smooth
+[#example-polygonsymbolizer-smooth]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PolygonSymbolizer-smooth.xml[]
+-----
+image::examples/PolygonSymbolizer-smooth.svg[align="center"]
+====
+
+==== PolygonPatternSymbolizer
+
+.PolygonPatternSymbolizer Attributes
+[options="header,unbreakable",cols="m,d,d,d"]
+|===
+| Attribute      | Value      | Default | Description
+| file | file path | none | 
+| base | string | none | name of a <FileSource> to find the input file in  
+| alignment | `gobal`/`local`| `global` | Align image to polygon (`local`) or to map borders (`global`)  
+| gamma | float | 1.0 |  
+| gamma-method |  |   |  
+| opacity | float | 1.0 | Filling opacity. May be somewhat transparent even at 1.0 if the fill pattern itself is not fully opaque.
+| clip |  |   |  
+| simplify |  |   |  
+| simplify-algorithm |  |   |  
+| smooth | float | 0.0 |  
+| transform | SVG Transform | none | Transformation is applied to the fill pattern 
+| geometry-transform | SVG Transform | none | Transformation is applied to the polygon geometry itself
+| comp-op | SVG compositingg | none |  
+|===
+
+.PolygonPatternSymbolizer file
+[#example-polygonpatternsymbolizer-file]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PolygonPatternSymbolizer-file.xml[]
+-----
+image::examples/PolygonPatternSymbolizer-file.png[align="center"]
+====
+
+.PolygonPatternSymbolizer alignment
+[#example-polygonpatternsymbolizer-alignment]
+====
+`global` alignment makes the fill pattern align across touching polygon borders, `local` alignment makes each filled polygon of the same shape look exactly the same.
+[source,xml]
+-----
+include::{sourcedir}/examples/PolygonPatternSymbolizer-alignment.xml[]
+-----
+image::examples/PolygonPatternSymbolizer-alignment.png[align="center"]
+====
+
+.PolygonPatternSymbolizer transform
+[#example-polygonpatternsymbolizer-transform]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PolygonPatternSymbolizer-transform.xml[]
+-----
+image::examples/PolygonPatternSymbolizer-transform.png[align="center"]
+====
+
+.PolygonPatternSymbolizer geometry transform
+[#example-polygonpatternsymbolizer-geometry-transform]
+====
+Unlike wiht PointSymbolizer `rotate()` does not seem to rotate around the geometry center, but around the map origin at `(0 0)` instead?
+[source,xml]
+-----
+include::{sourcedir}/examples/PolygonPatternSymbolizer-geometry-transform.xml[]
+-----
+image::examples/PolygonPatternSymbolizer-geometry-transform.png[align="center"]
+====
+
+TODO: gamma, gamma-method, clip, simplify, simplify-method, comp-op
+
+==== PointSymbolizer
+
+The point symbolizer draws a given image at a point position. When given a line or polygon as input the shape will be put at the middle of the line or center of the polygon. 
+
+If no image file is specified a small square is used as the default point image.
+
+For putting symbols along a line or the edge of a polygon the MarkerSymbolizer is usually a better choice.
+
+.PointSymbolizer Attributes
+[width="100%",options="header,unbreakable",cols="m,d,d,d"]
+|====================
+| Attribute          | Type          | Default | Description
+| <<example-pointsymbolizer-file,file>>             | file path     | none |
+| base             | string | none | name of a <FileSource> to find the input file in
+| allow-overlap    | bool          | false 
+| <<example-pointsymbolizer-file,opacity>>          | float         | 1.0 |
+| ignore-placement | bool          | false |
+| transform        | SVG transform | identity |
+| comp-op          | Compositing   | none |
+|====================
+
+
+
+.PointSymbolizer file
+[#example-pointsymbolizer-file]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PointSymbolizer-file.xml[]
+-----
+image::examples/PointSymbolizer-file.svg[align="center"]
+====
+
+.PointSymbolizer opacity
+[#example-pointsymbolizer-opacity]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PointSymbolizer-opacity.xml[]
+-----
+image::examples/PointSymbolizer-opacity.svg[align="center"]
+====
+
+.PointSymbolizer placement
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PointSymbolizer-placement.xml[]
+-----
+image::examples/PointSymbolizer-placement.svg[align="center"]
+====
+
+.PointSymbolizer scaling 
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PointSymbolizer-transform-scale.xml[]
+-----
+image::examples/PointSymbolizer-transform-scale.svg[align="center"]
+====
+
+.PointSymbolizer rotation
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/PointSymbolizer-transform-rotate.xml[]
+-----
+image::examples/PointSymbolizer-transform-rotate.svg[align="center"]
+====
+
+.PointSymbolizer compositing
+====
+TODO
+====
+
+==== RasterSymbolizer
+
+==== ShieldSymbolizer
+
+A shield symbolizer is basically a combination of a point and a text symbolizer, making sure that both image and text are always shown at the same position, and that collision rules apply to both together instead of individually. The name stems from the original use case to show highway shields.
+
+ShieldSymbolizer inherits almost all attributes from the <<TextSymbolizer>>, with a small number of additions and modifications.
+
+.ShieldSymbolizer specific Attributes
+[width="100%",options="header,unbreakable",cols="m,d,d,d"]
+|====================
+| Attribute        | Type          | Default | Description
+| file             | file path     | none | Shield image to use
+| base             | string | none | name of a <FileSource> to find the input file in
+| opacity          | float         | 1.0 | Opacity to use for the shield image
+| text-opacity     | float         | 1.0 | Opacity to use for the shield text
+| unlock-image     | boolean       | false | `dx`,`dy` move image and text when `true`, text only when `false`
+| dx               | float         | 0.0 | Move text, and image if `unlock-image=false`, horizontallly
+| dy               | float         | 0.0 | Move text, and image if `unlock-image=false`, vertically
+| shield-dx        | float         | 0.0 | Move image horizontally only
+| shield-dy        | float         | 0.0 | Move image vertically only
+| transform        | SVG transformation | none | Transform image
+|====================
+
+/*
+name
+file
+face-name
+unlock-image
+size
+fill
+placement
+avoid-edges
+allow-overlap
+margin
+repeat-distance
+min-distance
+spacing
+min-padding
+label-position-tolerance
+wrap-width
+wrap-before
+wrap-character
+halo-fill
+halo-radius
+halo-rasterizer
+halo-transform
+halo-comp-op
+halo-opacity
+character-spacing
+line-spacing
+text-dx
+text-dy
+dx
+dy
+opacity
+horizontal-alignment
+vertical-alignment
+placement-type
+text-transform
+justify-alignment
+transform
+clip
+simplify
+simplify-algorithm
+smooth
+comp-op
+grid-cell-width
+grid-cell-height
+offset
+*/
+
+.ShieldSymolizer
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/ShieldSymbolizer.xml[]
+-----
+image::examples/ShieldSymbolizer.svg[align="center"]
+====
+
+.ShieldSymolizer spacing
+====
+`spacing` controls the distance between shields on a single line feature. When no spacing is given only a single shield will be attemted to be placed.
+
+See also `repeat-distance`, which controls how far shields with the same text should be set apart in general, even when placed on different geometries.
+[source,xml]
+-----
+include::{sourcedir}/examples/ShieldSymbolizer-spacing.xml[]
+-----
+image::examples/ShieldSymbolizer-spacing.svg[align="center"]
+====
+
+.ShieldSymolizer placement
+====
+`placement` Controls where the shield is actually placed:
+
+`point`:: Places the shield just once at the center of the geometry. In case of a polygon that may actually be outside of the polygon surface, depending on its shape
+
+`interior`:: Similar to `point`, but makes sure that the shield is placed inside a polygon even if its center point is actually on its outside
+
+`line`:: When `spacing` is larger than zero the shield is repeatedly drawn along a line or a polygons outline with `spacing` pixels between shields
+
+`vertex`:: Tries to place the shield on each vertex point of a line or a polygons outline
+
+`grid`:: When `grid-cell-width` and `grid-cell-height` are greater than zero the shield is repeatedly drawn into a polygons surface, using grid cells of the given width and height. Note that the shield is not clipped at the border of the polygon, so some shield parts may be drawn slightly outside of the polygon surface.
+
+`alternating-grid`:: Similar to `grid`, but each second row is horizontally displaced by half of `grid-cell-width`
+
+[source,xml]
+-----
+include::{sourcedir}/examples/ShieldSymbolizer-placement.xml[]
+-----
+image::examples/ShieldSymbolizer-placement.svg[align="center"]
+====
+
+.ShieldSymbolizer grid width/height
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/ShieldSymbolizer-grid-width-height.xml[]
+-----
+image::examples/ShieldSymbolizer-grid-width-height.svg[align="center"]
+====
+
+
+
+==== TextSymbolizer
+
+.TextSymbolizer size
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-size.xml[]
+-----
+image::examples/TextSymbolizer-size.svg[align="center"]
+====
+
+.TextSymbolizer text color fill
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-fill.xml[]
+-----
+image::examples/TextSymbolizer-fill.svg[align="center"]
+====
+
+.TextSymbolizer character spacing
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-character-spacing.xml[]
+-----
+image::examples/TextSymbolizer-character-spacing.svg[align="center"]
+====
+
+.TextSymbolizer spacing
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-spacing.xml[]
+-----
+image::examples/TextSymbolizer-spacing.svg[align="center"]
+====
+
+.TextSymbolizer placement
+====
+`placement` Controls where the text is actually placed:
+
+`point`:: Places the text just once at the center of the geometry. In case of a polygon that may actually be outside of the polygon surface, depending on its shape
+
+`interior`:: Similar to `point`, but makes sure that the text is placed inside a polygon even if its center point is actually on its outside
+
+`line`:: When `spacing` is larger than zero the text is repeatedly printed along a line or a polygons outline with `spacing` pixels between texts
+
+`vertex`:: Tries to place the text on each vertex point of a line or a polygons outline
+
+`grid`:: When `grid-cell-width` and `grid-cell-height` are greater than zero the text is repeatedly printed into a polygons surface, using grid cells of the given width and height. Note that the text is not clipped at the border of the polygon, so some text may be printed slightly outside of the polygon surface.
+
+`alternating-grid`:: Similar to `grid`, but each second row is horizontally displaced by half of `grid-cell-width`
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-placement.xml[]
+-----
+image::examples/TextSymbolizer-placement.svg[align="center"]
+====
+
+.TextSymbolizer grid width/height
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-grid-width-height.xml[]
+-----
+image::examples/TextSymbolizer-grid-width-height.svg[align="center"]
+====
+
+.TextSymbolizer minimum path length
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-minimum-path-length.xml[]
+-----
+image::examples/TextSymbolizer-minimum-path-length.svg[align="center"]
+====
+

@@ -1,0 +1,26 @@
+=== FileSource
+
+A `<FileSource>` can be used as a child of `<Map>` to declare named directory paths that can be referred to by the `base=...` attribute in symbolizers that are able to load image files, like e.g. `<PointSymbolizer>`, `<LinePatternSymbolizer>` etc.
+
+.FileSource attributes
+[options="header",cols="m,d,d,d"]
+|====================
+| Attribute Value | Default | Description
+| name | string | none |  
+|====================
+
+.FileSource example
+====
+The actual symbol file being used in the example below will be taken from `path/to/symbols/symbol.svg`:
+
+[source,xml]
+----
+<Map>
+  <FileSource name='symbols'>path/to/symbols</FileSource>
+  [...]
+  <PointSymbolizer base='symbols' file='symbol.svg'/>
+  [...]
+</Map>  
+----
+====
+

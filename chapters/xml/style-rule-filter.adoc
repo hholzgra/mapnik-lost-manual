@@ -1,0 +1,89 @@
+=== Style
+
+Styles contain a set of rendering rules to render data elements provided by a data source. Each style can contain one or more rules for rendering specific features.
+
+.Style attributes
+[options="header",cols="m,d,d,d"]
+|====================
+| Attribute                 | Value | Default | Description
+| comp-op | SVG compositing |  |  
+| filter-mode | "all", "first" | "all" |  
+| opacity | float | 1 |  
+| image-filters-inflate | boolean | false |  
+| image-filters | string |  |  
+| direct-image-filters | string |  |  
+|====================
+
+
+=== Rule
+
+A style rule filters data elements provided by a data source, and renders the matching elmements using one or more symbolizers. Rules can also be limited to specific scale factor ranges only, e.g. to implement different zoom level styles.
+
+.Rule attributes
+[options="header",cols="m,d,d,d"]
+|====================
+| Attribute                 | Value | Default | Description
+| name | string | none |  
+|====================
+
+
+=== Filter
+
+Filters specify on what data elements a rule should operate, by evaluating expressions. The expression language supports simple comparisons, logic, math, and regular expression matching.
+
+There are also two special filters that do not evaluate expresions but depend on whether other previous filters in the style found a match:
+
+<ElseFilter> matches if no other filter in a style matched so far, so it can be used as a fallback default.
+
+<AlsoFilter> only matches if at least one previous filter in a style matched.
+
+The `<Filter>` tag has no tag attributes.
+
+==== Filter expressions
+
+The filter expression language supports the following constants, operators, and functions. It also allows for referencing data element attributes by putting the attribute name in square brackets `[attribute]` and to change evaluation order by putting expression parts in regular round brackets `(...)`.
+
+TODO: operator precedence
+TODO: regular expression match and replace
+
+===== Constants
+
+`true`:: logical true
+`false`:: logical false
+`pi`:: 3.14159...
+`deg_to_rad`:: 0.01745... (pi/180)
+`rad_to_deg`:: 57.295... (180/pi)
+
+===== Operators
+
+`+`::
+`-`::
+`*`::
+`/`::
+`%`::
+`and`, `&&`::
+`or`, `||`::
+`not`, `!`::
+`=`, `eq`, `is`::
+`!=`, `<>`, `neq`::
+`<`, `lt`::
+`\<=`, `le`::
+`>`, `gt`::
+`>=`, `ge`::
+  ...
+
+===== Functions
+
+`sin(x)`:: Sinus
+`cos(x)`:: Cosinus
+`tan(x)`:: Tangens
+`atan(x)`:: Arc Tangens
+`exp(x)`:: `e^x^`
+`log(x)`:: natural logarithm of `x`
+`pow(x,y=`:: `x^y^`
+`abs(x)`:: positive absolute value of `x`
+`min(x,y)`:: minimum value
+`max(x,y)`:: maximum value
+`length(str)`:: string length
+
+

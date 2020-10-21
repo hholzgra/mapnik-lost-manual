@@ -1,0 +1,586 @@
+:sourcedir: ../..
+
+=== DataSource
+
+A `<Datasource>` can appear in two places: as a named data surce template under `<Map>` or as an actual data source in a `<Layer>`. A data soure template can provide default values for actual layer data sources, e.g. when using a PostGis database as data source a data source template can provide all the connection parameters, so that actual layer data sources only have to provide actual SQL queries.
+
+Example:
+[source,xml]
+----
+<Map>
+  <!-- Datasource template ->
+  <Datasource name="gis">
+    <Parameter name="type">postgis</Parameter>
+    <Parameter name="host">gis-db</Parameter>
+    <Parameter name="port">5432</Parameter>
+    <Parameter name="dbname">gis</Parameter>
+    <Parameter name="user">maposmatic</Parameter>
+    <Parameter name="password">secret</Parameter>
+  </Datasource>
+ 
+  <!-- actual Datasource using the template above for default values ..>
+  <Layer name="layer-1">
+    <Datasource base="gis">
+      <Parameter name="table">
+`       SELECT ...
+      </Parameter>
+    </Datasource>
+  </Layer>
+</Map>
+----
+
+Mapnik supports several different kinds of data sources, and actually has a plugin interface for these, so that plugins for more data sources can be added "on the fly" without having to rebuild Mapnik itself.
+
+The set of plugins that come with Mapnik itself are caled core plugins. Some former core plugins that are no longer maintained, or never left experimental status, have been moved to a separate non-core plugins repository, and there is also a small number of plugins by outside contributores, which we will refer to as exra data sources below.
+
+==== Core data sources
+
+The core plugins are part of the mapnik source code itself, and usually avaliable in all builds of the mapnik library. (TODO: add link to mappnik github).
+
+===== CSV
+
+The CSV plugin reads simple column separated data from a file when specified using the `file` parameter, or directly from the XML style file when using the `inline` paramter. In the later case all lines following the `inline` parameter tag will be read as CSV input until the closing paramter tag is reached. In case that the inline data contains `<`, `>` or `&` characters, you should enclose it in a `<![CDATA[...]]>` section to prevent the content from being interpreted as XML.
+
+When giving a `file` path, this is taken as relative to the directory the style file is in, unless a `base` parameter is given. In that case a relative `file` path will be interpreted as relative to the directory path given in the `<FileSource>` of that base name.
+
+Processig performance can be improved by creating an additional `.index` index file using the <<mapnik-index>> tool.
+
+.CSV data source examples
+====
+[source,xml]
+----
+<!-- read from file path/to/file.csv -->
+<DataSource>
+  <Parameter name="type">csv</Parameter>
+  <Parameter name="file">path/to/file.csv</Parameter>
+</DataSource>
+
+<!-- read inline data -->
+<DataSource>
+  <Parameter name="type">csv</Parameter>
+  <Parameter name="inline"><![CDATA[
+lat,lon,text
+52.0,8.5,"Bielefeld"
+  ]]></Parameter>
+</DataSource>
+----
+==== 
+
+By default the CSV plugin tries to identify the field delimiter by looking at the first line of the file, checking for `,`, ´;`, `|` and the `TAB` character. Whatever of these characters seen the most often is considered the separator character, unless you specifcy a different one with the `separator` Parameter, e.g: `<Parameter name="separator">;</Parameter>`.
+
+In cases where the data does not contain a header line, one can be given as content of the `headers` parameter.
+
+The default quoting and escape characters are `"` and `\`, but can be changed with the `quote` and `escape` parameters.
+
+Line endings are auto detected, too, so files with DOS/Windows (`\r\n`), Linux/Unix (`\n`) or MacOS (`\r`) style line endings are read correctly out of the box.
+
+The CSV plugin assumes that the data it reads is UTF-8 encoded, a different encoding can be specified using the `encoding` parameter.
+
+Column data can be referred to by the columns header name, using `[column_name]` placeholders in expressions. The following column names have a special meaning and are used to retrieve actual geometry data for a line:
+
+`lat` or `latitude`:: Point latitude
+`lon`, `lng`, `long`, or `longitude`:: Point longitude
+`wkt`:: Geometry data in Well Known Text format
+`geojson`:: Geometry data in GeoJSON format
+
+So each input file either needs a `lat`/`lon` column pair, or either a `wkt` or `geojson` column to be used as a Mapnik data source.
+
+When parsing the header line fails, or no geometry column(s) can be detected in it, the plugin will print a warning by default, and not return any data. When the `strict` parameter is set to `true`, style processing will be terminated completely by throwing a Mapnik exception.
+
+
+
+.CSV data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| encoding | string | utf-8 | Text encoding used in the CSV data
+| row_limit | int | none | Read only this many data rows, ignore the rest.
+| headers | string | none | Header names if the file contains none on the first line
+| strict | boolean | false | Terminate Mapnik on hitting errors?
+| quote | char | `"` | Quote character used for string columns in the data
+| escpae | char | `\` | TODO: does this even really exist?
+| separator | char | auto detected | Field separator, typically `,`, `;`, `\|` or `TAB`
+| extent | 4xfloat | none | ignore data that is completely outside this extent bounding box
+| inline | text | none | CSV data to be read directly from the style file
+| file | file path | none | path of CSV file to read 
+| base | string | none | name of a <FileSource> to find the input file in
+|====================
+
+TODO:: 
+* `.index` file support? See also `mapnik-index` utility
+* NULL handling?
+
+===== Gdal
+
+.Gdal data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| band | | |
+| base | string | none | name of a <FileSource> to find the input file in
+| extent | | |
+| file | | |
+| max_image_area | | |
+| nodata | | |
+| nodata_tolerance | | |
+| shared | | |
+|====================
+
+===== GeoJSON
+
+While the GeoJSON format is also supported by the OGR input plugin, a direct native GeoJSON plugin was added for performance reasons for this more and more common format.
+
+Processig performance can be improved by creating an additional `.index` index file using the <<mapnik-index>> tool.
+
+.GeoJson data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description base
+| base | string | none | name of a <FileSource> to find the input file in
+| cache_features | boolean | true |
+| encoding | string | utf-8 | Encoding used for textual informatin
+| file | file path | none | Path of a GeoJSON file to read for input.
+| inline | string | none | Inline GeoJSON data as part of the stylefile itself
+| num_features_to_query | int | 5 | How many features of a feature set to read up front to determine what property names exist in the data
+|====================
+
+.GeoJSON data source example
+====
+[source,xml]
+----
+include::{sourcedir}/examples/DataSource-GeoJSON.xml[]
+----
+image::examples/DataSource-GeoJSON.svg[align="center"]
+====
+
+
+===== OGR
+
+The OGR input plugin supports a large number of different vector formats via the GDAL/OGR library. For a complete list of supported formats see the https://gdal.org/drivers/vector/index.html[Vector Drivers] list in the GDAL documentation.
+
+The OGR plugin is typically used for GPX -- for which no special input plugin exists -- and OSM data -- for which it replaced the older OSM plugin that has now been moved to the `non-core-plugins` repository and is usally not included in Mapnik binary builds anymore. So we're going into details for these two data formats below only.
+
+.OGR data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| base | string | none | name of a <FileSource> to find the input file in
+| driver | string| auto detect | actual vector format driver to use 
+| encoding | string | utf-8 |
+| extent | | |
+| file | file path | none | path of input file to read
+| inline | string | none | inline vector file data to read directly from style file
+| layer | string | none | name of the input layer to actually process
+| layer_by_index | int | none | number of the input layer to actually process
+| layer_by_sql | | |
+| string | string | none | alias for `inline`
+|====================
+
+====== OGR GPX
+
+The GPX backend reads GPX XML files and provides the contained data via the following five layers:
+
+routes:: 
+    Returns routes from the GPX files `<rte>` tags as lines. Each route is given an extra `route_id` attribute.
+
+tracks::
+    Returns tracks from the GPX files `<trk>`/`<trkseg>` tags as multilines. Each track is given an extra `track_id` attribute.
+
+route_points::
+    Returns `<rtept>` route points from all routes, with an extra `route_fid` filed referring to the `route_id` of the route that a point belongs to.  
+
+track_points::
+    Returns `<trkpt`> track points from all tracks, with extra `track_fid` and `track_seg_id` attributes added.
+
+waypoints::
+    Returns a compbination of all route and track points.
+
+Any extra tags that a route, track or point may have, like `<name>` or `<ele>` (for eleveation), can be accessed in filter expressions and symbolizers by name, e.g. as `[name]` or `[ele]`.
+
+.OGR GPX data source example
+====
+Show a marker for all GPX points with a non-empty `<name>` tag.
+[source,xml]
+----
+<Style name="named_point">
+  <Rule>
+    <Filter>not ([name] = null or [name] = '')</Filter>
+    <PointSymbolizer file="marker.svg"/>
+    <TextSymbolizer face-name="DejaVu Sans Book" size="10" placement="point">[name]</TextSymbolizer>
+  </Rule>
+</Style>
+
+<Layer>
+  <StyleName>named_point</StyleName>
+  <Datasource>
+    <Parameter name="type">ogr</Parameter>
+    <Parameter name="driver">gpx</Parameter>
+    <Parameter name="file">file.gpx</Parameter>
+    <Parameter name="layer">waypoints</Parameter>
+  </Datasource>
+</Layer>
+----
+====
+
+For more details see the https://gdal.org/drivers/vector/gpx.html[original GDAL documentation for the GPX backend]
+
+====== OGR OSM 
+
+The OGR plugin can read uncompressed https://wiki.openstreetmap.org/wiki/OSM_XML[OSM XML] data andt the more compact, but not human readable, https://wiki.openstreetmap.org/wiki/PBF_Format[PBF format]. File formats are auto detected when using the `.osm` or `.pbf` file extensions. When using files with other extensions, like e.g. `.xml` for OSM XML, the `driver` parameter needs to be set to `osm` explicitly.
+
+The OSM backend provides data in the following five layers:
+
+`points`:: Nodes that have significant tags attached.
+`lines`:: Ways that are recognized as non-area.
+`multilinestrings`:: Relations that define a multilinestring (`type=multilinestring` or `type=route`).
+`multipolygons`:: Ways that are recognized as areas and relations that form a polygon or multipolygon (e.g. `type=multipolygon` or `type=boundary`)
+`other_relations`:: Relations that are not in `multilinestrings` or `multipolygons`
+
+.OGR OSM data source example
+====
+[source,xml]
+----
+<Datasource>
+  <Parameter name="type">ogr</Parameter>
+  <Parameter name="driver">osm</Parameter>
+  <Parameter name="file">ways.osm</Parameter>
+  <Parameter name="layer">lines</Parameter>
+</Datasource>
+----
+====
+
+While rendering OSM data directly can work out OK for small amounts of data the usually preferred way to present OSM data is to import it into PostGIS using either the ((<<osm2pgsql>>)) or ((<<imposm>>)) import tool first, and then to use the ((PostGIS Datasource)). This  requires some extra effort up front, but performs better on larger data sets, and allows for more sophisticated preprocessing of the OSM input data than the few fixed rules statically built into the OGR OSM backend.
+
+For more details see the https://gdal.org/drivers/vector/osm.html[original GDAL documentation for the OSM backend]
+
+===== PgRaster
+
+.PgRaster data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| autodetect_key_field | | |
+| band | | |
+| clip_rasters | | |
+| connect_timeout | | |
+| cursor_size | | |
+| dbname | | |
+| estimate_extent | | |
+| extent | | |
+| extent_from_subquery | | |
+| host | | |
+| initial_size | | |
+| intersect_max_scale | | |
+| intersect_min_scale | | |
+| key_field | | |
+| password | | |
+| persist_connection | | |
+| port | | |
+| prescale_rasters | | |
+| raster_field | | |
+| raster_table | | |
+| row_limit | | |
+| srid | | |
+| table | | |
+| use_overviews | | |
+| user | | |
+|====================
+
+
+===== PostGIS
+
+.PostGIS data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+4+| Connection parameters
+| host | string | none | PostgreSQL server host name or address
+| port | string | none | PostgreSQL server port
+| user | string | none | Database user
+| password | string | none | Database user password
+| dbname | string | none | Name of database to use 
+| connect_timeout | int | 4 | Connect timeout in seconds
+| persist_connection | boolean | true | Reuse connection for subsequent queries
+4+| Other parameters
+| autodetect_key_field | boolean | false | Whether to auto detect primary key if none is given in `key_field`
+| cursor_size | int | 0 | Fetch this many features at a time, or all when zero.
+| estimate_extent | boolean | false | Try to estimate the extent from the data retrieved 
+| extent | floatx4 | none | Extent bounding box
+| extent_from_subquery | boolean | false | 
+| geometry_field  | string | none | The result field that the geometry to process is in. Auto detected when not given.
+| geometry_table  | string | none | Name of table geometry is retrieved from. Auto detected when not given, but this may fail for complex queries.
+| initial_size | int | 1 | initial connection pool size
+| intersect_min_field | int | 0 |
+| intersect_max_field | int | 0 |
+| key_field | string | none | Primary key field of table geometry is retrieved from. Auto detected when not given and `autodetect_key_field` is true.
+| key_field_as_attribute | boolean | true |
+| max_size | int | 10 | Max. connection pool size
+| max_async_connections | int | 1 | Run that many queries in parallel, must be <= `max_size`
+| row_limit | int | 0 | Only return this many features if > 0
+| simplify_dp_preserve | boolean | false |
+| simplify_dp_ratio | float | 1/20 | 
+| simplify_geometries | boolean | false |
+| simplify_prefiter | float | 0.0 |
+| simplify_snap_ratio | float | 1/40 | 
+| srid | int | 0 | SRID of returned features, auto detected when zero
+| table | string | none | Name of a table, or SQL query text
+| twkb_rounding_adjustment | float | 0.0 |
+| twkb_encoding | boolean | false |
+|====================
+
+Aside from the basic PostgreSQL connection parameters (`host`, `port`, `user`, `password`, `dbname`), you can also add additional https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS[connection parameter keywords] in the `host` or `dnname` parameter (probably the others, too, but this I didn't test yet) for more fine grained connection control.
+
+You can e.g. set a datasource specific application name with this:
+[source,xml]
+----
+<Parameter name='host'>localhost application_name=my_sytle</Parameter>
+----
+
+Or set a specific schema search path:
+[source,xml]
+----
+<Parameter name='host'>localhost options='-c search_path=foo,public'</Parameter>
+----
+
+Probably most important though, this allows for using SSL/TLS. In it's most basic form you'd just enforce SSL/TLS encryption being used:
+[source,xml]
+----
+<Parameter name='host'>localhost sslmode=require</Parameter>
+----
+
+The PostGIS datasource supports two different methods to return data to Mapnik: in regular well known binary (WKB) or -- with PostGIS v2.2 or later -- tiny well known binary (https://github.com/TWKB/Specification/blob/master/twkb.md[TWKB]) format. This is controlled by the `twkb_encoding` option. 
+
+When using TWKB the `twkb_rounding_adjustment` parameter then controls the resolution the TWKB aims for. A value of 0.5 would lead to a coarseness of about one pixel, the default of 0.0 would be in the range of 0.05 to 0.2 pixels usually. This is done by using the `twkb_rounding_adjustment` parameter to calculate the `tolerance` paramter for https://postgis.net/docs/ST_Simplify.html[`ST_Simplify()`] and https://postgis.net/docs/ST_RemoveRepeatedPoints.html[`ST_RemoveRepeatedPoints()`], and the `decimaldigits_xy` parater for https://postgis.net/docs/ST_AsTWKB.html[`ST_AsTWKB()`]
+
+When using WKB (the default), simplification can be controlled via `simplify_geometries`, `simplify_snap_ratio`, `simplify_dp_preserve`, `simplify_dp_ratio`, `simplify_prefilter`, `simplify_clip_resolution` parameters. (TODO: describe in more detail)
+
+`simplify_clip_resolution` is use for both formats, and controls at what map scale geometries start getting clipped to the rendering window when non-zero.
+
+
+
+
+The following special tokens can be used in SQL queries, and will be replaced b the actual mapnik values for the current render request:
+
+`!bbox!`:: the map bounding box
+`!scale_denominator!`:: the current scale denominator
+`!pixel_width!`,`!pixel_height!`:: width and height of pixels (TODO: depens on STR, is ° with latlon and meters with google mercator?)
+
+
+
+
+===== Raster
+
+.Raster data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| base | string | none | name of a <FileSource> to find the input file in
+| extent | | |
+| file | | |
+| format | | |
+| hix | | |
+| hiy | | |
+| lox | | |
+| loy | | |
+| multi | | |
+| tile_size | | |
+| tile_stride | | |
+| x_width | | |
+| y_width | | |
+|====================
+
+===== Shape
+
+The shape input plugin can read the https://en.wikipedia.org/wiki/Shapefile[ESRI shapefile format]. The OGR plugin also supports shapefiles, but the shape plugin has more direct support for this. It is also better maintained and tested.
+
+Shapefiles are often used instead of databases for data that doesn't change that often, or where data available in a database requires some preprocessing. Common examples are boundaries, coastlines, and elevation countour lines.
+
+OpenStreetMap or example provides land polygons, water polygons, coastlines, and antarctic ice sheet polygons and outlines as regularily updated shapefiles on the https://osmdata.openstreetmap.de/[OsmData Download Server]. Due to the way large bodies of land and water are constructed by grouping individual coast line segments into polygon relations in OSM, there's always a risk of such lines not really being closed polygons. The OSM shapefiles are generated by extracting and aggregating the line segments data, and are only published when containing no unclosed polygons.
+
+Another often used source of shapefiles is https://www.naturalearthdata.com/[Natural Earth], which provides public domain geo data for lots of physical and cultural features.
+
+Shapefile processing performance can be increased by creating an index file using the <<shapeindex>> tool that is included in the Mapnik source code, and usually also in binary distribution pacakges. 
+
+.Shape data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| file      | file path | none | shapefile path, `.shp` extension is optional
+| base      | string | none | name of a <FileSource> to find the input file in
+| encoding  | string | utf-8 | encoding used for text fields in the shapefile
+| row_limit |  int | none | maximum number of rows to process
+|====================
+
+.Shape data source example
+====
+[source,xml]
+----
+include::{sourcedir}/examples/DataSource-Shape.xml[]
+----
+image::examples/DataSource-Shape.svg[align="center"]
+====
+
+===== SQLite
+
+.SQLite data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| attachdb | | |
+| auto_index | | |
+| base | string | none | name of a <FileSource> to find the input file in
+| encoding | | |
+| extent | | |
+| fields | | |
+| file | | |
+| geometry_field | | |
+| geometry_table | | |
+| index_table | | |
+| initdb | | |
+| key_field | | |
+| metadata | | |
+| row_limit | | |
+| row_offset | | |
+| table | | |
+| table_by_index | | |
+| use_spatial_index | | |
+| wkb_format | | |
+|====================
+
+===== TopoJson
+
+.SQLite data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| base | string | none | name of a <FileSource> to find the input file in
+| encoding | | |
+| file | | |
+| inline | | |
+|====================
+
+==== Non-core
+
+The following plugins used to be part of the mapnik source, but have been moved to an https://github.com/mapnik/non-core-plugins[extra repository] as they are either no longer maintained, or still experimental. These are usually not part of a standard Mapnik installation.
+
+===== Geos
+
+.Geos data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| encoding | string | utf-8 | 
+| extent | | |
+| field_data | | |
+| field_name | | |
+| gid | | |
+| wkt | | |
+|====================
+
+See also:
+
+* https://github.com/mapnik/mapnik/wiki/GEOS
+
+===== Kismet
+
+An experimental plugin that reads WLAN location informatin from a Kismet instance.
+
+.Kismet data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| encoding | string | utf-8 | Text encoding
+| extent | | |
+| host | string | none | Kinsmet server name or IP address
+| port | int | 2501 | Port that the Kismet process is listening on
+| srs | string | |
+|====================
+
+See also:
+
+https://github.com/mapnik/mapnik/wiki/Kismet
+
+===== OCCI
+
+.OCCI data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| encoding | | |
+| estimate_extent | | |
+| extent | | |
+| fields | | |
+| geometry_field | | |
+| host | | |
+| initial_size | | |
+| max_size | | |
+| password | | |
+| row_limit | | |
+| row_prefetch | | |
+| srid | | |
+| table | | |
+| use_connection_pool | | |
+| user | | |
+| use_spatial_index | | |
+| use_wkb | | |
+|====================
+
+
+===== OSM
+
+The OSM plugin is no longer maintained as the OGR plugin can read OSM data now, too, and unlike the OSM plugin not only supports the OSM XML format, but also the more compact PBF format. So the old OSM plugin is no longer considered a core plugin now.
+
+.OSM data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| bbox | 4xfloat | none | no longer supported, see also `url`
+| encoding | string | utf-8 | Encoding of text fields in the data file
+| file | file path | OSM XML data file to read |
+| parser | string| libxml | So far libxml is the only possible choice here
+| url | string | none | Fetching OSM data from an API url was discontinued in Mapnik v2.3
+|====================
+
+
+===== Python
+
+The experimental python plugin allows for writing data sources using custom Python code. 
+
+.Python data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| encoding | string | utf8 | Text encoding used 
+| factory | string | none | A Python callable that impmlements a data source
+|====================
+
+See also:
+
+* https://github.com/mapnik/mapnik/wiki/Python-Plugin
+
+===== Rasterlite
+
+.Rasterlite data source parameters
+[width="100%",options="header",cols="m,d,d,d"]
+|====================
+| Parameter | Type | Default | Description 
+| base | string | none | name of a <FileSource> to find the input file in
+| file | | |
+| table | | |
+|====================
+
+==== Other data sources
+
+The following data source plugins are not really part of the Mapnik project, even though some of them have their github repostitory under the mapnik project.
+
+===== Hello World
+
+The https://github.com/mapnik/hello-world-input-plugin[Hello World plugin] is an example of the minimal code needed to implement an input plugin. It only ever returns a single point geometry located in the middle of the current map extent, with a single attribite named `key` and a constant value of `hello world!`.
+
+===== GeoWave
+
+
+
+===== Mongo
+
+
