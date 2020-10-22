@@ -21,6 +21,12 @@ clean:
 	@rm -f *.html *.pdf
 	@make -C examples clean
 
-install: all
+install: all 
 	@echo "Transferring files to webserver"
-	@scp -rq * h5:/var/www/html/mapnik-lost-manual/
+	@rsync -avu -e 'ssh -ax' . h5:/var/www/html/mapnik-lost-manual/
+
+install-html: book.html 
+	@echo "Transferring files to webserver"
+	@rsync -avu -e 'ssh -ax' . h5:/var/www/html/mapnik-lost-manual/
+
+
