@@ -12,7 +12,7 @@
 | <<example-textsymbolizer-fill,fill>>                  | color         | black    | Text fill color
 | <<example-textsymbolizer-character-spacing,character-spacing>>     | float         | 0.0      | Additional space between characters in pixels
 | <<example-textsymbolizer-line-spacing,line-spacing>>          | float         | 0.0      | Extra vertical space for multi line output in pixels
-| opacity               | float         | 1.0      | Text opacity
+|  <<example-textsymbolizer-opacity,opacity>>               | float         | 1.0      | Text opacity
 | font-feature-settings | string        | none     | Comma separated list of https://drafts.csswg.org/css-fonts-3/#propdef-font-feature-settings[OpenType typographic features]
 | <<example-textsymbolizer-halo-fill,halo-fill>>             | color         | white    | Text halo color
 | <<example-textsymbolizer-halo-opacity,halo-opacity>>          | float         | 1.0      | Text halo opacity
@@ -33,7 +33,7 @@
 | max-char-angle-delta | float | 22.5 | Max.  angle change between adjacent characters in degrees, to avoid placing text around sharp corners
 | avoid-edges | boolean | false | Avoid placing text near image edges
 | margin | float | none | Minimum distance from other text, shields or markers
-| repeat-distance | float | none | Minimum distance from other labels with same text content across geometrys
+| repeat-distance | float | none | Minimum distance from other labels with same text content across geometries
 | min-padding | float | none | Minimum placement distance from image edges 
 | <<example-textsymbolizer-min-path-length,minimum-path-length>> | float | none | Minimum length of lines or polygon boundings to place text on
 | allow-overlap | bool | false | Allow text to overlap with other text or markers
@@ -57,6 +57,16 @@ image::examples/TextSymbolizer-size.svg[align="center"]
 include::{sourcedir}/examples/TextSymbolizer-fill.xml[]
 -----
 image::examples/TextSymbolizer-fill.svg[align="center"]
+====
+
+.TextSymbolizer text opacity
+[#example-textsymbolizer-opacity]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/TextSymbolizer-opacity.xml[]
+-----
+image::examples/TextSymbolizer-opacity.svg[align="center"]
 ====
 
 .TextSymbolizer character spacing
