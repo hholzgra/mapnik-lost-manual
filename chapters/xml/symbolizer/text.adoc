@@ -8,19 +8,21 @@
 | Attribute             | Type          | Default  | Description
 | face-name             | string        | none     | Face name to use
 | fontset-name          | string        | none     | FontSet name
-| size                  | float         | 10.0     | Font size in pixels
-| fill                  | color         | black    | Text fill color
-| character-spacing     | float         | 0.0      | Additional space between characters in pixels
-| line-spacing          | float         | 0.0      | Extra vertical space for multi line output in pixels
+| <<example-textsymbolizer-size,size>>                  | float         | 10.0     | Font size in pixels
+| <<example-textsymbolizer-fill,fill>>                  | color         | black    | Text fill color
+| <<example-textsymbolizer-character-spacing,character-spacing>>     | float         | 0.0      | Additional space between characters in pixels
+| <<example-textsymbolizer-line-spacing,line-spacing>>          | float         | 0.0      | Extra vertical space for multi line output in pixels
 | opacity               | float         | 1.0      | Text opacity
 | font-feature-settings | string        | none     | Comma separated list of https://drafts.csswg.org/css-fonts-3/#propdef-font-feature-settings[OpenType typographic features]
-| halo-fill             | color         | white    | Text halo color
-| halo-opacity          | float         | 1.0      | Text halo opacity
-| halo-radius           | float         | 0.0      | Text halo radius in pixels
+| <<example-textsymbolizer-halo-fill,halo-fill>>             | color         | white    | Text halo color
+| <<example-textsymbolizer-halo-opacity,halo-opacity>>          | float         | 1.0      | Text halo opacity
+| <<example-textsymbolizer-halo-radius,halo-radius>>           | float         | 0.0      | Text halo radius in pixels
 | halo-rasterizer       | full, fast    | full     | Text halo rasterizing algorithm when using Agg renderer
 | halo-comp-op          | string        | src-over | Compositing operator to use for the halo
-| spacing               | integer       | 0        | Spacing between text labels on lines if > 0 (in pixels?)
-| placement             | string        | point    | One of `point`, `line`, `vertex`, `interior`, `grid`, `alternating-grid`
+| <<example-textsymbolizer-spacing,spacing>>               | integer       | 0        | Spacing between text labels on lines if > 0 (in pixels?)
+| <<example-textsymbolizer-placement,placement>>             | string        | point    | One of `point`, `line`, `vertex`, `interior`, `grid`, `alternating-grid`
+| <<example-textsymbolizer-grid-width-height,grid-cell-width>> | float | none | Horizontal spacing between grid cells when using `grid` or `alternating-grid` placement
+| <<example-textsymbolizer-grid-width-height,grid-cell-height>> | float | none | Vertical spacing between grid cells when using `grid` or `alternating-grid` placement
 | placement-type        | string        | dummy    | Algorithm to use to avoid text overlaps, one of `dummy`, `simple`, `list`
 | placements            | string        | none     | If "placement-type" is set to "simple", use this "POSITIONS,[SIZES]" string. An example is text-placements: "E,NE,SE,W,NW,SW" (TODO: better explanation)
 | wrap-width            | integer       | none     | Try to wrap text if it gets longer than this many pixels
@@ -33,11 +35,12 @@
 | margin | float | none | Minimum distance from other text, shields or markers
 | repeat-distance | float | none | Minimum distance from other labels with same text content across geometrys
 | min-padding | float | none | Minimum placement distance from image edges 
-| min-path-length | float | none | Minimum length of lines or polygon boundings to place text on
+| <<example-textsymbolizer-min-path-length,minimum-path-length>> | float | none | Minimum length of lines or polygon boundings to place text on
 | allow-overlap | bool | false | Allow text to overlap with other text or markers
 |====================
 
 .TextSymbolizer size
+[#example-textsymbolizer-size]
 ====
 [source,xml]
 -----
@@ -47,6 +50,7 @@ image::examples/TextSymbolizer-size.svg[align="center"]
 ====
 
 .TextSymbolizer text color fill
+[#example-textsymbolizer-fill]
 ====
 [source,xml]
 -----
@@ -56,6 +60,7 @@ image::examples/TextSymbolizer-fill.svg[align="center"]
 ====
 
 .TextSymbolizer character spacing
+[#example-textsymbolizer-character-spacing]
 ====
 [source,xml]
 -----
@@ -65,6 +70,7 @@ image::examples/TextSymbolizer-character-spacing.svg[align="center"]
 ====
 
 .TextSymbolizer line spacing
+[#example-textsymbolizer-line-spacing]
 ====
 [source,xml]
 -----
@@ -75,6 +81,7 @@ image::examples/TextSymbolizer-line-spacing.svg[align="center"]
 
 .TextSymbolizer spacing
 ====
+[#example-textsymbolizer-spacing]
 [source,xml]
 -----
 include::{sourcedir}/examples/TextSymbolizer-spacing.xml[]
@@ -83,6 +90,7 @@ image::examples/TextSymbolizer-spacing.svg[align="center"]
 ====
 
 .TextSymbolizer placement
+[#example-textsymbolizer-placement]
 ====
 `placement` Controls where the text is actually placed:
 
@@ -105,6 +113,7 @@ image::examples/TextSymbolizer-placement.svg[align="center"]
 ====
 
 .TextSymbolizer grid width/height
+[#example-textsymbolizer-grid-width-height]
 ====
 [source,xml]
 -----
@@ -114,6 +123,7 @@ image::examples/TextSymbolizer-grid-width-height.svg[align="center"]
 ====
 
 .TextSymbolizer minimum path length
+[#example-textsymbolizer-min-path-length]
 ====
 [source,xml]
 -----
@@ -124,6 +134,7 @@ image::examples/TextSymbolizer-minimum-path-length.svg[align="center"]
 
 
 .TextSymbolizer text halo fill
+[#example-textsymbolizer-halo-fill]
 ====
 [source,xml]
 -----
@@ -133,6 +144,7 @@ image::examples/TextSymbolizer-halo-fill.svg[align="center"]
 ====
 
 .TextSymbolizer text halo radius
+[#example-textsymbolizer-halo-radius]
 ====
 [source,xml]
 -----
@@ -142,6 +154,7 @@ image::examples/TextSymbolizer-halo-radius.svg[align="center"]
 ====
 
 .TextSymbolizer text halo opacity
+[#example-textsymbolizer-halo-opacity]
 ====
 [source,xml]
 -----
