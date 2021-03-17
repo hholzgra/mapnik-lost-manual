@@ -5,3 +5,49 @@
 The MarkersSymbolizer is similar to the PointSymbolizer, but has two advantages when used on a line or polygon: it can be drawn multiple times along a line automatically, and it's orientation is rotated according to the current direction of the line instead of always being upright.
 
 TODO: attribute table, examples
+
+.MarkersSymbolizer Attributes
+[width="100%",options="header,unbreakable",cols="m,d,d,d"]
+|====================
+| Attribute          | Type          | Default | Description
+| <<example-markerssymbolizer-file,file>> | file path     | none |
+| base             | string | none | name of a <FileSource> to find the input file in
+| opacity          | float  | 1.0 | Marker opacity for both fill and stroke
+| fill-opacity     | float  | 1.0 | Marker fill opacity
+| stroke-opacity   | float  | 1.0 | Marker stroke opacity
+| stroke-width     | float  | 0.5 | Marker stroke width
+| marker-type      | string | none | One of builtin types "ellipse" or "arror", deprecated, use `file="shape://ellipse"` or `shape://arrow` instead.
+| multi-policy     | string | each | Where to put marker on multi part polygons: each, whole, largest
+| width            | float  | 10   | Marker symbol width in pixels
+| height           | float  | 10   | Marker symbol height in pixels
+|====================
+
+.MarkersSymbolizer file
+[#example-markerssymbolizer-file]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/MarkersSymbolizer-file.xml[]
+-----
+image::examples/MarkersSymbolizer-file.svg[align="center"]
+====
+
+.MarkersSymbolizer opacity
+[#example-markerssymbolizer-opacity]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/MarkersSymbolizer-opacity.xml[]
+-----
+image::examples/MarkersSymbolizer-opacity.svg[align="center"]
+====
+
+.MarkersSymbolizer placement
+[#example-markerssymbolizer-placement]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/MarkersSymbolizer-placement.xml[]
+-----
+image::examples/MarkersSymbolizer-placement.svg[align="center"]
+====

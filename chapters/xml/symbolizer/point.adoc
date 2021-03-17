@@ -15,10 +15,12 @@ For putting symbols along a line or the edge of a polygon the MarkerSymbolizer i
 | <<example-pointsymbolizer-file,file>>             | file path     | none |
 | base             | string | none | name of a <FileSource> to find the input file in
 | allow-overlap    | bool          | false 
-| <<example-pointsymbolizer-file,opacity>>          | float         | 1.0 |
-| ignore-placement | bool          | false |
+| <<example-pointsymbolizer-opacity,opacity>>          | float         | 1.0 |
+| <<example-pointsymbolizer-placement,placement>> | string | cetroid | Wehter to place on a polygons centroid, which can actually be outside, or its interior
+| ignore-placement | bool          | false |  
 | transform        | SVG transform | identity |
-| comp-op          | Compositing   | none |
+| comp-op          | Compositing   | src-over |
+
 |====================
 
 
@@ -44,6 +46,7 @@ image::examples/PointSymbolizer-opacity.svg[align="center"]
 ====
 
 .PointSymbolizer placement
+[#example-pointsymbolizer-placement]
 ====
 [source,xml]
 -----
@@ -53,6 +56,7 @@ image::examples/PointSymbolizer-placement.svg[align="center"]
 ====
 
 .PointSymbolizer scaling 
+[#example-pointsymbolizer-scaling]
 ====
 [source,xml]
 -----
@@ -62,6 +66,7 @@ image::examples/PointSymbolizer-transform-scale.svg[align="center"]
 ====
 
 .PointSymbolizer rotation
+[#example-pointsymbolizer-rotation]
 ====
 [source,xml]
 -----
