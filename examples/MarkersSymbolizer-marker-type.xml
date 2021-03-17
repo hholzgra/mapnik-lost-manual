@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+  <Style name="style">
+    <Rule>
+      <MarkersSymbolizer allow-overlap="true" marker-type="[marker]"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[marker]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,marker
+"POINT(0 0)","square"
+"POINT(1 0)","ellipse"
+"POINT(2 0)","arrow"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
