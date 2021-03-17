@@ -13,9 +13,15 @@
 
 A ((`<FontSet>`)) contains a list of or more `<Font>` entries that are searched in the listed order when rendering characters. This way a style sheet can specify multiple alternative fonts for different platforms, or different language specific fonts.
 
-Listed fonts that do not exist on the system runnng Mapnik are simply ignored after generating a warning. Also when a certain character is not found in the first font the other fonts are searched in order until one supporting the character is found.
+Listed fonts that are not found on the system runnng Mapnik are simply ignored after generating a warning. Also when a certain character is not found in the first font the other fonts are searched in order until one supporting the character is found.
+
+[NOTE]
+====
+Note that by default Mapnik only looks for fonts under one pre-configured directory and it's subdirectories, e.g. `/usr/share/fonts/`. To also find fonts uder other paths, you either need to add a `font-directory=...` attribute to your `<Map>` tag, or register additionl font directories programmatically in your mapnik application before processing a stylesheet.
+====
 
 So when e.g. a map is to show both `<TextSymbolizer>` or `<ShieldSymbolizer>` using the ((`fontset_name`)) attribute.
+
 
 .FontSet attributes
 [options="header",cols="m,d,d,d"]

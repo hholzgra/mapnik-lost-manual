@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white" font-directory="./fonts/christmas_tree">
+
+  <Style name="style">
+    <Rule>
+      <TextSymbolizer face-name="Christmas Tree Regular" size="48">"Trees!"</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt
+"POINT(0 0)"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
