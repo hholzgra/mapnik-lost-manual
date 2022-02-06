@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+  <FileSource name="symbols">./symbols</FileSource>
+
+  <Style name="style">
+    <Rule>
+      <LineSymbolizer stroke="black"/>
+      <MarkersSymbolizer allow-overlap="true" base="symbols" file="bug.svg" placement="[placement]" width="10" height="10" fill="red"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="50">[placement]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,placement
+"POLYGON(( 1  1,  6  1,  6  5,  5  5,  5  2,  2  2,  2  5,  1  5,  1  1))",point
+"POLYGON((11  1, 16  1, 16  5, 15  5, 15  2, 12  2, 12  5, 11  5, 11  1))",interior
+"POLYGON((21  1, 26  1, 26  5, 25  5, 25  2, 22  2, 22  5, 21  5, 21  1))",line
+"LINESTRING(31  1, 36  1, 36  5, 35  5, 35  2, 32  2, 32  5)",vertex-first
+"LINESTRING(41  1, 46  1, 46  5, 45  5, 45  2, 42  2, 42  5)",vertex-last
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
