@@ -20,13 +20,13 @@
 | wrap-before           | boolean       | false    | Wrap before or after reaching wrap-width
 | repeat-wrap-character | boolean       | false    | Keep wrap character and repeat it on new line
 | wrap-character        | string        | none     | Break text at this character only instead of using general unicode line break algorithm
-4+| Halo attributes
+4+^d| Halo attributes
 | <<example-textsymbolizer-halo-fill,halo-fill>>             | color         | white    | Text halo color
 | <<example-textsymbolizer-halo-opacity,halo-opacity>>          | float         | 1.0      | Text halo opacity
 | <<example-textsymbolizer-halo-radius,halo-radius>>           | float         | 0.0      | Text halo radius in pixels
 | halo-rasterizer       | full, fast    | full     | Text halo rasterizing algorithm when using Agg renderer
 | halo-comp-op          | string        | src-over | Compositing operator to use for the halo
-4+^d| *Placemet attributes*
+4+^d| *Placement attributes*
 | allow-overlap | bool | false | Allow text to overlap with other text or markers
 | <<example-textsymbolizer-spacing,spacing>>               | integer       | 0        | Spacing between text labels on lines if > 0 (in pixels?)
 | <<example-textsymbolizer-placement,placement>>             | string        | point    | One of `point`, `line`, `vertex`, `interior`, `grid`, `alternating-grid`
@@ -39,10 +39,13 @@
 | avoid-edges | boolean | false | Avoid placing text near image edges
 | margin | float | none | Minimum distance from other text, shields or markers
 | repeat-distance | float | none | Minimum distance from other labels with same text content across geometries
-| min-padding | float | none | Minimum placement distance from image edges 
+| minimum-padding | float | none | Minimum placement distance from image edges
 | <<example-textsymbolizer-min-path-length,minimum-path-length>> | float | none | Minimum length of lines or polygon boundings to place text on
 | force-odd-labels | boolean | false | Force an odd number of labels to be generated
 | displacement | 2xfloat | (0.0,0.0) | Displace label by this many pixel horizontally/vertically
+| minimum-distance | float | ? | ?TODO?
+| largest-bbox-only | bool | ? | ?TODO?
+| upright | string | ? | ?TODO? one of auto, auto-down, left, left-only, right, right-only, up, down
 |====================
 
 .TextSymbolizer size
