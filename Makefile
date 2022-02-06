@@ -1,6 +1,12 @@
-all: book.pdf book.html book.epub examples
+all: html epub pdf examples
 
-.PHONY:all examples clean install
+.PHONY:all examples clean install html pdf epub
+
+html: book.html
+
+pdf: book.pdf
+
+epub: book.epub
 
 book.pdf: book.adoc examples
 	@echo "Creating PDF"
