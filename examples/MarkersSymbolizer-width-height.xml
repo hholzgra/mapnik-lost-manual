@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+  <FileSource name="symbols">./symbols</FileSource>
+
+  <Style name="style">
+    <Rule>
+      <MarkersSymbolizer allow-overlap="true" base="symbols" file="bug.svg" width="[width]" height="[height]"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[width]</TextSymbolizer>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="30">[height]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,width,height
+"POINT(0 0)",32,32
+"POINT(1 0)",16,32
+"POINT(2 0)",32,16
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+

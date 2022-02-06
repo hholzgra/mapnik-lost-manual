@@ -9,17 +9,18 @@ TODO: attribute table, examples
 .MarkersSymbolizer Attributes
 [width="100%",options="header,unbreakable",cols="m,d,d,d"]
 |====================
-| Attribute          | Type          | Default | Description
-| <<example-markerssymbolizer-file,file>> | file path     | none |
-| base             | string | none | name of a <FileSource> to find the input file in
-| opacity          | float  | 1.0 | Marker opacity for both fill and stroke
-| fill-opacity     | float  | 1.0 | Marker fill opacity
-| stroke-opacity   | float  | 1.0 | Marker stroke opacity
-| stroke-width     | float  | 0.5 | Marker stroke width
-| marker-type      | string | none | One of builtin types "ellipse" or "arror", deprecated, use `file="shape://ellipse"` or `shape://arrow` instead.
+| Attribute | Type | Default | Description
+| <<example-markerssymbolizer-file,file>>                      | file path | none |
+| base                                                         | string    | none | name of a <<_filesource,<FileSource>>> to find the input file in
+| <<example-markerssymbolizer-opacity,opacity>>                | float     |  1.0 | Marker opacity for both fill and stroke
+| <<example-markerssymbolizer-fill-opacity,fill-opacity>>      | float     |  1.0 | Marker fill opacity
+| <<example-markerssymbolizer-stroke-opacity,stroke-opacity>>  | float     |  1.0 | Marker stroke opacity (only for internal markers)
+| <<example-markerssymbolizer-stroke-width,stroke-width>>      | float     |  0.5 | Marker stroke width (only for internal markers)
+| marker-type      | string | none | One of builtin types "ellipse" or "arrow", deprecated, use `file="shape://ellipse"` or `shape://arrow` instead.
 | multi-policy     | string | each | Where to put marker on multi part polygons: each, whole, largest
 | width            | float  | 10   | Marker symbol width in pixels
 | height           | float  | 10   | Marker symbol height in pixels
+| <<example-markerssymbolizer-placement,placement>> | string | point | Marker placement strategy: one of point, line, interior, vertex-first, vertex-last
 |====================
 
 .MarkersSymbolizer file
@@ -42,6 +43,26 @@ include::{sourcedir}/examples/MarkersSymbolizer-opacity.xml[]
 image::examples/MarkersSymbolizer-opacity.svg[align="center"]
 ====
 
+.MarkersSymbolizer stroke opacity
+[#example-markerssymbolizer-stroke-opacity]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/MarkersSymbolizer-stroke-opacity.xml[]
+-----
+image::examples/MarkersSymbolizer-stroke-opacity.svg[align="center"]
+====
+
+.MarkersSymbolizer fill opacity
+[#example-markerssymbolizer-fill-opacity]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/MarkersSymbolizer-fill-opacity.xml[]
+-----
+image::examples/MarkersSymbolizer-fill-opacity.svg[align="center"]
+====
+
 .MarkersSymbolizer placement
 [#example-markerssymbolizer-placement]
 ====
@@ -50,4 +71,14 @@ image::examples/MarkersSymbolizer-opacity.svg[align="center"]
 include::{sourcedir}/examples/MarkersSymbolizer-placement.xml[]
 -----
 image::examples/MarkersSymbolizer-placement.svg[align="center"]
+====
+
+.MarkersSymbolizer width and height
+[#example-markerssymbolizer-width-height]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/MarkersSymbolizer-width-height.xml[]
+-----
+image::examples/MarkersSymbolizer-width-height.svg[align="center"]
 ====
