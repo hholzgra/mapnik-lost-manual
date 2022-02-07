@@ -4,7 +4,6 @@
 
 The MarkersSymbolizer is similar to the PointSymbolizer, but has two advantages when used on a line or polygon: it can be drawn multiple times along a line automatically, and it's orientation is rotated according to the current direction of the line instead of always being upright.
 
-TODO: attribute table, examples
 
 .MarkersSymbolizer Attributes
 [width="100%",options="header,unbreakable",cols="m,d,d,d"]
@@ -16,12 +15,32 @@ TODO: attribute table, examples
 | <<example-markerssymbolizer-fill-opacity,fill-opacity>>      | float     |  1.0 | Marker fill opacity
 | <<example-markerssymbolizer-stroke-opacity,stroke-opacity>>  | float     |  1.0 | Marker stroke opacity (only for internal markers)
 | <<example-markerssymbolizer-stroke-width,stroke-width>>      | float     |  0.5 | Marker stroke width (only for internal markers)
-| marker-type      | string | none | One of builtin types "ellipse" or "arrow", deprecated, use `file="shape://ellipse"` or `shape://arrow` instead.
-| multi-policy     | string | each | Where to put marker on multi part polygons: each, whole, largest
-| width            | float  | 10   | Marker symbol width in pixels
-| height           | float  | 10   | Marker symbol height in pixels
-| <<example-markerssymbolizer-placement,placement>> | string | point | Marker placement strategy: one of point, line, interior, vertex-first, vertex-last
+| [line-through]#marker-type#                                  | string    | none | One of builtin types "ellipse" or "arrow", deprecated, use `file="shape://ellipse"` or `shape://arrow` instead.
+| <<example-markerssymbolizer-multi-policy,multi-policy>>      | string    | each | Where to put marker on multi part polygons: each, whole, largest
+| <<example-markerssymbolizer-width-height,width>>             | float     |   10 | Marker symbol width in pixels
+| <<example-markerssymbolizer-width-height,height>>            | float     |   10 | Marker symbol height in pixels
+| <<example-markerssymbolizer-placement,placement>>            | string    | point | Marker placement strategy: one of point, line, interior, vertex-first, vertex-last
 |====================
+
+
+===== Known Problems
+
+TODO: incomplete
+
+[WARNING]
+====
+The internal marker URIs like `shape://arrow` can't be used in combination with `base=...` as currently the base filesource also gets added in front of these special "files".
+
+https://github.com/mapnik/mapnik/issues/4183[(Mapnik issue #4183)
+====
+
+===== See also:
+
+* https://github.com/mapnik/mapnik/wiki/MarkersSymbolizer[Mapnik Github Wiki]
+* http://mapnik.org/mapnik-reference/#3.0.22/markers[Mapnik Reference]
+
+
+===== MarkersSymbolizer Examples
 
 .MarkersSymbolizer file
 [#example-markerssymbolizer-file]
@@ -81,4 +100,14 @@ image::examples/Symbolizer/Markers/placement.svg[align="center"]
 include::{sourcedir}/examples/Symbolizer/Markers/width-height.xml[]
 -----
 image::examples/Symbolizer/Markers/width-height.svg[align="center"]
+====
+
+.MarkersSymbolizer multi policy
+[#example-markerssymbolizer-multi-policy]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Markers/multi-policy.xml[]
+-----
+image::examples/Symbolizer/Markers/multi-policy.svg[align="center"]
 ====
