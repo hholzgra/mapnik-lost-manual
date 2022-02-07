@@ -29,9 +29,9 @@ Even when giving the pattern as a SVG file, internally it will be converted to P
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/LinePatternSymbolizer-file.xml[]
+include::{sourcedir}/examples/Symbolizer/LinePattern/file.xml[]
 -----
-image::examples/LinePatternSymbolizer-file.png[align="center"]
+image::examples/Symbolizer/LinePattern/file.png[align="center"]
 // need to use PNG here as ascidoctor-pdf, or actually the 
 // prawn-svg renderer used by it, does not support SVG
 // <pattern> tags

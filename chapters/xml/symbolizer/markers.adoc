@@ -28,9 +28,9 @@ TODO: attribute table, examples
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/MarkersSymbolizer-file.xml[]
+include::{sourcedir}/examples/Symbolizer/Markers/file.xml[]
 -----
-image::examples/MarkersSymbolizer-file.svg[align="center"]
+image::examples/Symbolizer/Markers/file.svg[align="center"]
 ====
 
 .MarkersSymbolizer opacity
@@ -38,9 +38,9 @@ image::examples/MarkersSymbolizer-file.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/MarkersSymbolizer-opacity.xml[]
+include::{sourcedir}/examples/Symbolizer/Markers/opacity.xml[]
 -----
-image::examples/MarkersSymbolizer-opacity.svg[align="center"]
+image::examples/Symbolizer/Markers/opacity.svg[align="center"]
 ====
 
 .MarkersSymbolizer stroke opacity
@@ -48,9 +48,9 @@ image::examples/MarkersSymbolizer-opacity.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/MarkersSymbolizer-stroke-opacity.xml[]
+include::{sourcedir}/examples/Symbolizer/Markers/stroke-opacity.xml[]
 -----
-image::examples/MarkersSymbolizer-stroke-opacity.svg[align="center"]
+image::examples/Symbolizer/Markers/stroke-opacity.svg[align="center"]
 ====
 
 .MarkersSymbolizer fill opacity
@@ -58,9 +58,9 @@ image::examples/MarkersSymbolizer-stroke-opacity.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/MarkersSymbolizer-fill-opacity.xml[]
+include::{sourcedir}/examples/Symbolizer/Markers/fill-opacity.xml[]
 -----
-image::examples/MarkersSymbolizer-fill-opacity.svg[align="center"]
+image::examples/Symbolizer/Markers/fill-opacity.svg[align="center"]
 ====
 
 .MarkersSymbolizer placement
@@ -68,9 +68,9 @@ image::examples/MarkersSymbolizer-fill-opacity.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/MarkersSymbolizer-placement.xml[]
+include::{sourcedir}/examples/Symbolizer/Markers/placement.xml[]
 -----
-image::examples/MarkersSymbolizer-placement.svg[align="center"]
+image::examples/Symbolizer/Markers/placement.svg[align="center"]
 ====
 
 .MarkersSymbolizer width and height
@@ -78,7 +78,7 @@ image::examples/MarkersSymbolizer-placement.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/MarkersSymbolizer-width-height.xml[]
+include::{sourcedir}/examples/Symbolizer/Markers/width-height.xml[]
 -----
-image::examples/MarkersSymbolizer-width-height.svg[align="center"]
+image::examples/Symbolizer/Markers/width-height.svg[align="center"]
 ====

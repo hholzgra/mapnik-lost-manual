@@ -23,9 +23,9 @@
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/PolygonSymbolizer-fill.xml[]
+include::{sourcedir}/examples/Symbolizer/Polygon/fill.xml[]
 -----
-image::examples/PolygonSymbolizer-fill.svg[align="center"]
+image::examples/Symbolizer/Polygon/fill.svg[align="center"]
 ====
 
 .PolygonSymbolizer fill opacity
@@ -33,9 +33,9 @@ image::examples/PolygonSymbolizer-fill.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/PolygonSymbolizer-fill-opacity.xml[]
+include::{sourcedir}/examples/Symbolizer/Polygon/fill-opacity.xml[]
 -----
-image::examples/PolygonSymbolizer-fill-opacity.svg[align="center"]
+image::examples/Symbolizer/Polygon/fill-opacity.svg[align="center"]
 ====
 
 .PolygonSymbolizer smooth
@@ -43,7 +43,7 @@ image::examples/PolygonSymbolizer-fill-opacity.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/PolygonSymbolizer-smooth.xml[]
+include::{sourcedir}/examples/Symbolizer/Polygon/smooth.xml[]
 -----
-image::examples/PolygonSymbolizer-smooth.svg[align="center"]
+image::examples/Symbolizer/Polygon/smooth.svg[align="center"]
 ====

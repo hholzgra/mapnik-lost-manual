@@ -86,9 +86,9 @@ image::examples/ShieldSymbolizer.svg[align="center"]
 See also `repeat-distance`, which controls how far shields with the same text should be set apart in general, even when placed on different geometries.
 [source,xml]
 -----
-include::{sourcedir}/examples/ShieldSymbolizer-spacing.xml[]
+include::{sourcedir}/examples/Symbolizer/Shield/spacing.xml[]
 -----
-image::examples/ShieldSymbolizer-spacing.svg[align="center"]
+image::examples/Symbolizer/Shield/spacing.svg[align="center"]
 ====
 
 .ShieldSymolizer placement
@@ -109,18 +109,18 @@ image::examples/ShieldSymbolizer-spacing.svg[align="center"]
 
 [source,xml]
 -----
-include::{sourcedir}/examples/ShieldSymbolizer-placement.xml[]
+include::{sourcedir}/examples/Symbolizer/Shield/placement.xml[]
 -----
-image::examples/ShieldSymbolizer-placement.svg[align="center"]
+image::examples/Symbolizer/Shield/placement.svg[align="center"]
 ====
 
 .ShieldSymbolizer grid width/height
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/ShieldSymbolizer-grid-width-height.xml[]
+include::{sourcedir}/examples/Symbolizer/Shield/grid-width-height.xml[]
 -----
-image::examples/ShieldSymbolizer-grid-width-height.svg[align="center"]
+image::examples/Symbolizer/Shield/grid-width-height.svg[align="center"]
 ====
 
 

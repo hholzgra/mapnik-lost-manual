@@ -24,9 +24,9 @@ See also:
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/BuildingSymbolizer-fill.xml[]
+include::{sourcedir}/examples/Symbolizer/Building/fill.xml[]
 -----
-image::examples/BuildingSymbolizer-fill.svg[align="center"]
+image::examples/Symbolizer/Building/fill.svg[align="center"]
 ====
 
 .BuildingSymbolizer fill opacity
@@ -34,9 +34,9 @@ image::examples/BuildingSymbolizer-fill.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/BuildingSymbolizer-fill-opacity.xml[]
+include::{sourcedir}/examples/Symbolizer/Building/fill-opacity.xml[]
 -----
-image::examples/BuildingSymbolizer-fill-opacity.svg[align="center"]
+image::examples/Symbolizer/Building/fill-opacity.svg[align="center"]
 ====
 
 .BuildingSymbolizer height
@@ -44,7 +44,7 @@ image::examples/BuildingSymbolizer-fill-opacity.svg[align="center"]
 [#example-buildingsymbolizer-height]
 [source,xml]
 -----
-include::{sourcedir}/examples/BuildingSymbolizer-height.xml[]
+include::{sourcedir}/examples/Symbolizer/Building/height.xml[]
 -----
-image::examples/BuildingSymbolizer-height.svg[align="center"]
+image::examples/Symbolizer/Building/height.svg[align="center"]
 ====

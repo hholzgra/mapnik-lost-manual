@@ -30,9 +30,9 @@ For putting symbols along a line or the edge of a polygon the MarkerSymbolizer i
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/PointSymbolizer-file.xml[]
+include::{sourcedir}/examples/Symbolizer/Point/file.xml[]
 -----
-image::examples/PointSymbolizer-file.svg[align="center"]
+image::examples/Symbolizer/Point/file.svg[align="center"]
 ====
 
 .PointSymbolizer opacity
@@ -40,9 +40,9 @@ image::examples/PointSymbolizer-file.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/PointSymbolizer-opacity.xml[]
+include::{sourcedir}/examples/Symbolizer/Point/opacity.xml[]
 -----
-image::examples/PointSymbolizer-opacity.svg[align="center"]
+image::examples/Symbolizer/Point/opacity.svg[align="center"]
 ====
 
 .PointSymbolizer placement
@@ -50,9 +50,9 @@ image::examples/PointSymbolizer-opacity.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/PointSymbolizer-placement.xml[]
+include::{sourcedir}/examples/Symbolizer/Point/placement.xml[]
 -----
-image::examples/PointSymbolizer-placement.svg[align="center"]
+image::examples/Symbolizer/Point/placement.svg[align="center"]
 ====
 
 .PointSymbolizer scaling 
@@ -60,9 +60,9 @@ image::examples/PointSymbolizer-placement.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/PointSymbolizer-transform-scale.xml[]
+include::{sourcedir}/examples/Symbolizer/Point/transform-scale.xml[]
 -----
-image::examples/PointSymbolizer-transform-scale.svg[align="center"]
+image::examples/Symbolizer/Point/transform-scale.svg[align="center"]
 ====
 
 .PointSymbolizer rotation
@@ -70,9 +70,9 @@ image::examples/PointSymbolizer-transform-scale.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/PointSymbolizer-transform-rotate.xml[]
+include::{sourcedir}/examples/Symbolizer/Point/transform-rotate.xml[]
 -----
-image::examples/PointSymbolizer-transform-rotate.svg[align="center"]
+image::examples/Symbolizer/Point/transform-rotate.svg[align="center"]
 ====
 
 .PointSymbolizer compositing

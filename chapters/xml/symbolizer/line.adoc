@@ -37,9 +37,9 @@ There are also some attributes that change the lines geometry itself, like offse
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/LineSymbolizer-smooth.xml[]
+include::{sourcedir}/examples/Symbolizer/Line/smooth.xml[]
 -----
-image::examples/LineSymbolizer-smooth.svg[align="center"]
+image::examples/Symbolizer/Line/smooth.svg[align="center"]
 ====
 
 .LineSymbolizer stroke
@@ -47,9 +47,9 @@ image::examples/LineSymbolizer-smooth.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/LineSymbolizer-stroke.xml[]
+include::{sourcedir}/examples/Symbolizer/Line/stroke.xml[]
 -----
-image::examples/LineSymbolizer-stroke.svg[align="center"]
+image::examples/Symbolizer/Line/stroke.svg[align="center"]
 ====
 
 .LineSymbolizer dash array
@@ -57,9 +57,9 @@ image::examples/LineSymbolizer-stroke.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/LineSymbolizer-stroke-dasharray.xml[]
+include::{sourcedir}/examples/Symbolizer/Line/stroke-dasharray.xml[]
 -----
-image::examples/LineSymbolizer-stroke-dasharray.svg[align="center"]
+image::examples/Symbolizer/Line/stroke-dasharray.svg[align="center"]
 ====
 
 .LineSymbolizer stroke linejoin
@@ -68,9 +68,9 @@ image::examples/LineSymbolizer-stroke-dasharray.svg[align="center"]
 TODO: prevent image clipping on top edge
 [source,xml]
 -----
-include::{sourcedir}/examples/LineSymbolizer-stroke-linejoin.xml[]
+include::{sourcedir}/examples/Symbolizer/Line/stroke-linejoin.xml[]
 -----
-image::examples/LineSymbolizer-stroke-linejoin.svg[align="center"]
+image::examples/Symbolizer/Line/stroke-linejoin.svg[align="center"]
 ====
 
 .LineSymbolizer stroke linecap
@@ -78,9 +78,9 @@ image::examples/LineSymbolizer-stroke-linejoin.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/LineSymbolizer-stroke-linecap.xml[]
+include::{sourcedir}/examples/Symbolizer/Line/stroke-linecap.xml[]
 -----
-image::examples/LineSymbolizer-stroke-linecap.svg[align="center"]
+image::examples/Symbolizer/Line/stroke-linecap.svg[align="center"]
 ====
 
 .LineSymbolizer stroke opacity
@@ -88,9 +88,9 @@ image::examples/LineSymbolizer-stroke-linecap.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/LineSymbolizer-stroke-opacity.xml[]
+include::{sourcedir}/examples/Symbolizer/Line/stroke-opacity.xml[]
 -----
-image::examples/LineSymbolizer-stroke-opacity.svg[align="center"]
+image::examples/Symbolizer/Line/stroke-opacity.svg[align="center"]
 ====
 
 .LineSymbolizer stroke width
@@ -98,9 +98,9 @@ image::examples/LineSymbolizer-stroke-opacity.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/LineSymbolizer-stroke-width.xml[]
+include::{sourcedir}/examples/Symbolizer/Line/stroke-width.xml[]
 -----
-image::examples/LineSymbolizer-stroke-width.svg[align="center"]
+image::examples/Symbolizer/Line/stroke-width.svg[align="center"]
 ====
 
 .LineSymbolizer offset
@@ -109,9 +109,9 @@ image::examples/LineSymbolizer-stroke-width.svg[align="center"]
 Note that unlike in other LineSymbolizer examples this is three times the same geometry, but with different `offset`.
 [source,xml]
 -----
-include::{sourcedir}/examples/LineSymbolizer-offset.xml[]
+include::{sourcedir}/examples/Symbolizer/Line/offset.xml[]
 -----
-image::examples/LineSymbolizer-offset.svg[align="center"]
+image::examples/Symbolizer/Line/offset.svg[align="center"]
 ====
 
 See also:

@@ -3,5 +3,5 @@
 *.html
 *.pdf
 *.epub
-examples/*.svg
-examples/*.png
+examples/**/*.svg
+examples/**/*.png

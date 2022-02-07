@@ -1,6 +1,8 @@
 #! /bin/bash
 base=$(basename $1 .xml)
-./render.py $base.xml
-mv render.svg $base.svg
-convert -trim render.png $base.png
-rm -f render.png
+dir=$(dirname $1)
+cp $dir/$base.xml render.xml
+./render.py render.xml
+mv render.svg $dir/$base.svg
+convert -trim render.png $dir/$base.png
+rm -f render.png render.xml

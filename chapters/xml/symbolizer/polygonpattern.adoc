@@ -26,9 +26,9 @@
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/PolygonPatternSymbolizer-file.xml[]
+include::{sourcedir}/examples/Symbolizer/PolygonPattern/file.xml[]
 -----
-image::examples/PolygonPatternSymbolizer-file.png[align="center"]
+image::examples/Symbolizer/PolygonPattern/file.png[align="center"]
 ====
 
 .PolygonPatternSymbolizer alignment
@@ -37,9 +37,9 @@ image::examples/PolygonPatternSymbolizer-file.png[align="center"]
 `global` alignment makes the fill pattern align across touching polygon borders, `local` alignment makes each filled polygon of the same shape look exactly the same.
 [source,xml]
 -----
-include::{sourcedir}/examples/PolygonPatternSymbolizer-alignment.xml[]
+include::{sourcedir}/examples/Symbolizer/PolygonPattern/alignment.xml[]
 -----
-image::examples/PolygonPatternSymbolizer-alignment.png[align="center"]
+image::examples/Symbolizer/PolygonPattern/alignment.png[align="center"]
 ====
 
 .PolygonPatternSymbolizer transform
@@ -47,9 +47,9 @@ image::examples/PolygonPatternSymbolizer-alignment.png[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/PolygonPatternSymbolizer-transform.xml[]
+include::{sourcedir}/examples/Symbolizer/PolygonPattern/transform.xml[]
 -----
-image::examples/PolygonPatternSymbolizer-transform.png[align="center"]
+image::examples/Symbolizer/PolygonPattern/transform.png[align="center"]
 ====
 
 .PolygonPatternSymbolizer geometry transform
@@ -58,9 +58,9 @@ image::examples/PolygonPatternSymbolizer-transform.png[align="center"]
 Unlike wiht PointSymbolizer `rotate()` does not seem to rotate around the geometry center, but around the map origin at `(0 0)` instead?
 [source,xml]
 -----
-include::{sourcedir}/examples/PolygonPatternSymbolizer-geometry-transform.xml[]
+include::{sourcedir}/examples/Symbolizer/PolygonPattern/geometry-transform.xml[]
 -----
-image::examples/PolygonPatternSymbolizer-geometry-transform.png[align="center"]
+image::examples/Symbolizer/PolygonPattern/geometry-transform.png[align="center"]
 ====
 
 TODO: gamma, gamma-method, clip, simplify, simplify-method, comp-op

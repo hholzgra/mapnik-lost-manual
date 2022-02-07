@@ -1,8 +1,10 @@
-all: all-png all-svg
+rwildcard=$(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter-out disabled/%,$(filter $(subst *,%,$2),$d)))
 
-all-svg: $(addsuffix .svg, $(basename $(wildcard *.xml)))  cairo-and-mapnik.svg
+all: all-png all-svg 
 
-all-png: $(addsuffix .png, $(basename $(wildcard *.xml)))
+all-svg: $(addsuffix .svg, $(basename $(call rwildcard,,*.xml)))  cairo-and-mapnik.svg
+
+all-png: $(addsuffix .png, $(basename $(call rwildcard,,*.xml)))
 
 %.svg : %.xml
 	@echo $@

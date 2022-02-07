@@ -53,9 +53,9 @@
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-size.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/size.xml[]
 -----
-image::examples/TextSymbolizer-size.svg[align="center"]
+image::examples/Symbolizer/Text/size.svg[align="center"]
 ====
 
 .TextSymbolizer text color fill
@@ -63,9 +63,9 @@ image::examples/TextSymbolizer-size.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-fill.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/fill.xml[]
 -----
-image::examples/TextSymbolizer-fill.svg[align="center"]
+image::examples/Symbolizer/Text/fill.svg[align="center"]
 ====
 
 .TextSymbolizer text opacity
@@ -73,9 +73,9 @@ image::examples/TextSymbolizer-fill.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-opacity.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/opacity.xml[]
 -----
-image::examples/TextSymbolizer-opacity.svg[align="center"]
+image::examples/Symbolizer/Text/opacity.svg[align="center"]
 ====
 
 .TextSymbolizer character spacing
@@ -83,9 +83,9 @@ image::examples/TextSymbolizer-opacity.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-character-spacing.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/character-spacing.xml[]
 -----
-image::examples/TextSymbolizer-character-spacing.svg[align="center"]
+image::examples/Symbolizer/Text/character-spacing.svg[align="center"]
 ====
 
 .TextSymbolizer line spacing
@@ -93,9 +93,9 @@ image::examples/TextSymbolizer-character-spacing.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-line-spacing.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/line-spacing.xml[]
 -----
-image::examples/TextSymbolizer-line-spacing.svg[align="center"]
+image::examples/Symbolizer/Text/line-spacing.svg[align="center"]
 ====
 
 .TextSymbolizer spacing
@@ -103,9 +103,9 @@ image::examples/TextSymbolizer-line-spacing.svg[align="center"]
 [#example-textsymbolizer-spacing]
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-spacing.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/spacing.xml[]
 -----
-image::examples/TextSymbolizer-spacing.svg[align="center"]
+image::examples/Symbolizer/Text/spacing.svg[align="center"]
 ====
 
 .TextSymbolizer placement
@@ -126,9 +126,9 @@ image::examples/TextSymbolizer-spacing.svg[align="center"]
 `alternating-grid`:: Similar to `grid`, but each second row is horizontally displaced by half of `grid-cell-width`
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-placement.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/placement.xml[]
 -----
-image::examples/TextSymbolizer-placement.svg[align="center"]
+image::examples/Symbolizer/Text/placement.svg[align="center"]
 ====
 
 .TextSymbolizer grid width/height
@@ -136,9 +136,9 @@ image::examples/TextSymbolizer-placement.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-grid-width-height.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/grid-width-height.xml[]
 -----
-image::examples/TextSymbolizer-grid-width-height.svg[align="center"]
+image::examples/Symbolizer/Text/grid-width-height.svg[align="center"]
 ====
 
 .TextSymbolizer minimum path length
@@ -146,9 +146,9 @@ image::examples/TextSymbolizer-grid-width-height.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-minimum-path-length.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/minimum-path-length.xml[]
 -----
-image::examples/TextSymbolizer-minimum-path-length.svg[align="center"]
+image::examples/Symbolizer/Text/minimum-path-length.svg[align="center"]
 ====
 
 
@@ -157,9 +157,9 @@ image::examples/TextSymbolizer-minimum-path-length.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-halo-fill.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/halo-fill.xml[]
 -----
-image::examples/TextSymbolizer-halo-fill.svg[align="center"]
+image::examples/Symbolizer/Text/halo-fill.svg[align="center"]
 ====
 
 .TextSymbolizer text halo radius
@@ -167,9 +167,9 @@ image::examples/TextSymbolizer-halo-fill.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-halo-radius.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/halo-radius.xml[]
 -----
-image::examples/TextSymbolizer-halo-radius.svg[align="center"]
+image::examples/Symbolizer/Text/halo-radius.svg[align="center"]
 ====
 
 .TextSymbolizer text halo opacity
@@ -177,8 +177,8 @@ image::examples/TextSymbolizer-halo-radius.svg[align="center"]
 ====
 [source,xml]
 -----
-include::{sourcedir}/examples/TextSymbolizer-halo-opacity.xml[]
+include::{sourcedir}/examples/Symbolizer/Text/halo-opacity.xml[]
 -----
-image::examples/TextSymbolizer-halo-opacity.svg[align="center"]
+image::examples/Symbolizer/Text/halo-opacity.svg[align="center"]
 ====
 
