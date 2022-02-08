@@ -1,3 +1,10 @@
 == Compositing
 
-TODO: extend OSM default style with a big single red dot marker, similar to CartoCSS example page
+TODO: extend OSM default style with a big single red dot marker, similar to https://carto.com/developers/styling/cartocss/#color-blending-values[CartoCSS example page]
+
+=== See also
+
+* https://github.com/mapnik/mapnik/wiki/Compositing
+* https://carto.com/developers/styling/cartocss/#color-blending-values
+* https://blog.mapbox.com/expanding-mapniks-cartographic-capabilities-c44af43c9bb8
+
