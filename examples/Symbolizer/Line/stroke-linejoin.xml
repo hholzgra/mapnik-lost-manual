@@ -3,7 +3,8 @@
 
   <Style name="style">
     <Rule>
-      <LineSymbolizer stroke-linejoin="[join]" stroke-width="20"/>
+      <LineSymbolizer stroke="#7F7F7F" stroke-linejoin="[join]" stroke-width="20"/>
+      <LineSymbolizer stroke="#FF0000" stroke-width="1"/>
       <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="30">[join]</TextSymbolizer>
     </Rule>
   </Style>
