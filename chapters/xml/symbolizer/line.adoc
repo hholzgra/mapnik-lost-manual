@@ -26,7 +26,7 @@ There are also some attributes that change the lines geometry itself, like offse
 | ((stroke-gamma-method)) | power, linear, none, threshold, multiply | power |  
 | <<example-linesymbolizer-stroke-linejoin,((stroke-linejoin))>>     | bevel, miter, miter-revert, round | miter |  
 | <<example-linesymbolizer-stroke-linecap,((stroke-linecap))>>      | butt, round, square | butt |  
-| ((stroke-miterlimit))   | float     | 4 |  
+|  <<example-linesymbolizer-stroke-miterlimit,((stroke-miterlimit))>>   | float     | 4 |
 | <<example-linesymbolizer-stroke-opacity,((stroke-opacity))>>      | 0.0 - 1.0 | 1 |  
 | <<example-linesymbolizer-stroke-width,((stroke-width))>>        | float     | 1 |  
 |====================
@@ -85,6 +85,16 @@ image::examples/Symbolizer/Line/stroke-linejoin.svg[align="center"]
 include::{sourcedir}/examples/Symbolizer/Line/stroke-linecap.xml[]
 -----
 image::examples/Symbolizer/Line/stroke-linecap.svg[align="center"]
+====
+
+.LineSymbolizer stroke miter limit
+[#example-linesymbolizer-stroke-miterlimit]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Line/stroke-miterlimit.xml[]
+-----
+image::examples/Symbolizer/Line/stroke-miterlimit.svg[align="center"]
 ====
 
 .LineSymbolizer stroke opacity

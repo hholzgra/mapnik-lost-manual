@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TODO: caption text -->
+<Map background-color='white'>
+  
+  <Style name="style">
+    <Rule>
+      <LineSymbolizer stroke-linejoin="miter" stroke-width="10" stroke-miterlimit="[ml]" stroke="#7f7f7f"/>
+      <LineSymbolizer stroke-width="1" stroke="#FF0000"/>
+      <!-- <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[cap]</TextSymbolizer> -->
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,ml
+"LINESTRING(10 10,20 30,30 10)",2
+"LINESTRING(14 10,20 25,26 10)",2
+"LINESTRING(18 10,20 18,22 10)",2
+"LINESTRING(40 10,50 30,60 10)",2.5
+"LINESTRING(44 10,50 25,56 10)",2.5
+"LINESTRING(48 10,50 18,52 10)",2.5
+"LINESTRING(70 10,80 30,90 10)",6
+"LINESTRING(74 10,80 25,86 10)",6
+"LINESTRING(78 10,80 18,82 10)",6
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
