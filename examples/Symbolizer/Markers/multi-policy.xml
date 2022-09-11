@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+  <Style name="style">
+    <Rule>
+      <PolygonSymbolizer fill="lightgray"/>
+      <LineSymbolizer stroke="black"/>
+      <MarkersSymbolizer allow-overlap="true" file="shape://ellipse" multi-policy="[placement]" width="10" height="10" fill="red"/>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,placement
+"MULTIPOLYGON((( 30  20, 60  20, 60  70, 30  70, 30  20)),(( 90  10, 110  10, 110  30, 90  30, 90  10)),(( 90  50, 120  50, 120  80, 90  80, 90  50)))",each
+"MULTIPOLYGON(((130  20,160  20,160  70,130  70,130  20)),((190  10, 210  10, 210  30,190  30,190  10)),((190  50, 220  50, 220  80,190  80,190  50)))",whole
+"MULTIPOLYGON(((230  20,260  20,260  70,230  70,230  20)),((290  10, 310  10, 310  30,290  30,290  10)),((290  50, 320  50, 320  80,290  80,290  50)))",largest
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="style2">
+    <Rule>
+      <LineSymbolizer stroke="blue" stroke-width="2"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="60">[placement]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer2">
+    <StyleName>style2</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,placement
+"POLYGON(( 27 5, 123 5, 123 85,  27 85,  27 15))",each
+"POLYGON((127 5, 223 5, 223 85, 127 85, 127 15))",whole
+"POLYGON((227 5, 323 5, 323 85, 227 85, 227 15))",largest
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
