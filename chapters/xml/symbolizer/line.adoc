@@ -31,6 +31,10 @@ There are also some attributes that change the lines geometry itself, like offse
 | <<example-linesymbolizer-stroke-width,((stroke-width))>>        | float     | 1 |  
 |====================
 
+TODO: 
+* for miterlimit see e.g. https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit for meterlimit description / visualization
+* for simplify-algorithm see e.g. https://i11www.iti.kit.edu/_media/teaching/sommer2013/algokartografie/gruppe1.pdf
+
 
 .LineSymbolizer smooth
 [#example-linesymbolizer-smooth]
