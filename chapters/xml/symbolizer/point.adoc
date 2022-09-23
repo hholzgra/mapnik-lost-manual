@@ -14,7 +14,7 @@ For putting symbols along a line or the edge of a polygon the MarkerSymbolizer i
 | Attribute          | Type          | Default | Description
 | <<example-pointsymbolizer-file,file>>             | file path     | none |
 | <<example-pointsymbolizer-base,base>>             | string | none | name of a <FileSource> to find the input file in
-| allow-overlap    | bool          | false |
+| <<example-pointsymbolizer-allow-overlap,allow-overlap>>    | bool          | false | allow to paint over previous symbolizers output
 | <<example-pointsymbolizer-opacity,opacity>>          | float         | 1.0 |
 | <<example-pointsymbolizer-placement,placement>> | string | cetroid | Wehter to place on a polygons centroid, which can actually be outside, or its interior
 | ignore-placement | bool          | false |  
@@ -53,6 +53,16 @@ image::examples/Symbolizer/Point/opacity.svg[align="center"]
 include::{sourcedir}/examples/Symbolizer/Point/base.xml[]
 -----
 image::examples/Symbolizer/Point/base.svg[align="center"]
+====
+
+.PointSymbolizer allow-overlap
+[#example-pointsymbolizer-allow-overlap]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Point/allow-overlap.xml[]
+-----
+image::examples/Symbolizer/Point/allow-overlap.svg[align="center"]
 ====
 
 .PointSymbolizer placement

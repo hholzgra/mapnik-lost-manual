@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+  <FileSource name="symbols">./symbols</FileSource>
+
+  <Style name="style">
+    <Rule>
+      <PolygonSymbolizer/>
+      <TextSymbolizer face-name="DejaVu Sans Book">[caption]</TextSymbolizer>
+      <PointSymbolizer allow-overlap="[allow-overlap]" base="symbols" opacity="0.3" file="bug.svg"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[allow-overlap]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,allow-overlap,caption
+"POINT(0 0)",true,overlap
+"POINT(1 0)",false,overlap
+"POINT(3 0.2)",true,
+"POINT(3.1 0)",true,
+"POINT(4 0.2)",true,
+"POINT(4.1 0)",false,
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+
