@@ -44,6 +44,8 @@ image::examples/Symbolizer/Point/file.svg[align="center"]
 [#pointsymbolizer-opacity]
 ===== `opacity` attribute
 
+The `opacity` attribute defines how opaque or transparant a point symbol should be rendered. The value range is from `0.0` for completely transparent to `1.0` for completely opaque.
+
 .PointSymbolizer opacity
 ====
 [source,xml]
@@ -56,6 +58,11 @@ image::examples/Symbolizer/Point/opacity.svg[align="center"]
 
 [#pointsymbolizer-base]
 ===== `base` attribute
+
+The `base` attribute defines which <<_filesource,`<FileSource>`>> should be used as the base directory for a <<pointsymbolizer-file,`file`>> symbol.
+
+NOTE: The `base` attribute only accepts constant strings, no expressions. 
+So it can only be chosen dynamically by using <<_rule,`<Rule>`>>/<<_filter,`<Filter>`>> constructs.
 
 .PointSymbolizer base
 ====
