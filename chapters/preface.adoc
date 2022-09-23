@@ -5,7 +5,7 @@ This is a brain dump of my experience with Mapnik, the map rendering library tha
 
 The documentation source code for this "missing manual" is
 https://github.com/hholzgra/mapnik-lost-manual[available on GitHub]
-and is licensed under the [[license|FreeBSD Documentation License]].
+and is licensed under the <<_license,FreeBSD Documentation License>>.
 
 === Why yet another documentation project?
 
