@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map background-color="white">
+  <FileSource name="default">./symbols</FileSource>
   <FileSource name="red">./symbols/red</FileSource>
+  <FileSource name="green">./symbols/green</FileSource>
+  <FileSource name="blue">./symbols/blue</FileSource>
 
   <Style name="style">
     <Rule>
+      <Filter>[base] = "red"</Filter>
       <PointSymbolizer allow-overlap="true" file="bug.svg" base="red"/>
+    </Rule>
+    <Rule>
+      <Filter>[base] = "blue"</Filter>
+      <PointSymbolizer allow-overlap="true" file="bug.svg" base="blue"/>
+    </Rule>
+    <Rule>
+      <Filter>[base] = "green"</Filter>
+      <PointSymbolizer allow-overlap="true" file="bug.svg" base="green"/>
+    </Rule>
+    <Rule>
+      <AlsoFilter />
       <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[base]</TextSymbolizer>
+    </Rule>
+    <Rule>
+      <ElseFilter />
+      <PointSymbolizer allow-overlap="true" file="bug.svg" base="default"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20" fill="red">"base '"+[base]+"' not found"</TextSymbolizer>
     </Rule>
   </Style>
 
@@ -18,6 +38,7 @@ wkt,base
 "POINT(0 0)","red"
 "POINT(1 0)","blue"
 "POINT(2 0)","green"
+"POINT(3.5 0)","foobar"
       </Parameter>
     </Datasource>
   </Layer>
