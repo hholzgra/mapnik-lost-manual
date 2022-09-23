@@ -1,9 +1,13 @@
 [preface]
 == Preface
 
-This is a brain dump of my experience with Mapnik, the map rendering library that powers OpenStreeMap and MapOSMatic, among other things
+This is a brain dump of my experience with Mapnik, the map rendering library that powers OpenStreeMap and MapOSMatic, among other things.
 
-=== Why yet another ducomentation project?
+The documentation source code for this "missing manual" is
+https://github.com/hholzgra/mapnik-lost-manual[available on GitHub]
+and is licensed under the [[license|FreeBSD Documentation License]].
+
+=== Why yet another documentation project?
 
 .Image (c) Randall Munroe https://imgs.xkcd.com/comics/standards.png
 image::images/xkcd-standards.png[]
