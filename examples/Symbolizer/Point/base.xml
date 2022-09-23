@@ -25,7 +25,7 @@
     <Rule>
       <ElseFilter />
       <PointSymbolizer allow-overlap="true" file="bug.svg" base="default"/>
-      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20" fill="red">"base '"+[base]+"' not found"</TextSymbolizer>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20" fill="red">"FileSource for base '"+[base]+"' not found"</TextSymbolizer>
     </Rule>
   </Style>
 
@@ -38,7 +38,7 @@ wkt,base
 "POINT(0 0)","red"
 "POINT(1 0)","blue"
 "POINT(2 0)","green"
-"POINT(3.5 0)","foobar"
+"POINT(4 0)","foobar"
       </Parameter>
     </Datasource>
   </Layer>
