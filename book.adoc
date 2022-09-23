@@ -31,6 +31,8 @@ include::chapters/resources.adoc[]
 
 include::chapters/glossary.adoc[]
 
+include::LICENSE[]
+
 [index]
 == Index
 
