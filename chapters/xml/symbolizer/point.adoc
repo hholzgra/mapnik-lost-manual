@@ -12,21 +12,26 @@ For putting symbols along a line or the edge of a polygon the MarkerSymbolizer i
 [width="100%",options="header,unbreakable",cols="m,d,d,d"]
 |====================
 | Attribute          | Type          | Default | Description
-| <<example-pointsymbolizer-file,file>>             | file path     | none |
-| <<example-pointsymbolizer-base,base>>             | string | none | name of a <FileSource> to find the input file in
-| <<example-pointsymbolizer-allow-overlap,allow-overlap>>    | bool          | false | allow to paint over previous symbolizers output
-| <<example-pointsymbolizer-opacity,opacity>>          | float         | 1.0 |
-| <<example-pointsymbolizer-placement,placement>> | string | cetroid | Wehter to place on a polygons centroid, which can actually be outside, or its interior
+| <<pointsymbolizer-file,file>> | file path     | none |
+| <<example-pointsymbolizer-base,base>> | string | none | name of a <FileSource> to find the input file in
+| <<pointsymbolizer-allow-overlap,allow-overlap>> | bool          | false | allow to paint over previous symbolizers output
+| <<pointsymbolizer-opacity,opacity>> | float         | 1.0 |
+| <<pointsymbolizer-placement,placement>> | string | cetroid | Wehter to place on a polygons centroid, which can actually be outside, or its interior
 | ignore-placement | bool          | false |  
-| transform        | SVG transform | identity |
+| <<pointsymbolizer-transform,transform>> | SVG transform | identity |
 | comp-op          | Compositing   | src-over |
-
 |====================
 
 
+[#pointsymbolizer-file]
+===== `file` attribute
+
+`file` refers to a SVG or PNG file to include as a symbol at the point position.
+The file can be given as a constant string, or as an expression, so files to display can be dynamically chosen from layer data.
+
+By default `file` paths are either absolute or relative to the directory the main style file is in, but different directory paths can be set up using the <<_filesource,`<FileSource>`>> tag and referenced by its `name` using the <<pointsymbolizer-base,`base`>> attribute.
 
 .PointSymbolizer file
-[#example-pointsymbolizer-file]
 ====
 [source,xml]
 -----
@@ -35,8 +40,11 @@ include::{sourcedir}/examples/Symbolizer/Point/file.xml[]
 image::examples/Symbolizer/Point/file.svg[align="center"]
 ====
 
+
+[#pointsymbolizer-opacity]
+===== `opacity` attribute
+
 .PointSymbolizer opacity
-[#example-pointsymbolizer-opacity]
 ====
 [source,xml]
 -----
@@ -45,8 +53,11 @@ include::{sourcedir}/examples/Symbolizer/Point/opacity.xml[]
 image::examples/Symbolizer/Point/opacity.svg[align="center"]
 ====
 
+
+[#pointsymbolizer-base]
+===== `base` attribute
+
 .PointSymbolizer base
-[#example-pointsymbolizer-base]
 ====
 [source,xml]
 -----
@@ -55,8 +66,11 @@ include::{sourcedir}/examples/Symbolizer/Point/base.xml[]
 image::examples/Symbolizer/Point/base.svg[align="center"]
 ====
 
+
+[#pointsymbilizer-allow-overlap]
+===== `allow-overlap` attribute
+
 .PointSymbolizer allow-overlap
-[#example-pointsymbolizer-allow-overlap]
 ====
 [source,xml]
 -----
@@ -65,8 +79,15 @@ include::{sourcedir}/examples/Symbolizer/Point/allow-overlap.xml[]
 image::examples/Symbolizer/Point/allow-overlap.svg[align="center"]
 ====
 
+
+[#pointsymbolizer-placement]
+===== `placement` attribute
+
+The `placement` attribute specifies where the point symbol should
+be placed on a polygon object. By default it is placed on the `centroid`
+of the polygons, but for a non-convex polygon this can actually place the symbol outside of the polygon itself. `interior` makes sure that the symbol is placed within the polygon in all cases.
+
 .PointSymbolizer placement
-[#example-pointsymbolizer-placement]
 ====
 [source,xml]
 -----
@@ -74,6 +95,9 @@ include::{sourcedir}/examples/Symbolizer/Point/placement.xml[]
 -----
 image::examples/Symbolizer/Point/placement.svg[align="center"]
 ====
+
+[#pointsymbolizer-transform]
+===== `transform` attribute
 
 .PointSymbolizer scaling 
 [#example-pointsymbolizer-scaling]
