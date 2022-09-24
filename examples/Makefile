@@ -27,8 +27,7 @@ cairo-and-mapnik.svg: cairo-and-mapnik.py
 .PHONY: all,clean,show-latest,all-png,all-svg
 
 clean:
-	@rm -f *.png *.svg
-	@rm -f *~ \#* .\#*
+	@git clean -fX
 
 show-latest: all
 	@ls -t *.svg | head -1 | xargs display &
