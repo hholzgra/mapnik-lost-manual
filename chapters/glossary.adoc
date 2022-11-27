@@ -24,8 +24,8 @@ GPX::
 Harfbuzz::
     https://harfbuzz.github.io/[Harfbuzz] is a Text rendering / shaping library used by Mapnik starting with V3.0
 
-Imposm::
-    https://imposm.org/[Imposm] is a toll to import OpenStreetMap data into a PostGIS database. (See also: Osm2pgsql)
+[[g:imposm]]Imposm::
+    https://imposm.org/[Imposm] is a toll to import OpenStreetMap data into a PostGIS database. (See also: <<g:osm2pgsql,Osm2pgsql>>)
 
 MapOSMatic::
     A web frontend and render backend to generate printable map posters and booklets using Mapnik, Python and Cairo Graphics
@@ -39,8 +39,8 @@ OGR::
 OSGeo::
     The https://www.osgeo.org/[Open Source Geospatial Foundation]
     
-Osm2pgsql::
-    https://osm2pgsql.org/[Osm2pgsql] is a tool to import OpenStreetMap data into a PostGIS database. It is part of the tool chain used to generated the map tiles provided on https://openstreetmap.org[`openstreetmap.org`. (see also: Imposm)
+[[g:osm2pgsql]]`osm2pgsql`::
+    https://osm2pgsql.org/[Osm2pgsql] is a tool to import OpenStreetMap data into a PostGIS database. It is part of the tool chain used to generated the map tiles provided on https://openstreetmap.org[`openstreetmap.org`]. (see also: <<g:imposm,Imposm>>)
     
 PBF::
     Protocol Buffer Format - a file format for OSM data based on the https://developers.google.com/protocol-buffers[Google ProtoBuf library]. PBF is a binary format not suitable for human readning, but very compact, with file sizes typically only almost half of bzip2 compressed OSM XML. 
