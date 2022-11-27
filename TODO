@@ -7,8 +7,10 @@
 * "pure" API examples
 * style collection
 * embedding results into larger Cairo projects
+* Dot symbolizer missing
 
 == QUESTIONS
 
 * XML schema -> there's none, manual source digging required?
 * any practical use of <Include>?
+* what are <Placement> and <Format> inside a <TextSymbolizer>...</> for?
