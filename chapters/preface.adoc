@@ -17,7 +17,7 @@ There are different information sources that document certain aspects of Mapnik,
 Other existing documentation efforts for Mapnik are:
 
 GitHub Wiki::
-The https://github.com/mapnik/mapnik/wiki[Mapnik Wiki on GitHub] is a weird mix of end user and developer documentation that unfortunately is neither complete nor up to date.
+The <<r:mapnik-wiki,Mapnik Wiki on GitHub>> is a weird mix of end user and developer documentation that unfortunately is neither complete nor up to date.
 
 It is also considered dead according to https://github.com/mapnik/mapnik/issues/3543[GitHub issue #3543: "Cancel, abolish, destroy the Wiki"]
 
