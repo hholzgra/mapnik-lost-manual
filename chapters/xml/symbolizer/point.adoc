@@ -77,6 +77,8 @@ image::examples/Symbolizer/Point/base.svg[align="center"]
 [#pointsymbilizer-allow-overlap]
 ===== `allow-overlap` attribute
 
+The `allow-overlap` defines whether a point symbolizer may be drawn over previous output.
+
 .PointSymbolizer allow-overlap
 ====
 [source,xml]
@@ -106,6 +108,8 @@ image::examples/Symbolizer/Point/placement.svg[align="center"]
 [#pointsymbolizer-transform]
 ===== `transform` attribute
 
+TODO: document SVG transformations
+
 .PointSymbolizer scaling 
 [#example-pointsymbolizer-scaling]
 ====
@@ -125,6 +129,11 @@ include::{sourcedir}/examples/Symbolizer/Point/transform-rotate.xml[]
 -----
 image::examples/Symbolizer/Point/transform-rotate.svg[align="center"]
 ====
+
+[#pointsymbolizer-comp-op]
+===== `comp-up` attribute
+
+TODO: document SVG compositing
 
 .PointSymbolizer compositing
 ====
