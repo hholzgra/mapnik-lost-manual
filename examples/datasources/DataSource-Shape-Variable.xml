@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='blue'>
+
+  <Style name="countries">
+    <Rule>
+      <PolygonSymbolizer fill="@mycolor"/>
+    </Rule>
+  </Style>
+
+  <Layer name="countries">
+    <StyleName>countries</StyleName>
+    <Datasource>
+      <Parameter name="type">shape</Parameter>
+      <Parameter name="file">data/world-countries.shp</Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+

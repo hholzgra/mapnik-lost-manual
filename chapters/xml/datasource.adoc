@@ -148,9 +148,9 @@ Processig performance can be improved by creating an additional `.index` index f
 ====
 [source,xml]
 ----
-include::{sourcedir}/examples/DataSource-GeoJSON.xml[]
+include::{sourcedir}/examples/datasources/DataSource-GeoJSON.xml[]
 ----
-image::examples/DataSource-GeoJSON.svg[align="center"]
+image::examples/datasources/DataSource-GeoJSON.svg[align="center"]
 ====
 
 
@@ -249,7 +249,7 @@ The OSM backend provides data in the following five layers:
 ----
 ====
 
-While rendering OSM data directly can work out OK for small amounts of data the usually preferred way to present OSM data is to import it into PostGIS using either the ((<<osm2pgsql>>)) or ((<<imposm>>)) import tool first, and then to use the ((PostGIS Datasource)). This  requires some extra effort up front, but performs better on larger data sets, and allows for more sophisticated preprocessing of the OSM input data than the few fixed rules statically built into the OGR OSM backend.
+While rendering OSM data directly can work out OK for small amounts of data the usually preferred way to present OSM data is to import it into PostGIS using either the ((osm2pgsql)) or ((imposm)) import tool first, and then to use the ((PostGIS Datasource)). This  requires some extra effort up front, but performs better on larger data sets, and allows for more sophisticated preprocessing of the OSM input data than the few fixed rules statically built into the OGR OSM backend.
 
 For more details see the https://gdal.org/drivers/vector/osm.html[original GDAL documentation for the OSM backend]
 
@@ -415,9 +415,9 @@ Shapefile processing performance can be increased by creating an index file usin
 ====
 [source,xml]
 ----
-include::{sourcedir}/examples/DataSource-Shape.xml[]
+include::{sourcedir}/examples/datasources/DataSource-Shape.xml[]
 ----
-image::examples/DataSource-Shape.svg[align="center"]
+image::examples/datasources/DataSource-Shape.svg[align="center"]
 ====
 
 ===== SQLite
