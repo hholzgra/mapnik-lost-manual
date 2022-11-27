@@ -148,9 +148,9 @@ Processig performance can be improved by creating an additional `.index` index f
 ====
 [source,xml]
 ----
-include::{sourcedir}/examples/datasources/DataSource-GeoJSON.xml[]
+include::{sourcedir}/examples/datasource/GeoJSON.xml[]
 ----
-image::examples/datasources/DataSource-GeoJSON.svg[align="center"]
+image::examples/datasource/GeoJSON.svg[align="center"]
 ====
 
 
@@ -415,9 +415,9 @@ Shapefile processing performance can be increased by creating an index file usin
 ====
 [source,xml]
 ----
-include::{sourcedir}/examples/datasources/DataSource-Shape.xml[]
+include::{sourcedir}/examples/datasource/shape.xml[]
 ----
-image::examples/datasources/DataSource-Shape.svg[align="center"]
+image::examples/datasource/shape.svg[align="center"]
 ====
 
 ===== SQLite
