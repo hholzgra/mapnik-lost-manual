@@ -6,7 +6,7 @@ tmpnam=$(basename $(mktemp -p . tmprenderXXXXXXXXXX))
 cp $dir/$base.xml $tmpnam.xml
 ./render.py $tmpnam
 mv $tmpnam.svg $dir/$base.svg
-if ! convert -regard-warnings -trim $tmpnam.png $dir/$base.png
+if ! convert -regard-warnings -trim $tmpnam.png $dir/$base.png 2>/dev/null
 then
 	cp $tmpnam.png $dir/$base.png
 fi
