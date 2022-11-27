@@ -70,15 +70,6 @@ grid-cell-height
 offset
 */
 
-.ShieldSymolizer
-====
-[source,xml]
------
-include::{sourcedir}/examples/ShieldSymbolizer.xml[]
------
-image::examples/ShieldSymbolizer.svg[align="center"]
-====
-
 .ShieldSymolizer spacing
 ====
 `spacing` controls the distance between shields on a single line feature. When no spacing is given only a single shield will be attemted to be placed.
