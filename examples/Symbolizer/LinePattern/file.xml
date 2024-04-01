@@ -5,8 +5,7 @@
   <Style name="style">
     <Rule>
 	    <LinePatternSymbolizer base="symbols" file="[file]"/>
-	    <PointSymbolizer base="symbols" file="[file]" transform="translate(0,5)"/>
-	    <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[file]</TextSymbolizer>
+	    <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dx="-50">[file]</TextSymbolizer>
     </Rule>
   </Style>
 
@@ -16,9 +15,9 @@
       <Parameter name="type">csv</Parameter>
       <Parameter name="inline">
 wkt,file
-"LINESTRING(10 10,50 20,90 10)",cliff.svg
-"LINESTRING(10 20,50 30,90 20)",line-with-dot.svg
-"LINESTRING(10 30,50 40,90 30)",steps.svg
+"LINESTRING(10 50,50 60,90 50)",cliff.svg
+"LINESTRING(10 30,50 40,90 30)",line-with-dot.svg
+"LINESTRING(10 10,50 20,90 10)",steps.svg
       </Parameter>
     </Datasource>
   </Layer>
