@@ -4,5 +4,9 @@
 *.html
 *.pdf
 *.epub
+
+.deps/
+
 examples/**/*.svg
 examples/**/*.png
+
