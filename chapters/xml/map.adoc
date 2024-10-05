@@ -2,9 +2,15 @@
 
 === Map
 
+This is the top level tag / object in a mapnik setup,
+it defines the map extent and global parameters / defaults.
+
+TODO: contains ...
+
 .Map Attributes
 [options="header,unbreakable",cols="m,d,d,d"]
 |===
+| Parameter | Type | Default | Description
 | base | string | none | name of a <FileSource> to find the input file in
 | background-color | color | transparent | 
 | background-image | file path | none | 
@@ -18,3 +24,22 @@
 | path-from-xml | boolean | true | 
 |===
 
+.Map background-color
+[#example-map-background-color]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/map/background-color.xml[]
+-----
+image::examples/map/background-color.svg[align="center"]
+====
+
+.Map minimum-version
+[#example-map-minimum-version]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/map/minimum-version.xml[]
+-----
+image::examples/map/minimum-version.svg[align="center"]
+====
