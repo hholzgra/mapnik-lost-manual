@@ -37,3 +37,13 @@ image::examples/Symbolizer/LinePattern/file.png[align="center"]
 // <pattern> tags
 // see also https://github.com/mogest/prawn-svg/issues/119
 ====
+
+.LinePatternSymbolizer base
+[#example-linepatternsymbolizer-base]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/LinePattern/base.xml[]
+-----
+image::examples/Symbolizer/LinePattern/base.png[align="center"]
+====
