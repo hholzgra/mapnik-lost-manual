@@ -13,7 +13,7 @@ Even when giving the pattern as a SVG file, internally it will be converted to P
 [options="header,unbreakable",cols="m,d,d,d"]
 |===
 | Attribute      | Value      | Default | Description
-| <<example-linepatternsymbolizer-file,((file))>>         | file path |
+| <<example-linepatternsymbolizer-file,((file))>>         | file path | none | Path to pattern file
 | ((base))    | string | none| name of a <FileSource> to find the input file in
 | opacity |  |  |  
 | offset  |  |  |  
