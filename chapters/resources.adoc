@@ -35,7 +35,7 @@ Some styles are base map stles that aim at providing a full featured map, while 
 | https://github.com/xyztobixyz/OSM-Swiss-Style[Swiss] | base | no | Carto CSS |  `osm2pgsql`, shapefiles | CC-BY-SA | A style specific to Switzerland, based on OSM Bright
 | https://github.com/geofabrik/toner.git[Toner] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | ISC | A high contrast pure black&white style, originaly created by Stamen and now maintained by Geofabrik
 | https://github.com/Zverik/veloroad[Veloroad] | base | yes? | Carto CSS | `osm2pgsql`, shapefiles | WTFPL | A style focussing on bike infrastructure in Russia
-| https://github.com/mapbox/mapbox-studio-space-station.tm2[Space Station] | no | Carto CSS | Mapbox Studio | BSD | Artistic style meant to look like https://blog.mapbox.com/space-station-earth-183dc420b211[space station surface] (a https://github.com/hholzgra/mapbox-studio-space-station.tm2/tree/dev-osm2pgsql[fork using `osm2pgsql` db as data source exists)
+| https://github.com/mapbox/mapbox-studio-space-station.tm2[Space Station] | base | no | Carto CSS | Mapbox Studio | BSD | Artistic style meant to look like https://blog.mapbox.com/space-station-earth-183dc420b211[space station surface] (a https://github.com/hholzgra/mapbox-studio-space-station.tm2/tree/dev-osm2pgsql[fork using `osm2pgsql` db as data source exists)
 | | | | | | |
 |====================
 

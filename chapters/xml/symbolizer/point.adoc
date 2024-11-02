@@ -74,7 +74,7 @@ image::examples/Symbolizer/Point/base.svg[align="center"]
 ====
 
 
-[#pointsymbilizer-allow-overlap]
+[#pointsymbolizer-allow-overlap]
 ===== `allow-overlap` attribute
 
 The `allow-overlap` defines whether a point symbolizer may be drawn over previous output.
