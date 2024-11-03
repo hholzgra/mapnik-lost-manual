@@ -8,6 +8,8 @@
 * style collection
 * embedding results into larger Cairo projects
 * Dot symbolizer missing
+* fix makefile dependencies -> auto-generate "make deps" style?
+  also: dependency on a directory ("examples") always rebuilds?
 
 == QUESTIONS
 
