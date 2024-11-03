@@ -8,27 +8,29 @@ Symbolizers do the actual rendering of map features. There are several different
 Right now all the symbolizer examples below show a complete XML style file. I'm considering to shorten these to just the actual symbolizer tag and the inline CSV data lines as the rest of these examples is actually redundant, to save some space, with hyperlinks to the actual full example files ...
 ====
 
-include::symbolizer/building.adoc[]
+include::symbolizer/point.adoc[]
 
-include::symbolizer/group.adoc[]
+include::symbolizer/markers.adoc[]
 
 include::symbolizer/line.adoc[]
 
 include::symbolizer/linepattern.adoc[]
 
-include::symbolizer/markers.adoc[]
-
 include::symbolizer/polygon.adoc[]
 
 include::symbolizer/polygonpattern.adoc[]
 
-include::symbolizer/point.adoc[]
-
 include::symbolizer/raster.adoc[]
+
+include::symbolizer/text.adoc[]
 
 include::symbolizer/shield.adoc[]
 
-include::symbolizer/text.adoc[]
+include::symbolizer/building.adoc[]
+
+include::symbolizer/group.adoc[]
+
+include::symbolizer/dot.adoc[]
 
 :sourcedir: ../..
 
