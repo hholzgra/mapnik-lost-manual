@@ -9,6 +9,7 @@ Hartmut Holzgraefe
 :lang: en
 :toc: left
 :toclevels: 5
+:multipage-level: 3
 :numbered:
 :source-highlighter: coderay
 
