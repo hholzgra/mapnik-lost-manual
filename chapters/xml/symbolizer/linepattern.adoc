@@ -13,7 +13,7 @@ Even when giving the pattern as a SVG file, internally it will be converted to P
 [options="header,unbreakable",cols="m,d,d,d"]
 |===
 | Attribute      | Value      | Default | Description
-| <<example-linepatternsymbolizer-file,((file))>>         | file path |
+| <<example-linepatternsymbolizer-file,((file))>>         | file path | none | Path to pattern file
 | ((base))    | string | none| name of a <FileSource> to find the input file in
 | opacity |  |  |  
 | offset  |  |  |  
@@ -36,4 +36,14 @@ image::examples/Symbolizer/LinePattern/file.png[align="center"]
 // prawn-svg renderer used by it, does not support SVG
 // <pattern> tags
 // see also https://github.com/mogest/prawn-svg/issues/119
+====
+
+.LinePatternSymbolizer base
+[#example-linepatternsymbolizer-base]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/LinePattern/base.xml[]
+-----
+image::examples/Symbolizer/LinePattern/base.png[align="center"]
 ====
