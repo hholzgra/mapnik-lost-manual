@@ -4,18 +4,29 @@
 
 ==== mapnik-index
 
-TODO
+TODO - this is an almost undocumented tool meant to improve the processing of CSV and GeoJSON files somehow
 
 ==== shapeindex
 
-TODO
+TODO - this is an almost undocumented tool meant to improve the processing of shapefiles somehow
 
 === OpenStreetMap tools
 
-==== imposm
+While OpenStreetMap data files can be processed directly using the OGR `<Datasource>` this only really works out for rather small files / areas.
 
-TODO
+To cover larger areas, and especially the full planet, OSM data is usually pre-processed and stored in a database more suitable for processing by a renderer.
+
+The two main tools used to do so are `osm2pgsql` and `imposm`, with the former one seeming to be the far more popular one by now.
 
 ==== osm2pgsql
 
-TODO
+`osm2pgsql` is used by many projects, including the OpenStreetMap Carto style used to generate the default map tiles on the OpenstreetMap website itself.
+
+Databases imported by it are usually well suited for use in combination with the PostGIS data source plugin.
+
+For details see: https://osm2pgsql.org/
+
+==== imposm
+
+See https://imposm.org/
+
