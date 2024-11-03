@@ -7,7 +7,7 @@
 
   <Style name="style">
     <Rule>
-      <LinePatternSymbolizer base="red" file='steps.svg'/>
+      <LinePatternSymbolizer base="red" file='steps.svg'/> <!-- TODO does not evaluate [base] yet -->
       <PointSymbolizer base="symbols" file='steps.svg' transform='translate(0,5)'/>
       <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[base]</TextSymbolizer>
     </Rule>
