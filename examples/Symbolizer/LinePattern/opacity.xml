@@ -4,8 +4,8 @@
 
   <Style name="style">
     <Rule>
-	    <LinePatternSymbolizer base="symbols" file="steps.svg" opacity="[opacity]"/>
-	    <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[opacity]</TextSymbolizer>
+      <LinePatternSymbolizer base="symbols" file="steps.svg" opacity="[opacity]"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[opacity]</TextSymbolizer>
     </Rule>
   </Style>
 
