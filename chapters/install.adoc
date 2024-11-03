@@ -4,8 +4,17 @@ How to install Mapnik ...
 
 === (((Linux)))Linux
 
+==== Debian / Ubuntu
 
+TODO
 
+==== Others
+
+TODO
+
+==== Python / PIP
+
+TODO
 
 === Windows
 
@@ -15,5 +24,3 @@ TODO
 
 TODO
 
-
-=== 
