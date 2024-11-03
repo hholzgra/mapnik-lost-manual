@@ -29,10 +29,10 @@ clean:
 
 install: all 
 	@echo "Transferring files to webserver"
-	@rsync -avu -e 'ssh -ax' . h6:/var/www/html/mapnik-lost-manual/
+	@rsync -avu --chmod=ugo=rx -e 'ssh -ax' . h6:/var/www/html/mapnik-lost-manual/
 
 install-html: book.html 
 	@echo "Transferring files to webserver"
-	@rsync -avu -e 'ssh -ax' . h6:/var/www/html/mapnik-lost-manual/
+	@rsync -avu --chmod=ugo=rx -e 'ssh -ax' . h6:/var/www/html/mapnik-lost-manual/
 
 
