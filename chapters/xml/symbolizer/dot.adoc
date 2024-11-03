@@ -1,0 +1,28 @@
+:sourcedir: ../../..
+
+==== DotSymbolizer
+
+...TODO...
+
+.DotSymbolizer Attributes
+[width="100%",options="header,unbreakable",cols="m,d,d,d"]
+|====================
+| Attribute          | Type          | Default  | Description
+| height             | float         | 1.0      |
+| width              | float         | 1.0      |
+| fill               | color         | gray     |
+| opacity            | float         | 1.0      |
+| comp-op            | string        | src-over |
+|====================
+
+TODO: "dot=list" (see http://mapnik.org/mapnik-reference/#3.0.22/dot )
+
+.DotSymbolizer width-height
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Dot/dot.xml[]
+-----
+image::examples/Symbolizer/Dot/dot.svg[align="center"]
+====
+
