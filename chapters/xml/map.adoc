@@ -12,17 +12,20 @@ TODO: contains ...
 |===
 | Attribute | Type | Default | Description
 | base | string | none | name of a <FileSource> to find the input file in
-| background-color | color | transparent | 
-| background-image | file path | none | 
+| <<map-background-color,background-color>> | color | transparent | 
+| <<map-background-inage,background-image>> | file path | none | 
 | background-image-comp-op | SVG composition | none | 
 | background-image-opacity | float | 1.0 | 
 | srs | proj4 projection | +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs | 
 | buffer-size | float | 0.0 | 
 | maximum-extent | 4xfloat |  | 
 | font-directory | directory path | none | 
-| minimum-version | version string | none | 
-| path-from-xml | boolean | true | 
+| <<map-minimum-version,minimum-version>> | version string | none | 
+| <<map-paths-from-xml,paths-from-xml>> | boolean | true | Whether relative paths are relative to the directory the XML file is in, or the current working directory.
 |===
+
+[#map-background-color]
+==== `backgroud-color` attribute
 
 .Map background-color
 [#example-map-background-color]
@@ -34,6 +37,30 @@ include::{sourcedir}/examples/map/background-color.xml[]
 image::examples/map/background-color.svg[align="center"]
 ====
 
+[#map-background-image]
+==== `backgroud-image` attribute
+
+Sets a background image for the map. The image is not scaled to the actual map output size, if the two sizes do not match it is either cropped or tiled.
+
+.Map background-image
+[#example-map-background-image]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/map/background-image.xml[]
+-----
+image::examples/map/background-image.svg[align="center"]
+====
+
+[#map-minimum-version]
+==== `minimum-version` attribute
+
+Specifies the minimum Mapnik version needed to process this stylesheet. 
+
+Requires a three part version number, so `3.0.0` works but `3.0` or just `3` doesn't. (See also https://github.com/mapnik/mapnik/issues/4369)
+
+TODO: wiki says it prints a warning only, but at least with the Python bindings it causes a hard runtime error instead.
+
 .Map minimum-version
 [#example-map-minimum-version]
 ====
@@ -41,5 +68,10 @@ image::examples/map/background-color.svg[align="center"]
 -----
 include::{sourcedir}/examples/map/minimum-version.xml[]
 -----
-image::examples/map/minimum-version.svg[align="center"]
 ====
+
+[#map-paths-from-xml]
+==== `paths-from-xml` attribute
+
+Specifies whether relative file paths are relative to the top level Mapnik XML file (`true`) or the local directory (`false`).
+Defaults to `true`.
