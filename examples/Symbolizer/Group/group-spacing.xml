@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Without unlock-image -->
+<!DOCTYPE Map>
+<Map background-color="green" minimum-version="2.0.0">
+  <FileSource name="symbols">./symbols/</FileSource>
+  
+  <Parameters>
+    <Parameter name="sizes">512,512</Parameter>
+  </Parameters>
+
+  <Layer name="alpha">
+    <StyleName>alpha</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,ref1,ref2,ref3,ref4
+"LINESTRING(0 0, 10 2)",1,2,3,4
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="alpha">
+    <Rule>
+      <LineSymbolizer stroke-width="0.2" stroke="#ff0000"/>
+      <GroupSymbolizer start-column="1" num-columns="2" placement="line" avoid-edges="false" repeat-distance="50" spacing="100" repeat-key="[ref%]">
+        <PairLayout item-margin="1"/>
+        <GroupRule>
+          <ShieldSymbolizer base="symbols" file="motorway_2x1.svg" face-name="DejaVu Sans Book" size="16" placement="point">
+            <Format fill="#ffffff">[ref%]</Format>
+          </ShieldSymbolizer>
+        </GroupRule>
+      </GroupSymbolizer>
+    </Rule>
+  </Style>
+<!--
+  <Layer name="beta">
+    <StyleName>beta</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,name1,ref1,name2,ref2
+"LINESTRING(0 3, 10 5)",One,1,Two,2
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="beta">
+    <Rule>
+      <LineSymbolizer stroke-width="0.2" stroke="#ff0000"/>
+      <GroupSymbolizer start-column="1" num-columns="2" placement="line" avoid-edges="false" repeat-distance="40" spacing="80" repeat-key="[name%]+'-'+[ref%]">
+        <PairLayout item-margin="1"/>
+        <GroupRule>
+          <ShieldSymbolizer  base="symbols" file="motorway_2x1.svg" face-name="DejaVu Sans Book" size="16" placement="point">
+            <Format fill="#ffffff">[ref%]</Format>
+            <Layout dy="10">[name%]</Layout>
+          </ShieldSymbolizer>
+        </GroupRule>
+      </GroupSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="gamma">
+    <StyleName>gamma</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,name1,ref1,name2,ref2
+"LINESTRING(0 6, 10 8)",One,1,Two,2
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="gamma">
+    <Rule>
+      <LineSymbolizer stroke-width="0.2" stroke="#ff0000"/>
+      <GroupSymbolizer start-column="1" num-columns="2" placement="line" avoid-edges="false" repeat-distance="30" spacing="60" repeat-key="[name%]+'-'+[ref%]">
+        <PairLayout item-margin="1"/>
+        <GroupRule>
+          <ShieldSymbolizer base="symbols" file="motorway_2x1.svg" face-name="DejaVu Sans Book" size="16" placement="point">
+            <Format fill="#ffffff">[ref%]</Format>
+            <Layout dy="10">[name%]</Layout>
+          </ShieldSymbolizer>
+        </GroupRule>
+       </GroupSymbolizer>
+       <DebugSymbolizer/>
+    </Rule>
+  </Style>
+-->
+</Map>
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='white'>
+  <FileSource name="symbols">./symbols/</FileSource>
+
+  <Style name="style">
+    <Rule>
+      <LineSymbolizer stroke="blue" stroke-width="5"/>
+      <GroupSymbolizer start-column="1" num-columns="2" placement="line" avoid-edges="false" repeat-distance="1" spacing="1">
+	<SimpleLayout />
+	<GroupRule>
+          <ShieldSymbolizer base="symbols" file="motorway_2x1.svg" face-name="DejaVu Sans Book" placement="line">[spacing]</ShieldSymbolizer>
+	</GroupRule>
+	<GroupRule>
+          <ShieldSymbolizer base="symbols" file="motorway_2x1.svg" face-name="DejaVu Sans Book" placement="line">foo</ShieldSymbolizer>
+	</GroupRule>
+      </GroupSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,spacing
+"LINESTRING(10 10,50 20,90 10)",30
+"LINESTRING(10 20,50 30,90 20)",60
+"LINESTRING(10 30,50 40,90 30)",90
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
+-->
