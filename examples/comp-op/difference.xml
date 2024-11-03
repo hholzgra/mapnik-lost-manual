@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='blue'>
+  <FileSource name="symbols">./symbols</FileSource>
+
+  <Style name="countries">
+    <Rule>
+      <PolygonSymbolizer fill="green"/>
+    </Rule>
+  </Style>
+  
+  <Layer name="countries">
+    <StyleName>countries</StyleName>
+    <Datasource>
+      <Parameter name="type">shape</Parameter>
+      <Parameter name="file">data/world-countries.shp</Parameter>
+    </Datasource>
+  </Layer>
+  
+  <Style name="style" comp-op="difference">
+    <Rule>
+      <PointSymbolizer allow-overlap="true" base="symbols" file="red/dot.svg"/>
+    </Rule>
+  </Style>  
+  
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt
+"POINT(1 1)"
+      </Parameter>
+    </Datasource>
+  </Layer>
+</Map>
+
