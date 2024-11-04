@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Map background-color='blue'>
+<Map background-color='blue' srs='epsg:4326'>
 
   <Style name="countries">
     <Rule>
