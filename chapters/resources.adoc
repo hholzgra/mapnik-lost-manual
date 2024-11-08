@@ -8,7 +8,7 @@ Most Styles fall into two basic categories when it comes to their main data sour
 
 Most styles also use shapefiles for some of their layers, openly available shapefiles are list in the <<Shapefiles>> section.
 
-Some styles are base map stles that aim at providing a full featured map, while others are only meant to be used to generated overlays that add some specific type of information on top of the output of another base style as an overlay.
+Some styles are base map styles that aim at providing a full featured map, while others are only meant to be used to generated overlays that add some specific type of information on top of the output of another base style as an overlay.
 
 .Mapnik Styles
 [width="100%",options="header"]
@@ -35,7 +35,7 @@ Some styles are base map stles that aim at providing a full featured map, while 
 | https://github.com/xyztobixyz/OSM-Swiss-Style[Swiss] | base | no | Carto CSS |  `osm2pgsql`, shapefiles | CC-BY-SA | A style specific to Switzerland, based on OSM Bright
 | https://github.com/geofabrik/toner.git[Toner] | base | yes | Carto CSS | `osm2pgsql`, shapefiles | ISC | A high contrast pure black&white style, originaly created by Stamen and now maintained by Geofabrik
 | https://github.com/Zverik/veloroad[Veloroad] | base | yes? | Carto CSS | `osm2pgsql`, shapefiles | WTFPL | A style focussing on bike infrastructure in Russia
-| https://github.com/mapbox/mapbox-studio-space-station.tm2[Space Station] | no | Carto CSS | Mapbox Studio | BSD | Artistic style meant to look like https://blog.mapbox.com/space-station-earth-183dc420b211[space station surface] (a https://github.com/hholzgra/mapbox-studio-space-station.tm2/tree/dev-osm2pgsql[fork using `osm2pgsql` db as data source exists)
+| https://github.com/mapbox/mapbox-studio-space-station.tm2[Space Station] | base | no | Carto CSS | Mapbox Studio | BSD | Artistic style meant to look like https://blog.mapbox.com/space-station-earth-183dc420b211[space station surface] (a https://github.com/hholzgra/mapbox-studio-space-station.tm2/tree/dev-osm2pgsql[fork using `osm2pgsql` db as data source exists)
 | | | | | | |
 |====================
 
@@ -45,17 +45,17 @@ Open/free shapefiles are available from multiple sources, including OpenStreetMa
 
 ==== OpenStreetMap Data
 
-https://osmdata.openstreetmap.de/[OpenStreetMap Data] provides some shapefiles generated from OpenStreetMap data on a regular basis. Compared to raw OSM data these contain data that has been checked for consistency. So when e.g. using the land polygon or water polygon shapefile you won't end up with all of Europe suddenly flodded due to a small coast segment temporarily missing.
+https://osmdata.openstreetmap.de/[OpenStreetMap Data] provides some shapefiles generated from OpenStreetMap data on a regular basis. Compared to raw OSM data these contain data that has been checked for consistency. So when e.g. using the land polygon or water polygon shapefile you won't end up with all of Europe suddenly flooded due to a small coast segment temporarily missing.
 
 ==== OpenStreetMap Historical
 
-OpenStreetMap still provides some https://planet.openstreetmap.org/historical-shapefiles/[historical shapefiles] that are used by some older Mapnik styles. These files are no longer regenerated from current data, and should not be used when creating new styles. There are only kept arount for historic backwards compatibility reasons.
+OpenStreetMap still provides some https://planet.openstreetmap.org/historical-shapefiles/[historical shapefiles] that are used by some older Mapnik styles. These files are no longer regenerated from current data, and should not be used when creating new styles. There are only kept around for historic backwards compatibility reasons.
 
 ==== Natural Earth
 
 https://www.naturalearthdata.com[Natural Earth] provides a lot of free vector and raster map data sets at 1:10m, 1:50m, and 1:110m scales. Data is divided in two general categories: physical and cultural, with lots of interesting and useful feature files below these categories.
 
-All data provided by Natrual Earth is in the public domain (CC0).
+All data provided by Natural Earth is in the public domain (CC0).
 
 ==== Geofabrik
 

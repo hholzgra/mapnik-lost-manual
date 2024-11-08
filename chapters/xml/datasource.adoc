@@ -8,7 +8,7 @@ Example:
 [source,xml]
 ----
 <Map>
-  <!-- Datasource template ->
+  <!-- Datasource template -->
   <Datasource name="gis">
     <Parameter name="type">postgis</Parameter>
     <Parameter name="host">gis-db</Parameter>
@@ -18,7 +18,7 @@ Example:
     <Parameter name="password">secret</Parameter>
   </Datasource>
  
-  <!-- actual Datasource using the template above for default values ..>
+  <!-- actual Datasource using the template above for default values -->
   <Layer name="layer-1">
     <Datasource base="gis">
       <Parameter name="table">
@@ -66,7 +66,7 @@ lat,lon,text
 ----
 ==== 
 
-By default the CSV plugin tries to identify the field delimiter by looking at the first line of the file, checking for `,`, ´;`, `|` and the `TAB` character. Whatever of these characters seen the most often is considered the separator character, unless you specifcy a different one with the `separator` Parameter, e.g: `<Parameter name="separator">;</Parameter>`.
+By default the CSV plugin tries to identify the field delimiter by looking at the first line of the file, checking for `, ; |` and the `TAB` character. Whatever of these characters seen the most often is considered the separator character, unless you specifcy a different one with the `separator` Parameter explicitly, e.g: `<Parameter name="separator">;</Parameter>`.
 
 In cases where the data does not contain a header line, one can be given as content of the `headers` parameter.
 
@@ -98,12 +98,12 @@ When parsing the header line fails, or no geometry column(s) can be detected in 
 | headers | string | none | Header names if the file contains none on the first line
 | strict | boolean | false | Terminate Mapnik on hitting errors?
 | quote | char | `"` | Quote character used for string columns in the data
-| escpae | char | `\` | TODO: does this even really exist?
+| escape | char | `\` | TODO: does this even really exist?
 | separator | char | auto detected | Field separator, typically `,`, `;`, `\|` or `TAB`
 | extent | 4xfloat | none | ignore data that is completely outside this extent bounding box
 | inline | text | none | CSV data to be read directly from the style file
 | file | file path | none | path of CSV file to read 
-| base | string | none | name of a <FileSource> to find the input file in
+| base | string | none | name of a `<FileSource>` to find the input file in
 |====================
 
 TODO:: 
@@ -117,7 +117,7 @@ TODO::
 |====================
 | Parameter | Type | Default | Description 
 | band | | |
-| base | string | none | name of a <FileSource> to find the input file in
+| base | string | none | name of a `<FileSource>` to find the input file in
 | extent | | |
 | file | | |
 | max_image_area | | |
@@ -136,7 +136,7 @@ Processig performance can be improved by creating an additional `.index` index f
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description base
-| base | string | none | name of a <FileSource> to find the input file in
+| base | string | none | name of a `<FileSource>` to find the input file in
 | cache_features | boolean | true |
 | encoding | string | utf-8 | Encoding used for textual informatin
 | file | file path | none | Path of a GeoJSON file to read for input.
@@ -164,7 +164,7 @@ The OGR plugin is typically used for GPX -- for which no special input plugin ex
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description 
-| base | string | none | name of a <FileSource> to find the input file in
+| base | string | none | name of a `<FileSource>` to find the input file in
 | driver | string| auto detect | actual vector format driver to use 
 | encoding | string | utf-8 |
 | extent | | |
@@ -374,7 +374,7 @@ The following special tokens can be used in SQL queries, and will be replaced b 
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description 
-| base | string | none | name of a <FileSource> to find the input file in
+| base | string | none | name of a `<FileSource>` to find the input file in
 | extent | | |
 | file | | |
 | format | | |
@@ -406,7 +406,7 @@ Shapefile processing performance can be increased by creating an index file usin
 |====================
 | Parameter | Type | Default | Description 
 | file      | file path | none | shapefile path, `.shp` extension is optional
-| base      | string | none | name of a <FileSource> to find the input file in
+| base      | string | none | name of a `<FileSource>` to find the input file in
 | encoding  | string | utf-8 | encoding used for text fields in the shapefile
 | row_limit |  int | none | maximum number of rows to process
 |====================
@@ -428,7 +428,7 @@ image::examples/datasource/shape.svg[align="center"]
 | Parameter | Type | Default | Description 
 | attachdb | | |
 | auto_index | | |
-| base | string | none | name of a <FileSource> to find the input file in
+| base | string | none | name of a `<FileSource>` to find the input file in
 | encoding | | |
 | extent | | |
 | fields | | |
@@ -453,7 +453,7 @@ image::examples/datasource/shape.svg[align="center"]
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description 
-| base | string | none | name of a <FileSource> to find the input file in
+| base | string | none | name of a `<FileSource>` to find the input file in
 | encoding | | |
 | file | | |
 | inline | | |
@@ -564,7 +564,7 @@ See also:
 [width="100%",options="header",cols="m,d,d,d"]
 |====================
 | Parameter | Type | Default | Description 
-| base | string | none | name of a <FileSource> to find the input file in
+| base | string | none | name of a `<FileSource>` to find the input file in
 | file | | |
 | table | | |
 |====================

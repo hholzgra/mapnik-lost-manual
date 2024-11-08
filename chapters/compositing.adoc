@@ -1,6 +1,139 @@
+:sourcedir: ..
+
 == Compositing
 
 TODO: extend OSM default style with a big single red dot marker, similar to https://carto.com/developers/styling/cartocss/#color-blending-values[CartoCSS example page]
+
+All examples below basically use the same XML stylesheet, with just the `comp-op` attribute for the red dots layer changed.
+
+.comp-op-example
+[#example-comp-op]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/comp-op/difference.xml[]
+-----
+====
+
+===  clear
+
+image::examples/comp-op/clear.png[align=center]
+
+
+===  color-burn
+
+image::examples/comp-op/color-burn.png[align=center]
+
+
+===  color-dodge
+
+image::examples/comp-op/color-dodge.png[align=center]
+
+
+===  darken
+
+image::examples/comp-op/darken.png[align=center]
+
+
+===  difference
+
+image::examples/comp-op/difference.png[align=center]
+
+
+===  dst-atop
+
+image::examples/comp-op/dst-atop.png[align=center]
+
+
+===  dst-in
+
+image::examples/comp-op/dst-in.png[align=center]
+
+
+===  dst-out
+
+image::examples/comp-op/dst-out.png[align=center]
+
+
+===  dst-over
+
+image::examples/comp-op/dst-over.png[align=center]
+
+
+===  dst
+
+image::examples/comp-op/dst.png[align=center]
+
+
+===  exclusion
+
+image::examples/comp-op/exclusion.png[align=center]
+
+
+===  hard-light
+
+image::examples/comp-op/hard-light.png[align=center]
+
+
+===  lighten
+
+image::examples/comp-op/lighten.png[align=center]
+
+
+===  multiply
+
+image::examples/comp-op/multiply.png[align=center]
+
+
+===  overlay
+
+image::examples/comp-op/overlay.png[align=center]
+
+
+===  plus
+
+image::examples/comp-op/plus.png[align=center]
+
+
+===  screen
+
+image::examples/comp-op/screen.png[align=center]
+
+
+===  soft-light
+
+image::examples/comp-op/soft-light.png[align=center]
+
+
+===  src-atop
+
+image::examples/comp-op/src-atop.png[align=center]
+
+
+===  src-in
+
+image::examples/comp-op/src-in.png[align=center]
+
+
+===  src-out
+
+image::examples/comp-op/src-out.png[align=center]
+
+
+===  src-over
+
+image::examples/comp-op/src-over.png[align=center]
+
+
+===  src
+
+image::examples/comp-op/src.png[align=center]
+
+
+===  xor
+
+image::examples/comp-op/xor.png[align=center]
+
 
 === See also
 

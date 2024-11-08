@@ -15,7 +15,6 @@
       <Parameter name="type">csv</Parameter>
       <Parameter name="inline">
 wkt,file
-"POINT(0 0)",""
 "POINT(1 0)","dot.svg"
 "POINT(2 0)","bug.svg"
       </Parameter>

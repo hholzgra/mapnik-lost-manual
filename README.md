@@ -2,6 +2,15 @@
 
 An attempt to create a Mapnik manual as a single, self contained document
 
-For public HTML version see http://get-map.org/mapnik-lost-manual/book.html
+For public document versions see http://get-map.org/mapnik-lost-manual/
 
-Public PDF version can be found at http://get-map.org/mapnik-lost-manual/book.pdf
+## Requirements
+
+* Mapnik Python Bindings
+* AsciiDoctor
+* AsciiDoctor PDF backend
+* AsciiDoctor Multipage backend
+* AsciiDoctor Epub3 Backend
+* GNU Make
+* rsync (for upload to public server)
+

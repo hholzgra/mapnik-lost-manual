@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Map background-color='blue' srs='epsg:4326'>
+<Map background-color='blue'>
+  <FileSource name="symbols">./symbols</FileSource>
 
   <Style name="countries">
     <Rule>
       <PolygonSymbolizer fill="green"/>
     </Rule>
   </Style>
-
+  
   <Layer name="countries">
     <StyleName>countries</StyleName>
     <Datasource>
@@ -14,20 +15,22 @@
       <Parameter name="file">data/ne_110m_admin_0_countries.shp</Parameter>
     </Datasource>
   </Layer>
-
-  <Style name="gridlines">
+  
+  <Style name="style" comp-op="hard-light">
     <Rule>
-      <LineSymbolizer stroke="black" stroke-width="0.1"/>
+      <PointSymbolizer allow-overlap="true" base="symbols" file="red/dot.svg"/>
     </Rule>
-  </Style>
-
-  <Layer name="grid">
-    <StyleName>gridlines</StyleName>
+  </Style>  
+  
+  <Layer name="layer">
+    <StyleName>style</StyleName>
     <Datasource>
-      <Parameter name="type">shape</Parameter>
-      <Parameter name="file">data/ne_50m_graticules_10.shp</Parameter>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt
+"POINT(1 1)"
+      </Parameter>
     </Datasource>
   </Layer>
-
 </Map>
 
