@@ -40,8 +40,6 @@ When it comes to simple unknown attributes Mapnik will throw a warning, but the 
 
 TODO: simple script to resolve the most common cases.
 
-////
-TODO: make this work again
 
 === Mapnik and Cairo Graphics
 
@@ -49,12 +47,12 @@ Mapnik does not only support using Cairo Graphics as a render backend for direct
 
 One example that makes use of this is MapOSMatic, which adds things like a map title, copyright and attribution footer, and an optional street index sidebar, around a mapnik generated map, or even creates multi page PDF books with one mapnik map rendered on each page.
 
-.Cairo Grapics and Mapnik combined
-====
-[source,python]
------
-include::{sourcedir}/examples/cairo-and-mapnik.py[]
------
-image::examples/cairo-and-mapnik.svg[align="center"]
-====
-////
+// TODO: make this work again
+// .Cairo Grapics and Mapnik combined
+// ====
+// [source,python]
+// -----
+// include::{sourcedir}/examples/cairo-and-mapnik.py[]
+// -----
+// image::examples/cairo-and-mapnik.svg[align="center"]
+// ====
