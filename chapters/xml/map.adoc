@@ -13,7 +13,7 @@ TODO: contains ...
 | Attribute | Type | Default | Description
 | base | string | none | name of a <FileSource> to find the input file in
 | <<map-background-color,background-color>> | color | transparent | 
-| <<map-background-inage,background-image>> | file path | none | 
+| <<map-background-image,background-image>> | file path | none |
 | background-image-comp-op | SVG composition | none | 
 | background-image-opacity | float | 1.0 | 
 | srs | proj4 projection | +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs | 
