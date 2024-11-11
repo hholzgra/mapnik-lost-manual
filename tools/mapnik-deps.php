@@ -11,10 +11,15 @@ function normalize_path($path)
 {
     global $basedir;
 
-    $realpath = realpath($path);
-    $new_path = str_replace($basedir."/", "", $realpath);
+    $dir  = dirname($path);
+    $base = basename($path);
 
-    return $new_path ? $new_path : false;
+    if (strstr($base, "[")) return false;
+
+    $realdir = realpath($dir);
+    if (!$realdir) return false;
+
+    return str_replace($basedir."/", "", $realdir) . "/" . $base;
 }
 
 $basedir = getcwd();
