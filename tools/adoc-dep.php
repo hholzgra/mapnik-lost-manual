@@ -1,12 +1,11 @@
 <?php
 
 $file    = $argv[1];
-$target  = $argv[2];
 
 $includes = parse_file($file);
 sort($includes);
 
-echo "$target: $file " . implode(" ", $includes) . "\n";
+echo "$file: " . implode(" ", $includes) . "\n";
 
 function parse_file($file, $dir = false) 
 {

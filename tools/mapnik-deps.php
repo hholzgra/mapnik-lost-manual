@@ -3,7 +3,9 @@ $style = $argv[1];
 $target = $argv[2];
 $base = $argv[3];
 
-$sources = [];
+$deps = [ $style ];
+
+$sources = [ ];
 
 function normalize_path($path)
 {
@@ -16,8 +18,6 @@ function normalize_path($path)
 }
 
 $basedir = getcwd();
-
-$deps = [];
 
 $dom = new DOMDocument;
 $dom->load($style);
@@ -58,5 +58,5 @@ foreach ( ["Point", "Markers", "Shield", "LinePattern", "PolygonPattern"] as $ty
     }    
 }
 
-echo "$target: $style " . implode(" ", $deps) . "\n";
+echo "$target: " . implode(" ", $deps) . "\n";
 ?>

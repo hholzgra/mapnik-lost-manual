@@ -1,19 +1,15 @@
-all: html epub pdf multipage
+all: multipage html epub pdf
 
 PHONY = all clean install depend
 PHONY += html pdf epub multipage
 
--include .deps/pdf.d
--include .deps/html.d
--include .deps/epub.d
+-include .deps/book.d
 -include .deps/examples.d
 
 this_dir = $(if $(pathsubst /%,,$(lastword $(MAKEFILE_LIST))),$(dir $(CURDIR)/$(lastword $(MAKEFILE_LIST))),$(dir $(lastword $(MAKEFILE_LIST))))
 
 TOP_DIR := $(abspath .)
 THIS_DIR := $(call this_dir)
-
-all: html pdf epub multipage
 
 html: book.html
 
@@ -23,6 +19,9 @@ epub: book.epub
 
 multipage: book/book.html
 
+book.adoc:
+	@touch book.adoc
+
 book.pdf: book.adoc 
 	@echo "Creating PDF"
 	@asciidoctor-pdf book.adoc
@@ -31,7 +30,7 @@ book.html: book.adoc
 	@echo "Creating HTML"
 	@asciidoctor book.adoc
 
-book/book.html:
+book/book.html: book.adoc
 	@echo "Creating Multi Page HTML"
 	@asciidoctor -r asciidoctor-multipage -b multipage_html5 -D book/ --backend multipage_html5 -a data-uri book.adoc
 
@@ -44,12 +43,14 @@ clean:
 
 install: all 
 	@echo "Transferring files to webserver"
-	@rsync -avu --chmod=ugo=rx -e 'ssh -ax' . h6:/var/www/html/mapnik-lost-manual/
+	@rsync -avu --chmod=ugo=rx . /var/www/html/mapnik-lost-manual/
+
+install-web: all 
+	@echo "Transferring files to webserver"
+	@rsync -avu --chmod=ugo=rx -e 'ssh -axC' . h6:/var/www/html/mapnik-lost-manual/
 
 depend::
-	@php tools/adoc-dep.php book.adoc book.html > .deps/html.d
-	@php tools/adoc-dep.php book.adoc book.pdf  > .deps/pdf.d
-	@php tools/adoc-dep.php book.adoc book.epub > .deps/epub.d
+	@php tools/adoc-dep.php book.adoc > .deps/book.d
 	@tools/mapnik-deps.sh > .deps/examples.d 
 
 include examples/Makefile
