@@ -4,8 +4,7 @@
 *.html
 *.pdf
 *.epub
-
-.deps/
+book/
 
 examples/**/*.svg
 examples/**/*.png

@@ -1,22 +1,26 @@
-.PHONY: all countries graticules
+PHONY += shapefiles countries graticules
+D = examples/data
 
 %.shp : %.zip
-	@unzip -q -u -o $<
+	@unzip -q -u -o -d $(D) $<
 
-all: countries graticules
+shapefiles: countries graticules
 
-countries: ne_110m_admin_0_countries.shp ne_110m_admin_0_countries_lakes.shp
-graticules: ne_50m_graticules_10.shp ne_50m_graticules_30.shp
+countries: $(D)/ne_110m_admin_0_countries.shp
+countries: $(D)/ne_110m_admin_0_countries_lakes.shp
 
-ne_110m_admin_0_countries.zip:
-	@wget --quiet https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_countries.zip
+graticules: $(D)/ne_50m_graticules_10.shp
+graticules: $(D)/ne_50m_graticules_30.shp
 
-ne_110m_admin_0_countries_lakes.zip:
-	@wget --quiet https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_countries_lakes.zip
+$(D)/ne_110m_admin_0_countries.zip:
+	@wget --quiet https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_countries.zip -O $@
 
-ne_50m_graticules_10.zip:
-	@wget --quiet https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_graticules_10.zip
+$(D)/ne_110m_admin_0_countries_lakes.zip:
+	@wget --quiet https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_countries_lakes.zip -O $@
 
-ne_50m_graticules_30.zip:
-	@wget --quiet https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_graticules_30.zip
+$(D)/ne_50m_graticules_10.zip:
+	@wget --quiet https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_graticules_10.zip -O $@
+
+$(D)/ne_50m_graticules_30.zip:
+	@wget --quiet https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_graticules_30.zip -O $@
 

@@ -1,40 +1,30 @@
-.PHONY: all,clean,show-latest,all-png,all-svg,experimental,data
+PHONY += show-latest all-png all-svg experimental data
 
 rwildcard=$(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter-out disabled/%,$(filter $(subst *,%,$2),$d)))
-
-all: data all-png all-svg
 
 all-svg: $(addsuffix .svg, $(basename $(call rwildcard,,*.xml)))
 
 all-png: $(addsuffix .png, $(basename $(call rwildcard,,*.xml)))
 
-%.svg : %.xml
+%.svg : %.xml | shapefiles
 	@echo $@
 	@rm -f $@
-	@make -C data
-	@./render.sh $<
+	@examples/render.sh $<
 
-%.png : %.xml
+%.png : %.xml | shapefiles
 	@echo $@
 	@rm -f $@
-	@make -C data
-	@./render.sh $<
+	@examples/render.sh $<
 
-DataSource-OGR-OSM.svg: data/ways.osm
+examples/DataSource-OGR-OSM.svg: examples/data/ways.osm
 
-DataSource-OGR-OSM.png: data/ways.osm
+examples/DataSource-OGR-OSM.png: examples/data/ways.osm
 
-cairo-and-mapnik.svg: cairo-and-mapnik.py
+experimental: examples/cairo-and-mapnik.svg
+
+examples/cairo-and-mapnik.svg: examples/cairo-and-mapnik.py
 	@echo cairo-and-mapnik
-	@./cairo-and-mapnik.py
+	@examples/cairo-and-mapnik.py
 
-data:
-	@make -C data
-
-clean:
-	@git clean -fX
-
-show-latest: all
-	@ls -t *.svg | head -1 | xargs display &
-
-experimental: cairo-and-mapnik.svg
+depend::
+	@tools/mapnik-deps.sh > .deps/examples.d
