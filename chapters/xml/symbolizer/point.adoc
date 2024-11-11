@@ -13,7 +13,7 @@ For putting symbols along a line or the edge of a polygon the MarkerSymbolizer i
 |====================
 | Attribute          | Type          | Default | Description
 | <<pointsymbolizer-file,file>> | file path     | none |
-| <<example-pointsymbolizer-base,base>> | string | none | name of a <FileSource> to find the input file in
+| <<pointsymbolizer-base,base>> | string | none | name of a <FileSource> to find the input file in
 | <<pointsymbolizer-allow-overlap,allow-overlap>> | bool          | false | allow to paint over previous symbolizers output
 | <<pointsymbolizer-opacity,opacity>> | float         | 1.0 |
 | <<pointsymbolizer-placement,placement>> | string | cetroid | Wehter to place on a polygons centroid, which can actually be outside, or its interior
