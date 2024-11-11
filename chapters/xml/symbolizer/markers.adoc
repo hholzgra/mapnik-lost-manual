@@ -72,6 +72,16 @@ include::{sourcedir}/examples/Symbolizer/Markers/stroke-opacity.xml[]
 image::examples/Symbolizer/Markers/stroke-opacity.svg[align="center"]
 ====
 
+.MarkersSymbolizer stroke width
+[#example-markerssymbolizer-stroke-width]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Markers/stroke-width.xml[]
+-----
+image::examples/Symbolizer/Markers/stroke-width.svg[align="center"]
+====
+
 .MarkersSymbolizer fill opacity
 [#example-markerssymbolizer-fill-opacity]
 ====
