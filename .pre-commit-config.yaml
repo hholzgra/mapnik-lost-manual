@@ -1,4 +1,23 @@
+# Local checks only -- no hooks are fetched from remote repositories
+# and nothing runs outside this machine.
+#
+#   pre-commit install            # once, to activate the git hook
+#   pre-commit run --all-files    # manual run
 repos:
+  - repo: local
+    hooks:
+      - id: make-check
+        name: make check (book builds, all examples render)
+        entry: make check
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: no-tmprender-files
+        name: no stray render temp files
+        entry: temporary render files (tmprender*) must not be committed
+        language: fail
+        files: (^|/)tmprender
   - repo: https://github.com/hholzgra/asciidoc-linter/
     rev: 52e7fa5982d980eefd5b548f68ff6f58767fe772 # branch hholzgra-issues-52-54
     hooks:
