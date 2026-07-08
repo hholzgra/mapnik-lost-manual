@@ -53,8 +53,9 @@ install-web: all check
 	@rsync -avu --chmod=ugo=rx -e 'ssh -axC' . h6:/var/www/html/mapnik-lost-manual/
 
 depend::
+	@mkdir -p .deps
 	@tools/adoc-dep.py book.adoc > .deps/book.d
-	@tools/mapnik-deps.sh > .deps/examples.d 
+	@tools/mapnik-deps.sh > .deps/examples.d
 
 include examples/Makefile
 include examples/data/Makefile
