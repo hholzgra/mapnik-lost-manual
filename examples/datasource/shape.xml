@@ -25,7 +25,7 @@
     <StyleName>gridlines</StyleName>
     <Datasource>
       <Parameter name="type">shape</Parameter>
-      <Parameter name="file">data/ne_50m_graticules_10.shp</Parameter>
+      <Parameter name="file">data/ne_50m_graticules_30.shp</Parameter>
     </Datasource>
   </Layer>
 
