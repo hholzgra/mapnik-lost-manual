@@ -38,6 +38,12 @@ book.epub: book.adoc images/cover.svg
 	@echo "Creating epub"
 	@asciidoctor-epub3 book.adoc
 
+check:
+	@echo "Checking all examples render"
+	@tools/check-examples.sh
+	@echo "Checking book builds without warnings"
+	@asciidoctor --failure-level=WARN -o /dev/null book.adoc
+
 clean:
 	@git clean -fX
 
