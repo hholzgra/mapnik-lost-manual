@@ -50,8 +50,9 @@ install-web: all
 	@rsync -avu --chmod=ugo=rx -e 'ssh -axC' . h6:/var/www/html/mapnik-lost-manual/
 
 depend::
+	@mkdir -p .deps
 	@php tools/adoc-dep.php book.adoc > .deps/book.d
-	@tools/mapnik-deps.sh > .deps/examples.d 
+	@tools/mapnik-deps.sh > .deps/examples.d
 
 include examples/Makefile
 include examples/data/Makefile

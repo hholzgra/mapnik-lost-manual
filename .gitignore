@@ -1,6 +1,7 @@
 *~
 \#*\#
 .\#*
+.deps/
 *.html
 *.pdf
 *.epub

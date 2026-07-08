@@ -27,4 +27,5 @@ examples/cairo-and-mapnik.svg: examples/cairo-and-mapnik.py
 	@examples/cairo-and-mapnik.py
 
 depend::
+	@mkdir -p .deps
 	@tools/mapnik-deps.sh > .deps/examples.d
