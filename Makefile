@@ -1,6 +1,6 @@
 all: multipage html epub pdf
 
-PHONY = all clean install depend
+PHONY = all clean install depend check
 PHONY += html pdf epub multipage
 
 -include .deps/book.d
@@ -37,6 +37,12 @@ book/book.html: book.adoc
 book.epub: book.adoc images/cover.svg
 	@echo "Creating epub"
 	@asciidoctor-epub3 book.adoc
+
+check:
+	@echo "Checking all examples render"
+	@tools/check-examples.sh
+	@echo "Checking book builds without warnings"
+	@asciidoctor --failure-level=WARN -o /dev/null book.adoc
 
 clean:
 	@git clean -fX
