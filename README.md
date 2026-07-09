@@ -14,3 +14,9 @@ For public document versions see http://get-map.org/mapnik-lost-manual/
 * GNU Make
 * rsync (for upload to public server)
 
+### On Debian
+
+```
+apt-get install make rsync python3-mapnik asciidoctor
+gem install asciidoctor-pdf asciidoctor-multipage asciidoctor-epub3
+```
