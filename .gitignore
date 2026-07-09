@@ -10,3 +10,4 @@ book/
 examples/**/*.svg
 examples/**/*.png
 
+tmprender*
