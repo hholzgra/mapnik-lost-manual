@@ -1,13 +1,15 @@
 #! /bin/bash
 base=$(basename $1 .xml)
-dir=$(dirname $1)
+dir=$(dirname $(realpath $1))
 tmpnam=$(basename $(mktemp -p . tmprenderXXXXXXXXXX))
 
 status=3
 
+cd $(dirname $0) 
+
 cp $dir/$base.xml $tmpnam.xml
 
-if examples/render.py $tmpnam
+if ./render.py $tmpnam
 then
 	mv $tmpnam.svg $dir/$base.svg
 	if ! convert -regard-warnings -trim $tmpnam.png $dir/$base.png 2>/dev/null
