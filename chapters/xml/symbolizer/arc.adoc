@@ -1,0 +1,109 @@
+:sourcedir: ../../..
+
+==== ArcSymbolizer
+
+[NOTE]
+====
+The ArcSymbolizer is a recent experimental addition and is not yet available in released Mapnik versions. It supports the AGG, Cairo and SVG renderer backends.
+====
+
+The ArcSymbolizer can draw full circles and partial arcs. The arc center point is defined by the layer geometry while radius, start and end angle in case of arcs, and visual styling are defined by the symbolizer attributes.
+
+The motivation to create the ArcSymbolizer was to be able to render sea navigation lights in a way similar to how the custom OpenSeaMap renderer does it, but can also be used for other purposes like e.g visualization of camera viewing areas, or even to add simple pie charts to a map.
+
+Arcs are drawn clockwise from the `start-angle` to the `end-angle`, angle values are given in degrees with 0° / 360° being north / up. As the angles default to 0° and 360° a full circle is drawn when no angle values are given explicitly.
+
+The ArcSymbolizer allows to style how the arc is filled and what strokes to use for the actual ark, and for the radius lines connecting the end points of the arc to the center point. Adding a textual label is also possible, the text will be drawn curved along the arc when the arc is longer than the text; otherwise the text will be drawn facing outwards from the arc center.
+
+Note that `stroke-dasharray` and `stroke-dashoffset` only apply to the radius lines; the arc line itself is always drawn solid. 
+
+
+[NOTE]
+====
+The attribute names are not final yet.
+====
+
+.ArcSymbolizer Attributes
+[width="100%",options="header,unbreakable",cols="m,d,d,d"]
+|====================
+| Attribute                 | Type       | Default      | Description
+| <<example-arcsymbolizer-angles,((radius))>>       | float | 0 | Radius in pixels
+| <<example-arcsymbolizer-angles,((start-angle))>>  | float | 0 | Starting arc angle, 0° being north/up
+| <<example-arcsymbolizer-angles,((end-angle))>>    | float | 360 | Ending arc angle, arc is drawn clockwise from start to end
+| <<example-arcsymbolizer-fill-stroke,((fill))>>    | color | none | Circle / arc fill color
+| ((fill-opacity))          | 0.0 - 1.0  | 1            | ... TODO ...
+| ((opacity))               | 0.0 - 1.0  | 1            | TODO: Multiplies both fill and stroke opacity?
+| <<example-arcsymbolizer-fill-stroke,((stroke))>>  | color | none | Color of the outer arc line
+| ((stroke-width))          | float      | 1            |
+| ((stroke-opacity))        | 0.0 - 1.0  | 1            |
+| <<example-arcsymbolizer-radius-lines,((stroke-dasharray))>> | number list | none | Applies to the radius lines only, the arc line is always solid
+| ((stroke-dashoffset))     | float      | 0            |
+| <<example-arcsymbolizer-radius-lines,((radius-lines))>> | boolean | false | Draw the two radius "spokes" from the center to the arc ends
+| <<example-arcsymbolizer-radius-lines,((radius-line-stroke))>> | color | stroke | Color of the radius lines, defaults to the arc stroke color
+| <<example-arcsymbolizer-radius-lines,((radius-line-stroke-width))>> | float | stroke-width | Width of the radius lines, defaults to the arc stroke width
+| <<example-arcsymbolizer-text,((text))>> | expression | none | Label, bent along the arc or placed perpendicular to it
+| ((text-face-name))        | string     |              | Font face for the label, required with text
+| ((text-fontset-name))     | string     |              | Fontset alternative to text-face-name
+| ((text-size))             | float      | 10           |
+| ((text-fill))             | color      | black        | Text color
+| ((text-opacity))          | 0.0 - 1.0  | 1            |
+| ((text-halo-fill))        | color      | white        |
+| ((text-halo-radius))      | float      | 0            |
+| ((text-halo-opacity))     | 0.0 - 1.0  | 1            |
+| ((text-character-spacing)) | float     | 0            |
+| <<example-arcsymbolizer-text,((text-offset))>> | float | 2 | Radial gap between the arc line and the label
+| ((comp-op))               | SVG compositing | src-over |
+|====================
+
+.ArcSymbolizer radius, start-angle and end-angle
+[#example-arcsymbolizer-angles]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Arc/angles.xml[]
+-----
+image::examples/Symbolizer/Arc/angles.svg[align="center"]
+====
+
+.ArcSymbolizer fill and stroke
+[#example-arcsymbolizer-fill-stroke]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Arc/fill-stroke.xml[]
+-----
+image::examples/Symbolizer/Arc/fill-stroke.svg[align="center"]
+====
+
+.ArcSymbolizer radius lines
+[#example-arcsymbolizer-radius-lines]
+====
+Radius lines inherit the arc stroke by default, can be given their own color and width, and are the only part affected by `stroke-dasharray`.
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Arc/radius-lines.xml[]
+-----
+image::examples/Symbolizer/Arc/radius-lines.svg[align="center"]
+====
+
+.ArcSymbolizer text
+[#example-arcsymbolizer-text]
+====
+The first arc is long enough for its label, so the text is bent along its outside. The same goes for the second, on the lower half of the circle, where the reading direction is flipped to stay readable. The third arc is too short for its label, so the text is placed perpendicular to the arc instead.
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Arc/text.xml[]
+-----
+image::examples/Symbolizer/Arc/text.svg[align="center"]
+====
+
+.ArcSymbolizer light sectors
+[#example-arcsymbolizer-light-sectors]
+====
+Using the ArcSymbolizer to display navigational lights in a way similar to the custom OpenSeaMap renderer:
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Arc/light-sectors.xml[]
+-----
+image::examples/Symbolizer/Arc/light-sectors.svg[align="center"]
+====
