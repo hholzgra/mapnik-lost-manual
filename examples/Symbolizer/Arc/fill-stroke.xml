@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <Filter>[variant] = 'fill'</Filter>
+      <ArcSymbolizer radius="50" start-angle="270" end-angle="90"
+                     fill="orange"/>
+    </Rule>
+    <Rule>
+      <Filter>[variant] = 'stroke'</Filter>
+      <ArcSymbolizer radius="50" start-angle="270" end-angle="90"
+                     stroke="black" stroke-width="2"/>
+    </Rule>
+    <Rule>
+      <Filter>[variant] = 'both'</Filter>
+      <ArcSymbolizer radius="50" start-angle="270" end-angle="90"
+                     fill="orange" stroke="black" stroke-width="2"/>
+    </Rule>
+    <Rule>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[variant]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,variant
+"POINT(0 0)",fill
+"POINT(2 0)",stroke
+"POINT(4 0)",both
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>

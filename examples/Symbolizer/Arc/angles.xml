@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- simple example showing use of start and end angles -->
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <ArcSymbolizer radius="40" start-angle="[start]" end-angle="[end]"
+                     fill="steelblue" fill-opacity="0.3"
+                     stroke="steelblue" stroke-width="2"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="55">[start]+"-"+[end]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,start,end
+"POINT(0 0)",45,135
+"POINT(2 0)",134,45
+"POINT(4 0)",0,360
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
