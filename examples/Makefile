@@ -30,7 +30,3 @@ experimental: examples/cairo-and-mapnik.svg
 examples/cairo-and-mapnik.svg: examples/cairo-and-mapnik.py
 	@echo cairo-and-mapnik
 	@examples/cairo-and-mapnik.py
-
-depend::
-	@mkdir -p .deps
-	@tools/mapnik-deps.sh > .deps/examples.d
