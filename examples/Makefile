@@ -2,9 +2,14 @@ PHONY += show-latest all-png all-svg experimental data
 
 rwildcard=$(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter-out disabled/%,$(filter $(subst *,%,$2),$d)))
 
-all-svg: $(addsuffix .svg, $(basename $(call rwildcard,,*.xml)))
+example_bases := $(basename $(call rwildcard,,*.xml))
+ifeq ($(ARC_SUPPORT),)
+example_bases := $(filter-out examples/Symbolizer/Arc/%,$(example_bases))
+endif
 
-all-png: $(addsuffix .png, $(basename $(call rwildcard,,*.xml)))
+all-svg: $(addsuffix .svg, $(example_bases))
+
+all-png: $(addsuffix .png, $(example_bases))
 
 %.svg : %.xml | shapefiles
 	@echo $@
