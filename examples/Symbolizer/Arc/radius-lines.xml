@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <Filter>[variant] = 'default'</Filter>
+      <ArcSymbolizer radius="50" start-angle="300" end-angle="60"
+                     stroke="blue" stroke-width="2"
+                     radius-lines="true"/>
+    </Rule>
+    <Rule>
+      <Filter>[variant] = 'styled'</Filter>
+      <ArcSymbolizer radius="50" start-angle="300" end-angle="60"
+                     stroke="blue" stroke-width="2"
+                     radius-lines="true"
+                     radius-line-stroke="red" radius-line-stroke-width="4"/>
+    </Rule>
+    <Rule>
+      <Filter>[variant] = 'dashed'</Filter>
+      <ArcSymbolizer radius="50" start-angle="300" end-angle="60"
+                     stroke="blue" stroke-width="2"
+                     radius-lines="true" stroke-dasharray="4,3"/>
+    </Rule>
+    <Rule>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[variant]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,variant
+"POINT(0 0)",default
+"POINT(2 0)",styled
+"POINT(4 0)",dashed
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
