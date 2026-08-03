@@ -2,7 +2,7 @@
 
 ==== PointSymbolizer
 
-The point symbolizer draws a given image at a point position. When given a line or polygon as input the shape will be put at the middle of the line or center of the polygon. 
+The point symbolizer draws a given image at a point position. When given a line or polygon as input the shape will be put at the middle of the line or center of the polygon.
 
 If no image file is specified a small square is used as the default point image.
 
@@ -17,7 +17,7 @@ For putting symbols along a line or the edge of a polygon the MarkerSymbolizer i
 | <<pointsymbolizer-allow-overlap,allow-overlap>> | bool          | false | allow to paint over previous symbolizers output
 | <<pointsymbolizer-opacity,opacity>> | float         | 1.0 |
 | <<pointsymbolizer-placement,placement>> | string | cetroid | Wehter to place on a polygons centroid, which can actually be outside, or its interior
-| ignore-placement | bool          | false |  
+| ignore-placement | bool          | false |
 | <<pointsymbolizer-transform,transform>> | SVG transform | identity |
 | comp-op          | Compositing   | src-over |
 |====================
@@ -44,7 +44,7 @@ image::examples/Symbolizer/Point/file.svg[align="center"]
 [#pointsymbolizer-opacity]
 ===== `opacity` attribute
 
-The `opacity` attribute defines how opaque or transparant a point symbol should be rendered. The value range is from `0.0` for completely transparent to `1.0` for completely opaque.
+The `opacity` attribute defines how opaque or transparent a point symbol should be rendered. The value range is from `0.0` for completely transparent to `1.0` for completely opaque.
 
 .PointSymbolizer opacity
 ====
@@ -61,7 +61,7 @@ image::examples/Symbolizer/Point/opacity.svg[align="center"]
 
 The `base` attribute defines which <<_filesource,`<FileSource>`>> should be used as the base directory for a <<pointsymbolizer-file,`file`>> symbol.
 
-NOTE: The `base` attribute only accepts constant strings, no expressions. 
+NOTE: The `base` attribute only accepts constant strings, no expressions.
 So it can only be chosen dynamically by using <<_rule,`<Rule>`>>/<<_filter,`<Filter>`>> constructs.
 
 .PointSymbolizer base
@@ -110,7 +110,7 @@ image::examples/Symbolizer/Point/placement.svg[align="center"]
 
 TODO: document SVG transformations
 
-.PointSymbolizer scaling 
+.PointSymbolizer scaling
 [#example-pointsymbolizer-scaling]
 ====
 [source,xml]

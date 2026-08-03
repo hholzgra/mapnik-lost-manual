@@ -33,8 +33,3 @@ include::symbolizer/group.adoc[]
 include::symbolizer/dot.adoc[]
 
 :sourcedir: ../..
-
-
-
-
-

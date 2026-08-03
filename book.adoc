@@ -1,4 +1,5 @@
 = Mapnik - The Missing Manual
+
 Hartmut Holzgraefe
 :doctype: book
 :doctitle: Mapnik - The Missing Manual

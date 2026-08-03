@@ -4,7 +4,7 @@ Mapnik is a Free Toolkit for developing mapping applications. It is written in m
 
 === Concept
 
-Mapnik is a library, not a complete application program. So it always to be linked to at least a minimum of application code that controls the library operations. 
+Mapnik is a library, not a complete application program. So it always to be linked to at least a minimum of application code that controls the library operations.
 
 The data flow of Mapnik basically is that it reads geospatial data sources and applies presentation styles on the input that decide how to visually present specific geometry objects:
 
@@ -79,4 +79,3 @@ image::images/introduction.png[]
 ====
 
 TODO: do the same with pure python and no separate style file
-

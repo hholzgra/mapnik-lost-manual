@@ -10,28 +10,28 @@ There are also some attributes that change the lines geometry itself, like offse
 .LineSymbolizer
 [options="header,unbreakable",cols="m,d,d,d"]
 |====================
-| Attribute               | Value | Default | Description 
-| ((clip))                | boolean | false |  
+| Attribute               | Value | Default | Description
+| ((clip))                | boolean | false |
 | ((comp-op))             | SVG compositing |  |
-| ((geometry-transform))  | SVG transform |  | 
-| <<example-linesymbolizer-offset,((offset))>>              | float | 0 |  
-| ((rasterize))           | full, fast | full |  
-| <<example-linesymbolizer-smooth,((smooth))>>              | 0.0 - 1.0 | 1 |  
-| ((simplify))            | float | 0 |  
-| ((simplify-algorithm))  | radial-distance, zhao-saalfeld, visvalingam-whyatt, douglas-peucker | radial-distance |  
-| <<example-linesymbolizer-stroke,((stroke))>>              | color | black |  
-| <<example-linesymbolizer-stroke-dasharray,((stroke-dasharray))>>    | number list | none |  
-| ((stroke-dashoffset))   | number list | none | experimental only  
-| ((stroke-gamma))        | 0.0 - 1.0 | 1 |  
-| ((stroke-gamma-method)) | power, linear, none, threshold, multiply | power |  
-| <<example-linesymbolizer-stroke-linejoin,((stroke-linejoin))>>     | bevel, miter, miter-revert, round | miter |  
-| <<example-linesymbolizer-stroke-linecap,((stroke-linecap))>>      | butt, round, square | butt |  
+| ((geometry-transform))  | SVG transform |  |
+| <<example-linesymbolizer-offset,((offset))>>              | float | 0 |
+| ((rasterize))           | full, fast | full |
+| <<example-linesymbolizer-smooth,((smooth))>>              | 0.0 - 1.0 | 1 |
+| ((simplify))            | float | 0 |
+| ((simplify-algorithm))  | radial-distance, zhao-saalfeld, visvalingam-whyatt, douglas-peucker | radial-distance |
+| <<example-linesymbolizer-stroke,((stroke))>>              | color | black |
+| <<example-linesymbolizer-stroke-dasharray,((stroke-dasharray))>>    | number list | none |
+| ((stroke-dashoffset))   | number list | none | experimental only
+| ((stroke-gamma))        | 0.0 - 1.0 | 1 |
+| ((stroke-gamma-method)) | power, linear, none, threshold, multiply | power |
+| <<example-linesymbolizer-stroke-linejoin,((stroke-linejoin))>>     | bevel, miter, miter-revert, round | miter |
+| <<example-linesymbolizer-stroke-linecap,((stroke-linecap))>>      | butt, round, square | butt |
 |  <<example-linesymbolizer-stroke-miterlimit,((stroke-miterlimit))>>   | float     | 4 |
-| <<example-linesymbolizer-stroke-opacity,((stroke-opacity))>>      | 0.0 - 1.0 | 1 |  
-| <<example-linesymbolizer-stroke-width,((stroke-width))>>        | float     | 1 |  
+| <<example-linesymbolizer-stroke-opacity,((stroke-opacity))>>      | 0.0 - 1.0 | 1 |
+| <<example-linesymbolizer-stroke-width,((stroke-width))>>        | float     | 1 |
 |====================
 
-TODO: 
+TODO:
 * for miterlimit see e.g. https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit for meterlimit description / visualization
 * for simplify-algorithm see e.g. https://i11www.iti.kit.edu/_media/teaching/sommer2013/algokartografie/gruppe1.pdf
 
@@ -134,5 +134,3 @@ See also:
 * http://mapnik.org/mapnik-reference/#3.0.22/line[LineSymbolizer in Mapnik Reference]
 
 TODO: gamma, gamma-method, dash-offset, miter-limit, clip, simplify, simplify-algorithm, rasterize, geometry-transform, comp-op
-
-

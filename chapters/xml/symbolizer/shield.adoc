@@ -15,13 +15,14 @@ ShieldSymbolizer inherits almost all attributes from the <<TextSymbolizer>>, wit
 | opacity          | float         | 1.0 | Opacity to use for the shield image
 | text-opacity     | float         | 1.0 | Opacity to use for the shield text
 | unlock-image     | boolean       | false | `dx`,`dy` move image and text when `true`, text only when `false`
-| dx               | float         | 0.0 | Move text, and image if `unlock-image=false`, horizontallly
+| dx               | float         | 0.0 | Move text, and image if `unlock-image=false`, horizontally
 | dy               | float         | 0.0 | Move text, and image if `unlock-image=false`, vertically
 | shield-dx        | float         | 0.0 | Move image horizontally only
 | shield-dy        | float         | 0.0 | Move image vertically only
 | transform        | SVG transformation | none | Transform image
 |====================
 
+////
 /*
 name
 file
@@ -69,10 +70,11 @@ grid-cell-width
 grid-cell-height
 offset
 */
+////
 
 .ShieldSymolizer spacing
 ====
-`spacing` controls the distance between shields on a single line feature. When no spacing is given only a single shield will be attemted to be placed.
+`spacing` controls the distance between shields on a single line feature. When no spacing is given only a single shield will be attempted to be placed.
 
 See also `repeat-distance`, which controls how far shields with the same text should be set apart in general, even when placed on different geometries.
 [source,xml]

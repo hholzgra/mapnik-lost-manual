@@ -4,8 +4,8 @@
 
 AGG::
     The http://antigrain.com[Anti-Grain Graphics library] used by default for bitmap (PNG, JPEG, ...) output.
-    
-Cairo:: 
+
+Cairo::
 CairoGraphics::
     The http://cairographics.org[Cairo Graphics library] used for vector format output (SVG, PDF, PS) output by default, and also for bitmap output when esplicitly requested.
 
@@ -33,21 +33,20 @@ MapOSMatic::
 Opacity::
     Defines how opaque or transparent a feature should be. Values range from 0.0 for total transparency to 1.0 for total opacity.
 
-OGR:: 
+OGR::
     The vector format related part of GDAL.
-    
+
 OSGeo::
     The https://www.osgeo.org/[Open Source Geospatial Foundation]
-    
+
 [[g:osm2pgsql]]`osm2pgsql`::
     https://osm2pgsql.org/[Osm2pgsql] is a tool to import OpenStreetMap data into a PostGIS database. It is part of the tool chain used to generated the map tiles provided on https://openstreetmap.org[`openstreetmap.org`]. (see also: <<g:imposm,Imposm>>)
-    
+
 PBF::
-    Protocol Buffer Format - a file format for OSM data based on the https://developers.google.com/protocol-buffers[Google ProtoBuf library]. PBF is a binary format not suitable for human readning, but very compact, with file sizes typically only almost half of bzip2 compressed OSM XML. 
-    
+    Protocol Buffer Format - a file format for OSM data based on the https://developers.google.com/protocol-buffers[Google ProtoBuf library]. PBF is a binary format not suitable for human reading, but very compact, with file sizes typically only almost half of bzip2 compressed OSM XML.
+
 Symbolizer::
-	A symbolizer describes how features appear on rendered maps.
-	
+        A symbolizer describes how features appear on rendered maps.
+
 SVG Transformations::
     SVG transformations allow to translate, scale, rotate or skew a shape, either by combining one or more individual operations, or by giving them as a transformation matrix right away.
-

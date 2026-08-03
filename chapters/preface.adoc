@@ -44,7 +44,7 @@ Even though its development has slowed down quite a bit in recent years, and cli
 
 Also for rendering printable formats, which I'm especially interested in, the Mapnik/CairoGraphics tool chain still seems to be a better choice than the OpenGL based vector tile approaches.
 
-The https://print.get-map-org/[MapOSMatic] instance that I'm running makes intensive use of Mapnik not only being able to render PNG tiles, but also bigger documents in both bitmap and vector formats. Especially the capability of rendering into a Cairo Graphis surface comes in handy for this.
+The https://print.get-map-org/[MapOSMatic] instance that I'm running makes intensive use of Mapnik not only being able to render PNG tiles, but also bigger documents in both bitmap and vector formats. Especially the capability of rendering into a Cairo Graphics surface comes in handy for this.
 
 === Why AsciiDoc(tor)?
 

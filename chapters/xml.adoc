@@ -2,7 +2,7 @@
 
 [NOTE]
 ====
-For now I'll only cover how to create styles using Mapnik XML style files. Documentation of other style file formats, like CartoCSS, or how to create styles purely programatically using C++ or Python code, will have to wait until the XML format documentation is complete, or for someone else to volunteer doing this.
+For now I'll only cover how to create styles using Mapnik XML style files. Documentation of other style file formats, like CartoCSS, or how to create styles purely programmatically using C++ or Python code, will have to wait until the XML format documentation is complete, or for someone else to volunteer doing this.
 ====
 
 
@@ -19,9 +19,3 @@ include::xml/layer.adoc[]
 include::xml/style-rule-filter.adoc[]
 
 include::xml/symbolizer.adoc[]
-
-
-
-
-
-

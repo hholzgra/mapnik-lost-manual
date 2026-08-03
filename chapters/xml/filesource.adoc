@@ -8,7 +8,7 @@ and for symbolizers that are able to load image files, like e.g. `<PointSymboliz
 [options="header",cols="m,d,d,d"]
 |====================
 | Attribute | Value | Default | Description
-| name | string | none |  
+| name | string | none |
 |====================
 
 .FileSource DataSource example
@@ -22,7 +22,7 @@ The actual file to be processed in the example below will be taken from `path/to
   [...]
   <DataSource>
     <Parameter name="type">csv</Parameter>
-    <Paramater name="base">csv-base</Parameter>
+    <Parameter name="base">csv-base</Parameter>
     <Parameter name="file">file.csv</Parameter>
   </DataSource>
   [...]
@@ -41,7 +41,6 @@ The actual symbol file being used in the example below will be taken from `path/
   [...]
   <PointSymbolizer base='symbols' file='symbol.svg'/>
   [...]
-</Map>  
+</Map>
 ----
 ====
-

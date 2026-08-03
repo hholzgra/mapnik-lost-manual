@@ -12,15 +12,15 @@ TODO: contains ...
 |===
 | Attribute | Type | Default | Description
 | base | string | none | name of a <FileSource> to find the input file in
-| <<map-background-color,background-color>> | color | transparent | 
+| <<map-background-color,background-color>> | color | transparent |
 | <<map-background-image,background-image>> | file path | none |
-| background-image-comp-op | SVG composition | none | 
-| background-image-opacity | float | 1.0 | 
-| srs | proj4 projection | +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs | 
-| buffer-size | float | 0.0 | 
-| maximum-extent | 4xfloat |  | 
-| font-directory | directory path | none | 
-| <<map-minimum-version,minimum-version>> | version string | none | 
+| background-image-comp-op | SVG composition | none |
+| background-image-opacity | float | 1.0 |
+| srs | proj4 projection | +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs |
+| buffer-size | float | 0.0 |
+| maximum-extent | 4xfloat |  |
+| font-directory | directory path | none |
+| <<map-minimum-version,minimum-version>> | version string | none |
 | <<map-paths-from-xml,paths-from-xml>> | boolean | true | Whether relative paths are relative to the directory the XML file is in, or the current working directory.
 |===
 
@@ -55,7 +55,7 @@ image::examples/map/background-image.svg[align="center"]
 [#map-minimum-version]
 ==== `minimum-version` attribute
 
-Specifies the minimum Mapnik version needed to process this stylesheet. 
+Specifies the minimum Mapnik version needed to process this stylesheet.
 
 Requires a three part version number, so `3.0.0` works but `3.0` or just `3` doesn't. (See also https://github.com/mapnik/mapnik/issues/4369)
 
