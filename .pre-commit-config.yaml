@@ -1,0 +1,11 @@
+repos:
+  - repo: https://github.com/hholzgra/asciidoc-linter/
+    rev: 1abec122b46948e9c411e4e379a56626e861e756 # branch hholzgra-issues-52-54
+    hooks:
+      - id: asciidoc-linter
+        name: AsciiDoc Linter
+        description: Lint AsciiDoc files for common issues and style violations
+        entry: asciidoc-linter
+        language: python
+        files: \.(adoc|asciidoc)$
+        args: [--format, plain]

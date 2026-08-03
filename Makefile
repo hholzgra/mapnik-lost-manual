@@ -1,6 +1,6 @@
 all: multipage html epub pdf
 
-PHONY = all clean install depend
+PHONY = all clean install depend check
 PHONY += html pdf epub multipage
 
 -include .deps/book.d
@@ -41,11 +41,14 @@ book.epub: book.adoc images/cover.svg
 clean:
 	@git clean -fX
 
-install: all 
+check:
+	@pre-commit run --all-files
+
+install: all check
 	@echo "Transferring files to webserver"
 	@rsync -avu --chmod=ugo=rx . /var/www/html/mapnik-lost-manual/
 
-install-web: all 
+install-web: all check
 	@echo "Transferring files to webserver"
 	@rsync -avu --chmod=ugo=rx -e 'ssh -axC' . h6:/var/www/html/mapnik-lost-manual/
 
