@@ -23,7 +23,6 @@ ShieldSymbolizer inherits almost all attributes from the <<TextSymbolizer>>, wit
 |====================
 
 ////
-/*
 name
 file
 face-name
@@ -69,7 +68,6 @@ comp-op
 grid-cell-width
 grid-cell-height
 offset
-*/
 ////
 
 .ShieldSymolizer spacing
