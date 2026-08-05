@@ -9,3 +9,9 @@ repos:
         language: python
         files: \.(adoc|asciidoc)$
         args: [--format, plain]
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.3.0  # Use the latest version
+    hooks:
+      - id: flake8
+        name: flake8
+        files: \.py$
