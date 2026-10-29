@@ -11,7 +11,7 @@ Hartmut Holzgraefe
 :toclevels: 5
 :multipage-level: 3
 :numbered:
-:source-highlighter: coderay
+:source-highlighter: rouge
 
 
 include::chapters/preface.adoc[]
