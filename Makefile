@@ -69,6 +69,7 @@ check:
 	@tools/check-examples.sh
 	@echo "Checking book builds without warnings"
 	@asciidoctor --failure-level=WARN $(ADOCFLAGS) -o /dev/null book.adoc
+	@asciidoctor-epub3 --failure-level=WARN $(ADOCFLAGS) -o /dev/null book.adoc
 
 clean:
 	@git clean -fX
