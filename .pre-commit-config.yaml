@@ -13,6 +13,13 @@ repos:
         pass_filenames: false
         always_run: true
 
+      - id: codespell
+        name: codespell (spelling check)
+        entry: codespell
+        language: system
+        types: [text]
+        exclude: ^(examples/data|images)/
+
       - id: no-tmprender-files
         name: no stray render temp files
         entry: temporary render files (tmprender*) must not be committed
