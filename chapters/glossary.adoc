@@ -43,7 +43,7 @@ OSGeo::
     https://osm2pgsql.org/[Osm2pgsql] is a tool to import OpenStreetMap data into a PostGIS database. It is part of the tool chain used to generated the map tiles provided on https://openstreetmap.org[`openstreetmap.org`]. (see also: <<g:imposm,Imposm>>)
     
 PBF::
-    Protocol Buffer Format - a file format for OSM data based on the https://developers.google.com/protocol-buffers[Google ProtoBuf library]. PBF is a binary format not suitable for human readning, but very compact, with file sizes typically only almost half of bzip2 compressed OSM XML. 
+    Protocol Buffer Format - a file format for OSM data based on the https://developers.google.com/protocol-buffers[Google ProtoBuf library]. PBF is a binary format not suitable for human reading, but very compact, with file sizes typically only almost half of bzip2 compressed OSM XML. 
     
 Symbolizer::
 	A symbolizer describes how features appear on rendered maps.

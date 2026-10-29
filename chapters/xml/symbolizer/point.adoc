@@ -44,7 +44,7 @@ image::examples/Symbolizer/Point/file.svg[align="center"]
 [#pointsymbolizer-opacity]
 ===== `opacity` attribute
 
-The `opacity` attribute defines how opaque or transparant a point symbol should be rendered. The value range is from `0.0` for completely transparent to `1.0` for completely opaque.
+The `opacity` attribute defines how opaque or transparent a point symbol should be rendered. The value range is from `0.0` for completely transparent to `1.0` for completely opaque.
 
 .PointSymbolizer opacity
 ====

@@ -31,7 +31,7 @@ A style rule filters data elements provided by a data source, and renders the ma
 
 Filters specify on what data elements a rule should operate, by evaluating expressions. The expression language supports simple comparisons, logic, math, and regular expression matching.
 
-There are also two special filters that do not evaluate expresions but depend on whether other previous filters in the style found a match:
+There are also two special filters that do not evaluate expressions but depend on whether other previous filters in the style found a match:
 
 <ElseFilter> matches if no other filter in a style matched so far, so it can be used as a fallback default.
 

@@ -13,7 +13,7 @@
 
 A ((`<FontSet>`)) contains a list of or more `<Font>` entries that are searched in the listed order when rendering characters. This way a style sheet can specify multiple alternative fonts for different platforms, or different language specific fonts.
 
-Listed fonts that are not found on the system runnng Mapnik are simply ignored after generating a warning. Also when a certain character is not found in the first font the other fonts are searched in order until one supporting the character is found.
+Listed fonts that are not found on the system running Mapnik are simply ignored after generating a warning. Also when a certain character is not found in the first font the other fonts are searched in order until one supporting the character is found.
 
 [NOTE]
 ====

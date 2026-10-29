@@ -2,7 +2,7 @@
 
 === DataSource
 
-A `<Datasource>` can appear in two places: as a named data surce template under `<Map>` or as an actual data source in a `<Layer>`. A data soure template can provide default values for actual layer data sources, e.g. when using a PostGis database as data source a data source template can provide all the connection parameters, so that actual layer data sources only have to provide actual SQL queries.
+A `<Datasource>` can appear in two places: as a named data surce template under `<Map>` or as an actual data source in a `<Layer>`. A data source template can provide default values for actual layer data sources, e.g. when using a PostGis database as data source a data source template can provide all the connection parameters, so that actual layer data sources only have to provide actual SQL queries.
 
 Example:
 [source,xml]
@@ -31,19 +31,19 @@ Example:
 
 Mapnik supports several different kinds of data sources, and actually has a plugin interface for these, so that plugins for more data sources can be added "on the fly" without having to rebuild Mapnik itself.
 
-The set of plugins that come with Mapnik itself are caled core plugins. Some former core plugins that are no longer maintained, or never left experimental status, have been moved to a separate non-core plugins repository, and there is also a small number of plugins by outside contributores, which we will refer to as exra data sources below.
+The set of plugins that come with Mapnik itself are caled core plugins. Some former core plugins that are no longer maintained, or never left experimental status, have been moved to a separate non-core plugins repository, and there is also a small number of plugins by outside contributores, which we will refer to as extra data sources below.
 
 ==== Core data sources
 
-The core plugins are part of the mapnik source code itself, and usually avaliable in all builds of the mapnik library. (TODO: add link to mappnik github).
+The core plugins are part of the mapnik source code itself, and usually available in all builds of the mapnik library. (TODO: add link to mappnik github).
 
 ===== CSV
 
-The CSV plugin reads simple column separated data from a file when specified using the `file` parameter, or directly from the XML style file when using the `inline` paramter. In the later case all lines following the `inline` parameter tag will be read as CSV input until the closing paramter tag is reached. In case that the inline data contains `<`, `>` or `&` characters, you should enclose it in a `<![CDATA[...]]>` section to prevent the content from being interpreted as XML.
+The CSV plugin reads simple column separated data from a file when specified using the `file` parameter, or directly from the XML style file when using the `inline` parameter. In the later case all lines following the `inline` parameter tag will be read as CSV input until the closing parameter tag is reached. In case that the inline data contains `<`, `>` or `&` characters, you should enclose it in a `<![CDATA[...]]>` section to prevent the content from being interpreted as XML.
 
 When giving a `file` path, this is taken as relative to the directory the style file is in, unless a `base` parameter is given. In that case a relative `file` path will be interpreted as relative to the directory path given in the `<FileSource>` of that base name.
 
-Processig performance can be improved by creating an additional `.index` index file using the <<mapnik-index>> tool.
+Processing performance can be improved by creating an additional `.index` index file using the <<mapnik-index>> tool.
 
 .CSV data source examples
 ====
@@ -66,7 +66,7 @@ lat,lon,text
 ----
 ==== 
 
-By default the CSV plugin tries to identify the field delimiter by looking at the first line of the file, checking for `, ; |` and the `TAB` character. Whatever of these characters seen the most often is considered the separator character, unless you specifcy a different one with the `separator` Parameter explicitly, e.g: `<Parameter name="separator">;</Parameter>`.
+By default the CSV plugin tries to identify the field delimiter by looking at the first line of the file, checking for `, ; |` and the `TAB` character. Whatever of these characters seen the most often is considered the separator character, unless you specify a different one with the `separator` Parameter explicitly, e.g: `<Parameter name="separator">;</Parameter>`.
 
 In cases where the data does not contain a header line, one can be given as content of the `headers` parameter.
 
@@ -130,7 +130,7 @@ TODO::
 
 While the GeoJSON format is also supported by the OGR input plugin, a direct native GeoJSON plugin was added for performance reasons for this more and more common format.
 
-Processig performance can be improved by creating an additional `.index` index file using the <<mapnik-index>> tool.
+Processing performance can be improved by creating an additional `.index` index file using the <<mapnik-index>> tool.
 
 .GeoJson data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
@@ -138,7 +138,7 @@ Processig performance can be improved by creating an additional `.index` index f
 | Parameter | Type | Default | Description base
 | base | string | none | name of a `<FileSource>` to find the input file in
 | cache_features | boolean | true |
-| encoding | string | utf-8 | Encoding used for textual informatin
+| encoding | string | utf-8 | Encoding used for textual information
 | file | file path | none | Path of a GeoJSON file to read for input.
 | inline | string | none | Inline GeoJSON data as part of the stylefile itself
 | num_features_to_query | int | 5 | How many features of a feature set to read up front to determine what property names exist in the data
@@ -158,7 +158,7 @@ image::examples/datasource/GeoJSON.svg[align="center"]
 
 The OGR input plugin supports a large number of different vector formats via the GDAL/OGR library. For a complete list of supported formats see the https://gdal.org/drivers/vector/index.html[Vector Drivers] list in the GDAL documentation.
 
-The OGR plugin is typically used for GPX -- for which no special input plugin exists -- and OSM data -- for which it replaced the older OSM plugin that has now been moved to the `non-core-plugins` repository and is usally not included in Mapnik binary builds anymore. So we're going into details for these two data formats below only.
+The OGR plugin is typically used for GPX -- for which no special input plugin exists -- and OSM data -- for which it replaced the older OSM plugin that has now been moved to the `non-core-plugins` repository and is usually not included in Mapnik binary builds anymore. So we're going into details for these two data formats below only.
 
 .OGR data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
@@ -350,7 +350,7 @@ Probably most important though, this allows for using SSL/TLS. In it's most basi
 
 The PostGIS datasource supports two different methods to return data to Mapnik: in regular well known binary (WKB) or -- with PostGIS v2.2 or later -- tiny well known binary (https://github.com/TWKB/Specification/blob/master/twkb.md[TWKB]) format. This is controlled by the `twkb_encoding` option. 
 
-When using TWKB the `twkb_rounding_adjustment` parameter then controls the resolution the TWKB aims for. A value of 0.5 would lead to a coarseness of about one pixel, the default of 0.0 would be in the range of 0.05 to 0.2 pixels usually. This is done by using the `twkb_rounding_adjustment` parameter to calculate the `tolerance` paramter for https://postgis.net/docs/ST_Simplify.html[`ST_Simplify()`] and https://postgis.net/docs/ST_RemoveRepeatedPoints.html[`ST_RemoveRepeatedPoints()`], and the `decimaldigits_xy` parater for https://postgis.net/docs/ST_AsTWKB.html[`ST_AsTWKB()`]
+When using TWKB the `twkb_rounding_adjustment` parameter then controls the resolution the TWKB aims for. A value of 0.5 would lead to a coarseness of about one pixel, the default of 0.0 would be in the range of 0.05 to 0.2 pixels usually. This is done by using the `twkb_rounding_adjustment` parameter to calculate the `tolerance` parameter for https://postgis.net/docs/ST_Simplify.html[`ST_Simplify()`] and https://postgis.net/docs/ST_RemoveRepeatedPoints.html[`ST_RemoveRepeatedPoints()`], and the `decimaldigits_xy` parater for https://postgis.net/docs/ST_AsTWKB.html[`ST_AsTWKB()`]
 
 When using WKB (the default), simplification can be controlled via `simplify_geometries`, `simplify_snap_ratio`, `simplify_dp_preserve`, `simplify_dp_ratio`, `simplify_prefilter`, `simplify_clip_resolution` parameters. (TODO: describe in more detail)
 
@@ -393,13 +393,13 @@ The following special tokens can be used in SQL queries, and will be replaced b 
 
 The shape input plugin can read the https://en.wikipedia.org/wiki/Shapefile[ESRI shapefile format]. The OGR plugin also supports shapefiles, but the shape plugin has more direct support for this. It is also better maintained and tested.
 
-Shapefiles are often used instead of databases for data that doesn't change that often, or where data available in a database requires some preprocessing. Common examples are boundaries, coastlines, and elevation countour lines.
+Shapefiles are often used instead of databases for data that doesn't change that often, or where data available in a database requires some preprocessing. Common examples are boundaries, coastlines, and elevation contour lines.
 
-OpenStreetMap or example provides land polygons, water polygons, coastlines, and antarctic ice sheet polygons and outlines as regularily updated shapefiles on the https://osmdata.openstreetmap.de/[OsmData Download Server]. Due to the way large bodies of land and water are constructed by grouping individual coast line segments into polygon relations in OSM, there's always a risk of such lines not really being closed polygons. The OSM shapefiles are generated by extracting and aggregating the line segments data, and are only published when containing no unclosed polygons.
+OpenStreetMap or example provides land polygons, water polygons, coastlines, and antarctic ice sheet polygons and outlines as regularly updated shapefiles on the https://osmdata.openstreetmap.de/[OsmData Download Server]. Due to the way large bodies of land and water are constructed by grouping individual coast line segments into polygon relations in OSM, there's always a risk of such lines not really being closed polygons. The OSM shapefiles are generated by extracting and aggregating the line segments data, and are only published when containing no unclosed polygons.
 
 Another often used source of shapefiles is https://www.naturalearthdata.com/[Natural Earth], which provides public domain geo data for lots of physical and cultural features.
 
-Shapefile processing performance can be increased by creating an index file using the <<shapeindex>> tool that is included in the Mapnik source code, and usually also in binary distribution pacakges. 
+Shapefile processing performance can be increased by creating an index file using the <<shapeindex>> tool that is included in the Mapnik source code, and usually also in binary distribution packages. 
 
 .Shape data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
@@ -483,7 +483,7 @@ See also:
 
 ===== Kismet
 
-An experimental plugin that reads WLAN location informatin from a Kismet instance.
+An experimental plugin that reads WLAN location information from a Kismet instance.
 
 .Kismet data source parameters
 [width="100%",options="header",cols="m,d,d,d"]

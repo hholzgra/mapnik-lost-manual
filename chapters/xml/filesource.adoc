@@ -22,7 +22,7 @@ The actual file to be processed in the example below will be taken from `path/to
   [...]
   <DataSource>
     <Parameter name="type">csv</Parameter>
-    <Paramater name="base">csv-base</Parameter>
+    <Parameter name="base">csv-base</Parameter>
     <Parameter name="file">file.csv</Parameter>
   </DataSource>
   [...]

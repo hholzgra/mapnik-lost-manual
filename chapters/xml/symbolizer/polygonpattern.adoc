@@ -8,7 +8,7 @@
 | Attribute      | Value      | Default | Description
 | file | file path | none | 
 | base | string | none | name of a <FileSource> to find the input file in  
-| alignment | `gobal`/`local`| `global` | Align image to polygon (`local`) or to map borders (`global`)  
+| alignment | `global`/`local`| `global` | Align image to polygon (`local`) or to map borders (`global`)  
 | gamma | float | 1.0 |  
 | gamma-method |  |   |  
 | opacity | float | 1.0 | Filling opacity. May be somewhat transparent even at 1.0 if the fill pattern itself is not fully opaque.
@@ -55,7 +55,7 @@ image::examples/Symbolizer/PolygonPattern/transform.png[align="center"]
 .PolygonPatternSymbolizer geometry transform
 [#example-polygonpatternsymbolizer-geometry-transform]
 ====
-Unlike wiht PointSymbolizer `rotate()` does not seem to rotate around the geometry center, but around the map origin at `(0 0)` instead?
+Unlike with PointSymbolizer `rotate()` does not seem to rotate around the geometry center, but around the map origin at `(0 0)` instead?
 [source,xml]
 -----
 include::{sourcedir}/examples/Symbolizer/PolygonPattern/geometry-transform.xml[]
