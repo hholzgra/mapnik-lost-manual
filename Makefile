@@ -1,6 +1,6 @@
 all: multipage html epub pdf
 
-PHONY = all clean install check
+PHONY = all clean install install-web check
 PHONY += html pdf epub multipage
 
 this_dir = $(if $(pathsubst /%,,$(lastword $(MAKEFILE_LIST))),$(dir $(CURDIR)/$(lastword $(MAKEFILE_LIST))),$(dir $(lastword $(MAKEFILE_LIST))))
