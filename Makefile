@@ -3,11 +3,6 @@ all: multipage html epub pdf
 PHONY = all clean install install-web check
 PHONY += html pdf epub multipage
 
-this_dir = $(if $(pathsubst /%,,$(lastword $(MAKEFILE_LIST))),$(dir $(CURDIR)/$(lastword $(MAKEFILE_LIST))),$(dir $(lastword $(MAKEFILE_LIST))))
-
-TOP_DIR := $(abspath .)
-THIS_DIR := $(call this_dir)
-
 # does the installed mapnik already support the ArcSymbolizer?
 ARC_SUPPORT ?= $(shell python3 -c 'import mapnik,sys; sys.exit(0 if hasattr(mapnik,"ArcSymbolizer") else 1)' 2>/dev/null && echo 1)
 export ARC_SUPPORT
