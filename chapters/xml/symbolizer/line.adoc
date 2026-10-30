@@ -15,7 +15,7 @@ There are also some attributes that change the lines geometry itself, like offse
 | ((comp-op))             | SVG compositing |  |
 | ((geometry-transform))  | SVG transform |  | 
 | <<example-linesymbolizer-offset,((offset))>>              | float | 0 |  
-| ((rasterize))           | full, fast | full |  
+| ((rasterizer))           | full, fast | full |
 | <<example-linesymbolizer-smooth,((smooth))>>              | 0.0 - 1.0 | 0.0 |  
 | ((smooth-algorithm))    | TODO | |  
 | ((simplify))            | float | 0 |  
