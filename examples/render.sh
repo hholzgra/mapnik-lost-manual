@@ -1,11 +1,11 @@
 #! /bin/bash
 base=$(basename $1 .xml)
 dir=$(dirname $(realpath $1))
+
+cd $(dirname $0)
 tmpnam=$(basename $(mktemp -p . tmprenderXXXXXXXXXX))
 
 status=3
-
-cd $(dirname $0) 
 
 cp $dir/$base.xml $tmpnam.xml
 
