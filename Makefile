@@ -1,6 +1,6 @@
 all: multipage html epub pdf
 
-PHONY = all clean install install-web check
+PHONY = all clean install install-web check check-attributes
 PHONY += html pdf epub multipage
 
 # does the installed mapnik already support the ArcSymbolizer?
@@ -65,6 +65,12 @@ check:
 	@echo "Checking book builds without warnings"
 	@asciidoctor --failure-level=WARN $(ADOCFLAGS) -o /dev/null book.adoc
 	@asciidoctor-epub3 --failure-level=WARN $(ADOCFLAGS) -o /dev/null book.adoc
+
+# compare the book's attribute tables with what the installed mapnik
+# accepts; set MAPNIK_SRC to a matching mapnik source tree to also find
+# undocumented attributes and check default values
+check-attributes:
+	@tools/check-attributes.py $(if $(MAPNIK_SRC),--mapnik-src $(MAPNIK_SRC))
 
 clean:
 	@git clean -fX

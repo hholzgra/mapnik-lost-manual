@@ -1,0 +1,19 @@
+# Exceptions for tools/check-attributes.py, one "Element attribute" pair
+# per line; "*" as element matches all elements, "default:attribute"
+# silences a default value mismatch only.
+
+# the built-in shape://ellipse marker is 10x10 with a 0.5 stroke
+# (src/marker_cache.cpp), the generic key defaults do not apply
+MarkersSymbolizer default:width
+MarkersSymbolizer default:height
+MarkersSymbolizer default:stroke-width
+
+# DotSymbolizer deliberately only reads fill, opacity, width, height
+# and comp-op (parse_dot_symbolizer in src/load_map.cpp)
+DotSymbolizer clip
+DotSymbolizer extend
+DotSymbolizer geometry-transform
+DotSymbolizer simplify
+DotSymbolizer simplify-algorithm
+DotSymbolizer smooth
+DotSymbolizer smooth-algorithm
