@@ -487,7 +487,7 @@ An experimental plugin that reads WLAN location information from a Kismet instan
 | extent | | |
 | host | string | none | Kinsmet server name or IP address
 | port | int | 2501 | Port that the Kismet process is listening on
-| srs | string | |
+| srs | SRS string | epsg:4326 |
 |====================
 
 See also:

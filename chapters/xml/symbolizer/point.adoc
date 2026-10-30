@@ -16,7 +16,7 @@ For putting symbols along a line or the edge of a polygon the MarkerSymbolizer i
 | <<pointsymbolizer-base,base>> | string | none | name of a <FileSource> to find the input file in
 | <<pointsymbolizer-allow-overlap,allow-overlap>> | bool          | false | allow to paint over previous symbolizers output
 | <<pointsymbolizer-opacity,opacity>> | float         | 1.0 |
-| <<pointsymbolizer-placement,placement>> | string | cetroid | Wehter to place on a polygons centroid, which can actually be outside, or its interior
+| <<pointsymbolizer-placement,placement>> | string | centroid | Wehter to place on a polygons centroid, which can actually be outside, or its interior
 | ignore-placement | bool          | false |
 | <<pointsymbolizer-transform,transform>> | SVG transform | identity |
 | comp-op          | Compositing   | src-over |

@@ -16,9 +16,8 @@ A layer renders data from a data source using one or more styles.
 | maximum-scale-denominator | float | max. float | Maximum map scale up to which this layer should be rendered.
 | name                      | string | none | Name by which the layer can be referenced, e.g. for error messages.
 | queryable                 | bool | false | unused?
-| srs                       | proj4 srs string | `+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs` | Spatial reference system
+| srs                       | SRS string | epsg:4326 | Spatial reference system
 | status                    | boolean | true | Whether this layer should actually be processed or not. Caution: when set to `false` in XML the complete `<Layer>` will simply be skipped on reading the style file, and no layer object will be created for it. So you won't be able to enable such a layer with `Layer.set_status(true)` using API code later.
-|====================
 
 .Layer
 ====

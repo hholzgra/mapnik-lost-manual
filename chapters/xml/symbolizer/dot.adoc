@@ -8,8 +8,8 @@ TODO: description missing
 [width="100%",options="header,unbreakable",cols="m,d,d,d"]
 |====================
 | Attribute          | Type          | Default  | Description
-| height             | float         | 1.0      |
-| width              | float         | 1.0      |
+| height             | float         | 0.0      |
+| width              | float         | 0.0      |
 | fill               | color         | gray     |
 | opacity            | float         | 1.0      |
 | comp-op            | string        | src-over |
