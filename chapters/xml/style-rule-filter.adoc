@@ -80,7 +80,7 @@ TODO: regular expression match and replace
 `atan(x)`:: Arc Tangens
 `exp(x)`:: `e^x^`
 `log(x)`:: natural logarithm of `x`
-`pow(x,y=`:: `x^y^`
+`pow(x,y)=`:: `x^y^`
 `abs(x)`:: positive absolute value of `x`
 `min(x,y)`:: minimum value
 `max(x,y)`:: maximum value
