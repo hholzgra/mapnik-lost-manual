@@ -35,27 +35,27 @@ ifeq ($(ARC_SUPPORT),)
 BOOK_DEPS := $(filter-out chapters/xml/symbolizer/arc.adoc examples/Symbolizer/Arc/%,$(BOOK_DEPS))
 endif
 
-html: book.html
+html: build/book.html
 
-pdf: book.pdf
+pdf: build/book.pdf
 
-epub: book.epub
+epub: build/book.epub
 
-multipage: book/book.html
+multipage: build/book/book.html
 
-book.pdf: book.adoc $(BOOK_DEPS)
+build/book.pdf: book.adoc $(BOOK_DEPS)
 	@echo "Creating PDF"
 	@asciidoctor-pdf $(ADOCFLAGS) -D build book.adoc
 
-book.html: book.adoc $(BOOK_DEPS)
+build/book.html: book.adoc $(BOOK_DEPS)
 	@echo "Creating HTML"
 	@asciidoctor $(ADOCFLAGS) -D build book.adoc
 
-book/book.html: book.adoc $(BOOK_DEPS)
+build/book/book.html: book.adoc $(BOOK_DEPS)
 	@echo "Creating Multi Page HTML"
 	@asciidoctor -r asciidoctor-multipage -b multipage_html5 -D build/book/ --backend multipage_html5 -a data-uri $(ADOCFLAGS) book.adoc
 
-book.epub: book.adoc $(BOOK_DEPS) images/cover.svg
+build/book.epub: book.adoc $(BOOK_DEPS) images/cover.svg
 	@echo "Creating epub"
 	@asciidoctor-epub3 $(ADOCFLAGS) -D build book.adoc
 
@@ -68,17 +68,18 @@ check:
 
 clean:
 	@git clean -fX
+	@rm -rf build/*
 
 check:
 	@pre-commit run --all-files
 
 install: all check
 	@echo "Transferring files to webserver"
-	@rsync -avu --chmod=ugo=rx . /var/www/html/mapnik-lost-manual/
+	@rsync -avu --chmod=ugo=rx build/ /var/www/html/mapnik-lost-manual/
 
 install-web: all check
 	@echo "Transferring files to webserver"
-	@rsync -avu --chmod=ugo=rx -e 'ssh -axC' . h6:/var/www/html/mapnik-lost-manual/
+	@rsync -avu --chmod=ugo=rx -e 'ssh -axC' build/ h6:/var/www/html/mapnik-lost-manual/
 
 include examples/Makefile
 include examples/data/Makefile
