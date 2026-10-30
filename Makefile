@@ -49,7 +49,7 @@ build/book.pdf: book.adoc $(BOOK_DEPS)
 
 build/book.html: book.adoc $(BOOK_DEPS)
 	@echo "Creating HTML"
-	@asciidoctor $(ADOCFLAGS) -D build book.adoc
+	@asciidoctor $(ADOCFLAGS) -a data-uri -D build book.adoc
 
 build/book/book.html: book.adoc $(BOOK_DEPS)
 	@echo "Creating Multi Page HTML"
