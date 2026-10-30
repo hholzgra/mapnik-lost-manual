@@ -11,12 +11,7 @@ all-svg: $(addsuffix .svg, $(example_bases))
 
 all-png: $(addsuffix .png, $(example_bases))
 
-%.svg : %.xml | shapefiles
-	@echo $@
-	@rm -f $@
-	@examples/render.sh $<
-
-%.png : %.xml | shapefiles
+%.svg %.png: %.xml | shapefiles
 	@echo $@
 	@rm -f $@
 	@examples/render.sh $<
