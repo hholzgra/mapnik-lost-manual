@@ -25,7 +25,7 @@ TODO: contains ...
 |===
 
 [#map-background-color]
-==== `backgroud-color` attribute
+==== `background-color` attribute
 
 .Map background-color
 [#example-map-background-color]
@@ -38,7 +38,7 @@ image::examples/map/background-color.svg[align="center"]
 ====
 
 [#map-background-image]
-==== `backgroud-image` attribute
+==== `background-image` attribute
 
 Sets a background image for the map. The image is not scaled to the actual map output size, if the two sizes do not match it is either cropped or tiled.
 

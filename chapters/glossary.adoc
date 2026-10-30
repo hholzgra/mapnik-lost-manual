@@ -25,7 +25,7 @@ Harfbuzz::
     https://harfbuzz.github.io/[Harfbuzz] is a Text rendering / shaping library used by Mapnik starting with V3.0
 
 [[g:imposm]]Imposm::
-    https://imposm.org/[Imposm] is a toll to import OpenStreetMap data into a PostGIS database. (See also: <<g:osm2pgsql,Osm2pgsql>>)
+    https://imposm.org/[Imposm] is a tool to import OpenStreetMap data into a PostGIS database. (See also: <<g:osm2pgsql,Osm2pgsql>>)
 
 MapOSMatic::
     A web frontend and render backend to generate printable map posters and booklets using Mapnik, Python and Cairo Graphics
