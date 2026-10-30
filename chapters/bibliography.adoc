@@ -2,6 +2,6 @@
 == Bibliography
 
 [discrete]
-=== Asorted articles
+=== Assorted articles
 
 * [[[r:mapnik-wiki]]] https://github.com/mapnik/mapnik/wiki/[Mapnik Wiki]
