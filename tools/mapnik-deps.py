@@ -13,7 +13,8 @@ import sys
 import xml.etree.ElementTree as ET
 
 BASE = "examples"
-FILE_SYMBOLIZERS = ("Point", "Markers", "Shield", "LinePattern", "PolygonPattern")
+FILE_SYMBOLIZERS = ("Point", "Markers", "Shield",
+                    "LinePattern", "PolygonPattern")
 
 
 def normalize(path):

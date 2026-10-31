@@ -11,8 +11,8 @@ import os
 import re
 import sys
 
-INCLUDE   = re.compile(r"include::([^\[]+)\[")
-IMAGE     = re.compile(r"image::([^\[]+)\[")
+INCLUDE = re.compile(r"include::([^\[]+)\[")
+IMAGE = re.compile(r"image::([^\[]+)\[")
 SOURCEDIR = re.compile(r"\{sourcedir\}/(.*)")
 
 

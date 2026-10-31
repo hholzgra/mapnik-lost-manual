@@ -46,29 +46,37 @@ FONT = pick_font()
 
 
 def in_rule(sym, attrs="", body=""):
-    return ('<Map><Style name="s"><Rule><%s %s{attrs}>%s</%s></Rule></Style></Map>'
-            % (sym, attrs, body, sym))
+    return ('<Map><Style name="s"><Rule>'
+            '<%s %s{attrs}>%s</%s>'
+            '</Rule></Style></Map>' % (sym, attrs, body, sym))
 
 
 # element -> XML template with a {attrs} placeholder; attributes already
 # present in the template are required ones and count as known
 ELEMENTS = {
     "Map":        '<Map {attrs}/>',
-    "Layer":      '<Map><Style name="s"/><Layer name="l" {attrs}><StyleName>s</StyleName></Layer></Map>',
+    "Layer":      ('<Map><Style name="s"/><Layer name="l" {attrs}>'
+                   '<StyleName>s</StyleName></Layer></Map>'),
     "Style":      '<Map><Style name="s" {attrs}/></Map>',
     "Rule":       '<Map><Style name="s"><Rule {attrs}/></Style></Map>',
-    "FontSet":    '<Map><FontSet name="f" {attrs}><Font face-name="%s"/></FontSet></Map>' % FONT,
-    "Font":       '<Map><FontSet name="f"><Font face-name="%s" {attrs}/></FontSet></Map>' % FONT,
-    "FileSource": '<Map><FileSource name="f" {attrs}>symbols</FileSource></Map>',
+    "FontSet":    ('<Map><FontSet name="f" {attrs}>'
+                   '<Font face-name="%s"/></FontSet></Map>' % FONT),
+    "Font":       ('<Map><FontSet name="f"><Font face-name="%s" {attrs}/>'
+                   '</FontSet></Map>' % FONT),
+    "FileSource": ('<Map><FileSource name="f" {attrs}>'
+                   'symbols</FileSource></Map>'),
 }
 for _s in ("Point", "Markers", "Line", "Polygon", "Raster", "Building",
            "Dot", "Debug", "Group", "Arc"):
     ELEMENTS[_s + "Symbolizer"] = in_rule(_s + "Symbolizer")
 for _s in ("LinePattern", "PolygonPattern"):
-    ELEMENTS[_s + "Symbolizer"] = in_rule(_s + "Symbolizer", 'file="symbols/dot.svg" ')
-ELEMENTS["TextSymbolizer"] = in_rule("TextSymbolizer", 'face-name="%s" ' % FONT, "[name]")
-ELEMENTS["ShieldSymbolizer"] = in_rule("ShieldSymbolizer",
-                                       'face-name="%s" file="symbols/dot.svg" ' % FONT, "[name]")
+    ELEMENTS[_s + "Symbolizer"] = in_rule(_s + "Symbolizer",
+                                          'file="symbols/dot.svg" ')
+ELEMENTS["TextSymbolizer"] = in_rule(
+    "TextSymbolizer", 'face-name="%s" ' % FONT, "[name]")
+ELEMENTS["ShieldSymbolizer"] = in_rule(
+    "ShieldSymbolizer",
+    'face-name="%s" file="symbols/dot.svg" ' % FONT, "[name]")
 
 # attributes that are only read when another attribute is set as well
 COMPANIONS = {
@@ -85,6 +93,7 @@ def companions(element, attr):
         # the arc label attributes are only read along with a label
         return 'text="[name]" text-face-name="%s"' % FONT
     return ""
+
 
 # a ShieldSymbolizer takes all TextSymbolizer attributes, and the book
 # documents only the additional ones in the shield table
@@ -109,7 +118,8 @@ class QuietLog:
 
     def __init__(self):
         import tempfile
-        self.log = tempfile.NamedTemporaryFile(prefix="check-attributes", suffix=".log")
+        self.log = tempfile.NamedTemporaryFile(prefix="check-attributes",
+                                               suffix=".log")
 
     def __enter__(self):
         mapnik.logger.use_file(self.log.name)
@@ -177,7 +187,9 @@ XREF = re.compile(r"<<[^,>]*,(.*?)>>")
 def clean_name(cell):
     cell = XREF.sub(r"\1", cell)
     cell = re.sub(r"\[[\w-]+\]#(.*?)#", r"\1", cell)  # [line-through]#x#
-    return cell.replace("((", "").replace("))", "").replace("`", "").strip()
+    for markup in ("((", "))", "`"):
+        cell = cell.replace(markup, "")
+    return cell.strip()
 
 
 def split_row(line):
@@ -187,7 +199,8 @@ def split_row(line):
 def parse_docs():
     """element -> {attribute: (default, file, line)}"""
     docs = {}
-    files = sorted(glob.glob(os.path.join(TOP, "chapters", "**", "*.adoc"), recursive=True))
+    pattern = os.path.join(TOP, "chapters", "**", "*.adoc")
+    files = sorted(glob.glob(pattern, recursive=True))
     for path in files:
         rel = os.path.relpath(path, TOP)
         with open(path) as f:
@@ -213,7 +226,8 @@ def parse_docs():
                 header_seen = True
                 continue
             cells = split_row(line)
-            if not cells or re.match(r"^\d+\+", line[1:].lstrip()) or not cells[0]:
+            if (not cells or not cells[0]
+                    or re.match(r"^\d+\+", line[1:].lstrip())):
                 continue  # section rows like '4+^d|*Text attributes*'
             name = clean_name(cells[0])
             default = cells[2] if len(cells) > 2 else ""
@@ -269,10 +283,12 @@ def enum_strings(src):
     """C++ enumerator -> XML string, e.g. GAMMA_POWER -> power"""
     table = {}
     text = read(src, "src/symbolizer_enumerations.cpp")
-    for enumerator, string in re.findall(r'(?:\w+::)?(\w+)\s*,\s*"([^"]+)"\s*\}', text):
+    for enumerator, string in re.findall(
+            r'(?:\w+::)?(\w+)\s*,\s*"([^"]+)"\s*\}', text):
         table[enumerator] = string
     for rel in ("src/simplify.cpp", "src/image_compositing.cpp"):
-        for enumerator, string in re.findall(r'\((\w+),\s*"([^"]+)"\)', read(src, rel)):
+        for enumerator, string in re.findall(
+                r'\((\w+),\s*"([^"]+)"\)', read(src, rel)):
             table.setdefault(enumerator, string)
     return table
 
@@ -309,7 +325,8 @@ def symbolizer_defaults(src):
     by_key = {}
     hpp = read(src, "include/mapnik/" + DEFAULTS_HPP)
     for key, expr in re.findall(
-            r"symbolizer_default<[^,]+,\s*keys::(\w+)>\s*\{[^}]*?return\s+([^;]+);", hpp):
+            r"symbolizer_default<[^,]+,\s*keys::(\w+)>\s*"
+            r"\{[^}]*?return\s+([^;]+);", hpp):
         value = cpp_value(expr, enums)
         if value is not None and key in names:
             by_key[key] = value
@@ -325,30 +342,35 @@ def symbolizer_defaults(src):
     for (element, name), key in SHARED_NAMES.items():
         if key in by_key:
             specific[(element, name)] = (by_key[key], DEFAULTS_HPP)
-    for path in glob.glob(os.path.join(src, "src/agg/process_*_symbolizer.cpp")):
-        sym = os.path.basename(path)[len("process_"):-len("_symbolizer.cpp")]
-        sym = "".join(p.capitalize() for p in sym.split("_")) + "Symbolizer"
+    pattern = os.path.join(src, "src/agg/process_*_symbolizer.cpp")
+    for path in glob.glob(pattern):
+        base = os.path.basename(path)
+        sym = base[len("process_"):-len("_symbolizer.cpp")]
+        sym = "".join(p.capitalize() for p in sym.split("_"))
+        sym += "Symbolizer"
         with open(path) as f:
             text = f.read()
         for key, expr in re.findall(
-                r"get<[^>]*>\(\s*sym\s*,\s*keys::(\w+)\s*,[^,]+,[^,]+,\s*([^)]+?)\s*\)", text):
+                r"get<[^>]*>\(\s*sym\s*,\s*keys::(\w+)\s*,[^,]+,[^,]+,"
+                r"\s*([^)]+?)\s*\)", text):
             value = cpp_value(expr, enums)
             if value is not None and key in names:
-                specific[(sym, names[key])] = (value, os.path.basename(path))
+                specific[(sym, names[key])] = (value, base)
     return generic, specific
 
 
 def runtime_defaults(element):
     """defaults Mapnik writes out itself when saving with explicit
     defaults (Map, Style and text properties only)"""
-    xml = mapnik.save_map_to_string(load(ELEMENTS[element].format(attrs="")), True)
+    m = load(ELEMENTS[element].format(attrs=""))
+    xml = mapnik.save_map_to_string(m, True)
     tag = re.search(r"<%s\b([^>]*)>" % element, xml)
     if not tag:
         return {}
     required = required_attrs(element)
+    attrs = re.findall(r'([\w-]+)="([^"]*)"', tag.group(1))
     return {name: (value, "save_map")
-            for name, value in re.findall(r'([\w-]+)="([^"]*)"', tag.group(1))
-            if name not in required}
+            for name, value in attrs if name not in required}
 
 
 # ---------------------------------------------------------------------
@@ -397,16 +419,21 @@ def read_ignores():
 
 
 def ignored(ignores, element, attr):
-    return (element, attr) in ignores or ("*", attr) in ignores or (element, "*") in ignores
+    return ((element, attr) in ignores or ("*", attr) in ignores
+            or (element, "*") in ignores)
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Compare the book's attribute tables against the installed Mapnik")
-    parser.add_argument("--mapnik-src", default=os.environ.get("MAPNIK_SRC"),
-                        help="Mapnik source tree matching the installed version")
+        description="Compare the book's attribute tables against "
+                    "the installed Mapnik")
+    parser.add_argument("--mapnik-src",
+                        default=os.environ.get("MAPNIK_SRC"),
+                        help="Mapnik source tree matching the installed "
+                             "version")
     parser.add_argument("--strict", action="store_true",
-                        help="also fail on undocumented attributes and default mismatches")
+                        help="also fail on undocumented attributes and "
+                             "default mismatches")
     args = parser.parse_args()
 
     docs = parse_docs()
@@ -422,7 +449,8 @@ def main():
         candidates.update(source_candidates(args.mapnik_src))
         generic, specific = symbolizer_defaults(args.mapnik_src)
     else:
-        print("note: no Mapnik source tree given (--mapnik-src or MAPNIK_SRC),\n"
+        print("note: no Mapnik source tree given "
+              "(--mapnik-src or MAPNIK_SRC),\n"
               "      only checking names the book already mentions\n")
 
     accepted, deprecated = {}, {}
@@ -430,7 +458,8 @@ def main():
         for e in elements:
             status = {a: probe(e, a, log) for a in sorted(candidates)}
             accepted[e] = {a for a, s in status.items() if s != "unknown"}
-            deprecated[e] = {a for a, s in status.items() if s == "deprecated"}
+            deprecated[e] = {a for a, s in status.items()
+                             if s == "deprecated"}
         src_defaults = {e: runtime_defaults(e) for e in elements}
 
     def documented(element):
@@ -439,11 +468,12 @@ def main():
             names |= set(docs.get(INHERITS[element], {}))
         return names
 
-    # attributes (nearly) every symbolizer takes (symbolizer_base), reported
-    # once instead of for each symbolizer
+    # attributes (nearly) every symbolizer takes (symbolizer_base),
+    # reported once instead of for each symbolizer
     symbolizers = [e for e in elements if e.endswith("Symbolizer")]
+    threshold = 0.8 * len(symbolizers)
     common = {a for a in candidates
-              if sum(a in accepted[s] for s in symbolizers) >= 0.8 * len(symbolizers)}
+              if sum(a in accepted[s] for s in symbolizers) >= threshold}
 
     rejected = undocumented = mismatched = 0
 
@@ -454,36 +484,46 @@ def main():
         lines = []
         doc = docs.get(element, {})
         if element not in elements:
-            lines.append("  not available in this Mapnik build, table not checked")
+            lines.append("  not available in this Mapnik build, "
+                         "table not checked")
         else:
             for attr, (default, path, no) in sorted(doc.items()):
                 if ignored(ignores, element, attr):
                     continue
                 if attr not in accepted[element]:
-                    lines.append("  ERROR  %s:%d: '%s' is not accepted by Mapnik" % (path, no, attr))
+                    lines.append("  ERROR  %s:%d: '%s' is not accepted "
+                                 "by Mapnik" % (path, no, attr))
                     rejected += 1
                 elif attr in deprecated[element]:
-                    lines.append("  note   %s:%d: '%s' is deprecated" % (path, no, attr))
+                    lines.append("  note   %s:%d: '%s' is deprecated"
+                                 % (path, no, attr))
             extra = accepted[element] - documented(element)
             if element in symbolizers:
                 extra -= common
                 for attr in sorted(common - accepted[element]):
                     if not ignored(ignores, element, attr):
-                        lines.append("  does not take the common symbolizer attribute: %s" % attr)
+                        lines.append("  does not take the common "
+                                     "symbolizer attribute: %s" % attr)
             for attr in sorted(extra):
                 if ignored(ignores, element, attr):
                     continue
                 if attr in deprecated[element]:
-                    lines.append("  undocumented, but deprecated: %s" % attr)
+                    lines.append("  undocumented, but deprecated: %s"
+                                 % attr)
                 else:
                     lines.append("  undocumented: %s" % attr)
                     undocumented += 1
             for attr, (default, path, no) in sorted(doc.items()):
-                src = src_defaults[element].get(attr, specific.get((element, attr), generic.get(attr)))
-                if src is not None and defaults_differ(default, src[0]) \
-                        and not ignored(ignores, element, "default:" + attr):
-                    lines.append("  default? %s:%d: '%s' documented as %s, %s says %s"
-                                 % (path, no, attr, default.strip(), src[1], src[0]))
+                src = src_defaults[element].get(
+                    attr,
+                    specific.get((element, attr), generic.get(attr)))
+                if (src is not None and defaults_differ(default, src[0])
+                        and not ignored(ignores, element,
+                                        "default:" + attr)):
+                    lines.append("  default? %s:%d: '%s' documented as "
+                                 "%s, %s says %s"
+                                 % (path, no, attr, default.strip(),
+                                    src[1], src[0]))
                     mismatched += 1
             if not doc:
                 lines.insert(0, "  no attribute table in the book")
@@ -497,16 +537,21 @@ def main():
         for attr in sorted(common):
             if ignored(ignores, "*Symbolizer", attr):
                 continue
-            where = [s[:-len("Symbolizer")] for s in symbolizers if attr in documented(s)]
-            print("  %-20s documented for: %s" % (attr, ", ".join(where) or "none"))
+            where = [s[:-len("Symbolizer")] for s in symbolizers
+                     if attr in documented(s)]
+            print("  %-20s documented for: %s"
+                  % (attr, ", ".join(where) or "none"))
         print()
 
     print("%d documented attribute(s) not accepted, %d undocumented, "
-          "%d possible default mismatch(es)" % (rejected, undocumented, mismatched))
+          "%d possible default mismatch(es)"
+          % (rejected, undocumented, mismatched))
     if mismatched:
-        print("(defaults derived from the source are a hint only, some are computed\n"
+        print("(defaults derived from the source are a hint only, some "
+              "are computed\n"
               " at render time; confirmed false alarms go into %s as\n"
-              " 'Element default:attribute')" % os.path.relpath(IGNORE_FILE, TOP))
+              " 'Element default:attribute')"
+              % os.path.relpath(IGNORE_FILE, TOP))
     failed = rejected or (args.strict and (undocumented or mismatched))
     sys.exit(1 if failed else 0)
 
