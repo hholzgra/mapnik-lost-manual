@@ -4,8 +4,14 @@
 
   <Style name="style">
     <Rule>
-      <MarkersSymbolizer allow-overlap="true" base="symbols" file="[file]"/>
-      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[file]</TextSymbolizer>
+      <Filter>[file] != ""</Filter>
+      <MarkersSymbolizer base="symbols" file="[file]"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" dy="20">[file]</TextSymbolizer>
+    </Rule>
+    <Rule>
+      <ElseFilter/>
+      <MarkersSymbolizer/>
+      <TextSymbolizer face-name="DejaVu Sans Book" dy="20">default</TextSymbolizer>
     </Rule>
   </Style>
 
