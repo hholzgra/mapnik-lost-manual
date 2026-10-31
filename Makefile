@@ -47,7 +47,7 @@ check:
 clean:
 	@git clean -fX
 
-check:
+pre-commit-check:
 	@pre-commit run --all-files
 
 install: all check
