@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+  <!-- TODO: not finished yet, and not used in the text -->
+
+  <Style name="style">
+    <Rule>
+      <PolygonSymbolizer fill="black" geometry-transform="translate([move],0) scale([scale])"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="50">[scale]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,move,scale
+"POLYGON(( 2 1, 1 3, 3 4, 5 3, 4 1, 2 1))",0,1
+"POLYGON(( 2 1, 1 3, 3 4, 5 3, 4 1, 2 1))",10,0.5
+"POLYGON(( 2 1, 1 3, 3 4, 5 3, 4 1, 2 1))",20,2
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>

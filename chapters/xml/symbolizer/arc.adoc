@@ -60,6 +60,8 @@ The attribute names are not final yet.
 | ((text-transform))        | none, uppercase, lowercase, capitalize, reverse | none | Case conversion applied to the label text
 | ((text-font-feature-settings)) | string | none        | Comma separated list of https://drafts.csswg.org/css-fonts-3/#propdef-font-feature-settings[OpenType typographic features]
 | <<example-arcsymbolizer-text,((text-offset))>> | float | 2 | Radial gap between the arc line and the label
+| ((text-allow-overlap))    | boolean    | false        | Draw the label even if it collides with other labels; otherwise it is dropped on a collision
+| ((comp-op))               | SVG compositing | src-over |
 |====================
 
 .ArcSymbolizer radius, start-angle and end-angle
