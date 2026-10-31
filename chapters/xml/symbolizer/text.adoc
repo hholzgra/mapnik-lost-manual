@@ -44,7 +44,7 @@
 | dx | float | 0 | horizontal text displacement
 | dy | float | 0 | vertical text displacement
 | minimum-distance | float | ? | ?TODO?
-| largest-bbox-only | bool | ? | ?TODO?
+| <<example-textsymbolizer-largest-bbox-only,largest-bbox-only>> | boolean | true | Only label the part of a multi polygon with the largest bounding box, instead of each part
 | upright | string | ? | ?TODO? one of auto, auto-down, left, left-only, right, right-only, up, down
 |====================
 
@@ -149,6 +149,17 @@ image::examples/Symbolizer/Text/grid-width-height.svg[align="center"]
 include::{sourcedir}/examples/Symbolizer/Text/minimum-path-length.xml[]
 -----
 image::examples/Symbolizer/Text/minimum-path-length.svg[align="center"]
+====
+
+.TextSymbolizer largest bbox only
+[#example-textsymbolizer-largest-bbox-only]
+====
+Both features are multi polygons made of one large and two small parts. With `largest-bbox-only` enabled, the default, only the part with the largest bounding box gets a label; with it disabled, each part is labeled separately. Note that parts are compared by the area of their bounding boxes, not by their actual area, and that this only applies to polygon geometries, not to multi points or multi lines.
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/largest-bbox-only.xml[]
+-----
+image::examples/Symbolizer/Text/largest-bbox-only.svg[align="center"]
 ====
 
 

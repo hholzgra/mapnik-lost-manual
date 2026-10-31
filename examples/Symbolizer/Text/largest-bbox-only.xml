@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='white'>
+  <Style name="style">
+    <Rule>
+      <PolygonSymbolizer fill="lightblue"/>
+    </Rule>
+    <Rule>
+      <Filter>[mode] = true</Filter>
+      <TextSymbolizer largest-bbox-only="true" face-name="DejaVu Sans Book">[mode]</TextSymbolizer>
+    </Rule>
+    <Rule>
+      <Filter>[mode] = false</Filter>
+      <TextSymbolizer largest-bbox-only="false" face-name="DejaVu Sans Book">[mode]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,mode
+"MULTIPOLYGON(((0 0,4 0,4 4,0 4,0 0)),((5 0,7 0,7 1.5,5 1.5,5 0)),((5 2.5,7 2.5,7 4,5 4,5 2.5)))",true
+"MULTIPOLYGON(((10 0,14 0,14 4,10 4,10 0)),((15 0,17 0,17 1.5,15 1.5,15 0)),((15 2.5,17 2.5,17 4,15 4,15 2.5)))",false
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
