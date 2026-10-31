@@ -18,6 +18,7 @@ A layer renders data from a data source using one or more styles.
 | queryable                 | bool | false | unused?
 | srs                       | SRS string | epsg:4326 | Spatial reference system
 | status                    | boolean | true | Whether this layer should actually be processed or not. Caution: when set to `false` in XML the complete `<Layer>` will simply be skipped on reading the style file, and no layer object will be created for it. So you won't be able to enable such a layer with `Layer.set_status(true)` using API code later.
+|====================
 
 .Layer
 ====
