@@ -1,12 +1,23 @@
+ifeq ($(notdir $(CURDIR)),data)
+
+# invoked from within examples/data/ -- this file is only a fragment of
+# the top level Makefile, so hand all goals over to that one, with file
+# names made relative to the top level directory
+goals := $(or $(MAKECMDGOALS),shapefiles)
+
+.PHONY: delegate $(goals)
+$(goals): delegate ;
+
+delegate:
+	@$(MAKE) -C ../.. $(foreach g,$(goals),$(if $(findstring .,$g)$(findstring /,$g),examples/data/$g,$g))
+
+else
+
 PHONY += shapefiles countries graticules
 D = examples/data
 
-# unzip restores the timestamps stored inside the archive, which are older
-# than the downloaded .zip itself -- touch the .shp afterwards so make sees
-# the target as up to date and does not unzip (and re-render) on every run
 %.shp : %.zip
-	@unzip -q -u -o -d $(D) $<
-	@touch $@
+	@unzip -q -u -o -DD -d $(D) $<
 
 shapefiles: countries graticules
 
@@ -20,3 +31,4 @@ $(D)/ne_110m_admin_0_countries_lakes.zip:
 $(D)/ne_50m_graticules_30.zip:
 	@wget --quiet https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_graticules_30.zip -O $@
 
+endif
