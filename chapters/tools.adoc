@@ -2,12 +2,13 @@
 
 === Mapnik tools
 
-==== mapnik-index tool
+[#mapnik-index]
+==== mapnik-index
 
 TODO - this is an almost undocumented tool meant to improve the processing of CSV and GeoJSON files somehow
 
-
-==== Shapeindex Tool
+[#shapeindex]
+==== shapeindex
 
 TODO - this is an almost undocumented tool meant to improve the processing of shapefiles somehow
 

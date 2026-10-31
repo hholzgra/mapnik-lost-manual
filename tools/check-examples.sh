@@ -17,6 +17,19 @@ then
 	shift
 fi
 
+# check for specific Mapnik features being present
+declare -A features
+for feature in ArcSymbolizer
+do
+  if python3 -c 'import mapnik,sys; sys.exit(0 if hasattr(mapnik,"'"$feature"'") else 1)' 2>/dev/null
+  then
+	features["$feature"]=1
+  else
+	echo "  (skipping $feature examples, installed mapnik has no $feature)"
+  fi
+done
+
+# check for shapefies needed by the example scripts
 if [ ! -e examples/data/ne_110m_admin_0_countries_lakes.shp ] \
 || [ ! -e examples/data/ne_50m_graticules_30.shp ]
 then
@@ -24,6 +37,7 @@ then
 	make -s shapefiles || exit 1
 fi
 
+# when called with no speficif XML stylefiles to render -> render all
 if [ $# -eq 0 ]
 then
 	set -- $(find examples -name '*.xml' -not -path '*/disabled/*' | sort)
@@ -33,14 +47,20 @@ failed=()
 
 for xml in "$@"
 do
+	# skip over disabled or unavailable features
 	case "$xml" in
 		*/disabled/*) continue ;;
+		*/Arc/*) [ ! -v features["ArcSymbolizer"] ] && continue ;;
 	esac
+
+	# skip over already generated examples unless -f is in effect
 	base=${xml%.xml}
 	if [ $force -eq 0 ] && [ "$base.png" -nt "$xml" ] && [ "$base.svg" -nt "$xml" ]
 	then
 		continue
 	fi
+
+	# now actually render and track failures
 	echo "  $xml"
 	if ! examples/render.sh "$xml"
 	then
@@ -48,6 +68,7 @@ do
 	fi
 done
 
+# print failure report
 if [ ${#failed[@]} -gt 0 ]
 then
 	echo

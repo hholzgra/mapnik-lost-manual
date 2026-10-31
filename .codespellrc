@@ -1,0 +1,5 @@
+[codespell]
+# downloaded Natural Earth data, generated example output and images
+skip = ./.git,./.deps,./book,./examples/data,./images,*.png,*.svg,*.html,*.pdf,*.epub,tmprender*
+# add false positives here, comma separated, lower case
+ignore-words-list = rouge

@@ -1,4 +1,4 @@
-#! /usr/bin/env /usr/bin/python3
+#! /usr/bin/env python3
 
 import sys
 import mapnik
@@ -7,7 +7,7 @@ base = sys.argv[1]
 
 map = mapnik.Map(600, 300)
 
-mapnik.load_map(map, base+'.xml', False, 'examples')
+mapnik.load_map(map, base+'.xml', False, '.')
 
 map.zoom_all()
 e = map.envelope()

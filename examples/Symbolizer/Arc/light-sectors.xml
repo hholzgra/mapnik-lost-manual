@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <!-- Visibility sectors of a naval navigation light, in the style
+       used by OpenSeaMap: one coloured arc per sector labelled with its
+       light characteristic, with dashed radius lines marking the sector
+       limits. -->
+  <Style name="style">
+    <Rule>
+      <ArcSymbolizer radius="[radius]" start-angle="[start]" end-angle="[end]"
+                     stroke="[colour]" stroke-width="4"
+                     radius-lines="true"
+                     radius-line-stroke="dimgray" radius-line-stroke-width="1"
+                     stroke-dasharray="6,4"
+                     text="[character]" text-face-name="DejaVu Sans Book"
+                     text-size="9" text-fill="black"/>
+      <DotSymbolizer width="8" height="8" fill="black"/>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,start,end,radius,colour,character
+"POINT(0 0)",290,10,80,red,Fl.R.4s
+"POINT(0 0)",10,20,90,gold,Fl.W.4s
+"POINT(0 0)",20,100,80,green,Fl.G.4s
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>

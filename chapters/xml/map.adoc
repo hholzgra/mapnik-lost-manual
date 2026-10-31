@@ -16,16 +16,15 @@ TODO: contains ...
 | <<map-background-image,background-image>> | file path | none |
 | background-image-comp-op | SVG composition | none |
 | background-image-opacity | float | 1.0 |
-| srs | proj4 projection | +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs |
+| srs | SRS string | epsg:4326 |
 | buffer-size | float | 0.0 |
 | maximum-extent | 4xfloat |  |
 | font-directory | directory path | none |
 | <<map-minimum-version,minimum-version>> | version string | none |
-| <<map-paths-from-xml,paths-from-xml>> | boolean | true | Whether relative paths are relative to the directory the XML file is in, or the current working directory.
 |===
 
 [#map-background-color]
-==== `backgroud-color` attribute
+==== `background-color` attribute
 
 .Map background-color
 [#example-map-background-color]
@@ -38,7 +37,7 @@ image::examples/map/background-color.svg[align="center"]
 ====
 
 [#map-background-image]
-==== `backgroud-image` attribute
+==== `background-image` attribute
 
 Sets a background image for the map. The image is not scaled to the actual map output size, if the two sizes do not match it is either cropped or tiled.
 

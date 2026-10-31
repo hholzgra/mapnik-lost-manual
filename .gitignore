@@ -5,10 +5,9 @@
 *.html
 *.pdf
 *.epub
-book/
+build/
 
 examples/**/*.svg
 examples/**/*.png
 
-.deps/
-
+tmprender*

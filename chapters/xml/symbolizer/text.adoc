@@ -41,8 +41,8 @@
 | repeat-distance | float | none | Minimum distance from other labels with same text content across geometries
 | minimum-padding | float | none | Minimum placement distance from image edges
 | <<example-textsymbolizer-min-path-length,minimum-path-length>> | float | none | Minimum length of lines or polygon boundings to place text on
-| force-odd-labels | boolean | false | Force an odd number of labels to be generated
-| displacement | 2xfloat | (0.0,0.0) | Displace label by this many pixel horizontally/vertically
+| dx | float | 0 | horizontal text displacement
+| dy | float | 0 | vertical text displacement
 | minimum-distance | float | ? | ?TODO?
 | largest-bbox-only | bool | ? | ?TODO?
 | upright | string | ? | ?TODO? one of auto, auto-down, left, left-only, right, right-only, up, down

@@ -2,16 +2,16 @@ PHONY += show-latest all-png all-svg experimental data
 
 rwildcard=$(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter-out disabled/%,$(filter $(subst *,%,$2),$d)))
 
-all-svg: $(addsuffix .svg, $(basename $(call rwildcard,,*.xml)))
+example_bases := $(basename $(call rwildcard,,*.xml))
+ifeq ($(ARC_SUPPORT),)
+example_bases := $(filter-out examples/Symbolizer/Arc/%,$(example_bases))
+endif
 
-all-png: $(addsuffix .png, $(basename $(call rwildcard,,*.xml)))
+all-svg: $(addsuffix .svg, $(example_bases))
 
-%.svg : %.xml | shapefiles
-	@echo $@
-	@rm -f $@
-	@examples/render.sh $<
+all-png: $(addsuffix .png, $(example_bases))
 
-%.png : %.xml | shapefiles
+%.svg %.png: %.xml | shapefiles
 	@echo $@
 	@rm -f $@
 	@examples/render.sh $<
@@ -25,7 +25,3 @@ experimental: examples/cairo-and-mapnik.svg
 examples/cairo-and-mapnik.svg: examples/cairo-and-mapnik.py
 	@echo cairo-and-mapnik
 	@examples/cairo-and-mapnik.py
-
-depend::
-	@mkdir -p .deps
-	@tools/mapnik-deps.sh > .deps/examples.d

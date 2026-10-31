@@ -1,84 +1,96 @@
 #! /usr/bin/env python3
-"""
-Extract dependencies like images and shapefiles from Mapnik XML files
-"""
+# Emit make dependencies for the rendered example images: each
+# .png/.svg pair depends on its .xml style plus any files the style
+# references (datasource files, background images, marker and pattern
+# symbols).
+#
+# Relative paths inside the styles resolve against examples/, because
+# that is where render.sh runs mapnik; references to files that do not
+# exist (or that contain [expressions]) are silently dropped.
 
 import os
 import sys
 import xml.etree.ElementTree as ET
 
-style = sys.argv[1]
-target = sys.argv[2]
-base = sys.argv[3]
-
-# collect dependencies here
-# the style file itself is always a dependency
-deps = [style]
-
-# collect file sources
-sources = {}
-
-# where were we called from
-basedir = os.getcwd()
+BASE = "examples"
+FILE_SYMBOLIZERS = ("Point", "Markers", "Shield",
+                    "LinePattern", "PolygonPattern")
 
 
-def normalize_path(path):
-    """normalize paths by removing e.g. /./ or /../"""
-
-    # ignore paths that contain Mapnik expressions
-    if '[' in path:
+def normalize(path):
+    basename = os.path.basename(path)
+    if "[" in basename:
         return None
-
-    dir = os.path.dirname(path)
-    base = os.path.basename(path)
-
-    # normalize dir path, directory path must exist
-    realdir = os.path.realpath(dir or '.')
-    if not os.path.isdir(realdir):
+    dirname = os.path.realpath(os.path.dirname(path))
+    if not os.path.isdir(dirname):
         return None
-
-    if path.startswith('/'):
-        # absolute path, nothing to remove
-        return f"{realdir}/{base}"
-    else:
-        # relative path, remove basedir
-        return realdir.replace(basedir + '/', '') + f"/{base}"
-
-
-def add_dep(file):
-    path = normalize_path(f"{base}/{file}")
-    if path:
-        deps.append(path)
+    cwd = os.getcwd()
+    if dirname == cwd:
+        return basename
+    if dirname.startswith(cwd + os.sep):
+        dirname = dirname[len(cwd) + 1:]
+    return os.path.join(dirname, basename)
 
 
-# load the style file
-root = ET.parse(style).getroot()
+def style_deps(style):
+    deps = [style]
 
-# collect all <FileSource> declarations
-for param in root.iter('FileSource'):
-    name = param.get('name', '').strip()
-    sources[name] = ''.join(param.itertext()).strip()
+    def add(path):
+        dep = normalize(os.path.join(BASE, path))
+        if dep and dep not in deps:
+            deps.append(dep)
 
-# check whether the <Map> tag has a background image
-for param in root.iter('Map'):
-    file = param.get('background-image')
-    if file:
-        add_dep(file)
+    root = ET.parse(style).getroot()
 
-# collect all "file" parameter values from DataSources etc.
-for param in root.iter('Parameter'):
-    if param.get('name') == 'file':
-        add_dep(''.join(param.itertext()).strip())
+    sources = {}
+    for fs in root.iter("FileSource"):
+        sources[fs.get("name")] = (fs.text or "").strip()
 
-# collect all file attributes from symbolizers supporting these
-for type in ['Point', 'Markers', 'Shield', 'LinePattern', 'PolygonPattern']:
-    for param in root.iter(type + 'Symbolizer'):
-        file = param.get('file')
-        if file:
-            source = param.get('base')
-            if source in sources:
-                file = sources[source] + '/' + file
-            add_dep(file)
+    for param in root.iter("Parameter"):
+        if param.get("name") == "file":
+            add((param.text or "").strip())
 
-# generate dependency make rule
-print(f"{target}: " + " ".join(deps))
+    for m in root.iter("Map"):
+        background = m.get("background-image")
+        if background:
+            add(background)
+
+    for kind in FILE_SYMBOLIZERS:
+        for sym in root.iter(kind + "Symbolizer"):
+            file = sym.get("file")
+            if not file:
+                continue
+            base = sym.get("base")
+            if base in sources:
+                file = sources[base] + "/" + file
+            add(file)
+
+    return deps
+
+
+def main():
+    styles = sys.argv[1:]
+    if not styles:
+        styles = sorted(
+            os.path.join(top, name)
+            for top, dirs, names in os.walk(BASE)
+            if "disabled" not in top.split(os.sep)
+            for name in names
+            if name.endswith(".xml")
+        )
+
+    status = 0
+    for style in styles:
+        try:
+            deps = style_deps(style)
+        except ET.ParseError as e:
+            print(f"{style}: {e}", file=sys.stderr)
+            status = 1
+            continue
+        base = style[: -len(".xml")]
+        print(f"{base}.png {base}.svg: {' '.join(deps)}")
+    sys.exit(status)
+
+
+if __name__ == "__main__":
+    main()

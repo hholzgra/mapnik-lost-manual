@@ -32,4 +32,10 @@ include::symbolizer/group.adoc[]
 
 include::symbolizer/dot.adoc[]
 
+// only included when the installed mapnik supports the ArcSymbolizer
+// (the Makefile sets this attribute after probing the python bindings)
+ifdef::mapnik-arc[]
+include::symbolizer/arc.adoc[]
+endif::[]
+
 :sourcedir: ../..
