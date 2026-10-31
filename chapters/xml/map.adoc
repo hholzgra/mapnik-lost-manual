@@ -69,8 +69,3 @@ include::{sourcedir}/examples/map/minimum-version.xml[]
 -----
 ====
 
-[#map-paths-from-xml]
-==== `paths-from-xml` attribute
-
-Specifies whether relative file paths are relative to the top level Mapnik XML file (`true`) or the local directory (`false`).
-Defaults to `true`.
