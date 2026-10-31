@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='white'>
+  <Style name="style">
+    <Rule>
+      <TextSymbolizer face-name="Noto Sans CJK SC Regular" size="24"
+                      lang="[lang]">'直骨令户'</TextSymbolizer>
+      <TextSymbolizer face-name="DejaVu Sans Book" dx="-100">[label]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,lang,label
+"POINT(0 0)",,(none)
+"POINT(0 -1)",zh-Hans,zh-Hans
+"POINT(0 -2)",zh-Hant,zh-Hant
+"POINT(0 -3)",ja,ja
+"POINT(0 -4)",ko,ko
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
