@@ -63,7 +63,7 @@ check:
 	@echo "Checking all examples render"
 	@tools/check-examples.sh
 	@echo "Checking book builds without warnings"
-	# only checking epub3 build as it is the most picky one
+	@# only checking epub3 build as it is the most picky one
 	@asciidoctor-epub3 --failure-level=WARN $(ADOCFLAGS) -o /dev/null book.adoc
 
 # compare the book's attribute tables with what the installed mapnik
