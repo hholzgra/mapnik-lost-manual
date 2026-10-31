@@ -9,3 +9,5 @@ book/
 examples/**/*.svg
 examples/**/*.png
 
+.deps/
+
