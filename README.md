@@ -18,6 +18,6 @@ For public document versions see http://get-map.org/mapnik-lost-manual/
 ### On Debian
 
 ```
-apt-get install make rsync python3-mapnik asciidoctor codespell imagemagick wget unzip pre-commit ruby-rouge
+apt-get install make rsync python3-mapnik asciidoctor codespell imagemagick wget unzip pre-commit ruby-rouge fonts-noto-cjk fonts-noto-cjk-extra
 gem install asciidoctor-pdf asciidoctor-multipage asciidoctor-epub3 
 ```
