@@ -15,7 +15,7 @@ Arcs are drawn clockwise from the `start-angle` to the `end-angle`, angle values
 
 The ArcSymbolizer allows to style how the arc is filled and what strokes to use for the actual ark, and for the radius lines connecting the end points of the arc to the center point. Adding a textual label is also possible, the text will be drawn curved along the arc when the arc is longer than the text; otherwise the text will be drawn facing outwards from the arc center.
 
-Note that `stroke-dasharray` and `stroke-dashoffset` only apply to the radius lines; the arc line itself is always drawn solid. 
+Note that `stroke-dasharray` and `stroke-dashoffset` only apply to the radius lines; the arc line itself is always drawn solid.
 
 
 [NOTE]

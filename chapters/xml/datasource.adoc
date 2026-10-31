@@ -393,7 +393,7 @@ OpenStreetMap or example provides land polygons, water polygons, coastlines, and
 
 Another often used source of shapefiles is https://www.naturalearthdata.com/[Natural Earth], which provides public domain geo data for lots of physical and cultural features.
 
-Shapefile processing performance can be increased by creating an index file using the <<shapeindex>> tool that is included in the Mapnik source code, and usually also in binary distribution packages. 
+Shapefile processing performance can be increased by creating an index file using the <<shapeindex>> tool that is included in the Mapnik source code, and usually also in binary distribution packages.
 
 .Shape data source parameters
 [width="100%",options="header",cols="m,d,d,d"]
