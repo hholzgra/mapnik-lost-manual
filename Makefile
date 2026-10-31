@@ -63,7 +63,7 @@ check:
 	@echo "Checking all examples render"
 	@tools/check-examples.sh
 	@echo "Checking book builds without warnings"
-	@asciidoctor --failure-level=WARN $(ADOCFLAGS) -o /dev/null book.adoc
+	# only checking epub3 build as it is the most picky one
 	@asciidoctor-epub3 --failure-level=WARN $(ADOCFLAGS) -o /dev/null book.adoc
 
 # compare the book's attribute tables with what the installed mapnik
@@ -76,7 +76,7 @@ clean:
 	@git clean -fX
 	@rm -rf build/*
 
-check:
+pre-commit-check:
 	@pre-commit run --all-files
 
 install: all check
