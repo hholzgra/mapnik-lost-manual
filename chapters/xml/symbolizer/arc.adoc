@@ -32,7 +32,6 @@ The attribute names are not final yet.
 | <<example-arcsymbolizer-angles,((end-angle))>>    | float | 360 | Ending arc angle, arc is drawn clockwise from start to end
 | <<example-arcsymbolizer-fill-stroke,((fill))>>    | color | none | Circle / arc fill color
 | ((fill-opacity))          | 0.0 - 1.0  | 1            | ... TODO ...
-| ((opacity))               | 0.0 - 1.0  | 1            | TODO: Multiplies both fill and stroke opacity?
 | <<example-arcsymbolizer-fill-stroke,((stroke))>>  | color | none | Color of both the arc line and the radius lines
 | ((stroke-width))          | float      | 1            | Width of both the arc line and the radius lines
 | ((stroke-opacity))        | 0.0 - 1.0  | 1            |
@@ -58,8 +57,9 @@ The attribute names are not final yet.
 | ((text-halo-radius))      | float      | 0            |
 | ((text-halo-opacity))     | 0.0 - 1.0  | 1            |
 | ((text-character-spacing)) | float     | 0            |
+| ((text-transform))        | none, uppercase, lowercase, capitalize, reverse | none | Case conversion applied to the label text
+| ((text-font-feature-settings)) | string | none        | Comma separated list of https://drafts.csswg.org/css-fonts-3/#propdef-font-feature-settings[OpenType typographic features]
 | <<example-arcsymbolizer-text,((text-offset))>> | float | 2 | Radial gap between the arc line and the label
-| ((comp-op))               | SVG compositing | src-over |
 |====================
 
 .ArcSymbolizer radius, start-angle and end-angle

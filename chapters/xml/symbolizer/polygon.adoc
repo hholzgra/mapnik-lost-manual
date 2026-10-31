@@ -8,7 +8,7 @@
 | Attribute      | Value      | Default | Description
 | <<example-polygonsymbolizer-fill,((fill))>> | color | grey |
 | <<example-polygonsymbolizer-fill-opacity,((fill-opacity))>> | float | 1.0 |
-| transform | SVG transformation | none |
+| geometry-transform | SVG transformation | none | Transformation applied to the polygon geometry
 | comp-op | SVG composition | none |
 | gamma | float | 1.0 |
 | gamma-method |  power, linear, none, threshold, multiply | power |
