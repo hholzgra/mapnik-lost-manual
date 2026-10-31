@@ -15,7 +15,7 @@ Arcs are drawn clockwise from the `start-angle` to the `end-angle`, angle values
 
 The ArcSymbolizer allows to style how the arc is filled and what strokes to use for the actual ark, and for the radius lines connecting the end points of the arc to the center point. Adding a textual label is also possible, the text will be drawn curved along the arc when the arc is longer than the text; otherwise the text will be drawn facing outwards from the arc center.
 
-Note that `stroke-dasharray` and `stroke-dashoffset` only apply to the radius lines; the arc line itself is always drawn solid.
+The `stroke-*` attributes style both the arc line and the radius lines. Each of them can be overridden separately for just the arc line by an `arc-stroke-*` attribute, and for just the radius lines by a `radius-stroke-*` attribute. The radius lines are drawn whenever `stroke` or `radius-stroke` is set; to draw an arc line without radius lines, use `arc-stroke` instead of `stroke`.
 
 
 [NOTE]
@@ -33,14 +33,21 @@ The attribute names are not final yet.
 | <<example-arcsymbolizer-fill-stroke,((fill))>>    | color | none | Circle / arc fill color
 | ((fill-opacity))          | 0.0 - 1.0  | 1            | ... TODO ...
 | ((opacity))               | 0.0 - 1.0  | 1            | TODO: Multiplies both fill and stroke opacity?
-| <<example-arcsymbolizer-fill-stroke,((stroke))>>  | color | none | Color of the outer arc line
-| ((stroke-width))          | float      | 1            |
+| <<example-arcsymbolizer-fill-stroke,((stroke))>>  | color | none | Color of both the arc line and the radius lines
+| ((stroke-width))          | float      | 1            | Width of both the arc line and the radius lines
 | ((stroke-opacity))        | 0.0 - 1.0  | 1            |
-| <<example-arcsymbolizer-radius-lines,((stroke-dasharray))>> | number list | none | Applies to the radius lines only, the arc line is always solid
+| ((stroke-dasharray))      | number list | none        | Dash pattern for both the arc line and the radius lines
 | ((stroke-dashoffset))     | float      | 0            |
-| <<example-arcsymbolizer-radius-lines,((radius-lines))>> | boolean | false | Draw the two radius "spokes" from the center to the arc ends
-| <<example-arcsymbolizer-radius-lines,((radius-line-stroke))>> | color | stroke | Color of the radius lines, defaults to the arc stroke color
-| <<example-arcsymbolizer-radius-lines,((radius-line-stroke-width))>> | float | stroke-width | Width of the radius lines, defaults to the arc stroke width
+| <<example-arcsymbolizer-radius-lines,((arc-stroke))>> | color | stroke | Color of the arc line only
+| ((arc-stroke-width))      | float      | stroke-width | Width of the arc line only
+| ((arc-stroke-opacity))    | 0.0 - 1.0  | stroke-opacity |
+| ((arc-stroke-dasharray))  | number list | stroke-dasharray | Dash pattern for the arc line only
+| ((arc-stroke-dashoffset)) | float      | stroke-dashoffset |
+| <<example-arcsymbolizer-radius-lines,((radius-stroke))>> | color | stroke | Color of the radius lines only
+| <<example-arcsymbolizer-radius-lines,((radius-stroke-width))>> | float | stroke-width | Width of the radius lines only
+| ((radius-stroke-opacity)) | 0.0 - 1.0  | stroke-opacity |
+| <<example-arcsymbolizer-radius-lines,((radius-stroke-dasharray))>> | number list | stroke-dasharray | Dash pattern for the radius lines only
+| ((radius-stroke-dashoffset)) | float   | stroke-dashoffset |
 | <<example-arcsymbolizer-text,((text))>> | expression | none | Label, bent along the arc or placed perpendicular to it
 | ((text-face-name))        | string     |              | Font face for the label, required with text
 | ((text-fontset-name))     | string     |              | Fontset alternative to text-face-name
@@ -78,7 +85,7 @@ image::examples/Symbolizer/Arc/fill-stroke.svg[align="center"]
 .ArcSymbolizer radius lines
 [#example-arcsymbolizer-radius-lines]
 ====
-Radius lines inherit the arc stroke by default, can be given their own color and width, and are the only part affected by `stroke-dasharray`.
+Radius lines use the `stroke-*` attributes by default, and `radius-stroke-*` attributes change them without affecting the arc line. Setting only `arc-stroke` instead of `stroke` draws the arc line without radius lines.
 [source,xml]
 -----
 include::{sourcedir}/examples/Symbolizer/Arc/radius-lines.xml[]

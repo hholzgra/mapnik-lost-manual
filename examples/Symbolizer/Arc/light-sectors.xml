@@ -9,9 +9,8 @@
     <Rule>
       <ArcSymbolizer radius="[radius]" start-angle="[start]" end-angle="[end]"
                      stroke="[colour]" stroke-width="4"
-                     radius-lines="true"
-                     radius-line-stroke="dimgray" radius-line-stroke-width="1"
-                     stroke-dasharray="6,4"
+                     radius-stroke="dimgray" radius-stroke-width="1"
+                     radius-stroke-dasharray="6,4"
                      text="[character]" text-face-name="DejaVu Sans Book"
                      text-size="9" text-fill="black"/>
       <DotSymbolizer width="8" height="8" fill="black"/>

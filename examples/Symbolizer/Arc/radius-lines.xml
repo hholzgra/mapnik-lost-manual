@@ -5,21 +5,24 @@
     <Rule>
       <Filter>[variant] = 'default'</Filter>
       <ArcSymbolizer radius="50" start-angle="300" end-angle="60"
-                     stroke="blue" stroke-width="2"
-                     radius-lines="true"/>
+                     stroke="blue" stroke-width="2"/>
     </Rule>
     <Rule>
       <Filter>[variant] = 'styled'</Filter>
       <ArcSymbolizer radius="50" start-angle="300" end-angle="60"
                      stroke="blue" stroke-width="2"
-                     radius-lines="true"
-                     radius-line-stroke="red" radius-line-stroke-width="4"/>
+                     radius-stroke="red" radius-stroke-width="4"/>
     </Rule>
     <Rule>
       <Filter>[variant] = 'dashed'</Filter>
       <ArcSymbolizer radius="50" start-angle="300" end-angle="60"
                      stroke="blue" stroke-width="2"
-                     radius-lines="true" stroke-dasharray="4,3"/>
+                     radius-stroke-dasharray="4,3"/>
+    </Rule>
+    <Rule>
+      <Filter>[variant] = 'none'</Filter>
+      <ArcSymbolizer radius="50" start-angle="300" end-angle="60"
+                     arc-stroke="blue" arc-stroke-width="2"/>
     </Rule>
     <Rule>
       <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="20">[variant]</TextSymbolizer>
@@ -35,6 +38,7 @@ wkt,variant
 "POINT(0 0)",default
 "POINT(2 0)",styled
 "POINT(4 0)",dashed
+"POINT(6 0)",none
       </Parameter>
     </Datasource>
   </Layer>
