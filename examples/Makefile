@@ -17,10 +17,22 @@ PHONY += show-latest all-png all-svg experimental data
 
 rwildcard=$(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter $(subst *,%,$2),$d))
 
-example_bases := $(basename $(filter-out examples/disabled/%,$(call rwildcard,examples/,*.xml)))
+# find all XML files
+example_bases := $(call rwildcard,examples/,*.xml)
+
+# filter out disabled examples
+example_bases := $(filter-out examples/disabled/%,$(example_bases))
+
+# filter out leftovers in the tmp dir
+example_bases := $(filter-out examples/tmp/%,$(example_bases))
+
+# filter out ArcSymbolizer example if not supported
 ifeq ($(ARC_SUPPORT),)
 example_bases := $(filter-out examples/Symbolizer/Arc/%,$(example_bases))
 endif
+
+# strip .xml from all example files
+example_bases := $(basename $(example_bases))
 
 all-svg: $(addsuffix .svg, $(example_bases))
 

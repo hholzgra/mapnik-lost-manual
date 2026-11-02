@@ -3,7 +3,8 @@ base=$(basename $1 .xml)
 dir=$(dirname $(realpath $1))
 
 cd $(dirname $0)
-tmpnam=$(basename $(mktemp -p . tmprenderXXXXXXXXXX))
+mkdir -p tmp
+tmpnam=$(mktemp -p tmp tmprenderXXXXXXXXXX)
 
 status=3
 
@@ -16,11 +17,10 @@ then
 	then
 		cp $tmpnam.png $dir/$base.png
 	fi
+	rm -f $tmpnam*
 	status=0
 else
 	status=5
 fi
-
-rm -f $tmpnam*
 
 exit $status
