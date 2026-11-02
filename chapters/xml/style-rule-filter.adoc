@@ -45,7 +45,6 @@ The `<Filter>` tag has no tag attributes.
 The filter expression language supports the following constants, operators, and functions. It also allows for referencing data element attributes by putting the attribute name in square brackets `[attribute]` and to change evaluation order by putting expression parts in regular round brackets `(...)`.
 
 TODO: operator precedence
-TODO: regular expression match and replace
 
 ===== Constants
 
@@ -71,7 +70,33 @@ TODO: regular expression match and replace
 `\<=`, `le`::
 `>`, `gt`::
 `>=`, `ge`::
-  ...
+`.match('regexp')`:: check whether [str] matches the 'regexp' expression pattern
+`.replace('regexp', 'replace_with')`:: replace text based on regular expression
+
+===== Operator Precedence
+
+[cols="1,6,2",options="header"]
+|===
+| Level | Operators | Grouping
+| 1 | literals, `+[attribute]+`, `+@variable+`, function calls, `+( … )+` | –
+| 2 | unary `-`, unary `{plus}` | –
+| 3 | `+*+` `+/+` `+%+` `+.match()+` `+.replace()+` | left to right
+| 4 | `{plus}` `-` | left to right
+| 5 | `+<+` `lt`, `+<=+` `le`, `+>+` `gt`, `+>=+` `ge` | left to right
+| 6 | `+=+` `eq` `is`, `+!=+` `+<>+` `neq` | left to right
+| 7 | `not`, `+!+` | –
+| 8 | `and` `+&&+`, `or` `+\|\|+` (*same level*) | left to right
+|===
+
+Note that these work a bit different to what one may be used to:
+
+* `and`/`or` have the same precedence, evaluated left to right:
+  `+true or true and false+` → `+((true or true) and false)+` = false
+  (SQL, C and Python would give true).
+* `not` binds looser than comparisons: `+not 1 = 2+` → `+not (1=2)+`.
+* `+not not true+` is a parse error; use parentheses.
+* Comparisons chain as booleans, not as ranges: `+1 < 2 < 3+` → `+((1<2)<3)+`.
+* Equality binds looser than `+<+`/`+>+`: `+1 = 1 < 2+` → `+1 = (1<2)+`.
 
 ===== Functions
 
@@ -86,3 +111,12 @@ TODO: regular expression match and replace
 `min(x,y)`:: minimum value
 `max(x,y)`:: maximum value
 `length(str)`:: string length
+
+===== User Variables
+
+User variables are referenced by a leading `@` followed by the name; they can be set
+when requesting to actually render a styleshet.
+
+With the Python bindings this is done by calling the `render_with_vars()` method
+instead of just `render(). Unfortunately this method so far only exists for the
+Agg render backend, but not for Cairo Graphics or native SVG backends yet.
