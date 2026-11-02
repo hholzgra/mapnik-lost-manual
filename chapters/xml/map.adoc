@@ -17,7 +17,7 @@ TODO: contains ...
 | background-image-comp-op | SVG composition | none |
 | background-image-opacity | float | 1.0 |
 | srs | SRS string | epsg:4326 |
-| buffer-size | float | 0.0 |
+| buffer-size | int | 0 | also render features this many pixels outside of the map area
 | maximum-extent | 4xfloat |  |
 | font-directory | directory path | none |
 | <<map-minimum-version,minimum-version>> | version string | none |
@@ -50,6 +50,13 @@ include::{sourcedir}/examples/map/background-image.xml[]
 -----
 image::examples/map/background-image.svg[align="center"]
 ====
+
+[#map-buffer-size]
+==== `buffer-size` attribute
+
+Also takes features this many pixels outside of the actual map area into account. A feature that lies slightly outside of the actual tile area, but renders a symbol that would still partially be visible inside the tile -- e.g. a 32x32 pixel marker for a feature just one pixel outside the tile. By extending the buffer size to a value of 16 here about half the symbol would still be rendered. This is needed to not have symbols cut at tile borders.
+
+The setting can be overridden on a per-layer basis later, e.g. for a marker layer it should be set to at least half the width / height of a marker while for a line or polygon symbolizer it would only need to be about half as wide as the stroke. An even larger buffer would be needed for text symbolizer labels.
 
 [#map-minimum-version]
 ==== `minimum-version` attribute
