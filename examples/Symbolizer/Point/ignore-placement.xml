@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+  <FileSource name="symbols">./symbols</FileSource>
+
+  <Style name="style">
+    <Rule>
+      <PointSymbolizer ignore-placement="[ignore-placement]" base="symbols" opacity="0.5" file="bug.svg"/>
+    </Rule>
+  </Style>
+
+  <Style name="captions">
+    <Rule>
+      <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="30">[caption]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <StyleName>captions</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,ignore-placement,caption
+"POINT(0 0.1)",true,true
+"POINT(0.1 0)",false,
+"POINT(1 0.1)",false,false
+"POINT(1.1 0)",false,
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>

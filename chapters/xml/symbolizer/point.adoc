@@ -17,7 +17,7 @@ For putting symbols along a line or the edge of a polygon the MarkerSymbolizer i
 | <<pointsymbolizer-allow-overlap,allow-overlap>> | bool          | false | allow to paint over previous symbolizers output
 | <<pointsymbolizer-opacity,opacity>> | float         | 1.0 |
 | <<pointsymbolizer-placement,placement>> | string | centroid | Wehter to place on a polygons centroid, which can actually be outside, or its interior
-| ignore-placement | bool          | false |
+| <<pointsymbolizer-ignore-placement,ignore-placement>> | bool          | false | do not reserve the symbol's space, so that later symbols and labels may be placed over it
 | <<pointsymbolizer-transform,transform>> | SVG transform | identity |
 | comp-op          | Compositing   | src-over |
 |====================
@@ -86,6 +86,25 @@ The `allow-overlap` defines whether a point symbolizer may be drawn over previou
 include::{sourcedir}/examples/Symbolizer/Point/allow-overlap.xml[]
 -----
 image::examples/Symbolizer/Point/allow-overlap.svg[align="center"]
+====
+
+
+[#pointsymbolizer-ignore-placement]
+===== `ignore-placement` attribute
+
+Each symbol that has been drawn normally reserves its space, so that symbols and labels placed later that would collide with it are skipped, unless they have `allow-overlap` set. With `ignore-placement` set, the symbol is still drawn, but its space is not reserved, so it does not block anything placed later.
+
+`allow-overlap` and `ignore-placement` are complementary: `allow-overlap` controls whether a symbol is drawn even if its space is already taken, while `ignore-placement` controls whether a symbol takes up space for later ones. To have a symbol that neither is blocked by nor blocks anything else, set both.
+
+In the example the first symbol of each pair is drawn first, and the second symbol, which does not have `allow-overlap` set, is only drawn when the first one has `ignore-placement` set. The captions are drawn by a separate style after all symbols, so that they do not block any of the symbols.
+
+.PointSymbolizer ignore-placement
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Point/ignore-placement.xml[]
+-----
+image::examples/Symbolizer/Point/ignore-placement.svg[align="center"]
 ====
 
 
