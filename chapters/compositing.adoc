@@ -4,6 +4,8 @@
 
 TODO: extend OSM default style with a big single red dot marker, similar to https://web.archive.org/web/20251210111809/https://carto.com/developers/styling/cartocss/#cartocss-composite-operations[CartoCSS example page]
 
+TODO: the TileMill project also has a nice visualization of the various composition operations
+
 All examples below basically use the same XML stylesheet, with just the `comp-op` attribute for the red dots layer changed.
 
 .comp-op-example
