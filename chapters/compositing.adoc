@@ -2,7 +2,9 @@
 
 == Compositing
 
-TODO: extend OSM default style with a big single red dot marker, similar to https://web.archive.org/web/20251210111809/https://carto.com/developers/styling/cartocss/#cartocss-composite-operations[CartoCSS example page]
+TODO: find better example foreground / background image combinations
+
+TODO: maybe extend OSM default style with a big single red dot marker, similar to https://web.archive.org/web/20251210111809/https://carto.com/developers/styling/cartocss/#cartocss-composite-operations[CartoCSS example page]
 
 TODO: the TileMill project also has a nice https://tilemill-project.github.io/tilemill/docs/guides/comp-op/[visualization of the various composition operations]
 
@@ -24,15 +26,21 @@ image::examples/comp-op/clear.png[align=center]
 
 ===  color-burn
 
+`color-burn` darkens the colors of the destination based on the source; the darkening becomes more intense the darker the source is.
+
 image::examples/comp-op/color-burn.png[align=center]
 
 
 ===  color-dodge
 
+`color-dodge` brightens the colors of the destination based on the source; the brightening becomes more intense the brighter the source is.
+
 image::examples/comp-op/color-dodge.png[align=center]
 
 
 ===  darken
+
+`darken` takes the lower value of each of the red, green and blue components of both images.
 
 image::examples/comp-op/darken.png[align=center]
 
