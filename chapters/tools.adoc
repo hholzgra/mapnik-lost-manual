@@ -36,11 +36,17 @@ See https://imposm.org/
 
 ==== carto
 
-`carto` is a tool that parses CartoCSS stylesheets and converts them into Mapnik XML.
+`carto` is a JavaScript tool that parses CartoCSS stylesheets and converts them into Mapnik XML.
 
-Many OpenStreetMap styles these days are actually implemented using CartoCSS, and not the Mapnik XML syntax directly, including the OpenStreetMap Carto default style.
+Many OpenStreetMap styles these days are actually implemented using CartoCSS, and not the Mapnik XML syntax directly, including the OpenStreetMap Carto default style. It was originally created by Mapbox who declared it as deprecated though; and so development has unfortunately mostly stalled.
 
-See also: https://github.com/mapbox/carto
+See also: https://github.com/cartocss/carto
+
+=== magnacarto
+
+`magnacarto` aims to be a replacement for `carto`, written in Go.
+
+See also: https://github.com/omniscale/magnacarto
 
 ==== Kosmtik
 
