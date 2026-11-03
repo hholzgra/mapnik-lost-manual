@@ -11,12 +11,14 @@ A layer renders data from a data source using one or more styles.
 | Attribute                 | Value | Default | Description
 | buffer-size               | float | 0 |
 | cache-features            | bool  | false | On layers with multiple styles: read features from data source only once and cache them in memory. Improves performance, but at the cost of using more memory, so off by default.
+| comp-op                   | string | ? | how to composite with already rendered layers and map background
 | clear-label-cache         | bool  | false | Clear the placement cache from previous layers, so that texts, points and markers may overlap with those from previous layers.
 | group-by                  | string | none | On layers with multiple styles these styles are processed one by one in the given order by default. When giving a group-by property, feature elements will be sorted by this property, and styles will be processed in order for each distinct group value. E.g with `group-by=z` and `z` having values from `-1` to `1`, first all features with `z=-1` will be processed using all styles, then all with `z=0`, and finally all with `z=1`.
 | minimum-scale-denominator | float | 0 | Minimum map scale above which this layer should be rendered.
 | maximum-extent            | 4x float |  | Maximum extent for which features should be processed.
 | maximum-scale-denominator | float | max. float | Maximum map scale up to which this layer should be rendered.
 | name                      | string | none | Name by which the layer can be referenced, e.g. for error messages.
+| opacity                   | float | 1.0 | opacity of the layer towards already rendered lower layers and the <Map> background
 | queryable                 | bool | false | unused?
 | <<layer-sort-by,sort-by>> | string | none | Sort the layer's features by this column before rendering, `ASC` (default) or `DESC`. Later features are drawn on top of earlier ones, earlier features win label placement collisions. {since-4-1-4}
 | srs                       | SRS string | epsg:4326 | Spatial reference system
