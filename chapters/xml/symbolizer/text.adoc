@@ -42,8 +42,9 @@
 | repeat-distance | float | none | Minimum distance from other labels with same text content across geometries
 | minimum-padding | float | none | Minimum placement distance from image edges
 | <<example-textsymbolizer-min-path-length,minimum-path-length>> | float | none | Minimum length of lines or polygon boundings to place text on
-| dx | float | 0 | horizontal text displacement
-| dy | float | 0 | vertical text displacement
+| <<example-textsymbolizer-dx,dx>> | float | 0 | horizontal text displacement
+| <<example-textsymbolizer-dy,dy>> | float | 0 | vertical text displacement
+| <<example-textsymbolizer-offset,offset>> | float | 0 | general text displacement
 | minimum-distance | float | ? | ?TODO?
 | <<example-textsymbolizer-largest-bbox-only,largest-bbox-only>> | boolean | true | Only label the part of a multi polygon with the largest bounding box, instead of each part
 | upright | string | ? | ?TODO? one of auto, auto-down, left, left-only, right, right-only, up, down
@@ -165,6 +166,36 @@ image::examples/Symbolizer/Text/grid-width-height.svg[align="center"]
 include::{sourcedir}/examples/Symbolizer/Text/minimum-path-length.xml[]
 -----
 image::examples/Symbolizer/Text/minimum-path-length.svg[align="center"]
+====
+
+.TextSymbolizer x offset
+[#example-textsymbolizer-dx]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/dx.xml[]
+-----
+image::examples/Symbolizer/Text/dx.svg[align="center"]
+====
+
+.TextSymbolizer y offset
+[#example-textsymbolizer-dy]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/dy.xml[]
+-----
+image::examples/Symbolizer/Text/dy.svg[align="center"]
+====
+
+.TextSymbolizer offset
+[#example-textsymbolizer-offset]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/offset.xml[]
+-----
+image::examples/Symbolizer/Text/offset.svg[align="center"]
 ====
 
 .TextSymbolizer largest bbox only
