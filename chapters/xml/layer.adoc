@@ -1,3 +1,5 @@
+:sourcedir: ../..
+
 === Layer
 
 A layer renders data from a data source using one or more styles.
@@ -16,6 +18,7 @@ A layer renders data from a data source using one or more styles.
 | maximum-scale-denominator | float | max. float | Maximum map scale up to which this layer should be rendered.
 | name                      | string | none | Name by which the layer can be referenced, e.g. for error messages.
 | queryable                 | bool | false | unused?
+| <<layer-sort-by,sort-by>> | string | none | Sort the layer's features by this column before rendering, `ASC` (default) or `DESC`. Later features are drawn on top of earlier ones, earlier features win label placement collisions. {since-4-1-4}
 | srs                       | SRS string | epsg:4326 | Spatial reference system
 | status                    | boolean | true | Whether this layer should actually be processed or not. Caution: when set to `false` in XML the complete `<Layer>` will simply be skipped on reading the style file, and no layer object will be created for it. So you won't be able to enable such a layer with `Layer.set_status(true)` using API code later.
 |====================
@@ -33,4 +36,62 @@ A layer renders data from a data source using one or more styles.
   </DataSource>
 </Layer>
 ----
+====
+
+[#layer-sort-by]
+==== `sort-by` attribute
+
+Features are normally rendered in the order in which the data source
+returns them. With `sort-by` all features of the layer are read into
+memory first, sorted by the given column, and then rendered by all of
+the layer's styles in that order. This has two visible effects:
+
+* features rendered later are drawn on top of features rendered earlier
+* features rendered earlier win when labels or symbols compete for
+  the same space, as placement is first come, first served
+
+So e.g. `sort-by="population DESC"` makes sure that the names of large
+cities get placed in preference to those of smaller ones, and that
+the symbols of small cities are not hidden below those of large ones.
+
+The value is a single plain column name, optionally followed by `ASC`
+(the default) or `DESC`. It is not an expression, so no square
+brackets, and only one column can be given. Anything else is a parse
+error.
+
+With data sources that support it, like PostGIS, you can get the same
+result with an `ORDER BY` in the query. `sort-by` brings this to data
+sources that can't sort themselves, like shapefiles, CSV or GeoJSON.
+
+Things to be aware of:
+
+* `sort-by` takes precedence over `group-by`, when both are set
+  `group-by` is silently ignored.
+* All features within the query extent are kept in memory, like with
+  `cache-features`.
+* The sort is not stable, features with equal values may be rendered
+  in any order.
+* Strings are compared by character code, not according to locale
+  rules, so all upper case letters sort before all lower case ones.
+* The column should only contain values of one kind. Numbers can't be
+  compared to strings, and neither can be compared to missing values,
+  so the result order for mixed columns is unpredictable.
+* `sort-by` was added in Mapnik v4.1.4 and is not available in the
+  Python bindings yet.
+
+In the following example the same three cities are rendered three
+times: in data source order, sorted by population in ascending order,
+and in descending order. Their names are too close to each other for
+more than one to be placed, so only the first rendered city gets its
+name shown. Only in the descending case is the large city labeled,
+and the smaller cities are drawn on top of the larger ones.
+
+.Layer sort-by
+[#example-layer-sort-by]
+====
+[source,xml]
+-----
+include::{sourcedir}/examples/layer/sort-by.xml[]
+-----
+image::examples/layer/sort-by.svg[align="center"]
 ====

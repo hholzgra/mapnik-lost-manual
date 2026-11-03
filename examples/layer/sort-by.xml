@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white" minimum-version="4.1.4">
+  <Style name="cities">
+    <Rule>
+      <MarkersSymbolizer width="[size]" height="[size]" fill="[color]" stroke="white"
+                         allow-overlap="true" ignore-placement="true"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" size="14" dy="-40">[name]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Style name="captions">
+    <Rule>
+      <TextSymbolizer face-name="DejaVu Sans Bold" size="14">[caption]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="unsorted">
+    <StyleName>cities</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,name,population,size,color
+"POINT(0.5 0)",Middletown,150000,40,seagreen
+"POINT(0.9 0)",Smallville,20000,24,orange
+"POINT(0 0)",Big City,900000,64,steelblue
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+  <Layer name="ascending" sort-by="population">
+    <StyleName>cities</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,name,population,size,color
+"POINT(4.5 0)",Middletown,150000,40,seagreen
+"POINT(4.9 0)",Smallville,20000,24,orange
+"POINT(4 0)",Big City,900000,64,steelblue
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+  <Layer name="descending" sort-by="population DESC">
+    <StyleName>cities</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,name,population,size,color
+"POINT(8.5 0)",Middletown,150000,40,seagreen
+"POINT(8.9 0)",Smallville,20000,24,orange
+"POINT(8 0)",Big City,900000,64,steelblue
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+  <Layer name="captions">
+    <StyleName>captions</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,caption
+"POINT(0.5 -1.5)",(unsorted)
+"POINT(4.5 -1.5)",population
+"POINT(8.5 -1.5)",population DESC
+      </Parameter>
+    </Datasource>
+  </Layer>
+</Map>
