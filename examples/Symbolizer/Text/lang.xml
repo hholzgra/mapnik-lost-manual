@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Map background-color='white'>
+<Map background-color='white' minimum-version="4.0.6">
   <Style name="style">
     <Rule>
       <TextSymbolizer face-name="Noto Sans CJK SC Regular" size="24"

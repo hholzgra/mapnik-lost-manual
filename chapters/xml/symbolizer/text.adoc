@@ -9,7 +9,7 @@
 4+^d| *Text attributes*
 | face-name             | string        | none     | Face name to use
 | fontset-name          | string        | none     | FontSet name
-| <<example-textsymbolizer-lang,lang>> | string | none | Language of the text as a https://www.rfc-editor.org/info/rfc5646/[BCP 47 Language Identifier] tag like `ja` or `zh-Hant`, selects language specific glyph variants of a font; guessed from the script when not set
+| <<example-textsymbolizer-lang,lang>> | string | none | Language of the text as a https://www.rfc-editor.org/info/rfc5646/[BCP 47 Language Identifier] tag like `ja` or `zh-Hant`, selects language specific glyph variants of a font; guessed from the script when not set {since-4-0-6}
 | <<example-textsymbolizer-size,size>>                  | float         | 10.0     | Font size in pixels
 | <<example-textsymbolizer-fill,fill>>                  | color         | black    | Text fill color
 | <<example-textsymbolizer-character-spacing,character-spacing>>     | float         | 0.0      | Additional space between characters in pixels

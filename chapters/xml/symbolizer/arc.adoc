@@ -4,7 +4,7 @@
 
 [NOTE]
 ====
-The ArcSymbolizer is a recent experimental addition and is not yet available in released Mapnik versions. It supports the AGG, Cairo and SVG renderer backends.
+The ArcSymbolizer is a recent experimental addition {since-next}. It supports the AGG, Cairo and SVG renderer backends.
 ====
 
 The ArcSymbolizer can draw full circles and partial arcs. The arc center point is defined by the layer geometry while radius, start and end angle in case of arcs, and visual styling are defined by the symbolizer attributes.
