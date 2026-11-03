@@ -11,3 +11,5 @@ examples/**/*.svg
 examples/**/*.png
 
 tmprender*
+
+__pycache__
