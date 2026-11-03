@@ -1,6 +1,7 @@
 # Exceptions for tools/check-attributes.py, one "Element attribute" pair
 # per line; "*" as element matches all elements, "default:attribute"
-# silences a default value mismatch only.
+# silences a default value mismatch only, "since:attribute" a version
+# marker complaint only.
 
 # the built-in shape://ellipse marker is 10x10 with a 0.5 stroke
 # (src/marker_cache.cpp), the generic key defaults do not apply

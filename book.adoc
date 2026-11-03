@@ -11,6 +11,9 @@
 :multipage-level: 3
 :numbered:
 :source-highlighter: rouge
+:since-4-0-6: pass:q[_(since Mapnik v4.0.6)_]
+:since-4-1-4: pass:q[_(since Mapnik v4.1.4)_]
+:since-next: pass:q[_(not in a Mapnik release yet)_]
 
 
 include::chapters/preface.adoc[]

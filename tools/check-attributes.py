@@ -17,11 +17,19 @@
 #
 # Known false positives (accepted, but meaningless or deliberately left
 # out) go into tools/attributes-ignore.txt.
+#
+# If the source tree is a git checkout, the 4.x release tags are used
+# to find the version that introduced each attribute (or element), and
+# the book's markers are checked against that: a row for an attribute
+# added after 4.0.0 needs a {since-X-Y-Z} attribute reference in its
+# description ({since-next} if not released yet), an element added
+# after 4.0.0 needs one in its chapter text instead of in each row.
 
 import argparse
 import glob
 import os
 import re
+import subprocess
 import sys
 
 import mapnik
@@ -181,6 +189,7 @@ def available_elements():
 # the book's attribute tables
 
 TITLE = re.compile(r"^\.(\w+)\b")
+MARKER = re.compile(r"\{since-(\d+-\d+-\d+|next)\}")
 XREF = re.compile(r"<<[^,>]*,(.*?)>>")
 
 
@@ -196,15 +205,33 @@ def split_row(line):
     return [c.strip() for c in re.split(r"(?<!\\)\|", line)[1:]]
 
 
+def marker_version(text):
+    m = MARKER.search(text)
+    if not m:
+        return None
+    v = m.group(1)
+    return v if v == "next" else "v" + v.replace("-", ".")
+
+
+def version_marker(version):
+    if version == "next":
+        return "{since-next}"
+    return "{since-%s}" % version[1:].replace(".", "-")
+
+
 def parse_docs():
-    """element -> {attribute: (default, file, line)}"""
-    docs = {}
+    """element -> {attribute: (default, file, line, since)}, and
+    file -> version markers found outside of table rows"""
+    docs, file_markers = {}, {}
     pattern = os.path.join(TOP, "chapters", "**", "*.adoc")
     files = sorted(glob.glob(pattern, recursive=True))
     for path in files:
         rel = os.path.relpath(path, TOP)
         with open(path) as f:
             lines = f.read().split("\n")
+        file_markers[rel] = {marker_version(line) for line in lines
+                             if not line.startswith("|")
+                             and MARKER.search(line)}
         element = None
         in_table = header_seen = False
         for no, line in enumerate(lines, 1):
@@ -231,8 +258,9 @@ def parse_docs():
                 continue  # section rows like '4+^d|*Text attributes*'
             name = clean_name(cells[0])
             default = cells[2] if len(cells) > 2 else ""
-            docs[element][name] = (default, rel, no)
-    return docs
+            since = marker_version(" ".join(cells[1:]))
+            docs[element][name] = (default, rel, no, since)
+    return docs, file_markers
 
 
 # ---------------------------------------------------------------------
@@ -248,6 +276,65 @@ CANDIDATE_SOURCES = [
     "src/text/placements/*.cpp",
     "src/group/*.cpp",
 ]
+
+
+def git(src, *args):
+    return subprocess.run(["git", "-C", src] + list(args),
+                          capture_output=True, text=True,
+                          check=True).stdout
+
+
+def release_tags(src):
+    """the 4.x release tags, oldest first (no release candidates)"""
+    tags = [t for t in git(src, "tag", "-l", "v4.*").split()
+            if re.match(r"^v\d+\.\d+\.\d+$", t)]
+    return sorted(tags, key=lambda t: [int(n) for n in t[1:].split(".")])
+
+
+def names_in(texts):
+    names = set()
+    for text in texts:
+        names.update(LITERAL.findall(text))
+        names.update(re.findall(r'"(\w+)"', text))  # element names
+    return names
+
+
+def tag_sources(src, tag):
+    import fnmatch
+    paths = git(src, "ls-tree", "-r", "--name-only", tag).split()
+    return [git(src, "show", "%s:%s" % (tag, path)) for path in paths
+            if any(fnmatch.fnmatch(path, pat)
+                   for pat in CANDIDATE_SOURCES)]
+
+
+def tree_sources(src):
+    texts = []
+    for pattern in CANDIDATE_SOURCES:
+        for path in glob.glob(os.path.join(src, pattern)):
+            with open(path) as f:
+                texts.append(f.read())
+    return texts
+
+
+def introductions(src):
+    """name -> first 4.x release containing it ("next" if only in the
+    source tree), for all names that did not exist in 4.0.0 yet; the
+    second value is the baseline release"""
+    try:
+        tags = release_tags(src)
+    except (OSError, subprocess.CalledProcessError):
+        return None, None
+    if not tags:
+        return None, None
+    seen = names_in(tag_sources(src, tags[0]))
+    since = {}
+    for tag in tags[1:]:
+        for name in names_in(tag_sources(src, tag)) - seen:
+            since[name] = tag
+            seen.add(name)
+    for name in names_in(tree_sources(src)) - seen:
+        since[name] = "next"
+    return since, tags[0]
 
 
 def read(src, rel):
@@ -407,6 +494,40 @@ def defaults_differ(doc_value, src_value):
 
 # ---------------------------------------------------------------------
 
+def version_issues(element, doc, file_markers, since, ignores):
+    """compare the book's version markers with the introductions found
+    in the source; an element added after the baseline is marked once
+    in its chapter text, its rows then need no markers of their own"""
+    lines = []
+    element_since = since.get(element)
+    paths = sorted({path for _, path, _, _ in doc.values()})
+    if element_since:
+        marked = set().union(*(file_markers[p] for p in paths))
+        if element_since not in marked:
+            lines.append("  version %s: %s was added in %s, missing %s"
+                         % (paths[0], element, element_since,
+                            version_marker(element_since)))
+    for attr, (_, path, no, marker) in sorted(doc.items()):
+        if ignored(ignores, element, "since:" + attr):
+            continue
+        expected = None if element_since else since.get(attr)
+        if marker == expected or (marker and marker == element_since):
+            continue
+        if expected and not marker:
+            lines.append("  version %s:%d: '%s' was added in %s, "
+                         "missing %s" % (path, no, attr, expected,
+                                         version_marker(expected)))
+        elif expected:
+            lines.append("  version %s:%d: '%s' is marked %s, but was "
+                         "added in %s" % (path, no, attr, marker,
+                                          expected))
+        else:
+            lines.append("  version %s:%d: '%s' is marked %s, but "
+                         "already exists in the baseline release"
+                         % (path, no, attr, marker))
+    return lines
+
+
 def read_ignores():
     ignores = set()
     if os.path.exists(IGNORE_FILE):
@@ -436,7 +557,7 @@ def main():
                              "default mismatches")
     args = parser.parse_args()
 
-    docs = parse_docs()
+    docs, file_markers = parse_docs()
     ignores = read_ignores()
     with QuietLog():
         elements = available_elements()
@@ -445,9 +566,15 @@ def main():
     for attrs in docs.values():
         candidates.update(attrs)
     generic = specific = {}
+    since = baseline = None
     if args.mapnik_src:
         candidates.update(source_candidates(args.mapnik_src))
         generic, specific = symbolizer_defaults(args.mapnik_src)
+        since, baseline = introductions(args.mapnik_src)
+        if since is None:
+            print("note: %s is not a git checkout with release tags,\n"
+                  "      not checking version markers\n"
+                  % args.mapnik_src)
     else:
         print("note: no Mapnik source tree given "
               "(--mapnik-src or MAPNIK_SRC),\n"
@@ -475,7 +602,7 @@ def main():
     common = {a for a in candidates
               if sum(a in accepted[s] for s in symbolizers) >= threshold}
 
-    rejected = undocumented = mismatched = 0
+    rejected = undocumented = mismatched = versions = 0
 
     print("Mapnik %s, %d candidate attribute names, %d elements\n"
           % (mapnik.version_string(), len(candidates), len(elements)))
@@ -487,7 +614,7 @@ def main():
             lines.append("  not available in this Mapnik build, "
                          "table not checked")
         else:
-            for attr, (default, path, no) in sorted(doc.items()):
+            for attr, (default, path, no, _) in sorted(doc.items()):
                 if ignored(ignores, element, attr):
                     continue
                 if attr not in accepted[element]:
@@ -513,7 +640,7 @@ def main():
                 else:
                     lines.append("  undocumented: %s" % attr)
                     undocumented += 1
-            for attr, (default, path, no) in sorted(doc.items()):
+            for attr, (default, path, no, _) in sorted(doc.items()):
                 src = src_defaults[element].get(
                     attr,
                     specific.get((element, attr), generic.get(attr)))
@@ -525,6 +652,11 @@ def main():
                                  % (path, no, attr, default.strip(),
                                     src[1], src[0]))
                     mismatched += 1
+            if since is not None and doc:
+                found = version_issues(element, doc, file_markers,
+                                       since, ignores)
+                lines.extend(found)
+                versions += len(found)
             if not doc:
                 lines.insert(0, "  no attribute table in the book")
         if lines:
@@ -546,13 +678,17 @@ def main():
     print("%d documented attribute(s) not accepted, %d undocumented, "
           "%d possible default mismatch(es)"
           % (rejected, undocumented, mismatched))
+    if since is not None:
+        print("%d version marker issue(s), relative to %s"
+              % (versions, baseline))
     if mismatched:
         print("(defaults derived from the source are a hint only, some "
               "are computed\n"
               " at render time; confirmed false alarms go into %s as\n"
               " 'Element default:attribute')"
               % os.path.relpath(IGNORE_FILE, TOP))
-    failed = rejected or (args.strict and (undocumented or mismatched))
+    failed = rejected or (args.strict
+                          and (undocumented or mismatched or versions))
     sys.exit(1 if failed else 0)
 
 
