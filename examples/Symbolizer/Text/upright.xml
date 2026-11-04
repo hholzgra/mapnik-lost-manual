@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <LineSymbolizer stroke="lightblue" stroke-width="12"/>
+      <MarkersSymbolizer file="shape://arrow" placement="vertex-last" fill="steelblue" width="16" height="12" allow-overlap="true" ignore-placement="true"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" size="12" placement="line" upright="[upright]" allow-overlap="true">[upright]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,upright
+"LINESTRING(0 0,10 0)",auto
+"LINESTRING(22 0,12 0)",auto
+"LINESTRING(0 -2,10 -2)",auto-down
+"LINESTRING(22 -2,12 -2)",auto-down
+"LINESTRING(0 -4,10 -4)",left
+"LINESTRING(22 -4,12 -4)",left
+"LINESTRING(0 -6,10 -6)",right
+"LINESTRING(22 -6,12 -6)",right
+"LINESTRING(0 -8,10 -8)",left-only
+"LINESTRING(22 -8,12 -8)",left-only
+"LINESTRING(0 -10,10 -10)",right-only
+"LINESTRING(22 -10,12 -10)",right-only
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>

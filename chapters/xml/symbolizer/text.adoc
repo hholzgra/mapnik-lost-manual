@@ -47,7 +47,7 @@
 | <<example-textsymbolizer-offset,offset>> | float | 0 | general text displacement
 | minimum-distance | float | ? | ?TODO?
 | <<example-textsymbolizer-largest-bbox-only,largest-bbox-only>> | boolean | true | Only label the part of a multi polygon with the largest bounding box, instead of each part
-| upright | string | ? | ?TODO? one of auto, auto-down, left, left-only, right, right-only, up, down
+| <<example-textsymbolizer-upright,upright>> | string | auto | Text direction on lines: one of `auto`, `auto-down`, `left`, `right`, `left-only`, `right-only`
 |====================
 
 .TextSymbolizer size
@@ -207,6 +207,28 @@ Both features are multi polygons made of one large and two small parts. With `la
 include::{sourcedir}/examples/Symbolizer/Text/largest-bbox-only.xml[]
 -----
 image::examples/Symbolizer/Text/largest-bbox-only.svg[align="center"]
+====
+
+.TextSymbolizer upright
+[#example-textsymbolizer-upright]
+====
+Each row uses one `upright` value on two horizontal lines, the left one drawn from left to right, the right one from right to left, as the arrow heads show. `right` always runs the text in the direction the line was drawn, `left` against it, even if this turns the text upside down. `auto`, the default, picks whichever of the two directions keeps the text readable, `auto-down` picks the other one; on horizontal lines this always gives upside down text, so `auto-down` is mostly useful on near-vertical lines, see the <<example-textsymbolizer-upright-steep,next example>>. `left-only` and `right-only` never flip the text: they place it like `left` and `right`, but drop the label instead if more than half of its characters would end up upside down.
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/upright.xml[]
+-----
+image::examples/Symbolizer/Text/upright.svg[align="center"]
+====
+
+.TextSymbolizer upright on steep lines
+[#example-textsymbolizer-upright-steep]
+====
+`auto` and `auto-down` only look at the angle of the line on the map, not at the direction it was drawn in: `auto` runs the text towards the right, `auto-down` towards the left. On near-vertical lines this decides whether text reads from bottom to top or from top to bottom. With `auto`, lines leaning to the right, like `/`, get text reading bottom to top, and lines leaning to the left, like `\`, get text reading top to bottom; `auto-down` does the opposite. Either way the reading direction flips when a line crosses the vertical, so labels on almost vertical lines that wobble slightly may change direction from one line to the next.
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/upright-steep.xml[]
+-----
+image::examples/Symbolizer/Text/upright-steep.svg[align="center"]
 ====
 
 
