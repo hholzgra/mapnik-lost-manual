@@ -1,0 +1,18 @@
+:sourcedir: ..
+
+== Transformation
+
+Transformations allow to change the position, rotation, scale and skew of a symbolizers output.
+
+The SVG syntax for transform functions is used:
+
+• translate(x [y]): Moves an element horizontally by x and vertically by y. If y is omitted, it defaults to 0.
+• scale(sx [sy]): Resizes an element by scale factors sx and sy. Omitting sy sets it equal to sx.
+• rotate(angle [cx cy]): Rotates an element by a specified degree. Optionally, cx and cy define the center point of the rotation; otherwise, it rotates around the coordinate origin (0, 0).
+• skewX(angle) / skewY(angle): Skews the element along the X or Y axis by a given angle.
+• matrix(a b c d e f): Applies a 2D transformation matrix combining scaling, rotating, and translating into six values.
+
+TODO: check that all of these really work
+TODO: more text, one subsection per function
+TODO: visual examples
+

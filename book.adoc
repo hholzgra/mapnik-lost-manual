@@ -24,9 +24,11 @@ include::chapters/install.adoc[]
 
 include::chapters/xml.adoc[]
 
-include::chapters/tools.adoc[]
+include::chapters/transformation.adoc[]
 
 include::chapters/compositing.adoc[]
+
+include::chapters/tools.adoc[]
 
 include::chapters/tips-tricks.adoc[]
 
