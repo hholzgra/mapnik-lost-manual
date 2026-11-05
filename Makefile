@@ -83,7 +83,11 @@ install: all check
 	@echo "Transferring files to webserver"
 	@rsync -avu --chmod=ugo=rx build/ /var/www/html/mapnik-lost-manual/
 
-install-web: all check
+install-web: html
+	@echo "Transferring files to webserver"
+	@rsync -avu --chmod=ugo=rx -e 'ssh -axC' build/ get-map.org:/var/www/html/mapnik-lost-manual/
+
+install-web-all: all
 	@echo "Transferring files to webserver"
 	@rsync -avu --chmod=ugo=rx -e 'ssh -axC' build/ get-map.org:/var/www/html/mapnik-lost-manual/
 
