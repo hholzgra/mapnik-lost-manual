@@ -10,16 +10,17 @@ ShieldSymbolizer inherits almost all attributes from the <<TextSymbolizer>>, wit
 [width="100%",options="header,unbreakable",cols="m,d,d,d"]
 |====================
 | Attribute        | Type          | Default | Description
-| file             | file path     | none | Shield image to use
-| base             | string | none | name of a <FileSource> to find the input file in
-| opacity          | float         | 1.0 | Opacity to use for the shield image
-| text-opacity     | float         | 1.0 | Opacity to use for the shield text
-| unlock-image     | boolean       | false | `dx`,`dy` move image and text when `true`, text only when `false`
-| dx               | float         | 0.0 | Move text, and image if `unlock-image=false`, horizontally
-| dy               | float         | 0.0 | Move text, and image if `unlock-image=false`, vertically
-| shield-dx        | float         | 0.0 | Move image horizontally only
-| shield-dy        | float         | 0.0 | Move image vertically only
-| transform        | SVG transformation | none | Transform image
+| ((file))             | file path     | none | Shield image to use
+| ((base))             | string | none | name of a <FileSource> to find the input file in
+| ((comp-op))          | string | src-over | See <<Compositing>>
+| ((opacity))          | float         | 1.0 | Opacity to use for the shield image
+| ((text-opacity))     | float         | 1.0 | Opacity to use for the shield text
+| ((unlock-image))     | boolean       | false | `dx`,`dy` move image and text when `true`, text only when `false`
+| ((dx))               | float         | 0.0 | Move text, and image if `unlock-image=false`, horizontally
+| ((dy))               | float         | 0.0 | Move text, and image if `unlock-image=false`, vertically
+| ((shield-dx))        | float         | 0.0 | Move image horizontally only
+| ((shield-dy))        | float         | 0.0 | Move image vertically only
+| ((transform))        | SVG transformation | none | Transform image
 |====================
 
 ////
@@ -64,7 +65,6 @@ clip
 simplify
 simplify-algorithm
 smooth
-comp-op
 grid-cell-width
 grid-cell-height
 offset

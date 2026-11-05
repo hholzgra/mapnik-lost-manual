@@ -11,16 +11,16 @@ TODO: contains ...
 [options="header,unbreakable",cols="m,d,d,d"]
 |===
 | Attribute | Type | Default | Description
-| base | string | none | name of a <FileSource> to find the input file in
-| <<map-background-color,background-color>> | color | transparent |
-| <<map-background-image,background-image>> | file path | none |
-| background-image-comp-op | SVG composition | none |
-| background-image-opacity | float | 1.0 |
-| srs | SRS string | epsg:4326 |
-| buffer-size | int | 0 | also render features this many pixels outside of the map area
-| maximum-extent | 4xfloat |  |
-| font-directory | directory path | none |
-| <<map-minimum-version,minimum-version>> | version string | none |
+| ((base)) | string | none | name of a <FileSource> to find the input file in
+| <<map-background-color,((background-color))>> | color | transparent |
+| <<map-background-image,((background-image))>> | file path | none |
+| ((background-image-comp-op)) | SVG composition | none |
+| ((background-image-opacity)) | float | 1.0 |
+| ((srs)) | SRS string | epsg:4326 |
+| ((buffer-size)) | int | 0 | also render features this many pixels outside of the map area
+| ((maximum-extent)) | 4xfloat |  |
+| ((font-directory)) | directory path | none |
+| <<map-minimum-version,((minimum-version))>> | version string | none |
 |===
 
 [#map-background-color]

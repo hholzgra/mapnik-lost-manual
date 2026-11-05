@@ -19,7 +19,7 @@ For putting symbols along a line or the edge of a polygon the MarkerSymbolizer i
 | <<pointsymbolizer-placement,placement>> | string | centroid | Wehter to place on a polygons centroid, which can actually be outside, or its interior
 | <<pointsymbolizer-ignore-placement,ignore-placement>> | bool          | false | do not reserve the symbol's space, so that later symbols and labels may be placed over it
 | <<pointsymbolizer-transform,transform>> | SVG transform | identity |
-| comp-op          | Compositing   | src-over |
+| ((comp-op))          | string   | src-over | See <<Compositing>>
 |====================
 
 

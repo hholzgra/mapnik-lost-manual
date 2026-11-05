@@ -9,12 +9,12 @@
 | <<example-polygonsymbolizer-fill,((fill))>> | color | grey |
 | <<example-polygonsymbolizer-fill-opacity,((fill-opacity))>> | float | 1.0 |
 | geometry-transform | SVG transformation | none | Transformation applied to the polygon geometry
-| comp-op | SVG composition | none |
-| gamma | float | 1.0 |
-| gamma-method |  power, linear, none, threshold, multiply | power |
-| clip | boolean | false |
-| simplify | float | 0.0 |
-| simplify-algorithm | radial-distance, zhao-saalfeld, visvalingam-whyatt, douglas-peucker | radial-distance |
+| ((comp-op)) | string | srv-over | See <<Compositing>>
+| ((gamma)) | float | 1.0 |
+| ((gamma-method)) |  power, linear, none, threshold, multiply | power |
+| ((clip)) | boolean | false |
+| ((simplify)) | float | 0.0 |
+| ((simplify-algorithm)) | radial-distance, zhao-saalfeld, visvalingam-whyatt, douglas-peucker | radial-distance |
 | <<example-polygonsymbolizer-smooth,((smooth))>> | float | 0.0 |
 |===
 
