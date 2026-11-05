@@ -34,12 +34,16 @@ include::chapters/tips-tricks.adoc[]
 
 include::chapters/resources.adoc[]
 
+[appendix]
 include::chapters/glossary.adoc[]
 
-include::chapters/bibliography.adoc[]
-
+[appendix]
 include::LICENSE[]
 
+[appendix]
+include::chapters/bibliography.adoc[]
+
+[appendix]
 [index]
 == Index
 
