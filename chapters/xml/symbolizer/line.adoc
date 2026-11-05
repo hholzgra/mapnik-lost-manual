@@ -13,7 +13,7 @@ There are also some attributes that change the lines geometry itself, like offse
 | Attribute               | Value | Default | Description
 | ((clip))                | boolean | false |
 | ((comp-op))             | string | src_over | See <<Compositing>>
-| ((geometry-transform))  | SVG transform |  |
+| ((geometry-transform))  | string |  | See <<Transformation>>
 | <<example-linesymbolizer-offset,((offset))>>              | float | 0 |
 | ((rasterizer))           | full, fast | full |
 | <<example-linesymbolizer-smooth,((smooth))>>              | 0.0 - 1.0 | 0.0 |

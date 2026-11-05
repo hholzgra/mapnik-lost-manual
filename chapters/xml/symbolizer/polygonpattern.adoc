@@ -16,8 +16,8 @@
 | ((simplify)) |  |   |
 | ((simplify-algorithm)) |  |   |
 | ((smooth)) | float | 0.0 |
-| ((transform)) | SVG Transform | none | Transformation is applied to the fill pattern
-| ((geometry-transform)) | SVG Transform | none | Transformation is applied to the polygon geometry itself
+| ((transform)) | string | | <<Transformation>> is applied to the full pattern
+| ((geometry-transform)) | string | | <<Transformation>> is applied to the polygon geometry itself
 | ((comp-op)) | string | none | See <<Compositing>>
 |===
 

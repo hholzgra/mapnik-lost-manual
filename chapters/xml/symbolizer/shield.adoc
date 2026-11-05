@@ -20,7 +20,7 @@ ShieldSymbolizer inherits almost all attributes from the <<TextSymbolizer>>, wit
 | ((dy))               | float         | 0.0 | Move text, and image if `unlock-image=false`, vertically
 | ((shield-dx))        | float         | 0.0 | Move image horizontally only
 | ((shield-dy))        | float         | 0.0 | Move image vertically only
-| ((transform))        | SVG transformation | none | Transform image
+| ((transform))        | string        |     | <<Transformation>> of the shield image
 |====================
 
 ////

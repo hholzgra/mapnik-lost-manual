@@ -1,5 +1,6 @@
 :sourcedir: ../../..
 
+
 ==== PointSymbolizer
 
 The point symbolizer draws a given image at a point position. When given a line or polygon as input the shape will be put at the middle of the line or center of the polygon.
@@ -18,7 +19,7 @@ For putting symbols along a line or the edge of a polygon the MarkerSymbolizer i
 | <<pointsymbolizer-opacity,opacity>> | float         | 1.0 |
 | <<pointsymbolizer-placement,placement>> | string | centroid | Wehter to place on a polygons centroid, which can actually be outside, or its interior
 | <<pointsymbolizer-ignore-placement,ignore-placement>> | bool          | false | do not reserve the symbol's space, so that later symbols and labels may be placed over it
-| <<pointsymbolizer-transform,transform>> | SVG transform | identity |
+| <<pointsymbolizer-transform,transform>> | string| | See <<Transformation>>
 | ((comp-op))          | string   | src-over | See <<Compositing>>
 |====================
 
@@ -127,7 +128,7 @@ image::examples/Symbolizer/Point/placement.svg[align="center"]
 [#pointsymbolizer-transform]
 ===== `transform` attribute
 
-TODO: document SVG transformations
+TODO: move transformation examples to <<Transformation>> section
 
 .PointSymbolizer scaling
 [#example-pointsymbolizer-scaling]
@@ -149,12 +150,3 @@ include::{sourcedir}/examples/Symbolizer/Point/transform-rotate.xml[]
 image::examples/Symbolizer/Point/transform-rotate.svg[align="center"]
 ====
 
-[#pointsymbolizer-comp-op]
-===== `comp-up` attribute
-
-TODO: document SVG compositing
-
-.PointSymbolizer compositing
-====
-TODO
-====
