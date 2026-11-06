@@ -42,7 +42,7 @@ Many OpenStreetMap styles these days are actually implemented using CartoCSS, an
 
 See also: https://github.com/cartocss/carto
 
-=== magnacarto
+==== magnacarto
 
 `magnacarto` aims to be a replacement for `carto`, written in Go.
 
