@@ -23,9 +23,6 @@ example_bases := $(call rwildcard,examples/,*.xml)
 # filter out disabled examples
 example_bases := $(filter-out examples/disabled/%,$(example_bases))
 
-# filter out leftovers in the tmp dir
-example_bases := $(filter-out examples/tmp/%,$(example_bases))
-
 # filter out ArcSymbolizer example if not supported
 ifeq ($(ARC_SUPPORT),)
 example_bases := $(filter-out examples/Symbolizer/Arc/%,$(example_bases))

@@ -40,7 +40,7 @@ fi
 # when called with no speficif XML stylefiles to render -> render all
 if [ $# -eq 0 ]
 then
-	set -- $(find examples -name '*.xml' -not -path '*/disabled/*' -and -not -path '*/tmp/*' | sort)
+	set -- $(find examples -name '*.xml' -not -path '*/disabled/*' | sort)
 fi
 
 failed=()

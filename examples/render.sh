@@ -1,26 +1,22 @@
 #! /bin/bash
-base=$(basename $1 .xml)
-dir=$(dirname $(realpath $1))
+xml=$(realpath $1)
+base=${xml%.xml}
 
 cd $(dirname $0)
+
+# render.py output goes to temporary files first, as the PNG still
+# needs to be trimmed
 mkdir -p tmp
 tmpnam=$(mktemp -p tmp tmprenderXXXXXXXXXX)
+trap 'rm -f $tmpnam*' EXIT
 
-status=3
-
-cp $dir/$base.xml $tmpnam.xml
-
-if ./render.py $tmpnam
+if ! ./render.py $(realpath --relative-to=. $xml) $tmpnam
 then
-	mv $tmpnam.svg $dir/$base.svg
-	if ! convert -regard-warnings -trim $tmpnam.png $dir/$base.png 2>/dev/null
-	then
-		cp $tmpnam.png $dir/$base.png
-	fi
-	rm -f $tmpnam*
-	status=0
-else
-	status=5
+	exit 5
 fi
 
-exit $status
+mv $tmpnam.svg $base.svg
+if ! convert -regard-warnings -trim $tmpnam.png $base.png 2>/dev/null
+then
+	cp $tmpnam.png $base.png
+fi
