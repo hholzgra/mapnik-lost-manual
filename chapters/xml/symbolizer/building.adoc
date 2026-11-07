@@ -9,7 +9,7 @@ The ((`<BuildingSymbolizer>`)) renders polygons in a very simple pseudo-3D fashi
 |===
 | Attribute      | Value      | Default
 | <<example-buildingsymbolizer-fill,((`fill`))>>         | CSS color  | gray
-| <<example-buildingsymbolizer-fill-opacity,((`fill-opacity`))>> | foat       | 1.0
+| <<example-buildingsymbolizer-fill-opacity,((`fill-opacity`))>> | float       | 1.0
 | <<example-buildingsymbolizer-height,((`height`))>>       | float      | 0
 |===
 
