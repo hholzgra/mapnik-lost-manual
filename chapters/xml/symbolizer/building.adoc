@@ -7,10 +7,11 @@ The ((`<BuildingSymbolizer>`)) renders polygons in a very simple pseudo-3D fashi
 .BuildingSymbolizer Attributes
 [options="header,unbreakable"]
 |===
-| Attribute      | Value      | Default
-| <<example-buildingsymbolizer-fill,((`fill`))>>         | CSS color  | gray
-| <<example-buildingsymbolizer-fill-opacity,((`fill-opacity`))>> | float       | 1.0
-| <<example-buildingsymbolizer-height,((`height`))>>       | float      | 0
+| Attribute      | Value      | Default | Description
+| <<example-buildingsymbolizer-fill,((`fill`))>>         | CSS color  | gray |
+| <<example-buildingsymbolizer-fill-opacity,((`fill-opacity`))>> | float       | 1.0 |
+| <<example-buildingsymbolizer-height,((`height`))>>       | float      | 0 |
+| ((comp-op)) | string | src-over | See <<Compositing>>, works with Cairo Graphics only right now, for Agg support see http://github.com/mapnik/mapnik/issues/1355[Mapnik Issue #1355].
 |===
 
 See also:
