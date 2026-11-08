@@ -85,6 +85,16 @@ ELEMENTS["TextSymbolizer"] = in_rule(
 ELEMENTS["ShieldSymbolizer"] = in_rule(
     "ShieldSymbolizer",
     'face-name="%s" file="symbols/dot.svg" ' % FONT, "[name]")
+# child elements of text symbolizers; <ExpressionFormat> is an old
+# alias of <Format>, <Placement> needs placement-type="list"
+TEXT_RULE = ('<Map><Style name="s"><Rule>'
+             '<TextSymbolizer face-name="%s"%%s>%%s</TextSymbolizer>'
+             '</Rule></Style></Map>' % FONT)
+for _e in ("Format", "ExpressionFormat", "Layout"):
+    ELEMENTS[_e] = TEXT_RULE % ("", "<%s {attrs}>[name]</%s>"
+                                % (_e, _e))
+ELEMENTS["Placement"] = TEXT_RULE % (' placement-type="list"',
+                                     "[name]<Placement {attrs}/>")
 
 # attributes that are only read when another attribute is set as well
 COMPANIONS = {
@@ -105,7 +115,11 @@ def companions(element, attr):
 
 # a ShieldSymbolizer takes all TextSymbolizer attributes, and the book
 # documents only the additional ones in the shield table
-INHERITS = {"ShieldSymbolizer": "TextSymbolizer"}
+# (and so does a list placement's <Placement>), <ExpressionFormat> is
+# documented along with <Format>
+INHERITS = {"ShieldSymbolizer": "TextSymbolizer",
+            "Placement": "TextSymbolizer",
+            "ExpressionFormat": "Format"}
 
 
 def load(xml):
@@ -657,7 +671,7 @@ def main():
                                        since, ignores)
                 lines.extend(found)
                 versions += len(found)
-            if not doc:
+            if not doc and element not in INHERITS:
                 lines.insert(0, "  no attribute table in the book")
         if lines:
             print(element)
