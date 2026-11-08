@@ -3,7 +3,7 @@
 
   <Style name="style">
     <Rule>
-      <BuildingSymbolizer height="1" fill="red" fill-opacity="[opacity]"/>
+      <BuildingSymbolizer height="10" fill="red" fill-opacity="[opacity]"/>
       <TextSymbolizer face-name="DejaVu Sans Book" allow-overlap="true" dy="50">[opacity]</TextSymbolizer>
     </Rule>
   </Style>
