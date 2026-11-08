@@ -8,6 +8,8 @@ For now I'll only cover how to create styles using Mapnik XML style files. Docum
 
 include::xml/map.adoc[]
 
+inckude::xml/include.adoc[]
+
 include::xml/datasource.adoc[]
 
 include::xml/filesource.adoc[]

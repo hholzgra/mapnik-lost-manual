@@ -1,0 +1,29 @@
+=== Include
+
+The <Include> tag does not serve any actual rendering purpose, it only exists
+for the purpose of breaking up styles into multiple smaller files using the
+XML XInclude mechanism. XInclude requires that each included file has exactly
+one top level tag environment, so <Include> acts as a wrapper for that purpose.
+
+To use XInclude one needs to add the XInclude namespace to the top level
+<Map> tag in the main style file, e.g. like here were the XInclude namespace
+is set up with the `xi` name prefix:
+
+----
+<Map ... xmlns:xi="http://www.w3.org/2001/XInclude">
+----
+
+Additional files can then be included using
+
+----
+<xi:include href="path/to/file.xml"/>
+----
+
+and the actual include files then have this structure:
+
+----
+<?xml version="1.0"?>
+<Include>
+ ...
+</Include>
+----
