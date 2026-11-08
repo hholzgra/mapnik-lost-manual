@@ -1,6 +1,7 @@
 all: multipage html epub pdf
 
 PHONY = all clean install install-web check check-attributes
+PHONY += check-python-bindings
 PHONY += html pdf epub multipage
 
 # does the installed mapnik already support the ArcSymbolizer?
@@ -71,6 +72,11 @@ check:
 # undocumented attributes and check default values
 check-attributes:
 	@tools/check-attributes.py $(if $(MAPNIK_SRC),--mapnik-src $(MAPNIK_SRC))
+
+# list XML style features the python bindings cannot express, and the
+# examples that could be written in python (see notes/python-bindings.md)
+check-python-bindings:
+	@tools/check-python-bindings.py --examples $(if $(MAPNIK_SRC),--mapnik-src $(MAPNIK_SRC))
 
 clean:
 	@git clean -fX
