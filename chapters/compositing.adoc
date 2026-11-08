@@ -10,7 +10,7 @@ TODO: the TileMill project also has a nice https://tilemill-project.github.io/ti
 
 Mapnik supports all compisiting modes defined in the SVG standard, a few more are available when using the Agg render only.
 
-By default the "src-over" compositing mode is used. A different mode can be set on the <Layer>, <Style> or synmbolizer level.
+By default the "src-over" compositing mode is used. A different mode can be set on the <Layer>, <Style> or symbolizer level.
 
 TODO: explain level differences
 
@@ -21,7 +21,7 @@ TODO: add description lines to the table below
 [width="100%",options="header,unbreakable",cols="m,d"]
 |===================
 | Mode            | Description
-2+^d| *SVG standard attributes*
+2+^d| *SVG standard modes*
 | clear           |
 | color-burn      |
 | color-dodge     |
@@ -46,7 +46,7 @@ TODO: add description lines to the table below
 | src-out         |
 | src-over        |
 | xor             |
-2+^d| *AGG-only attributes*
+2+^d| *AGG-only modes*
 | color           |
 | contrast        |
 | divide          |
@@ -198,7 +198,7 @@ image::examples/comp-op/src.png[align=center]
 
 image::examples/comp-op/xor.png[align=center]
 
-=== missing
+=== missing examples:
 
 * color
 * contrast
