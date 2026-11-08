@@ -7,17 +7,18 @@
 |====================
 | Attribute             | Type          | Default  | Description
 4+^d| *Text attributes*
-| face-name             | string        | none     | Face name to use
-| fontset-name          | string        | none     | FontSet name
-| <<example-textsymbolizer-lang,lang>> | string | none | Language of the text as a https://www.rfc-editor.org/info/rfc5646/[BCP 47 Language Identifier] tag like `ja` or `zh-Hant`, selects language specific glyph variants of a font; guessed from the script when not set {since-4-0-6}
 | <<example-textsymbolizer-size,size>>                  | float         | 10.0     | Font size in pixels
 | <<example-textsymbolizer-fill,fill>>                  | color         | black    | Text fill color
 | <<example-textsymbolizer-character-spacing,character-spacing>>     | float         | 0.0      | Additional space between characters in pixels
 | <<example-textsymbolizer-opacity,opacity>>               | float         | 1.0      | Text opacity
 | ((comp-op)) | string | src-over | See <<Compositing>>
-4+^d|*Wrap attributes*
 | <<example-textsymbolizer-line-spacing,line-spacing>>          | float         | 0.0      | Extra vertical space for multi line output in pixels
-| font-feature-settings | string        | none     | Comma separated list of https://drafts.csswg.org/css-fonts-3/#propdef-font-feature-settings[OpenType typographic features]
+4+^d|*Font attributes*
+| face-name             | string        | none     | Face name to use
+| fontset-name          | string        | none     | FontSet name
+| <<example-textsymbolizer-lang,lang>> | string | none | Language of the text as a https://www.rfc-editor.org/info/rfc5646/[BCP 47 Language Identifier] tag like `ja` or `zh-Hant`, selects language specific glyph variants of a font; guessed from the script when not set {since-4-0-6}
+| <<example-textsymbolizer-font-feature-settings,font-feature-settings>> | string | none | Comma separated list of https://drafts.csswg.org/css-fonts-3/#propdef-font-feature-settings[OpenType typographic features]
+4+^d|*Wrap attributes*
 | wrap-width            | integer       | none     | Try to wrap text if it gets longer than this many pixels
 | wrap-before           | boolean       | false    | Wrap before or after reaching wrap-width
 | repeat-wrap-character | boolean       | false    | Keep wrap character and repeat it on new line
@@ -114,6 +115,21 @@ Fonts without language specific variants are not affected by `lang` at all.
 include::{sourcedir}/examples/Symbolizer/Text/lang.xml[]
 -----
 image::examples/Symbolizer/Text/lang.svg[align="center"]
+====
+
+.TextSymbolizer font feature settings
+[#example-textsymbolizer-font-feature-settings]
+====
+`font-feature-settings` turns optional OpenType font features on or off, like `smcp` for small capitals, `c2sc` for turning capitals into small capitals, too, `onum` for old style numerals or `frac` for fractions. Each comma separated entry is a feature tag, optionally followed by a value, so `smcp`, `smcp 1` and `smcp=1` all enable small caps, while `-liga` or `liga 0` disable a feature.
+
+Features only have an effect if the font provides them; unsupported ones are silently ignored. The example uses Noto Serif, which supports small caps. Tools like `otfinfo -f` list the features a font file supports.
+
+The attribute can also be set on `<Format>` to apply features to a part of the text only.
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/font-feature-settings.xml[]
+-----
+image::examples/Symbolizer/Text/font-feature-settings.svg[align="center"]
 ====
 
 .TextSymbolizer spacing
