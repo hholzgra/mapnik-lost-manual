@@ -50,7 +50,7 @@
 | <<example-textsymbolizer-dx,dx>> | float | 0 | horizontal text displacement
 | <<example-textsymbolizer-dy,dy>> | float | 0 | vertical text displacement
 | <<example-textsymbolizer-offset,offset>> | float | 0 | general text displacement
-| <<example-textsymbolizer-horizontal-alignment,horizontal-alignment>> | string | auto | Horizontal position of the label relative to its anchor point: `left`, `middle`, `right`, or `auto` (`right` for a positive `dx`, `left` for a negative one, `middle` otherwise); <<example-textsymbolizer-horizontal-alignment-adjust,`adjust`>> with `placement="line"` stretches the label over the whole line by spreading the characters
+| <<example-textsymbolizer-horizontal-alignment,horizontal-alignment>> | string | auto | Horizontal position of the label relative to its anchor point: `left`, `middle`, `right`, or `auto` (`right` for a positive `dx`, `left` for a negative one, `middle` otherwise); `adjust` with `placement="line"` stretches the label over the whole line by spreading the characters
 | <<example-textsymbolizer-vertical-alignment,vertical-alignment>> | string | auto | Vertical position of the label relative to its anchor point: `top`, `middle`, `bottom`, or `auto` (`bottom` for a positive `dy`, `top` for a negative one, `middle` otherwise)
 | <<example-textsymbolizer-justify-alignment,justify-alignment>> | string | auto | Alignment of the lines of multi line labels: `left`, `center`, `right`, or `auto` (`left` for a positive `dx`, `right` for a negative one, `center` otherwise)
 | <<example-textsymbolizer-orientation,orientation>> | float | 0 | Rotate the label counterclockwise by this many degrees
