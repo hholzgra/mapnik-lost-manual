@@ -8,6 +8,60 @@ TODO: maybe extend OSM default style with a big single red dot marker, similar t
 
 TODO: the TileMill project also has a nice https://tilemill-project.github.io/tilemill/docs/guides/comp-op/[visualization of the various composition operations]
 
+Mapnik supports all compisiting modes defined in the SVG standard, a few more are available when using the Agg render only.
+
+By default the "src-over" compositing mode is used. A different mode can be set on the <Layer>, <Style> or synmbolizer level.
+
+TODO: explain level differences
+
+TODO: add description lines to the table below
+
+
+.Compositing modes
+[width="100%",options="header,unbreakable",cols="m,d"]
+|===================
+| Mode            | Description
+2+^d| *SVG standard attributes*
+| clear           |
+| color-burn      |
+| color-dodge     |
+| darken          |
+| difference      |
+| dst             |
+| dst-atop        |
+| dst-in          |
+| dst-out         |
+| dst-over        |
+| exclusion       |
+| hard-light      |
+| lighten         |
+| multiply        |
+| overlay         |
+| plus            |
+| screen          |
+| soft-light      |
+| src             |
+| src-atop        |
+| src-in          |
+| src-out         |
+| src-over        |
+| xor             |
+2+^d| *AGG-only attributes*
+| color           |
+| contrast        |
+| divide          |
+| grain-extract   |
+| grain-merge     |
+| hue             |
+| invert          |
+| invert-rgb      |
+| linear-burn     |
+| linear-dodge    |
+| minus           |
+| saturation      |
+| value           |
+|===================
+
 All examples below basically use the same XML stylesheet, with just the `comp-op` attribute for the red dots layer changed.
 
 .comp-op-example
@@ -143,6 +197,21 @@ image::examples/comp-op/src.png[align=center]
 ===  xor
 
 image::examples/comp-op/xor.png[align=center]
+
+=== missing
+
+* color
+* contrast
+* divide
+* grain-extract
+* grain-merge
+* hue
+* invert
+* invert-rgb
+* linear-burn
+* linear-dodge
+* minus
+* value
 
 
 === See also
