@@ -1,6 +1,4 @@
 == TODO
-* add anchors to examples
-* link parameter table entries to examples
 * rethink chapter structure
 ** go bottom up, explaining symbolizers first, then filters, rules, styles, layers, map?
 ** move "Existing docs" to Appendix?
@@ -12,5 +10,3 @@
 == QUESTIONS
 
 * XML schema -> there's none, manual source digging required?
-* any practical use of <Include>?
-* what are <Placement> and <Format> inside a <TextSymbolizer>...</> for?
