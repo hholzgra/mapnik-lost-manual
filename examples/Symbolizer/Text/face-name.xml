@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+
+  <Style name="style">
+    <Rule>
+      <TextSymbolizer face-name="Noto Sans Regular"
+                      size="16" vertical-alignment="middle" dy="-48">'Noto Sans Regular'</TextSymbolizer>
+      <TextSymbolizer face-name="Noto Sans Bold"
+                      size="16" vertical-alignment="middle" dy="-24">'Noto Sans Bold'</TextSymbolizer>
+      <TextSymbolizer face-name="Noto Sans Italic"
+                      size="16" vertical-alignment="middle" dy="0">'Noto Sans Italic'</TextSymbolizer>
+      <TextSymbolizer face-name="Noto Serif Regular"
+                      size="16" vertical-alignment="middle" dy="24">'Noto Serif Regular'</TextSymbolizer>
+      <TextSymbolizer face-name="Noto Serif Bold Italic"
+                      size="16" vertical-alignment="middle" dy="48">'Noto Serif Bold Italic'</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt
+"POINT(0 0)"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>

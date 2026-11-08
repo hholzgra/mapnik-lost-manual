@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+  <Style name="style">
+    <Rule>
+      <MarkersSymbolizer fill="red" width="6" height="6" stroke-width="0"
+                         allow-overlap="true"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" size="16" allow-overlap="true"
+                      wrap-width="100" justify-alignment="[align]">[align]+" aligned lines of a longer text label"</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,align
+"POINT(0 0)",left
+"POINT(6 0)",center
+"POINT(12 0)",right
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>

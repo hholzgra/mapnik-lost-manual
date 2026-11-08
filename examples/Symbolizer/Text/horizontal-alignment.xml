@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+  <Style name="point-style">
+    <Rule>
+      <MarkersSymbolizer fill="red" width="6" height="6" stroke-width="0"
+                         allow-overlap="true"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" size="16" allow-overlap="true"
+                      horizontal-alignment="[align]">[align]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="point-layer">
+    <StyleName>point-style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+align,wkt
+left,"POINT(-10 40)"
+middle,"POINT(-10 30)"
+right,"POINT(-10 20)"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+  <Style name="line-style">
+    <Rule>
+      <LineSymbolizer stroke="lightblue" stroke-width="20"/>
+      <TextSymbolizer face-name="DejaVu Sans Book" size="20" placement="line"
+                      horizontal-alignment="[align]">"horizontal-alignment "+[align]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="line-layer">
+    <StyleName>line-style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+align,wkt
+left,"LINESTRING(10 40,12 40.11,14 40.43,16 40.95,18 41.65,20 42.5,22 43.45,24 44.48,26 45.52,28 46.55,30 47.5,32 48.35,34 49.05,36 49.57,38 49.89,40 50,42 49.89,44 49.57,46 49.05,48 48.35,50 47.5,52 46.55,54 45.52,56 44.48,58 43.45,60 42.5,62 41.65,64 40.95,66 40.43,68 40.11,70 40)"
+middle,"LINESTRING(10 30,12 30.11,14 30.43,16 30.95,18 31.65,20 32.5,22 33.45,24 34.48,26 35.52,28 36.55,30 37.5,32 38.35,34 39.05,36 39.57,38 39.89,40 40,42 39.89,44 39.57,46 39.05,48 38.35,50 37.5,52 36.55,54 35.52,56 34.48,58 33.45,60 32.5,62 31.65,64 30.95,66 30.43,68 30.11,70 30)"
+right,"LINESTRING(10 20,12 20.11,14 20.43,16 20.95,18 21.65,20 22.5,22 23.45,24 24.48,26 25.52,28 26.55,30 27.5,32 28.35,34 29.05,36 29.57,38 29.89,40 30,42 29.89,44 29.57,46 29.05,48 28.35,50 27.5,52 26.55,54 25.52,56 24.48,58 23.45,60 22.5,62 21.65,64 20.95,66 20.43,68 20.11,70 20)"
+adjust,"LINESTRING(10 10,12 10.11,14 10.43,16 10.95,18 11.65,20 12.5,22 13.45,24 14.48,26 15.52,28 16.55,30 17.5,32 18.35,34 19.05,36 19.57,38 19.89,40 20,42 19.89,44 19.57,46 19.05,48 18.35,50 17.5,52 16.55,54 15.52,56 14.48,58 13.45,60 12.5,62 11.65,64 10.95,66 10.43,68 10.11,70 10)"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>

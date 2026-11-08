@@ -13,9 +13,10 @@
 | <<example-textsymbolizer-opacity,opacity>>               | float         | 1.0      | Text opacity
 | ((comp-op)) | string | src-over | See <<Compositing>>
 | <<example-textsymbolizer-line-spacing,line-spacing>>          | float         | 0.0      | Extra vertical space for multi line output in pixels
+| text-transform | string | none | Change the case of the text: one of `none`, `uppercase`, `lowercase`, `capitalize` (first letter of each word), `reverse` (swap upper and lower case)
 4+^d|*Font attributes*
-| face-name             | string        | none     | Face name to use
-| fontset-name          | string        | none     | FontSet name
+| <<example-textsymbolizer-face-name,face-name>> | string | none | Font face to use: family and style name, like `DejaVu Sans Book`; a fixed name only, expressions are not supported
+| fontset-name          | string        | none     | FontSet name; a fixed name only, expressions are not supported
 | <<example-textsymbolizer-lang,lang>> | string | none | Language of the text as a https://www.rfc-editor.org/info/rfc5646/[BCP 47 Language Identifier] tag like `ja` or `zh-Hant`, selects language specific glyph variants of a font; guessed from the script when not set {since-4-0-6}
 | <<example-textsymbolizer-font-feature-settings,font-feature-settings>> | string | none | Comma separated list of https://drafts.csswg.org/css-fonts-3/#propdef-font-feature-settings[OpenType typographic features]
 4+^d|*Wrap attributes*
@@ -23,12 +24,14 @@
 | wrap-before           | boolean       | false    | Wrap before or after reaching wrap-width
 | repeat-wrap-character | boolean       | false    | Keep wrap character and repeat it on new line
 | wrap-character        | string        | none     | Break text at this character only instead of using general unicode line break algorithm
+| text-ratio | float | none | When wrapping, keep adding lines until the label's width to height ratio is at most this value, but don't make lines shorter than `wrap-width`; only used together with `wrap-width`
 4+^d| Halo attributes
 | <<example-textsymbolizer-halo-fill,halo-fill>>             | color         | white    | Text halo color
 | <<example-textsymbolizer-halo-opacity,halo-opacity>>          | float         | 1.0      | Text halo opacity
 | <<example-textsymbolizer-halo-radius,halo-radius>>           | float         | 0.0      | Text halo radius in pixels
 | halo-rasterizer       | full, fast    | full     | Text halo rasterizing algorithm when using Agg renderer
 | halo-comp-op          | string        | src-over | <<Compositing>> operator to use for the halo
+| halo-transform | SVG transformation | none | Transformation applied to the halo only, e.g. `scale(1.5)`; AGG and grid renderers only
 4+^d| *Placement attributes*
 | allow-overlap | bool | false | Allow text to overlap with other text or markers
 | <<example-textsymbolizer-spacing,spacing>>               | integer       | 0        | Spacing between text labels on lines if > 0 (in pixels?)
@@ -47,10 +50,17 @@
 | <<example-textsymbolizer-dx,dx>> | float | 0 | horizontal text displacement
 | <<example-textsymbolizer-dy,dy>> | float | 0 | vertical text displacement
 | <<example-textsymbolizer-offset,offset>> | float | 0 | general text displacement
+| <<example-textsymbolizer-horizontal-alignment,horizontal-alignment>> | string | auto | Horizontal position of the label relative to its anchor point: `left`, `middle`, `right`, or `auto` (`right` for a positive `dx`, `left` for a negative one, `middle` otherwise); <<example-textsymbolizer-horizontal-alignment-adjust,`adjust`>> with `placement="line"` stretches the label over the whole line by spreading the characters
+| <<example-textsymbolizer-vertical-alignment,vertical-alignment>> | string | auto | Vertical position of the label relative to its anchor point: `top`, `middle`, `bottom`, or `auto` (`bottom` for a positive `dy`, `top` for a negative one, `middle` otherwise)
+| <<example-textsymbolizer-justify-alignment,justify-alignment>> | string | auto | Alignment of the lines of multi line labels: `left`, `center`, `right`, or `auto` (`left` for a positive `dx`, `right` for a negative one, `center` otherwise)
+| <<example-textsymbolizer-orientation,orientation>> | float | 0 | Rotate the label counterclockwise by this many degrees
+| <<example-textsymbolizer-orientation,rotate-displacement>> | boolean | false | Rotate the `dx`/`dy` displacement along with `orientation`
 | minimum-distance | float | ? | ?TODO?
 | <<example-textsymbolizer-largest-bbox-only,largest-bbox-only>> | boolean | true | Only label the part of a multi polygon with the largest bounding box, instead of each part
 | <<example-textsymbolizer-upright,upright>> | string | auto | Text direction on lines: one of `auto`, `auto-down`, `left`, `right`, `left-only`, `right-only`
 |====================
+
+TODO: explain <Placement>,<Format> and <Layout> sub-tags
 
 .TextSymbolizer size
 [#example-textsymbolizer-size]
@@ -100,6 +110,19 @@ image::examples/Symbolizer/Text/character-spacing.svg[align="center"]
 include::{sourcedir}/examples/Symbolizer/Text/line-spacing.xml[]
 -----
 image::examples/Symbolizer/Text/line-spacing.svg[align="center"]
+====
+
+.TextSymbolizer face name
+[#example-textsymbolizer-face-name]
+====
+`face-name` takes the full name of a font face, family name and style, like `Noto Sans Bold`; the family name alone is not enough. Mapnik checks the name when loading the style, an unknown face name is an error in strict mode. `mapnik.FontEngine.face_names()` in Python lists the available face names.
+
+Unlike most other text attributes `face-name` and `fontset-name` do not accept expressions, so the font can't be taken from a data column. To use different fonts for different features, use a separate rule with a filter for each font.
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/face-name.xml[]
+-----
+image::examples/Symbolizer/Text/face-name.svg[align="center"]
 ====
 
 .TextSymbolizer lang
@@ -213,6 +236,52 @@ image::examples/Symbolizer/Text/dy.svg[align="center"]
 include::{sourcedir}/examples/Symbolizer/Text/offset.xml[]
 -----
 image::examples/Symbolizer/Text/offset.svg[align="center"]
+====
+
+.TextSymbolizer horizontal alignment
+[#example-textsymbolizer-horizontal-alignment]
+====
+The red dots mark the label positions. `horizontal-alignment` decides on which side of its position a label is placed. The default `auto` uses `right` if `dx` is positive, `left` if it is negative, and `middle` otherwise, so that a displaced label extends away from its point.
+
+With `placement="line"` the additional value `adjust` stretches a label over the full length of its line by spreading its characters evenly. As the label then takes up the whole line, `spacing` is ignored and only one label is placed per line.
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/horizontal-alignment.xml[]
+-----
+image::examples/Symbolizer/Text/horizontal-alignment.svg[align="center"]
+====
+
+.TextSymbolizer vertical alignment
+[#example-textsymbolizer-vertical-alignment]
+====
+`vertical-alignment` does the same vertically. With the default `auto` a label displaced by a positive `dy`, i.e. downwards, is aligned at the `bottom`, one with a negative `dy` at the `top`.
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/vertical-alignment.xml[]
+-----
+image::examples/Symbolizer/Text/vertical-alignment.svg[align="center"]
+====
+
+.TextSymbolizer justify alignment
+[#example-textsymbolizer-justify-alignment]
+====
+`justify-alignment` aligns the lines of a multi line label with each other, it does not change the position of the label as a whole. With the default `auto` the lines are aligned towards the label position, `left` for a positive `dx`, `right` for a negative one, and `center` otherwise.
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/justify-alignment.xml[]
+-----
+image::examples/Symbolizer/Text/justify-alignment.svg[align="center"]
+====
+
+.TextSymbolizer orientation and rotate-displacement
+[#example-textsymbolizer-orientation]
+====
+`orientation` rotates a label counterclockwise around its position. The `dx`/`dy` displacement is not rotated along with it by default, so in the top row the labels stay to the right of their points. With `rotate-displacement="true"`, in the bottom row, the displacement is rotated, too, and a label rotated by 90° ends up above its point, one rotated by 180° to the left of it.
+[source,xml]
+-----
+include::{sourcedir}/examples/Symbolizer/Text/orientation.xml[]
+-----
+image::examples/Symbolizer/Text/orientation.svg[align="center"]
 ====
 
 .TextSymbolizer largest bbox only
