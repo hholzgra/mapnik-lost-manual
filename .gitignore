@@ -1,6 +1,7 @@
 *~
 \#*\#
 .\#*
+.*.swp
 .deps/
 *.html
 *.pdf
@@ -13,3 +14,5 @@ examples/**/*.png
 tmprender*
 
 __pycache__
+
+
