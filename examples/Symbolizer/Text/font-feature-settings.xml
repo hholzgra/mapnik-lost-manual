@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color="white">
+  <Style name="style">
+    <Rule>
+      <TextSymbolizer face-name="Noto Serif Regular" size="24"
+                      font-feature-settings="[features]">'Small Caps'</TextSymbolizer>
+      <TextSymbolizer face-name="DejaVu Sans Book" dx="-130">[label]</TextSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="layer">
+    <StyleName>style</StyleName>
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="inline">
+wkt,features,label
+"POINT(0 0)",,(none)
+"POINT(0 -1)",smcp,smcp
+"POINT(0 -2)","c2sc, smcp","c2sc, smcp"
+      </Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
